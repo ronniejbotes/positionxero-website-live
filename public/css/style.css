@@ -2088,6 +2088,23 @@ body[data-header-hidden="true"] .nav,
   .founders-photo { max-width: 320px; margin: 0 auto; }
 }
 
+/* The nav carries eight links since /careers/ was added. Tighten the spacing,
+   then drop the phone digits, then hand over to the hamburger at 1024px: below
+   roughly 1030px eight links cannot sit on one row beside the phone and CTA.
+   The 768px block below is left intact. */
+@media (max-width: 1200px) {
+  .nav-links    { gap: 16px; }
+}
+@media (max-width: 1120px) {
+  .nav-phone-num{ display: none; }
+}
+@media (max-width: 1024px) {
+  .nav-links,
+  .nav-cta      { display: none; }
+  .hamburger    { display: inline-flex; }
+  .nav-phone    { margin-left: auto; margin-right: 6px; }
+}
+
 @media (max-width: 768px) {
   .nav-links,
   .nav-cta      { display: none; }
@@ -2138,7 +2155,7 @@ body[data-header-hidden="true"] .nav,
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .hamburger { display: none; }
 }
 
@@ -2349,4 +2366,645 @@ body[data-header-hidden="true"] .nav,
   }
   .faq-question::after { display: none !important; }
   .table-wrap { overflow: visible !important; }
+}
+
+
+/* ===================================================================
+   15. BOOK FREE AUDIT: full-screen intake overlay
+   Added 2026-09-08. Everything below is scoped to .pxq* or .pxq-locked,
+   so nothing above this banner is touched, overridden or re-specified.
+
+   There is no markup for this in any .html file. public/js/main.js
+   builds and injects the overlay the first time a /free-audit call to
+   action is clicked, so a page that never opens it never has a single
+   one of these rules applied to anything on it.
+
+   HOW IT SEPARATES FROM A PAGE THAT IS ALREADY DARK
+   A dark panel dropped on a dark page with no tonal change reads as a
+   rendering fault, so the separation is built from three grounds and a
+   hairline rather than from a shadow, which is the rule this sheet
+   states in section 6.
+
+     1. the page behind        var(--bg)      #05070A
+     2. the overlay well       var(--bg-dark) #020408, plus a vignette
+                               that takes the corners below the token
+     3. the question panel     var(--bg-2)    #090D12, with a
+                               var(--rule) hairline and a 1px inner
+                               top highlight
+
+   Step 1 to 2 is the same move this sheet already makes for page
+   headers, the footer and the CTA bands: drop to the well. Step 2 to 3
+   is the card grammar from section 7 verbatim. Read together they put
+   the questions one plane above a page that has itself sunk one plane,
+   which is a real elevation change on a ground that cannot get
+   brighter without breaking the language.
+
+   WHY THE BACKDROP IS OPAQUE
+   Both planes are dark, so a translucent wash plus a blur would ghost
+   the page's own headlines straight through the questions. Depth comes
+   from the vignette and the pattern instead. It is fully opaque.
+
+   WHY THE PATTERN IS THE ONE ON <html>
+   Section 2 paints the ground with a cyan horizon glow and a 115deg
+   repeating weave at 26px. The backdrop below is the same two gestures
+   at a higher amplitude, so the overlay reads as the same world turned
+   up rather than as a second design.
+
+   COLOUR ROLES ARE THE SHEET'S OWN
+   Cyan var(--signal) is "focus, links, current state", so it carries
+   the progress fill, the focused input, the chosen option and every
+   focus ring. Amber var(--heat) is "conversion, ordinals, emphasis",
+   so it carries the primary pill and the step ordinal and nothing
+   else. Neither is spent anywhere it is not already spent on a page.
+
+   TYPE
+   Archivo 700 for the question and nothing else. Inter for the
+   supporting line, the inputs and the option labels. IBM Plex Mono at
+   10px to 11px, uppercase, wide tracking for the step ordinal and the
+   "N of 8" counter, which is exactly what .section-label, .form-label,
+   .rc-industry and .nav-links use it for.
+   =================================================================== */
+
+/* ---- Scroll lock ----
+   Class based on purpose. The mobile menu sets document.body.style
+   .overflow back to '' on every menu link click, which would wipe an
+   inline lock the moment the menu's own call to action opened this
+   overlay. Clearing an inline value falls back to the stylesheet, so a
+   class survives that. <html> is locked as well as <body> because
+   body { overflow-x: hidden } in section 2 makes the body its own
+   scroll container, so locking it alone does not lock the page. */
+html.pxq-locked,
+body.pxq-locked { overflow: hidden; }
+
+/* Losing the scrollbar widens the viewport and shifts every centred
+   .container and the fixed .nav sideways. Give the width back so
+   nothing jumps during the backdrop fade. --pxq-sbw is measured in JS. */
+body.pxq-locked { padding-right: var(--pxq-sbw, 0px); }
+body.pxq-locked .nav { padding-right: var(--pxq-sbw, 0px); }
+/* .nav carries transition: padding var(--tr-slow), so without this the
+   gutter compensation eases in over half a second instead of applying
+   on the same frame as the lock. */
+html.pxq-locked .nav,
+body.pxq-locked .nav { transition: none; }
+
+/* ---- Root ----
+   Never give .pxq or .pxq-shell a transform, filter, backdrop-filter,
+   perspective or will-change. Any of those would become the containing
+   block for the position: fixed progress bar and the bar would scroll
+   away with the questions. opacity is safe, which is why open and close
+   animate opacity only. */
+.pxq {
+  /* Scoped so it cannot leak into the token block in section 1. This is
+     free-audit.html's own --red, the one error colour the site already
+     uses on a dark ground. It measures 7.1:1 on the well. */
+  --pxq-alert: #FF6B5B;
+
+  position: fixed;
+  inset: 0;
+  z-index: 4000;              /* above .skip-link at 3000, the ceiling */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  outline: none;              /* focus anchor via tabindex="-1" */
+  scroll-padding-bottom: 120px; /* a soft keyboard must not bury the button */
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+/* This sheet ships no [hidden] rule, so state it here: if .pxq ever
+   gains a display value, the hidden attribute must still win. */
+.pxq[hidden] { display: none !important; }
+
+/* Backdrop on its own layer so the fade never multiplies with anything
+   else. Painting order in the list below is top to bottom: the horizon
+   glow, then the vignette that takes the corners under the token, then
+   the weave. */
+.pxq::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--bg-dark);
+  background-image:
+    radial-gradient(118% 74% at 50% 2%, rgba(46, 230, 255, 0.085) 0%, rgba(46, 230, 255, 0) 60%),
+    radial-gradient(128% 92% at 50% 44%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 58%, rgba(0, 0, 0, 0.88) 100%),
+    repeating-linear-gradient(115deg, rgba(242, 245, 247, 0.05) 0 1px, transparent 1px 26px);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.pxq.is-open::before { opacity: 1; }
+
+/* Closing fades the questions out with the backdrop. */
+.pxq:not(.is-open) .pxq-shell {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+/* A closed overlay must never swallow a click meant for the page behind
+   it. For the 320ms between the fade starting and the hidden attribute
+   going back on, this is what keeps the page usable, and it is the
+   safety net if that deferred hide is ever missed: a full screen fixed
+   layer at opacity 0 with pointer events would silently break every
+   link on the page. Nothing inside is interactive while it fades out. */
+.pxq:not(.is-open) { pointer-events: none; }
+
+/* ---- Progress bar ----
+   Direct child of .pxq, before the shell, so no later refactor of the
+   shell can capture it. Animated with scaleX, never width: width forces
+   layout on every frame. The fill runs dim to full signal so the
+   leading edge is the brightest point on the screen. */
+.pxq-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 4001;
+  background: var(--rule-soft);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.pxq.is-open .pxq-progress { opacity: 1; }
+.pxq-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(46, 230, 255, 0.28) 0%, var(--signal) 100%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 350ms ease;
+}
+
+/* ---- Shell ----
+   min-height: 100% and not 100dvh, because the parent is already a
+   fixed full viewport box, so 100% is exactly the visible height on
+   iOS and can never overshoot into a phantom scroll. */
+.pxq-shell {
+  min-height: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 12px 24px calc(72px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+}
+
+.pxq-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+}
+
+/* The nav logo's own grammar, so the overlay chrome reads as the same
+   masthead the visitor just clicked in. The gradient span is the
+   existing .gradient-text component from section 3. */
+.pxq-brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--fg);
+}
+
+.pxq-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--pill);   /* roundness is reserved for things you click */
+  color: var(--ink-30);
+  cursor: pointer;
+  transition: color var(--tr), border-color var(--tr), background var(--tr);
+}
+.pxq-close:hover {
+  color: var(--fg);
+  border-color: var(--border-h);
+  background: var(--hover-fill);
+}
+
+/* ---- The panel ----
+   The third ground. One tone above the well, edged with the same
+   hairline every card in section 7 carries, lifted by a 1px inner
+   highlight along the top rather than by a drop shadow.
+
+   min-height stabilises the panel between a five line text step and a
+   seven option choice step, so the frame does not visibly resize under
+   the question that is animating in. It is capped against the viewport
+   so a short laptop screen never gets a panel taller than the room. */
+.pxq-form {
+  margin: auto 0;              /* optically centres the panel */
+  align-self: center;
+  width: 100%;
+  max-width: 680px;
+  min-height: min(420px, 58vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(26px, 3.4vw, 44px);
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 0 rgba(242, 245, 247, 0.045);
+}
+
+.pxq-step { display: none; }
+.pxq-step.is-active {
+  display: block;
+  animation: pxq-in 480ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+/* The replay is a side effect of display: none to block in the same
+   synchronous class swap, which restarts CSS animations in every
+   current engine. No reflow hack is needed, forwards or backwards.
+   Going back plays the same upward slide on purpose: it reads as "a new
+   question arrives". */
+@keyframes pxq-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Second beat: the answer area lands just behind the question. The
+   display swap restarts descendant animations too, so this replays on
+   every transition without a reflow hack. Choice steps are excluded
+   here because their cards carry their own staggered entrance further
+   down and a container animation would fight it. */
+.pxq-step.is-active .pxq-input,
+.pxq-step.is-active .pxq-actions {
+  animation: pxq-rise 420ms cubic-bezier(0.22, 0.61, 0.36, 1) 80ms both;
+}
+@keyframes pxq-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Back on the left, counter on the right edge of the question column.
+   The Back button keeps its box on step 1 through visibility rather
+   than display, so the counter never shifts between steps. */
+.pxq-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+  min-height: 40px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.pxq-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-30);
+  transition: color var(--tr);
+}
+.pxq-back:hover { color: var(--fg); }
+/* Step 1 keeps the row height but has nothing to go back to. JS also
+   sets disabled, which is what actually removes it from the tab ring
+   and from the focus trap: a visibility: hidden button still reports
+   client rects. */
+.pxq-back[disabled] { visibility: hidden; cursor: default; }
+
+.pxq-count {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink-30);
+  font-variant-numeric: tabular-nums;  /* "1 of 8" to "8 of 8" cannot shift */
+}
+
+/* The ordinal. Section 1 reserves amber for conversion and for order,
+   and .problem-card-num already spends it on exactly this. */
+.pxq-num {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--heat);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 14px;
+}
+
+.pxq-q {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fg);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.pxq-sub {
+  margin-top: 12px;
+  max-width: 40em;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+/* ---- Inputs ----
+   .form-input's treatment from section 8, scaled up for a question that
+   owns the whole panel. font-size never drops below 16px: anything
+   smaller makes iOS Safari zoom the viewport on focus, which cannot be
+   undone. */
+.pxq-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 24px;
+  padding: 15px 16px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  line-height: 1.5;
+  color: var(--ink);
+  caret-color: var(--signal);
+  background: rgba(242, 245, 247, 0.03);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color var(--tr), background var(--tr), box-shadow var(--tr);
+}
+.pxq-input:hover { border-color: var(--border-h); }
+.pxq-input:focus {
+  outline: none;
+  border-color: var(--signal);
+  background: rgba(242, 245, 247, 0.05);
+  box-shadow: 0 0 0 3px rgba(46, 230, 255, 0.22);
+}
+.pxq-input::placeholder { color: var(--ink-30); opacity: 1; }
+.pxq-input[aria-invalid="true"] { border-color: var(--pxq-alert); }
+.pxq-input[aria-invalid="true"]:focus { box-shadow: 0 0 0 3px rgba(255, 107, 91, 0.20); }
+.pxq-textarea { min-height: 140px; resize: vertical; }
+
+/* Chrome paints autofilled fields pale yellow, which would turn these
+   into unreadable boxes on the panel. */
+.pxq-input:-webkit-autofill,
+.pxq-input:-webkit-autofill:hover,
+.pxq-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-2) inset;
+  caret-color: var(--signal);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ---- Choice questions ----
+   No fieldset or legend: the browser hoists a legend to the top of its
+   fieldset, which would put the question above the Back row. A plain
+   div with role="radiogroup" and aria-labelledby names the group
+   instead, and native radios keep arrow key semantics for free. */
+.pxq-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 24px;
+}
+/* An odd number of options ends on a full width card rather than a
+   stray half row. Both choice steps have an odd count. */
+.pxq-options > .pxq-opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+.pxq-opt { position: relative; display: flex; min-width: 0; }
+
+/* The real radio stays focusable and keyboard operable, just invisible,
+   and it is stretched over its own card so focus never scrolls
+   somewhere odd. */
+.pxq-opt-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pxq-option {
+  display: flex;
+  align-items: flex-start;     /* a wrapped two line label stays tidy */
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  min-height: 54px;            /* min-height, never height */
+  padding: 15px 16px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: rgba(242, 245, 247, 0.03);
+  color: var(--ink-2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: border-color var(--tr), background var(--tr), color var(--tr);
+}
+.pxq-option:hover {
+  border-color: var(--border-h);
+  background: var(--hover-fill);
+  color: var(--fg);
+}
+
+.pxq-opt-dot {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin-top: 3px;
+  border-radius: 50%;
+  border: 1px solid var(--rule-strong);
+  transition: background var(--tr), border-color var(--tr), box-shadow var(--tr);
+}
+
+.pxq-opt-input:checked + .pxq-option {
+  border-color: var(--signal);
+  background: rgba(46, 230, 255, 0.07);
+  color: var(--fg);
+}
+.pxq-opt-input:checked + .pxq-option .pxq-opt-dot {
+  background: var(--signal);
+  border-color: var(--signal);
+  box-shadow: inset 0 0 0 3px var(--bg-2);
+}
+
+/* A choice step with nothing picked has to look wrong, not only read
+   wrong. aria-invalid sits on the group, so the whole grid answers for
+   it rather than seven radios each announcing themselves as invalid. */
+.pxq-options[aria-invalid="true"] .pxq-option { border-color: var(--pxq-alert); }
+
+/* Cards arrive just behind their question, so the grid reads as a list
+   rather than as a block. Delays stay inside the 480ms step animation. */
+.pxq-step.is-active .pxq-opt {
+  animation: pxq-opt-in 340ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.pxq-step.is-active .pxq-opt:nth-child(1) { animation-delay: 40ms; }
+.pxq-step.is-active .pxq-opt:nth-child(2) { animation-delay: 70ms; }
+.pxq-step.is-active .pxq-opt:nth-child(3) { animation-delay: 100ms; }
+.pxq-step.is-active .pxq-opt:nth-child(4) { animation-delay: 130ms; }
+.pxq-step.is-active .pxq-opt:nth-child(5) { animation-delay: 160ms; }
+.pxq-step.is-active .pxq-opt:nth-child(6) { animation-delay: 190ms; }
+.pxq-step.is-active .pxq-opt:nth-child(n+7) { animation-delay: 220ms; }
+@keyframes pxq-opt-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---- Validation ----
+   One persistent node per step, permanently wired to the field through
+   aria-describedby. Its text is filled and emptied rather than the node
+   being inserted and removed, which keeps the reference valid and
+   avoids double announcements. */
+.pxq-error {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--pxq-alert);
+  outline: none;
+  overflow-wrap: anywhere;
+}
+.pxq-error:empty { margin-top: 0; height: 0; }
+.pxq-error:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+/* ---- Actions ----
+   .btn-primary is the amber pill from section 7. It is already mono,
+   uppercase and tracked, so only the scale changes here, matching what
+   .mobile-menu a.btn-primary already does for the same button in a
+   full screen context. */
+.pxq-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.pxq-actions .btn-primary {
+  font-size: 12px;
+  padding: 17px 34px;
+}
+.pxq-actions .btn-primary[disabled] {
+  opacity: 0.55;
+  cursor: wait;
+}
+/* Without this a disabled Sending button still picks up .btn-primary:hover. */
+.pxq-actions .btn-primary[disabled]:hover {
+  background: var(--heat);
+  border-color: var(--heat);
+  color: var(--bg);
+}
+
+.pxq-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: var(--ink-30);
+}
+.pxq-hint kbd {
+  display: inline-block;
+  padding: 3px 7px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--hover-fill);
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--ink-15);
+  text-transform: none;
+}
+
+/* ---- Sending ----
+   Only the buttons go inert. The close button stays clickable so a
+   mouse user is never stuck for the 12 seconds before the watchdog
+   fires, and Escape is a document listener that is never blocked. */
+.pxq.is-sending .pxq-actions { pointer-events: none; }
+.pxq.is-sending .pxq-back,
+.pxq.is-sending .pxq-close,
+.pxq.is-sending .pxq-hint { opacity: 0.5; }
+.pxq.is-sending .pxq-close { pointer-events: auto; }
+
+/* ---- Focus ----
+   Section 3 already draws a 2px signal ring at 3px offset on every
+   a, button and [tabindex], and that rule reaches inside this overlay
+   unchanged, so nothing is restated for those. The one case it cannot
+   cover is the choice card: its real radio is opacity 0, so a ring on
+   the input itself would be invisible. Move it to the label. */
+.pxq-opt-input:focus-visible + .pxq-option {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+}
+/* Inputs are deliberately excluded: they are auto focused on every
+   step, and the signal border plus halo above is the clearer indicator
+   there than a ring drawn outside the field. */
+
+/* ---- Screen reader only utility (this sheet has no .sr-only) ---- */
+.pxq-sr {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Responsive ----
+   640 and 540 are two of the breakpoints section 12 already uses. */
+@media (max-width: 640px) {
+  .pxq-options { grid-template-columns: 1fr; }
+  .pxq-form { min-height: 0; }
+}
+@media (max-width: 540px) {
+  .pxq-shell { padding: 10px 14px calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .pxq-form { padding: 22px 18px; }
+  .pxq-meta { margin-bottom: 20px; }
+  .pxq-actions { margin-top: 24px; gap: 12px; }
+  .pxq-actions .btn-primary { padding: 15px 26px; }
+}
+
+/* ---- Reduced motion ----
+   The global block in section 13 already caps animation duration and
+   strips transform from the transition property list, so the entrance
+   and the bar are neutralised there. State the intent here as well so
+   it does not depend on that block surviving a refactor. The 60ms focus
+   delay, the 320ms pause after a choice and the 320ms deferred hide are
+   feedback rather than motion, and they stay. */
+@media (prefers-reduced-motion: reduce) {
+  .pxq-step.is-active,
+  .pxq-step.is-active .pxq-input,
+  .pxq-step.is-active .pxq-actions,
+  .pxq-step.is-active .pxq-opt { animation: none; }
+  .pxq-bar,
+  .pxq::before,
+  .pxq-progress,
+  .pxq-shell { transition: none; }
 }

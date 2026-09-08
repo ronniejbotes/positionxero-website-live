@@ -1308,7 +1308,7 @@ function buildReport(result, auditedUrl, keyword) {
   const fixHeading = el('h3', null, 'Request received.');
   fixHeading.setAttribute('tabindex', '-1');
   fixCard.appendChild(fixHeading);
-  fixCard.appendChild(el('p', null, 'Your details and this report are with ' + CONFIG.BRAND_NAME + '. Someone will be in touch by email to talk through what we found and map out next steps.'));
+  fixCard.appendChild(el('p', null, 'Your details and this report are with ' + CONFIG.BRAND_NAME + '. We will be in touch by email to talk through what we found and map out next steps.'));
   const fixHomeLink = el('a', 'btn btn-line', 'Back to the homepage');
   fixHomeLink.id = 'fixHomeLink';
   fixHomeLink.href = '/';

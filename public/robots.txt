@@ -1,4 +1,4 @@
-# Position Xero — robots.txt
+# Position Xero robots.txt
 # Position Xero sells AI SEO / LLM SEO, so we deliberately ALLOW the major AI
 # crawlers below: being readable by them is how a brand gets cited in AI answers.
 
