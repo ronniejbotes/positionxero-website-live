@@ -1,6 +1,8 @@
 # Position Xero website
 
-**This repo is the live site.** positionxero.com deploys from `main`, automatically, in about 90 seconds. There is a second repo, `Keegshaumann/positionxero-website`, which is an older parallel copy that deploys nowhere. Do not work in it. On 2026-09-08 a full day of work went into it by mistake and had to be rebuilt here.
+**This repo is the live site: `ronniejbotes/positionxero-website-live`.** positionxero.com deploys from `main`, automatically, in about 90 seconds.
+
+It was called `alche-copy-website` until 2026-09-08, which is why a full day of work went into the wrong repo and had to be rebuilt here. The wrong one is `Keegshaumann/positionxero-website`: an older parallel copy, different design, deploys nowhere. Do not work in it.
 
 ## Structure
 
