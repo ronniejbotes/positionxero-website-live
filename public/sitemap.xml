@@ -109,6 +109,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.positionxero.com/careers/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.positionxero.com/careers/ads-manager</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.positionxero.com/careers/sales-closer</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.positionxero.com/careers/full-stack-developer</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.positionxero.com/privacy</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>
@@ -125,6 +149,12 @@
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.positionxero.com/blog/local-services-ads-vs-google-ads</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.positionxero.com/blog/what-is-ai-seo</loc>

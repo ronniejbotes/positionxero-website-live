@@ -1,16 +1,16 @@
 # Position Xero
 
-> Position Xero is a founder-led performance marketing and lead generation agency serving service businesses in the United States and South Africa. The agency is run from South Africa and delivers all work remotely. Clients work directly with the two co-founders — no account managers — to generate consistent, qualified leads through Google Ads, Meta Ads, SEO, and conversion-focused website design.
+> Position Xero is a founder-led performance marketing and lead generation agency serving service businesses worldwide. The agency is run from South Africa and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account, to generate consistent, qualified leads through Google Ads, Meta Ads, SEO, and conversion-focused website design.
 
-> Last updated: 2026-08-04
+> Last updated: 2026-09-08
 
 ## What We Do
 
-- **Google Ads Management** — Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
-- **Meta Ads Management** — Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
-- **Lead Generation** — Multi-channel campaigns (paid ads, cold email, SEO, landing pages) targeting 20-50 qualified leads/month.
-- **SEO Services** — Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations. Local SEO from $600/month, full SEO from $1,000/month.
-- **Website and Landing Page Design** — High-converting, SEO-optimized HTML pages. Landing pages from $750, full sites from $1,800.
+- **Google Ads Management**: Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
+- **Meta Ads Management**: Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
+- **Lead Generation**: Multi-channel campaigns (paid ads, cold email, SEO, landing pages) targeting 20-50 qualified leads/month.
+- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations. Local SEO from $600/month, full SEO from $1,000/month.
+- **Website and Landing Page Design**: High-converting, SEO-optimised HTML pages. Landing pages from $750, full sites from $1,800.
 
 ## Who We Serve
 
@@ -21,11 +21,11 @@
 
 ## Differentiators
 
-- Month-to-month contracts only — no lock-in
-- Direct access to the people running your campaigns — no account managers
-- Open-book reporting: CPL, ROAS, revenue — not impressions
+- Month-to-month contracts only, with no lock-in
+- Direct access to the people running your campaigns, with no middleman relaying messages
+- Open-book reporting on CPL, ROAS and revenue, not impressions
 - 24-hour response guarantee
-- Free audit delivered as a personalized Loom video within 48 hours
+- Free audit delivered as a personalised Loom video within 48 hours
 
 ## Key Pages
 
@@ -58,8 +58,18 @@ Position Xero is based in South Africa and serves the South African market direc
 - HVAC Marketing: https://www.positionxero.com/hvac-marketing
 - Roofing Marketing: https://www.positionxero.com/roofing-marketing
 
+## Careers
+
+Position Xero hires for fully remote roles and takes applications directly through the site.
+
+- Careers Overview: https://www.positionxero.com/careers/
+- Google & Meta Ads Manager (Remote): https://www.positionxero.com/careers/ads-manager
+- Remote Sales Closer (Commission-Based): https://www.positionxero.com/careers/sales-closer
+- Full Stack Developer (Remote): https://www.positionxero.com/careers/full-stack-developer
+
 ## Blog Articles
 
+- Local Services Ads vs Google Search Ads: What Contractors Should Buy: https://www.positionxero.com/blog/local-services-ads-vs-google-ads
 - How Much Is a Lead Worth? Lead Value and Max CPL: https://www.positionxero.com/blog/how-much-are-leads-worth
 - What Is AI SEO? The Complete Guide for 2026: https://www.positionxero.com/blog/what-is-ai-seo
 - Google Ads vs Meta Ads: Which Platform in 2026?: https://www.positionxero.com/blog/google-ads-vs-meta-ads

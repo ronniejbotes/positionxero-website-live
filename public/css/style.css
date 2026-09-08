@@ -366,7 +366,9 @@ html.js-reveal .fade-in:not(.visible) {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 26px;
+  /* 20px, not 26: the eighth item (Careers) needs the room. At 26px the row
+     overruns the 1200px container and Lead Gen / Web Design wrap to three lines. */
+  gap: 20px;
   align-items: center;
 }
 .nav-links a {
@@ -450,8 +452,18 @@ body.dark-nav .nav:not(.scrolled) .btn-primary:hover { background: var(--fg); co
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* With eight links plus the CTA the column can outgrow a short phone
+     viewport. safe center stops plain centring pushing the first item above
+     the top edge, and the scroll keeps the whole menu reachable. Browsers
+     without safe center keep the plain center above. */
+  justify-content: safe center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   gap: 26px;
-  padding: 32px;
+  /* 96px top and bottom clears the 89px fixed nav, so the first link never
+     sits under the logo when the column has to scroll. Symmetric, so tall
+     viewports still centre the menu exactly as before. */
+  padding: 96px 32px;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
