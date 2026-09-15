@@ -40,27 +40,46 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   RewriteCond %{REQUEST_URI} !(^|/)(index|404)\.html$ [NC]
   RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.html[\s?] [NC]
   RewriteRule ^ https://www.positionxero.com/%1 [R=301,L]
-  # Clean URL requested -> serve the matching .html file internally
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-  RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
 # ---------------------------------------------------------------------------
 # Canonical host + HTTPS in a SINGLE hop (matches <link rel="canonical"> and the
 # sitemap). Enabled 2026-07-12 to fix the multi-redirect chain PageSpeed flagged
 # (0.63s). Loop-proofed: the X-Forwarded-Proto guard covers proxy TLS termination.
+#
+# ORDER MATTERS (moved here 2026-09-16). This block must sit AFTER the absolute
+# redirects above, so /x.html on the bare domain still reaches www/x in one hop,
+# and BEFORE the clean-URL internal rewrite below. LiteSpeed does not re-run the
+# rules after that rewrite's [L], so while this block sat below it,
+# https://positionxero.com/free-audit answered 200 instead of redirecting.
+#
+# The host redirect reads the path from THE_REQUEST (the line the visitor sent)
+# with leading slashes collapsed, so //free-audit does not survive as a duplicate
+# and a redirect raised while serving the 404 page keeps the requested path.
 # ---------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # Any non-canonical host (bare domain, casing variants) -> canonical, one hop
+  # Non-canonical host (bare domain, casing variants), or a path starting "//" -> canonical, one hop
+  RewriteCond %{HTTP_HOST} !^www\.positionxero\.com$ [NC,OR]
+  RewriteCond %{THE_REQUEST} ^\S+\s//
+  RewriteCond %{THE_REQUEST} ^\S+\s/+([^\s?]*)
+  RewriteRule ^ https://www.positionxero.com/%1 [R=301,L,NE]
+  # Fallback for a request line not in "METHOD /path" form
   RewriteCond %{HTTP_HOST} !^www\.positionxero\.com$ [NC]
-  RewriteRule ^ https://www.positionxero.com%{REQUEST_URI} [L,R=301]
+  RewriteRule ^/*(.*)$ https://www.positionxero.com/$1 [R=301,L]
   # Canonical host over plain HTTP -> HTTPS, one hop
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
   RewriteRule ^ https://www.positionxero.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Clean URL requested -> serve the matching .html file internally
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
 # Long-cache static assets for performance (safe for hashed/owned assets).
