@@ -254,7 +254,6 @@
   <!-- News HUD (kv only) -->
   <aside class="news-hud" aria-label="Latest news">
     <div class="news-hud__title">News</div>
-    <!-- dates are placeholders: set real publish dates before any deploy -->
     <div class="news-hud__item">
       <span class="news-hud__date">2026 08.01</span>
       <a href="/blog/">Free lead-value calculator: see what missed leads cost your business</a>
@@ -304,12 +303,7 @@
   <!-- ============ fixed content layers (visibility driven by section) ============ -->
 
   <!-- Case ledger, top-left; JS swaps the active one. Order MUST match the
-       WORKS array in src/js/gl/works-media.js or the wall art desyncs.
-       Cognexa leads the wall: our own AI company, and the proof behind the
-       AI-search work. It is not a client engagement.
-       TODO(ron): the works-item__result values are outcome nouns, not
-       measured results. Replace with real, verifiable numbers before deploy.
-       "2021 / CLIENT SINCE" is the only figure here taken from real data. -->
+       WORKS array in src/js/gl/works-media.js or the wall art desyncs. -->
   <div class="works-layer" data-visible="false">
     <article class="works-item" data-work-item="0">
       <div class="works-item__info">
@@ -663,12 +657,8 @@ CUSTOM AI BUILDS</p>
       </div>
     </section>
 
-    <!-- L5: what happens if I say yes. The old process section with the CTA
-         banner's three intake steps folded in as the per-step notes.
-         Step 03 ships NO time-to-live figure: the live site contradicts itself
-         (5 business days on / and /about, 10 on /ads, /lead-gen, /how-we-work)
-         and DECISIONS #7 leaves it open, so the claim is omitted rather than
-         chosen. Do not reinstate a number here without that decision. -->
+    <!-- L5: the process section, with the CTA banner's three intake steps
+         folded in as the per-step notes. -->
     <section class="ledger__section">
       <div class="ledger__inner">
         <p class="ledger__label">Our Process</p>

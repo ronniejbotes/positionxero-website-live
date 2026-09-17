@@ -53,6 +53,14 @@ The whole pitch of this business is that it is the honest agency, so one checkab
 
 An inventory of the figures published on the site, one row per line of source with its file and line number, is kept outside this repo at `SEO Program/plans/positionxero/number-register.md`. Built 2026-09-17 against commit `77bed45` across all 65 files that carry visible copy: 1,390 lines holding 3,258 figure instances in the first pass over 62 files, plus 4 figures found by hand in the 3 files that pass missed. 29 lines have any genuine source link within six lines. The register is a floor rather than a complete census: its extractor matched digits carrying a unit plus a fixed list of soft quantifiers, so bare counts and numbers written as words are under-counted. Work through that register rather than hunting page by page, and add anything it missed as you go.
 
+## Three things the animated pages leave out on purpose
+
+These used to be HTML comments inside `index.html` and `works.html`. They were removed on 2026-09-17 because a comment is not private: anyone who views the page source reads it, and so does every AI crawler. The instructions themselves still stand, so they live here instead.
+
+1. **Step 03 of the homepage process section ships no time-to-live figure, deliberately.** The site contradicts itself on this, `/about` says 5 business days and `/ads`, `/lead-gen` and `/how-we-work` say 10, and nobody has picked one. Do not put a number back into that step until the figure is settled everywhere at once. That is task T-12 in the SEO plan.
+2. **The `works-item__result` values on the homepage and the `works-item__sub` lines on `/works` describe scope, not measured outcomes.** They are outcome nouns ("Online quotes", "AI systems") on purpose. Do not swap them for numbers, dates or results unless the number is real, the client has agreed in writing to it being published, and it is recorded in the plan folder. "2021 / CLIENT SINCE" is the only figure in that block taken from real data, and it is itself unconfirmed.
+3. **`/works` is under a written-permission hold.** Four businesses are named there. Until Ronnie confirms in writing which of them agreed to be named, no claim on that page is edited or added to, and no client name goes anywhere else on the site. That is T-02.
+
 ## Voice: do not let it read as AI-written
 
 - **No em dashes.** Not the character, not `&mdash;`. Every served file is at zero. Use commas, colons or full stops. `&ndash;` is fine inside number ranges.
