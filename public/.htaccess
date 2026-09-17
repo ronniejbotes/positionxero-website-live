@@ -43,6 +43,40 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
 </IfModule>
 
 # ---------------------------------------------------------------------------
+# Trailing slash -> clean canonical URL (2026-09-17). /services/ and /services
+# both answered 200 before this, and so did /ads/ and /blog/what-is-ai-seo/.
+# Every page already carries a canonical tag pointing at the slashless form, so
+# the harm was small. A 301 is cleaner.
+#
+# THE TWO REAL DIRECTORIES WORK THE OPPOSITE WAY ROUND AND MUST NOT BE CAUGHT.
+# /blog/ and /careers/ answer 200 while /blog and /careers 301 to the slash
+# form, because mod_dir adds the slash to a real directory. A blanket rule would
+# fight those two redirects and loop, which takes both sections offline.
+#
+# Two guards keep them out, and either one is enough on its own:
+#   - !-d skips anything that is a real directory on disk.
+#   - the DOCUMENT_ROOT/$1.html -f test only fires where the slashless form has
+#     an actual page behind it. There is no blog.html and no careers.html, and
+#     no directory under public/ has a sibling .html file (checked 2026-09-17).
+# The pattern requires a non-empty first segment, so "/" never matches and
+# "//services/" is left to the canonical-host block below rather than being
+# rewritten into a double slash.
+#
+# ORDER MATTERS, for the same reason the block below says it does. This sits
+# AFTER the .html redirect and BEFORE both the canonical-host block and the
+# internal clean-URL rewrite. The target is absolute, so
+# http://positionxero.com/services/ reaches https://www.positionxero.com/services
+# in ONE hop. Putting it after the internal rewrite would do nothing at all:
+# LiteSpeed does not re-run the rules after that rewrite's [L].
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([^/]+(?:/[^/]+)*)/$ https://www.positionxero.com/$1 [R=301,L,NE]
+</IfModule>
+
+# ---------------------------------------------------------------------------
 # Canonical host + HTTPS in a SINGLE hop (matches <link rel="canonical"> and the
 # sitemap). Enabled 2026-07-12 to fix the multi-redirect chain PageSpeed flagged
 # (0.63s). Loop-proofed: the X-Forwarded-Proto guard covers proxy TLS termination.
