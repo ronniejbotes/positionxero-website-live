@@ -2,13 +2,13 @@
 
 > Position Xero is a founder-led performance marketing and lead generation agency serving service businesses worldwide. The agency is run from South Africa and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account, to generate consistent, qualified leads through Google Ads, Meta Ads, SEO, and conversion-focused website design.
 
-> Last updated: 2026-09-08
+> Last updated: 2026-09-17
 
 ## What We Do
 
 - **Google Ads Management**: Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
 - **Meta Ads Management**: Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
-- **Lead Generation**: Multi-channel campaigns (paid ads, cold email, SEO, landing pages) targeting 20-50 qualified leads/month.
+- **Lead Generation**: Multi-channel campaigns (paid ads, cold email, SEO, landing pages). The monthly lead target is agreed with each client at kickoff, from their budget, market and current cost per lead, and reported against openly. Position Xero does not publish a lead count.
 - **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations. Local SEO from $600/month, full SEO from $1,000/month.
 - **Website and Landing Page Design**: High-converting, SEO-optimised HTML pages. Landing pages from $750, full sites from $1,800.
 

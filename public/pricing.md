@@ -1,6 +1,6 @@
 # Position Xero, Service Pricing
 
-> Last updated: 2026-08-04. All prices in USD (US Dollars), excluding applicable taxes.
+> Last updated: 2026-09-17. All prices in USD (US Dollars), excluding applicable taxes.
 > Position Xero serves service businesses in the United States and South Africa. USD is the
 > source-of-truth currency for every figure below. South African clients are quoted the
 > equivalent in ZAR at the prevailing exchange rate at the time of quoting; ask for a
@@ -9,7 +9,7 @@
 ## Lead Generation Campaigns
 - Starter: Custom, contact for quote
 - Includes: Funnel strategy, ad creative, campaign management
-- Target: 20-50 qualified leads/month
+- Target: agreed with you at kickoff, from your budget, market and current cost per lead, then reported against openly
 
 ## Google Ads Management
 - Monthly retainer: From $850/month (excl. ad spend)
