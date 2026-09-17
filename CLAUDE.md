@@ -38,6 +38,20 @@ Position Xero is **founder-led** by Ronnie James Botes and Keegan Shane Haumann,
 - **Never publish a headcount**, in any wording. The real number is not authorised for the site and this repo is public.
 - No invented client results, case studies, testimonials or client counts. No `LocalBusiness`, `PostalAddress`, `GeoCoordinates`, `OpeningHoursSpecification`, `Review` or `AggregateRating` schema.
 
+## Numbers: no figure goes live without a source and a date
+
+**Every number a visitor can read needs a link to the source it came from and the date that source was checked.** That covers percentages, counts, prices, durations, benchmark ranges, population and market figures, and the soft ones such as "most", "typically", "on average" and "up to". If a figure cannot be traced to a source you opened yourself, rewrite the sentence without it, or cut it. Never keep a number because it sounds right.
+
+The whole pitch of this business is that it is the honest agency, so one checkable error costs more than any of these pages earn. AI-assisted drafting produces confident, specific, invented figures constantly. Assume they are in the draft and go looking.
+
+- The source link sits in the same paragraph as the figure, not in a list at the foot of the page.
+- Any page carrying a table of figures also carries a visible "Figures checked \<month year\>" line.
+- Where the only available source is a vendor selling the thing being measured, say so in the sentence. Do not launder it into "industry benchmarks show".
+- A figure in the visible text almost always appears again inside that page's JSON-LD, and sometimes in `llms.txt` and `pricing.md` as well. Change every copy in one go or the page contradicts itself.
+- **Never publish a number of leads, a ranking position, or a date for page one.** A lead target is agreed with the client at kickoff, described as a target, and reported against. It is never printed on a sales page.
+
+An inventory of every figure currently on the site, one row per figure with its file and line number, is kept outside this repo at `SEO Program/plans/positionxero/number-register.md`. Built 2026-09-17 against commit `77bed45`: 3,258 figure instances across 62 files, of which 29 lines had any genuine source link within six lines. Work through that register rather than hunting page by page.
+
 ## Voice: do not let it read as AI-written
 
 - **No em dashes.** Not the character, not `&mdash;`. Every served file is at zero. Use commas, colons or full stops. `&ndash;` is fine inside number ranges.
