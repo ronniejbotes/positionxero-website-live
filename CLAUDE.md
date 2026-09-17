@@ -84,6 +84,7 @@ grep -rnE "(is|are) not [^.;<]{3,60}[.,;] *(It|it|They|they) (is|are)" public --
 - Blog posts carry a `BreadcrumbList` of exactly 3 items (Home, Blog, post) plus a matching visible breadcrumb. The last item's `item` must equal the canonical exactly and its `name` must equal the `<h1>`.
 - Honest read times: real word count divided by 225.
 - Phone number is **+27 66 241 2155** sitewide.
+- **The homepage News panel names three real posts.** Each `news-hud__item` links to a published post under `/blog/` and shows that post's own `datePublished` from its JSON-LD, formatted `YYYY MM.DD`. When a new post goes live, put it at the top and drop the oldest. Never a date that is not in the post's schema, never a link to `/blog/` itself, and never a staged post.
 - The nav carries eight links since `/careers/` was added. Spacing tightens at 1200px, phone digits drop at 1120px, the hamburger takes over at 1024px. Adding a ninth link means re-measuring.
 
 ## The free audit intake overlay
