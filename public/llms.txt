@@ -39,6 +39,7 @@
 - About: https://www.positionxero.com/about
 - Contact / Book a Free Audit: https://www.positionxero.com/contact
 - FAQ: https://www.positionxero.com/faq
+- How We Work (onboarding process, reporting cadence and cancellation): https://www.positionxero.com/how-we-work
 - Blog: https://www.positionxero.com/blog/
 - Pricing (machine-readable): https://www.positionxero.com/pricing.md
 
