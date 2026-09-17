@@ -40,7 +40,7 @@ Position Xero is **founder-led** by Ronnie James Botes and Keegan Shane Haumann,
 
 ## Numbers: no figure goes live without a source and a date
 
-**Every number a visitor can read needs a link to the source it came from and the date that source was checked.** That covers percentages, counts, prices, durations, benchmark ranges, population and market figures, and the soft ones such as "most", "typically", "on average" and "up to". If a figure cannot be traced to a source you opened yourself, rewrite the sentence without it, or cut it. Never keep a number because it sounds right.
+**Every number a visitor can read needs a link to the source it came from and the date that source was checked.** That covers percentages, counts, prices, durations, benchmark ranges, population and market figures, and the soft ones such as "most", "typically", "on average" and "up to". If a figure cannot be traced to a source you opened yourself, rewrite the sentence without it, or cut it. Never keep a number because it sounds right. The one exception is the business's own facts, which are covered by the last bullet below.
 
 The whole pitch of this business is that it is the honest agency, so one checkable error costs more than any of these pages earn. AI-assisted drafting produces confident, specific, invented figures constantly. Assume they are in the draft and go looking.
 
@@ -49,8 +49,9 @@ The whole pitch of this business is that it is the honest agency, so one checkab
 - Where the only available source is a vendor selling the thing being measured, say so in the sentence. Do not launder it into "industry benchmarks show".
 - A figure in the visible text almost always appears again inside that page's JSON-LD, and sometimes in `llms.txt` and `pricing.md` as well. Change every copy in one go or the page contradicts itself.
 - **Never publish a number of leads, a ranking position, or a date for page one.** A lead target is agreed with the client at kickoff, described as a target, and reported against. It is never printed on a sales page.
+- **The business's own facts are the exception, and they are never cut for want of a link.** Prices, the response-time promise, turnaround commitments and the steps of our own process have no external source and never will. They are sourced by a dated written confirmation from Ronnie or Keegan, recorded in the plan folder beside the register. If one of those figures has no confirmation yet, ask for it and leave the figure alone. Do not strip the prices off the site because nothing outside the business can vouch for them.
 
-An inventory of every figure currently on the site, one row per figure with its file and line number, is kept outside this repo at `SEO Program/plans/positionxero/number-register.md`. Built 2026-09-17 against commit `77bed45`: 3,258 figure instances across 62 files, of which 29 lines had any genuine source link within six lines. Work through that register rather than hunting page by page.
+An inventory of the figures published on the site, one row per line of source with its file and line number, is kept outside this repo at `SEO Program/plans/positionxero/number-register.md`. Built 2026-09-17 against commit `77bed45` across all 65 files that carry visible copy: 1,390 lines holding 3,258 figure instances in the first pass over 62 files, plus 4 figures found by hand in the 3 files that pass missed. 29 lines have any genuine source link within six lines. The register is a floor rather than a complete census: its extractor matched digits carrying a unit plus a fixed list of soft quantifiers, so bare counts and numbers written as words are under-counted. Work through that register rather than hunting page by page, and add anything it missed as you go.
 
 ## Voice: do not let it read as AI-written
 
