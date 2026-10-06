@@ -99,15 +99,11 @@ Submissions post to FormSubmit exactly as `public/contact.html` does, landing on
 
 A scheduled post lives in `public/blog/` carrying `<meta name="robots" content="noindex, follow" />` and is deliberately **absent** from `public/blog/index.html`, `public/sitemap.xml` and `public/llms.txt`, so Google never sees it before its date. Going live means removing the noindex, stamping the dates, and adding it to those three files.
 
-Currently staged: `google-ads-cost-south-africa` (15 Sept), `how-to-rank-in-google-ai-overviews` (22 Sept), `conversion-tracking-for-lead-generation` (29 Sept). Do not publish one early or "tidy up" a staged post by adding it to the sitemap.
+Currently staged: none.
 
-**All three are deliberately held as at 2026-09-17. Do not publish any of them, and do not read a passed date as permission.** Checked the same day: all three carry `noindex, follow`, none appears in `sitemap.xml`, `blog/index.html` or `llms.txt`, and all three answer 200 on the live site with the noindex intact. Staging is working exactly as it should.
+**The three posts staged in September went live on 7 October 2026, at the owner's request, keeping their dates:** `google-ads-cost-south-africa` (15 September), `how-to-rank-in-google-ai-overviews` (22 September) and `conversion-tracking-for-lead-generation` (29 September). The owner asked for one post for every week the blog had missed, each dated its own week, which answered whether the staged dates should hold. Before they went out, every figure in them was either sourced in the same paragraph or cut, the Seer Interactive figures and the ppc.land link were removed, and each page's FAQ section and FAQPage block came out because its answers no longer matched the text.
 
-- `google-ads-cost-south-africa`. **Its 15 September date has passed and it is still held.** Two things have to happen before it goes live, in this order. First its figures get checked: the number register lists 42 rows on it, none with a source nearby, and the file contains no outbound link at all, which makes it the most exposed of the three. Second, Ronnie confirms the date was meant to hold rather than slip (question 6 in the SEO plan). Nobody has said the post is wrong. It carries rand costs and South African market figures with nothing behind them, and the rule three sections up applies to a staged post exactly as it applies to a live one.
-- `how-to-rank-in-google-ai-overviews`, 22 September. **Not yet reached.** The register lists 26 rows on it, 23 of them with no source nearby, and the ones that matter are attributed to Seer Interactive by name with no link to Seer anywhere in the file: the April 2026 analysis of 53 brands (+120% and 38%), and the February 2026 study of 541,213 LLM responses (53.1% and 10.6%). Those need the actual Seer pages linked beside them, or they come out. The single outbound link the file has today points at a ppc.land article, not at Seer.
-- `conversion-tracking-for-lead-generation`, 29 September. **Not yet reached.** It is the best-sourced of the three, with thirteen outbound links: eleven to Google Ads documentation, one to WebKit and one to the California Penal Code. It still needs a read-through before it ships.
-
-When one does go live, follow the go-live steps above and stamp the real date, not the staged one, if the date has moved.
+The rule stands for anything staged from now on: do not publish a staged post early, do not read a passed date as permission, and when one goes live, follow the go-live steps above and stamp the real date if the date has moved.
 
 ## Careers
 
