@@ -2,7 +2,7 @@
 
 > Position Xero is a founder-led performance marketing and lead generation agency serving service businesses worldwide. The agency is run from South Africa and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account, to generate consistent, qualified leads through Google Ads, Meta Ads, SEO, and conversion-focused website design.
 
-> Last updated: 2026-09-22
+> Last updated: 2026-09-29
 
 ## What We Do
 
@@ -70,6 +70,7 @@ Position Xero hires for fully remote roles and takes applications directly throu
 
 ## Blog Articles
 
+- Conversion Tracking for Lead Generation: https://www.positionxero.com/blog/conversion-tracking-for-lead-generation
 - How to Rank in Google AI Overviews: https://www.positionxero.com/blog/how-to-rank-in-google-ai-overviews
 - What Do Google Ads Cost in South Africa?: https://www.positionxero.com/blog/google-ads-cost-south-africa
 - Local Services Ads vs Google Search Ads: What Contractors Should Buy: https://www.positionxero.com/blog/local-services-ads-vs-google-ads
