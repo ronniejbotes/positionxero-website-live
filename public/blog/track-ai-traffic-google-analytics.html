@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Ronnie James Botes" />
+  <meta name="theme-color" content="#0D0D0D" />
+  <meta property="og:site_name" content="Position Xero" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Track ChatGPT Traffic in Google Analytics 4 | Position Xero" />
+  <meta property="og:description" content="How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.positionxero.com/blog/track-ai-traffic-google-analytics" />
+  <meta property="og:image" content="https://www.positionxero.com/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Track ChatGPT Traffic in Google Analytics 4 | Position Xero" />
+  <meta name="twitter:description" content="How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up." />
+  <meta name="twitter:image" content="https://www.positionxero.com/img/og-image.jpg" />
+  <title>Track ChatGPT Traffic in Google Analytics 4 | Position Xero</title>
+  <meta name="description" content="How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up." />
+  <link rel="canonical" href="https://www.positionxero.com/blog/track-ai-traffic-google-analytics" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" /></noscript>
+  <link rel="stylesheet" href="/css/style.css?v=20260908" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230D0D0D'/><text x='50' y='72' font-size='58' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'>X</text></svg>" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to track ChatGPT and other AI assistant traffic in Google Analytics 4",
+    "description": "How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up.",
+    "image": "https://www.positionxero.com/img/og-image.jpg",
+    "author": { "@type": "Person", "@id": "https://www.positionxero.com/#ronnie-botes", "name": "Ronnie James Botes", "jobTitle": "Co-Founder", "worksFor": { "@id": "https://www.positionxero.com/#organization" }, "url": "https://www.positionxero.com/about" },
+    "publisher": { "@id": "https://www.positionxero.com/#organization" },
+    "datePublished": "2026-08-25",
+    "dateModified": "2026-08-25",
+    "articleSection": "AI SEO",
+    "keywords": ["track chatgpt traffic in google analytics", "ai referral traffic ga4", "chatgpt referral google analytics", "how to see ai traffic in ga4"],
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.positionxero.com/blog/track-ai-traffic-google-analytics" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.positionxero.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.positionxero.com/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to track ChatGPT and other AI assistant traffic in Google Analytics 4",
+        "item": "https://www.positionxero.com/blog/track-ai-traffic-google-analytics"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="dark-nav">
+<a href="#main" class="skip-link">Skip to content</a>
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Position <span class="gradient-text">Xero</span></a>
+      <ul class="nav-links">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/seo">SEO</a></li>
+        <li><a href="/ads">Ads</a></li>
+        <li><a href="/lead-gen">Lead Gen</a></li>
+        <li><a href="/web-design">Web Design</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/careers/">Careers</a></li>
+      </ul>
+      <a href="tel:+27662412155" class="nav-phone" aria-label="Call us at +27 66 241 2155"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg><span class="nav-phone-num">+27 66 241 2155</span></a>
+      <a href="/free-audit" class="btn-primary nav-cta">Book Free Audit →</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/services">Services</a><a href="/seo">SEO</a><a href="/ads">Ads</a>
+  <a href="/lead-gen">Lead Gen</a><a href="/web-design">Web Design</a><a href="/about">About</a><a href="/blog/">Blog</a><a href="/careers/">Careers</a>
+  <a href="/free-audit" class="btn-primary">Book Free Audit →</a>
+</div>
+
+<header class="article-header">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">How to track ChatGPT and other AI assistant traffic in Google Analytics 4</li>
+      </ol>
+    </nav>
+    <div class="article-meta">
+      <span class="article-tag">AI SEO</span>
+      <span>By <a href="/about" style="color:inherit;text-decoration:underline;">Ronnie James Botes</a></span>
+      <span>&middot;</span>
+      <span>Last updated: August 2026</span>
+      <span>&middot;</span>
+      <span>7 min read</span>
+    </div>
+    <h1>How to track ChatGPT and other AI assistant traffic in Google Analytics 4</h1>
+    <p style="font-size:1.15rem;color:rgba(245,244,241,0.65);margin-top:16px;max-width:680px;">GA4 now has an AI Assistant channel. Where to find it, the places AI visits slip past it, and a filter and channel group that catch the rest.</p>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <div class="article-content">
+
+      <div class="definition-block">
+        <p>To track ChatGPT traffic in Google Analytics 4, go to Reports, then Acquisition, then Traffic acquisition, and find the AI Assistant row in the channel table. GA4 now files visits referred by assistants such as ChatGPT, Gemini and Claude there by itself. Switch the table to Session source / medium to see each assistant by name. Visits that reach you without a referrer still land in Direct, so read the figure as a floor.</p>
+      </div>
+
+      <p>Everything below happens in the standard GA4 reports and the Admin area, and none of it needs a developer. The only setup is one report filter and, if you want older data as well, one channel group of your own.</p>
+
+      <p>This is the Analytics half of measuring AI search. Our guide to <a href="/blog/what-is-ai-seo">what AI SEO is and how to measure it</a> covers the rest, such as AI crawler visits in your server logs and checking what the assistants say about you. If you pay someone for <a href="/seo">AI SEO</a>, this is the part of the reporting you can check yourself.</p>
+
+      <h2>Does GA4 track ChatGPT traffic without any setup?</h2>
+
+      <p>Largely, yes. In its <a href="https://support.google.com/analytics/answer/9164320?hl=en" rel="nofollow">release notes for 13 May 2026</a>, Google added an AI Assistant channel to the default channel group. When a visit's referrer matches an assistant Google recognises, GA4 gives it the medium ai-assistant and the campaign name (ai-assistant), and counts it under AI Assistant. The release note mentions ChatGPT, Gemini and Claude, and Google's <a href="https://support.google.com/analytics/answer/9756891?hl=en" rel="nofollow">default channel group page</a> gives ChatGPT, Gemini, DeepSeek, Copilot and Grok as examples.</p>
+
+      <p>Two limits come with it. Google's help pages give examples rather than the full list of assistants it recognises. The downloadable source list on the channel page covers search, social, shopping and video sites only, so whether a smaller assistant your customers use is recognised is something you find out from your own data.</p>
+
+      <p>The channel also leaves out the AI features inside Google Search. GA4 counts clicks from AI Overviews and AI Mode under Organic Search, and Google's documentation says Search Console reports them within its ordinary web search figures. They're a separate question from this one.</p>
+
+      <h2>Where do you find AI assistant visits in GA4?</h2>
+
+      <p>In the Traffic acquisition report, which opens on the channel view.</p>
+
+      <ol>
+        <li>Sign in to Google Analytics and select Reports from the menu on the left.</li>
+        <li>Select Acquisition, then Traffic acquisition.</li>
+        <li>Pick a recent date range and find the AI Assistant row.</li>
+        <li>To see which assistants sent the visits, open the dimension drop-down above the first column and choose Session source / medium.</li>
+        <li>Read across to Engaged sessions, Key events and Session key event rate. They show whether those visitors did anything once they arrived.</li>
+      </ol>
+
+      <p>If there's no AI Assistant row, nothing in that period matched Google's list. That doesn't mean nobody came from an assistant, and the next section shows where else those visits can sit.</p>
+
+      <h2>Why do some AI visits end up in other channels?</h2>
+
+      <p>GA4 labels a visit from what arrives with it: the referrer, plus any tracking tags on the link. Google's channel rules then sort it, and an assistant visit can end up in any of five places.</p>
+
+      <div class="table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr><th>Where it shows</th><th>What the row looks like</th><th>Why it lands there</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong style="color:var(--ink)">AI Assistant</strong></td><td>An assistant's domain, medium ai-assistant</td><td>The referrer matched Google's list</td></tr>
+            <tr><td><strong style="color:var(--ink)">Referral</strong></td><td>An assistant's domain, medium referral</td><td>The assistant isn't on Google's list. Visits from before Google added the channel may also sit here, as Google's note doesn't say older data was relabelled</td></tr>
+            <tr><td><strong style="color:var(--ink)">Unassigned</strong></td><td>An assistant's name, medium (not set)</td><td>The link carried a source tag but no medium tag. Google says missing tags show as (not set), and Unassigned is the label for visits no channel rule matches</td></tr>
+            <tr><td><strong style="color:var(--ink)">Direct</strong></td><td>(direct) / (none)</td><td>Nothing to trace, for example a link copied out of a chat and pasted into a browser</td></tr>
+            <tr><td><strong style="color:var(--ink)">Organic Search</strong></td><td>google / organic</td><td>A click from AI Overviews or AI Mode, which Google counts as search</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Only the first row is labelled for you. OpenAI's <a href="https://help.openai.com/en/articles/12627856-publishers-and-developers-faq" rel="nofollow">publisher FAQ</a> says ChatGPT automatically includes utm_source=chatgpt.com in its referral links. That tag names the source and says nothing about the medium, so if chatgpt.com turns up with a medium of (not set), the tag is the likely reason.</p>
+
+      <p>Google's page on (direct) / (none) traffic adds that ad blockers can push visits into Direct as well, and once a visit is there, nothing in the report says where it came from.</p>
+
+      <h2>How do you see every AI source in one table?</h2>
+
+      <p>Add a regex filter to the Traffic acquisition report. GA4's report filters accept regular expressions, and the match type you want is matches partial regex, which finds a name anywhere in the source.</p>
+
+      <ol>
+        <li>In Traffic acquisition, with Session source / medium as the dimension, click + Add filter.</li>
+        <li>Choose Session source as the dimension.</li>
+        <li>In the Match Type field, choose matches partial regex.</li>
+        <li>In the text box, enter <code>chatgpt|openai|perplexity|claude|gemini|copilot|deepseek|grok</code></li>
+        <li>Click Apply.</li>
+      </ol>
+
+      <p>The vertical bars separate the alternatives, so the table keeps every source that contains one of those names, whichever channel it landed in. Regex in GA4 is case sensitive, so each name has to be spelt the way it appears in your own source list. A short name can also match a site that has nothing to do with AI. Read down the rows before you trust the total, add any assistant you spot among your Referral rows, and take out anything that catches the wrong sites.</p>
+
+      <h2>How do you build an AI channel that covers older data too?</h2>
+
+      <p>Use a custom channel group. Google says <a href="https://support.google.com/analytics/answer/13051316?hl=en" rel="nofollow">custom channel groups</a> can be applied to your reports retroactively, so your own AI channel can show assistant visits from before Google's channel existed, and you decide which assistants count. You need the Editor role or higher, and a standard property can hold two custom groups alongside the default one.</p>
+
+      <ol>
+        <li>In Admin, under Data display, click Channel groups.</li>
+        <li>Click Create new channel group. GA4 starts you with a copy of the default group. Give it a name.</li>
+        <li>Click Add new channel, call it AI assistants, and click + Add condition group.</li>
+        <li>Set the condition to Source, matches regex, and enter <code>.*(chatgpt|openai|perplexity|claude|gemini|copilot|deepseek|grok).*</code> before you click Save channel.</li>
+        <li>Click Reorder and drag AI assistants up the list, above Referral, Organic Search and any AI channel the copy already contains, then click Apply.</li>
+        <li>Click Save group.</li>
+      </ol>
+
+      <p>The <code>.*</code> at each end matters. GA4 regex matches the whole value by default, so without them the pattern would only catch a source that is exactly chatgpt, or exactly one of the other names. Order matters as well. GA4 puts each visit in the first channel it matches, working down the list, which is why Google's own example places the AI channel above Referral.</p>
+
+      <p>To use the group, open Traffic acquisition and choose it from the dimension drop-down. Custom groups also appear in explorations and in the audience builder.</p>
+
+      <h2>Which pages do AI visitors land on, and do they get in touch?</h2>
+
+      <p>The Landing page report answers both. Select Reports, then Engagement, then Landing page. Click + Add filter, choose Session default channel group, set the Match Type to Exactly matches, select AI Assistant and click Apply. If you built your own group, add it as a secondary dimension instead and read the AI assistants rows.</p>
+
+      <p>You now have the pages the assistants send people to, with Key events beside each one. Read those pages the way a stranger would. Check that each one answers the question that probably brought the visitor, and that the way to contact you is obvious on a phone.</p>
+
+      <p>The Key events column only counts what you've told GA4 to count. It fills from events you mark as key events, so if the events that record enquiries, such as form submissions or taps on your phone number, aren't marked, the column won't count them, however many enquiries arrive. Once it's right, judge AI traffic like any other source: by the enquiries it brings and what each one is worth to you. Our post on <a href="/blog/how-much-are-leads-worth">how much a lead is worth</a> shows how to work that out.</p>
+
+      <h2>How does Position Xero handle Analytics on client sites?</h2>
+
+      <p>When we <a href="/web-design">build a website</a>, setting up Google Analytics and Search Console and submitting the sitemap are part of the launch, so the site is tracked from its first day. Our page on <a href="/seo-south-africa">SEO in South Africa</a> lists analytics configured to measure enquiries rather than sessions as part of the first stage of the work.</p>
+
+      <p>The same page says your Analytics, Search Console and ad accounts should be in your name, with the agency holding access, and our terms say the data and reports produced for you belong to you. Getting quoted by the assistants in the first place is the AI search side of our <a href="/seo">SEO service</a>. A channel like the one above is how you'd see whether that work sends anyone to the site.</p>
+
+      <h2>What should you check this week?</h2>
+
+      <p>Start with what GA4 already gives you, then fill the gaps.</p>
+
+      <ul>
+        <li>Open Traffic acquisition for the last three months and note the AI Assistant sessions and key events.</li>
+        <li>Switch to Session source / medium and look through the Referral, Unassigned and (not set) rows for assistant names.</li>
+        <li>Make sure the events that record enquiries are marked as key events.</li>
+        <li>If you need older data, or you found assistants outside Google's list, build the custom channel group.</li>
+        <li>Write the figures down once a month and compare like with like, remembering that Direct holds some visits you'll never be able to attribute.</li>
+      </ul>
+
+      <h2>Related Articles</h2>
+      <div class="blog-grid">
+        <a class="blog-card" href="/blog/what-is-ai-seo">
+          <h3>What Is AI SEO?</h3>
+          <p>The vocabulary, the surfaces, and why citation share cannot be measured free.</p>
+        </a>
+        <a class="blog-card" href="/blog/how-much-are-leads-worth">
+          <h3>How Much Is a Lead Worth?</h3>
+          <p>Lead value = customer value x close rate. Work out your number, then the most you can afford to pay per lead. With a calculator.</p>
+        </a>
+        <a class="blog-card" href="/seo">
+          <h3>SEO and AI SEO Services</h3>
+          <p>What we run to hold rankings and stay eligible for AI citation.</p>
+        </a>
+      </div>
+
+      <div style="margin-top:64px;padding:36px;background:var(--bg-2);border-radius:var(--radius);border:1px solid var(--border);">
+        <p style="font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:8px;">Want help implementing this for your business?</p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:20px;">Book a free 30-minute audit. We'll review your current setup and show you exactly what we'd change.</p>
+        <a href="/contact" class="btn-primary">Book My Free Strategy Call</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-brand-logo">Position <span class="gradient-text">Xero</span></a>
+        <p>We Don't Just Run Ads.<br />We Build Revenue Machines.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Services</p>
+        <ul>
+          <li><a href="/ads">Google Ads</a></li>
+          <li><a href="/ads">Meta Ads</a></li>
+          <li><a href="/lead-gen">Lead Generation</a></li>
+          <li><a href="/seo">SEO &amp; AI SEO</a></li>
+          <li><a href="/web-design">Web Design</a></li>
+          <li><a href="/free-audit">Free SEO Audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Markets</p>
+        <ul>
+          <li><a href="/lead-generation-south-africa">Lead Gen South Africa</a></li>
+          <li><a href="/seo-south-africa">SEO South Africa</a></li>
+          <li><a href="/google-ads-south-africa">Google Ads South Africa</a></li>
+          <li><a href="/meta-ads-south-africa">Meta Ads South Africa</a></li>
+          <li><a href="/web-design-south-africa">Web Design South Africa</a></li>
+          <li><a href="/lead-generation-dallas">Dallas&ndash;Fort Worth</a></li>
+          <li><a href="/hvac-marketing">HVAC Marketing</a></li>
+          <li><a href="/roofing-marketing">Roofing Marketing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Company</p>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/how-we-work">How We Work</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Get In Touch</p>
+        <ul>
+          <li><a data-em-u="hello" data-em-d="positionxero.com">hello [at] positionxero.com</a></li>
+          <li><a href="tel:+27662412155">+27 66 241 2155</a></li>
+          <li><a href="/free-audit" class="btn-primary" style="margin-top:12px;font-size:13px;padding:10px 20px;">Book Free Audit →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Position Xero. All rights reserved.</span>
+      <span class="footer-legal"><a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a></span>
+      <span>Performance Marketing for Service Businesses Worldwide</span>
+    </div>
+  </div>
+</footer>
+<script src="/js/main.js?v=20260908" defer></script>
+  <script src="/js/immersive.js" defer></script>
+</body>
+</html>
