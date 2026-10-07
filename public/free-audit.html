@@ -642,10 +642,10 @@ fieldset.screen{border:none}
 <footer class="site-foot">
   <div class="wrap" style="display:block">
     <nav class="foot-links" aria-label="Explore our services">
-      <a href="/lead-gen">Lead generation services</a>
+      <a href="/web-design">Web design &amp; development</a>
       <a href="/seo">SEO &amp; AI SEO services</a>
+      <a href="/lead-gen">Lead generation services</a>
       <a href="/ads">Google Ads &amp; Meta Ads management</a>
-      <a href="/web-design">Website &amp; landing page design</a>
       <a href="/services">All services</a>
       <a href="/how-we-work">How we work</a>
       <a href="/blog/">Blog</a>
@@ -654,8 +654,8 @@ fieldset.screen{border:none}
     </nav>
   </div>
   <div class="wrap">
-    <span>&copy; <a href="/"><b>Position</b> Xero</a>. We Turn Ad Spend Into Revenue.</span>
-    <span>Google Ads &middot; Meta Ads &middot; SEO &middot; Lead Generation</span>
+    <span>&copy; <a href="/"><b>Position</b> Xero</a>. We Turn Searches Into Leads.</span>
+    <span>Web Development &middot; SEO &middot; Lead Generation &middot; Google Ads &middot; Meta Ads</span>
   </div>
 </footer>
 
@@ -674,7 +674,7 @@ fieldset.screen{border:none}
 const CONFIG = {
   BRAND_NAME: 'Position Xero',
   BRAND_URL: 'https://www.positionxero.com',
-  BRAND_TAGLINE: 'We Turn Ad Spend Into Revenue.',
+  BRAND_TAGLINE: 'We Turn Searches Into Leads.',
   CONTACT_CTA_URL: 'https://www.positionxero.com/contact',
   LEAD_WEBHOOK: '',   // JSON POST endpoint for lead payloads. Empty = try WEB3FORMS_KEY next.
   WEB3FORMS_KEY: '83837384-b86e-4045-9b25-9cb9ae8276a9',  // web3forms.com access key (public by design). Delivers leads to the founder inbox. Empty = leads logged to console only.
@@ -1287,7 +1287,7 @@ function buildReport(result, auditedUrl, keyword) {
   // CTA
   const cta = el('div', 'card cta-card');
   cta.appendChild(el('h3', null, 'Want us to fix this for you?'));
-  cta.appendChild(el('p', null, CONFIG.BRAND_TAGLINE + ' We handle Google Ads, Meta Ads, SEO and lead generation: qualified leads at scale, not vanity metrics.'));
+  cta.appendChild(el('p', null, CONFIG.BRAND_TAGLINE + ' We build websites and do the SEO that brings in enquiries, with lead generation and Google and Meta Ads alongside.'));
   const fixBtn = el('button', 'btn btn-gold', 'Yes, contact me to fix this');
   fixBtn.type = 'button';
   fixBtn.id = 'fixBtn';
