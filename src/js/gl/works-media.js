@@ -26,7 +26,7 @@ const WORKS = [
 ];
 
 const SERVICE = [
-  { title: 'ADS', sub: 'GOOGLE + META', pal: ['#FF6A1F', '#7A2E0C', '#05070A'] },
+  { title: 'WEB', sub: 'SITES + LANDING PAGES', pal: ['#FF6A1F', '#7A2E0C', '#05070A'] },
   { title: 'SEARCH', sub: 'AI + TRADITIONAL', pal: ['#2EE6FF', '#0E5C77', '#05070A'] },
   // The Cognexa reel peels to a fullscreen cover-fit quad, so it carries the
   // real site rather than generated art: this is the one panel a visitor reads

@@ -17,7 +17,7 @@ import * as THREE from 'three';
  *  - hide: overlay fades 0.8 s, then the GL intro (uLoaded 0→1, 3 s) runs
  */
 
-const TAGLINE = 'We turn ad spend into revenue.';
+const TAGLINE = 'We turn searches into leads.';
 const SCRAMBLE = ['X', 'E', 'R', 'O'];
 
 // bezier(.53,.25,.3,.99) approximation via sampled cubic
