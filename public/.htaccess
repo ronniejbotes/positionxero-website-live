@@ -35,6 +35,15 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   RewriteEngine On
   # /seo-audit was replaced by /free-audit before ever shipping (2026-07-13) — catch strays in one hop.
   RewriteRule ^seo-audit(\.html)?$ https://www.positionxero.com/free-audit [R=301,L]
+  # Blog posts retired on 2026-10-07 when the site moved to web development and SEO first.
+  # Lead-buying guides for markets the site does not serve go to the general post on buying
+  # leads; the real estate one goes to the real estate guide; the exclusive roofing leads post
+  # goes to the roofing page, which already drew more of its searches; the vetting post was
+  # merged into the legit-or-scam post. One hop, with or without .html or a trailing slash.
+  RewriteRule ^blog/(buy-aged-final-expense-leads|buy-mortgage-broker-leads|is-buying-insurance-leads-worth-it)(\.html)?/?$ https://www.positionxero.com/blog/is-buying-leads-worth-it [R=301,L]
+  RewriteRule ^blog/is-it-worth-buying-real-estate-leads(\.html)?/?$ https://www.positionxero.com/blog/real-estate-lead-generation [R=301,L]
+  RewriteRule ^blog/buy-exclusive-roofing-leads(\.html)?/?$ https://www.positionxero.com/roofing-marketing [R=301,L]
+  RewriteRule ^blog/how-to-vet-purchased-leads(\.html)?/?$ https://www.positionxero.com/blog/is-lead-generation-a-scam [R=301,L]
   # Legacy .html URL requested directly -> 301 to the clean canonical URL.
   # Absolute target: even a URL wrong on host AND scheme AND extension resolves in ONE hop.
   RewriteCond %{REQUEST_URI} !(^|/)(index|404)\.html$ [NC]
