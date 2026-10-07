@@ -6,6 +6,16 @@
 > equivalent in ZAR at the prevailing exchange rate at the time of quoting; ask for a
 > current ZAR quote rather than converting these figures yourself.
 
+## Website / Landing Page Design
+- Landing page: From $750 one-time
+- Full website: From $1,800 one-time
+- Includes: SEO-optimized HTML, mobile responsive, fast load times
+
+## SEO (Traditional + AI SEO)
+- Local SEO: From $600/month
+- Full SEO: From $1,000/month (on-page, technical, AI SEO, content)
+- Includes: Monthly ranking reports, content optimization, schema markup
+
 ## Lead Generation Campaigns
 - Starter: Custom, contact for quote
 - Includes: Funnel strategy, ad creative, campaign management
@@ -21,19 +31,9 @@
 - Ad spend minimum: $300/month
 - Includes: Audience research, creative strategy, campaign management
 
-## SEO (Traditional + AI SEO)
-- Local SEO: From $600/month
-- Full SEO: From $1,000/month (on-page, technical, AI SEO, content)
-- Includes: Monthly ranking reports, content optimization, schema markup
-
-## Website / Landing Page Design
-- Landing page: From $750 one-time
-- Full website: From $1,800 one-time
-- Includes: SEO-optimized HTML, mobile responsive, fast load times
-
 ## Free Discovery Audit
 - Cost: $0, completely free
-- Includes: Loom video audit of your current ads, website, and SEO
+- Includes: Loom video audit of your current website, SEO and ads
 - Book at: https://www.positionxero.com/contact
 
 Note: Prices quoted in USD (US Dollars); ZAR quotes available for South African clients at the
