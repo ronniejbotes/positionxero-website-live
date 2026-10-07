@@ -1433,3 +1433,22 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
       rgba(5, 7, 10, 0) 100%);
   }
 }
+
+/* Short screens: the hero copy is anchored to the bottom and grows upward,
+   so on a short viewport it ran up under the fixed header, and off the top on
+   the smallest phones. Pull it down and tighten the rhythm. Tall screens are
+   unchanged. */
+@media (min-width: 769px) and (max-height: 820px) {
+  .hero__inner { bottom: 12vh; }
+}
+@media (max-width: 768px) and (max-height: 760px) {
+  .hero__inner { bottom: 11vh; }
+  .hero__claim { font-size: 30px; margin-bottom: 14px; }
+  .hero__sub { font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+  .hero__services { margin-bottom: 16px; }
+  .hero__define { line-height: 1.6; margin-bottom: 16px; }
+}
+@media (max-width: 768px) and (max-height: 600px) {
+  .hero__claim { font-size: 26px; }
+  .hero__define { display: none; }
+}
