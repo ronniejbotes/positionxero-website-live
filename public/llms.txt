@@ -1,16 +1,16 @@
 # Position Xero
 
-> Position Xero is a founder-led performance marketing and lead generation agency serving service businesses worldwide. The agency is run from South Africa and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account, to generate consistent, qualified leads through Google Ads, Meta Ads, SEO, and conversion-focused website design.
+> Position Xero is a founder-led web development and SEO agency that brings service businesses leads. It builds websites and landing pages that turn visitors into enquiries and does the SEO that gets them found on Google and in AI answers, with lead generation built on both and Google Ads and Meta Ads as supporting services. The agency is run from South Africa, serves service businesses worldwide and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account.
 
 > Last updated: 2026-10-07
 
 ## What We Do
 
-- **Google Ads Management**: Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
-- **Meta Ads Management**: Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
-- **Lead Generation**: Multi-channel campaigns (paid ads, cold email, SEO, landing pages). The monthly lead target is agreed with each client at kickoff, from their budget, market and current cost per lead, and reported against openly. Position Xero does not publish a lead count.
-- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations. Local SEO from $600/month, full SEO from $1,000/month.
-- **Website and Landing Page Design**: High-converting, SEO-optimised HTML pages. Landing pages from $750, full sites from $1,800.
+- **Web Development (websites and landing pages)**: High-converting, SEO-optimised HTML websites and landing pages, designed and built to turn visitors into enquiries. Landing pages from $750, full sites from $1,800.
+- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations, aimed at enquiries from the client's own website. Local SEO from $600/month, full SEO from $1,000/month.
+- **Lead Generation**: Multi-channel campaigns built on the website and SEO (landing pages, SEO, cold email, and paid ads as an optional accelerator). The monthly lead target is agreed with each client at kickoff, from their budget, market and current cost per lead, and reported against openly. Position Xero does not publish a lead count.
+- **Google Ads Management** (supporting service): Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
+- **Meta Ads Management** (supporting service): Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
 
 ## Who We Serve
 
@@ -31,11 +31,11 @@
 
 - Home: https://www.positionxero.com/
 - Services Overview: https://www.positionxero.com/services
+- Web Design and Development: https://www.positionxero.com/web-design
 - SEO Services (AI SEO, LLM SEO, Traditional): https://www.positionxero.com/seo
-- Free SEO Audit (lead funnel with graded on-page audit): https://www.positionxero.com/free-audit
-- Google Ads & Meta Ads: https://www.positionxero.com/ads
 - Lead Generation: https://www.positionxero.com/lead-gen
-- Web Design: https://www.positionxero.com/web-design
+- Google Ads & Meta Ads: https://www.positionxero.com/ads
+- Free SEO Audit (lead funnel with graded on-page audit): https://www.positionxero.com/free-audit
 - About: https://www.positionxero.com/about
 - Contact / Book a Free Audit: https://www.positionxero.com/contact
 - FAQ: https://www.positionxero.com/faq
@@ -47,11 +47,11 @@
 
 Position Xero is based in South Africa and serves the South African market directly, with ZAR quoting and POPIA-compliant lead capture.
 
-- Lead Generation South Africa: https://www.positionxero.com/lead-generation-south-africa
+- Web Design and Development South Africa: https://www.positionxero.com/web-design-south-africa
 - SEO South Africa: https://www.positionxero.com/seo-south-africa
+- Lead Generation South Africa: https://www.positionxero.com/lead-generation-south-africa
 - Google Ads Management South Africa: https://www.positionxero.com/google-ads-south-africa
 - Meta / Facebook Ads South Africa (incl. click-to-WhatsApp): https://www.positionxero.com/meta-ads-south-africa
-- Web Design South Africa: https://www.positionxero.com/web-design-south-africa
 
 ## US Market & Industry Pages
 
