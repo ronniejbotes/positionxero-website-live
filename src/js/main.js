@@ -159,7 +159,9 @@ async function boot() {
   loader.setProgress(0.5);
   requestAnimationFrame(() => loader.setProgress(1));
 
-  await loader.finished;            // guides + logo outline drawn
+  // guides + logo outline drawn, and the scene's shaders compiled and its
+  // first frame drawn behind the overlay
+  await Promise.all([loader.finished, gl.ready]);
   gl.setLoaderTexture(loader.texture);
   await loader.hide();              // overlay fade 0.8s
   gl.onLoadingComplete();           // uLoaded 0→1 over 3s (zoom + ripple)

@@ -353,7 +353,20 @@ export class PositionXeroGL {
 
     this._bindEvents();
     this.resize();
-    this._loop();
+    // Compile every shader the first frame needs before drawing it. Linking
+    // them inside the first render blocked the main thread for up to a second
+    // on a throttled phone with a cold shader cache; compileAsync lets the
+    // browser link them in parallel (KHR_parallel_shader_compile) while the
+    // loader keeps animating. The loader overlay hides the canvas until boot()
+    // has awaited `ready`, so nothing on screen changes. The 2.5 s cap means a
+    // stalled compile falls back to the old path: the first frame finishes
+    // the link itself. `ready` always resolves, so the loader always hands off.
+    const compiled = this._precompile();
+    this.ready = Promise.race([compiled, new Promise((res) => setTimeout(res, 2500))]).then(() => {
+      this._clock.getDelta();
+      this._started = true;
+      this._loop();
+    }).catch((err) => console.error('[px] first frame failed', err));
     return true;
   }
 
@@ -413,7 +426,7 @@ export class PositionXeroGL {
       this._running = !document.hidden;
       if (this._running) {
         this._clock.getDelta();
-        this._loop();
+        if (this._started) this._loop();
       } else {
         cancelAnimationFrame(this._raf);
       }
@@ -470,10 +483,31 @@ export class PositionXeroGL {
     this.renderer.render(pass.scene, pass.cam);
   }
 
+  /**
+   * Runs one frame with render() swapped for compileAsync(), so each pass
+   * compiles exactly the programs it would draw with, against the same
+   * render target, without drawing. Resolves once every program has linked.
+   */
+  _precompile() {
+    const r = this.renderer;
+    const render = r.render;
+    const pending = [];
+    r.render = (scene, camera) => { pending.push(r.compileAsync(scene, camera)); };
+    try {
+      this._frame();
+    } finally {
+      r.render = render;
+    }
+    return Promise.all(pending);
+  }
+
   _loop = () => {
     if (!this._running) return;
     this._raf = requestAnimationFrame(this._loop);
+    this._frame();
+  };
 
+  _frame() {
     const dt = Math.min(this._clock.getDelta(), 1 / 30);
     const t = this._clock.elapsedTime;
     const s = this._scroll;
@@ -650,7 +684,7 @@ export class PositionXeroGL {
     this.finalPass.mesh.material.uniforms.uLoaded.value = this.animator.get('loaded');
     r.setRenderTarget(null);
     r.render(this.finalPass.scene, this.finalPass.cam);
-  };
+  }
 
   destroy() {
     this._running = false;
