@@ -11,6 +11,7 @@ It was called `alche-copy-website` until 2026-09-08, which is why a full day of 
 - **`content/blog/*.md`** is dead legacy. Blog posts are hand-written HTML in `public/blog/`.
 - Asset paths are always root-relative: `/css/style.css`, never `/public/css/...`, never `../`.
 - **Microsoft Clarity** (heatmaps, owner approved 14 October 2026) is added at build time by the `px-clarity` plugin in `vite.config.js`, into the `<head>` of every built `.html` page, `public/` included. Do not paste the tag into a page by hand. It is disclosed on `/privacy`, section 6.
+- **Footer year** (14 October 2026): every footer prints `© <span data-year>2026</span> Position Xero`. The `px-footer-year` plugin in `vite.config.js` writes the build year into that span and adds a one-line script that sets the visitor's current year, so nobody edits years by hand at New Year. A new page copies the span; a bare "© 2026 Position Xero" is wrapped at build time anyway.
 
 ## Cache busting: bump the version or your change reaches nobody
 
