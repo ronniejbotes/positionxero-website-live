@@ -362,6 +362,14 @@ fieldset.screen{border:none}
 .fix-blog-list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px;align-items:center}
 .fix-blog-link{color:rgba(245,244,241,0.85);text-decoration:underline;text-underline-offset:3px}
 .fix-blog-link:hover{color:var(--white-on-dark)}
+/* ---------- What the report checks (crawlable copy under the tool) ---------- */
+.checks{padding-top:56px}
+.checks h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px}
+.checks h3{font-size:1.05rem;font-weight:700;margin:26px 0 8px}
+.checks p{max-width:720px;color:var(--muted);margin-bottom:10px}
+.checks ul{max-width:720px;padding-left:20px;margin-bottom:14px;color:var(--muted)}
+.checks li{margin:5px 0}
+.checks a{color:var(--gold)}
 .site-foot{padding:34px 0 44px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--border);margin-top:40px}
 .site-foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .site-foot a{text-decoration:none}
@@ -638,6 +646,39 @@ fieldset.screen{border:none}
 
   <section id="report" class="report wrap" hidden aria-label="SEO report card"></section>
 </main>
+
+<section class="checks wrap" aria-labelledby="checks-title">
+  <h2 id="checks-title">What the free SEO report checks</h2>
+  <p>The free website SEO report reads the HTML your server sends for the page you enter and grades it in four groups. Every check that fails comes with a plain-English fix.</p>
+  <h3>Meta and social</h3>
+  <ul>
+    <li>The title tag: whether there is one, and whether it is too short or too long</li>
+    <li>The meta description: whether there is one, and its length</li>
+    <li>Open Graph tags, which shape how the page looks when someone shares it</li>
+    <li>The Twitter card tag</li>
+  </ul>
+  <h3>Technical</h3>
+  <ul>
+    <li>Whether the page is served over HTTPS</li>
+    <li>Whether the page can be indexed, or is set to noindex</li>
+    <li>The canonical tag, and whether it is a full address</li>
+    <li>The viewport tag for phones, the character encoding and the favicon</li>
+    <li>Structured data (JSON-LD), and whether it parses</li>
+  </ul>
+  <h3>Structure</h3>
+  <ul>
+    <li>Exactly one H1, and headings in order without skipped levels</li>
+    <li>The language attribute on the page</li>
+    <li>Internal and external links</li>
+  </ul>
+  <h3>Content</h3>
+  <ul>
+    <li>How much readable text the page carries</li>
+    <li>Alt text on images</li>
+    <li>If you give a target keyword: whether it sits in the key spots, and whether it is repeated too often</li>
+  </ul>
+  <p>It checks one page per run, from its code, so it does not measure page speed, backlinks or where you rank. For a person&rsquo;s read of the whole site, see our <a href="/seo">SEO services</a>.</p>
+</section>
 
 <footer class="site-foot">
   <div class="wrap" style="display:block">
