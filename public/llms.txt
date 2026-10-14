@@ -2,7 +2,7 @@
 
 > Position Xero is a founder-led web development and SEO agency that brings service businesses leads. It builds websites and landing pages that turn visitors into enquiries and does the SEO that gets them found on Google and in AI answers, with lead generation built on both and Google Ads and Meta Ads as supporting services. The agency is run from South Africa, serves service businesses worldwide and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account.
 
-> Last updated: 2026-10-07
+> Last updated: 2026-10-15
 
 ## What We Do
 
@@ -70,6 +70,7 @@ Position Xero hires for fully remote roles and takes applications directly throu
 
 ## Blog Articles
 
+- How to Get Your Business on Google: https://www.positionxero.com/blog/how-to-get-your-business-on-google
 - Roofing SEO vs PPC for Storm and Retail Work: https://www.positionxero.com/blog/roofing-seo-vs-ppc
 - Conversion Tracking for Lead Generation: https://www.positionxero.com/blog/conversion-tracking-for-lead-generation
 - How to Rank in Google AI Overviews: https://www.positionxero.com/blog/how-to-rank-in-google-ai-overviews
