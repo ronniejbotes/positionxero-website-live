@@ -559,7 +559,7 @@ body[data-light="true"] .rail__item[data-active="true"] .rail__label { color: va
   position: fixed; inset: 0; z-index: 20;
   pointer-events: none; opacity: 0;
 }
-.cognexa__shade { position: absolute; inset: 0; background: rgba(5, 7, 10, 0.62); }
+.cognexa__shade { position: absolute; inset: 0; background: rgba(5, 7, 10, 0.86); }
 .cognexa__frame {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: calc(100% - (-100px + var(--progress, 0) * 200px));
