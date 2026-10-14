@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 
 // import.meta.dirname rather than __dirname: this package is "type": "module",
 // so __dirname only resolved because Vite pre-bundled the config through
@@ -8,7 +9,49 @@ import { resolve } from 'path';
 // that round trip. (Node 20.11+; this project runs 24.)
 const root = import.meta.dirname;
 
+// Microsoft Clarity (heatmaps and session recordings), approved by the owner on
+// 14 October 2026 and disclosed on /privacy. The tag is added once, at build
+// time, to every .html file in the output: the three Vite entries and every page
+// copied from public/. Adding it here rather than by hand means a new page in
+// public/ gets it automatically. Do not paste the tag into a page as well; a page
+// that already carries it is skipped, so it never appears twice. Build only, so
+// `npm run dev` sends nothing to Clarity.
+const CLARITY_TAG = '<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "yxiba6izmq");</script>';
+
+function clarity() {
+  let outDir;
+  let logger;
+  const htmlFiles = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) return htmlFiles(path);
+      return entry.name.endsWith('.html') ? [path] : [];
+    });
+  return {
+    name: 'px-clarity',
+    apply: 'build',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+      logger = config.logger;
+    },
+    // closeBundle runs after Vite has written the entries and copied public/.
+    closeBundle() {
+      if (!existsSync(outDir)) return;
+      for (const file of htmlFiles(outDir)) {
+        const html = readFileSync(file, 'utf8');
+        if (html.includes('www.clarity.ms/tag/')) continue;
+        if (!html.includes('</head>')) {
+          logger.warn(`[px-clarity] no </head> in ${file}, Clarity tag not added`);
+          continue;
+        }
+        writeFileSync(file, html.replace('</head>', () => `${CLARITY_TAG}\n</head>`));
+      }
+    }
+  };
+}
+
 export default defineConfig({
+  plugins: [clarity()],
   // Absolute base, and this is load-bearing rather than cosmetic. The legacy
   // pages ship as flat files served extensionless via .htaccess, and Apache
   // also answers the trailing-slash variant (/services/) from the same file.

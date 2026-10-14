@@ -10,6 +10,7 @@ It was called `alche-copy-website` until 2026-09-08, which is why a full day of 
 - **`public/`** is static passthrough: Vite copies it verbatim to the site root. Every other page lives here as hand-written HTML, along with `public/css/style.css`, `public/js/main.js`, `public/.htaccess`, `public/sitemap.xml` and `public/llms.txt`. A new static page needs no vite.config change.
 - **`content/blog/*.md`** is dead legacy. Blog posts are hand-written HTML in `public/blog/`.
 - Asset paths are always root-relative: `/css/style.css`, never `/public/css/...`, never `../`.
+- **Microsoft Clarity** (heatmaps, owner approved 14 October 2026) is added at build time by the `px-clarity` plugin in `vite.config.js`, into the `<head>` of every built `.html` page, `public/` included. Do not paste the tag into a page by hand. It is disclosed on `/privacy`, section 6.
 
 ## Cache busting: bump the version or your change reaches nobody
 
