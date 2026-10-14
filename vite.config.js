@@ -50,8 +50,52 @@ function clarity() {
   };
 }
 
+// Footer year. Every page's footer prints its copyright year inside
+// <span data-year>, the three Vite entries and every page in public/ alike.
+// At build time this writes the build year into that span, so the raw HTML
+// (what crawlers and no-JS visitors read) is current after every deploy, and
+// adds one tiny inline script that sets the visitor's own current year when
+// the page loads, so the footer turns over at New Year even if nothing is
+// deployed. A page copied from an older template that still prints a bare
+// "© 2026 Position Xero" gets the span added here, so it is covered too.
+// Added 14 October 2026.
+const YEAR_SCRIPT = '<script>document.querySelectorAll("[data-year]").forEach(function(e){e.textContent=new Date().getFullYear()})</script>';
+
+function footerYear() {
+  let outDir;
+  const year = String(new Date().getFullYear());
+  const span = /(<span data-year>)\s*\d{4}\s*(<\/span>)/g;
+  const bare = /(©|&copy;) (\d{4}) (Position Xero|POSITION XERO)/g;
+  const htmlFiles = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) return htmlFiles(path);
+      return entry.name.endsWith('.html') ? [path] : [];
+    });
+  return {
+    name: 'px-footer-year',
+    apply: 'build',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+    },
+    closeBundle() {
+      if (!existsSync(outDir)) return;
+      for (const file of htmlFiles(outDir)) {
+        const html = readFileSync(file, 'utf8');
+        let out = html.replace(bare, (m, mark, y, name) => `${mark} <span data-year>${y}</span> ${name}`);
+        if (!out.includes('<span data-year>')) continue;
+        out = out.replace(span, (m, open, close) => `${open}${year}${close}`);
+        if (!out.includes(YEAR_SCRIPT) && out.includes('</body>')) {
+          out = out.replace(/<\/body>(?![\s\S]*<\/body>)/, () => `${YEAR_SCRIPT}\n</body>`);
+        }
+        if (out !== html) writeFileSync(file, out);
+      }
+    }
+  };
+}
+
 export default defineConfig({
-  plugins: [clarity()],
+  plugins: [clarity(), footerYear()],
   // Absolute base, and this is load-bearing rather than cosmetic. The legacy
   // pages ship as flat files served extensionless via .htaccess, and Apache
   // also answers the trailing-slash variant (/services/) from the same file.
