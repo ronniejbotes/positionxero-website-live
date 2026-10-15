@@ -94,8 +94,60 @@ function footerYear() {
   };
 }
 
+// Table cell labels. On a phone (640px and under) every comparison table is
+// shown as one card per row (public/css/style.css, "Comparison tables on
+// phones"), and each cell after the first is printed under its column
+// heading. This copies each <thead> heading's text into a data-label on that
+// column's body cells, in every built .html page, public/ included, so the
+// card can show it with CSS alone and a new table needs nothing by hand. The
+// first cell of a row is the card's title and gets no label; a cell that
+// already has one keeps it. Added 15 October 2026 (mobile review).
+function tableLabels() {
+  let outDir;
+  const text = (html) =>
+    html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().replace(/"/g, '&quot;');
+  const label = (table) => {
+    const head = table.match(/<thead\b[\s\S]*?<\/thead>/i);
+    if (!head) return table;
+    const labels = [...head[0].matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/gi)].map((m) => text(m[1]));
+    if (labels.length < 2) return table;
+    return table.replace(/<tbody\b[\s\S]*?<\/tbody>/gi, (body) =>
+      body.replace(/<tr\b[\s\S]*?<\/tr>/gi, (row) => {
+        let i = -1;
+        return row.replace(/<(td|th)\b([^>]*)>/gi, (tag, name, attrs) => {
+          i += 1;
+          if (i === 0 || !labels[i] || /\bdata-label=/i.test(attrs)) return tag;
+          return `<${name}${attrs} data-label="${labels[i]}">`;
+        });
+      })
+    );
+  };
+  const htmlFiles = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) return htmlFiles(path);
+      return entry.name.endsWith('.html') ? [path] : [];
+    });
+  return {
+    name: 'px-table-labels',
+    apply: 'build',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+    },
+    closeBundle() {
+      if (!existsSync(outDir)) return;
+      for (const file of htmlFiles(outDir)) {
+        const html = readFileSync(file, 'utf8');
+        if (!html.includes('<table')) continue;
+        const out = html.replace(/<table\b[\s\S]*?<\/table>/gi, label);
+        if (out !== html) writeFileSync(file, out);
+      }
+    }
+  };
+}
+
 export default defineConfig({
-  plugins: [clarity(), footerYear()],
+  plugins: [clarity(), footerYear(), tableLabels()],
   // Absolute base, and this is load-bearing rather than cosmetic. The legacy
   // pages ship as flat files served extensionless via .htaccess, and Apache
   // also answers the trailing-slash variant (/services/) from the same file.

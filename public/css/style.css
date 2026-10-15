@@ -387,7 +387,13 @@ html.js-reveal .fade-in:not(.visible) {
 .nav-phone {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
+  /* Phones first: below 1121px only the 15px icon shows, so the link
+     keeps a 44px square to tap (15 October 2026 mobile review). With the
+     number showing it needs no extra room. */
+  min-width: 44px;
+  min-height: 44px;
   margin-left: 18px;
   font-family: var(--mono);
   font-size: 11px;
@@ -398,6 +404,9 @@ html.js-reveal .fade-in:not(.visible) {
   transition: color var(--tr);
 }
 .nav-phone:hover { color: var(--heat); }
+@media (min-width: 1121px) {
+  .nav-phone { min-width: 0; min-height: 0; }
+}
 .nav-phone-num { letter-spacing: 0.06em; }
 
 /* Every band is dark now, so the dark-nav compensation set resolves to
@@ -1663,11 +1672,19 @@ body[data-header-hidden="true"] .nav,
   padding: 13px 14px;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  /* Phones first: 16px, because iOS Safari zooms the page into any field
+     set smaller and leaves it zoomed (15 October 2026 mobile review: the
+     /contact form was 15.2px). Desktop keeps its 0.95rem. */
+  font-size: 1rem;
   line-height: 1.5;
   transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
   appearance: none;
   -webkit-appearance: none;
+}
+@media (min-width: 1025px) {
+  .form-input,
+  .form-textarea,
+  .form-select { font-size: 0.95rem; }
 }
 .form-select {
   /* appearance: none removes the native arrow, so re-supply one. */
@@ -2164,6 +2181,76 @@ body[data-header-hidden="true"] .nav,
   .legal-content { font-size: 1rem; }
   .article-content p,
   .article-content li { font-size: 1rem; }
+}
+
+/* ---- Comparison tables on phones ----
+   Under 640px a three to six column table could only scroll sideways,
+   and on a phone the columns past the second were cut off at the screen
+   edge or crushed to one word a line (15 October 2026 mobile review:
+   /seo, /lead-generation-south-africa, the cost posts). Each row becomes
+   a card instead: the first cell is its title and every other cell sits
+   under its column heading, which the px-table-labels step in
+   vite.config.js copies into data-label at build time. The markup stays a
+   real <table>. This retrofits an existing desktop component, so it is
+   scoped to phones: from 641px up every table renders exactly as before.
+   :root lifts these rules over `.table-wrap > .comparison-table` in the
+   1024px block, and !important is only used to beat the inline padding,
+   borders and row tints the older blog tables carry. */
+@media (max-width: 640px) {
+  :root :is(table.comparison-table, .article-content table),
+  :root :is(table.comparison-table, .article-content table) :is(tbody, tr, th, td) {
+    display: block;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    white-space: normal;
+  }
+  :root :is(table.comparison-table, .article-content table) { overflow: visible; }
+  :root .table-wrap > table { margin: 0; }
+  :root .article-content table:not(.table-wrap table) {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+  }
+  :root :is(table.comparison-table, .article-content table) thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  :root :is(table.comparison-table, .article-content table) tr {
+    padding: 14px 16px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+    background: none !important;
+  }
+  :root :is(table.comparison-table, .article-content table) tbody tr:last-child { border-bottom: 0; }
+  :root :is(table.comparison-table, .article-content table) :is(th, td) {
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+    color: var(--muted);
+  }
+  :root :is(table.comparison-table, .article-content table) tr > :first-child {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  :root :is(table.comparison-table, .article-content table) tr > :not(:first-child) { margin-top: 10px; }
+  :root :is(table.comparison-table, .article-content table) [data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 3px;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-15);
+  }
 }
 
 @media (max-width: 600px) {

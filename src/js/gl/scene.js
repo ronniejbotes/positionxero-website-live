@@ -448,6 +448,17 @@ export class PositionXeroGL {
     this.camera.fov = this._baseFov;
     this.camera.updateProjectionMatrix();
 
+    // Phones: the 28-unit XERO wordmark is sized for a landscape screen. On a
+    // portrait phone the camera sees about 16 units across at the plane's
+    // depth, so the word was cut off at both edges on the first screen
+    // (15 October 2026 mobile review, 390x844: "ERO" with half an X). Shrink
+    // it to 92% of the visible width there, measured at the kv camera
+    // (z = 9.5, fov - 4, as in the frame loop). Landscape screens keep the
+    // original size untouched.
+    const kvDist = 9.5 - this.wordmark2D.position.z;
+    const kvHalfW = kvDist * Math.tan(THREE.MathUtils.degToRad(this._baseFov - 4) / 2) * aspect;
+    this.wordmark2D.scale.setScalar(aspect < 1 ? Math.min(1, (kvHalfW * 2 * 0.92) / 28) : 1);
+
     this.missionCamera.aspect = aspect;
     this.missionCamera.updateProjectionMatrix();
     const halfH = 4;
