@@ -50,6 +50,53 @@ function clarity() {
   };
 }
 
+// Google Analytics 4 (property "Position Xero" in the agency's "Position Xero
+// clients" Analytics account), switched on 15 October 2026 and disclosed on
+// /privacy, section 6. Like Clarity, Google's standard gtag.js snippet is added
+// once, at build time, to every .html file in the output (the three Vite
+// entries and every page copied from public/), straight after the viewport meta
+// (or after <head> on a page without one). A page that already carries the ID is
+// skipped. Do not paste the tag into a page by hand. Build only, so
+// `npm run dev` sends nothing to Google.
+const GA_ID = 'G-SJ2ZVCFNTR';
+const GA_TAG =
+  `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>\n` +
+  `<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GA_ID}');</script>`;
+
+function googleAnalytics() {
+  let outDir;
+  let logger;
+  const htmlFiles = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) return htmlFiles(path);
+      return entry.name.endsWith('.html') ? [path] : [];
+    });
+  const viewport = /<meta\b[^>]*\bname=["']?viewport["']?[^>]*>/i;
+  const head = /<head\b[^>]*>/i;
+  return {
+    name: 'px-google-analytics',
+    apply: 'build',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+      logger = config.logger;
+    },
+    closeBundle() {
+      if (!existsSync(outDir)) return;
+      for (const file of htmlFiles(outDir)) {
+        const html = readFileSync(file, 'utf8');
+        if (html.includes(`gtag/js?id=${GA_ID}`)) continue;
+        const at = viewport.test(html) ? viewport : head.test(html) ? head : null;
+        if (!at) {
+          logger.warn(`[px-google-analytics] no <head> in ${file}, GA tag not added`);
+          continue;
+        }
+        writeFileSync(file, html.replace(at, (tag) => `${tag}\n${GA_TAG}`));
+      }
+    }
+  };
+}
+
 // Footer year. Every page's footer prints its copyright year inside
 // <span data-year>, the three Vite entries and every page in public/ alike.
 // At build time this writes the build year into that span, so the raw HTML
@@ -147,7 +194,7 @@ function tableLabels() {
 }
 
 export default defineConfig({
-  plugins: [clarity(), footerYear(), tableLabels()],
+  plugins: [clarity(), googleAnalytics(), footerYear(), tableLabels()],
   // Absolute base, and this is load-bearing rather than cosmetic. The legacy
   // pages ship as flat files served extensionless via .htaccess, and Apache
   // also answers the trailing-slash variant (/services/) from the same file.
