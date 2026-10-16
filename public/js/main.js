@@ -298,6 +298,54 @@ document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el))
   update();
 })();
 
+// Lead generation ROI calculator (/blog/is-lead-generation-worth-the-investment).
+// Self-contained; no-ops elsewhere. Uses the post's own formula:
+// CPA = cost per lead / close rate; ROI = (customer value - CPA) / CPA.
+(function () {
+  const spend = document.getElementById('roiSpend');
+  if (!spend) return;
+  const cpl      = document.getElementById('roiCpl');
+  const close    = document.getElementById('roiClose');
+  const value    = document.getElementById('roiValue');
+  const spendOut = document.getElementById('roiSpendOut');
+  const cplOut   = document.getElementById('roiCplOut');
+  const closeOut = document.getElementById('roiCloseOut');
+  const valueOut = document.getElementById('roiValueOut');
+  const leadsEl  = document.getElementById('roiLeads');
+  const custEl   = document.getElementById('roiCustomers');
+  const cpaEl    = document.getElementById('roiCpa');
+  const revEl    = document.getElementById('roiRevenue');
+  const perEl    = document.getElementById('roiPerDollar');
+  const roiEl    = document.getElementById('roiMultiple');
+  if (!cpl || !close || !value || !spendOut || !cplOut || !closeOut || !valueOut ||
+      !leadsEl || !custEl || !cpaEl || !revEl || !perEl || !roiEl) return;
+
+  const fmt   = n => Math.round(n).toLocaleString('en-US');
+  const upTo2 = n => n.toLocaleString('en-US', { maximumFractionDigits: 2 });  // 20, 4.8, 2.95
+  const two   = n => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function update() {
+    const s = +spend.value, l = +cpl.value, pct = +close.value, v = +value.value;
+    const leads     = s / l;
+    const customers = leads * pct / 100;
+    const cpa       = l * 100 / pct;           // cost per customer
+    const perDollar = v * pct / (l * 100);     // customer value / CPA
+    const roi       = perDollar - 1;           // (customer value - CPA) / CPA
+    spendOut.textContent = '$' + fmt(s);
+    cplOut.textContent   = '$' + fmt(l);
+    closeOut.textContent = pct + '%';
+    valueOut.textContent = '$' + fmt(v);
+    leadsEl.textContent  = upTo2(leads);
+    custEl.textContent   = upTo2(customers);
+    cpaEl.textContent    = '$' + fmt(cpa);
+    revEl.textContent    = '$' + fmt(customers * v);
+    perEl.textContent    = '$' + two(perDollar);
+    roiEl.textContent    = roi < 0 ? '\u2212' + two(-roi) : two(roi);
+  }
+  [spend, cpl, close, value].forEach(el => el.addEventListener('input', update));
+  update();
+})();
+
 /* =====================================================================
  * Book Free Audit: full screen, one question at a time intake overlay.
  * Added 2026-09-08. Styles live at the end of public/css/style.css

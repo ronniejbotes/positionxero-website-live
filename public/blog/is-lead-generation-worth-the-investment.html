@@ -43,7 +43,7 @@
     "author": { "@type": "Organization", "@id": "https://www.positionxero.com/#organization", "name": "Position Xero", "url": "https://www.positionxero.com" },
     "publisher": { "@id": "https://www.positionxero.com/#organization" },
     "datePublished": "2026-07-11",
-    "dateModified": "2026-10-14",
+    "dateModified": "2026-10-16",
     "articleSection": "Lead Generation",
     "keywords": ["is lead generation worth it", "lead generation ROI", "cost per acquisition", "lead generation investment", "customer lifetime value", "payback period"],
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.positionxero.com/blog/is-lead-generation-worth-the-investment" }
@@ -164,6 +164,49 @@
       <p>Say you invest $3,000 in a month of lead generation and it produces 50 qualified leads, a $60 cost per lead. Your team closes 15% of them, roughly 7 new customers, so each customer cost about $400 to acquire. If your average customer is worth $2,500, that $3,000 investment generated in the region of $18,000 in revenue. Even after delivery costs, the channel is clearly paying for itself.</p>
 
       <p>Now flip one variable. Same $60 CPL, but your close rate is 4% instead of 15%. Suddenly a customer costs $1,500 to acquire against the same $2,500 in value, and after the cost of actually doing the work there may be nothing left. Identical leads, identical spend, completely different verdict. That's why the question is never "does lead generation work" but "does the maths work for my numbers."</p>
+
+      <h2>Lead Generation ROI Calculator</h2>
+
+      <p>Put your own four numbers into the calculator below to run the same maths on your business.</p>
+
+      <div class="calc lv-calc">
+        <div class="calc-input">
+          <label class="calc-input-label" for="roiSpend">Monthly spend on lead generation</label>
+          <div class="calc-value-readout" id="roiSpendOut">$3,000</div>
+          <input type="range" id="roiSpend" class="calc-slider" min="200" max="20000" step="100" value="3000" aria-label="Monthly spend in dollars" />
+          <div class="calc-scale"><span>$200</span><span>$20,000</span></div>
+        </div>
+
+        <div class="calc-input">
+          <label class="calc-input-label" for="roiCpl">Cost per lead</label>
+          <div class="calc-value-readout" id="roiCplOut">$60</div>
+          <input type="range" id="roiCpl" class="calc-slider" min="5" max="500" step="1" value="60" aria-label="Cost per lead in dollars" />
+          <div class="calc-scale"><span>$5</span><span>$500</span></div>
+        </div>
+
+        <div class="calc-input">
+          <label class="calc-input-label" for="roiClose">Close rate (leads that become customers)</label>
+          <div class="calc-value-readout" id="roiCloseOut">15%</div>
+          <input type="range" id="roiClose" class="calc-slider" min="1" max="60" step="1" value="15" aria-label="Close rate as a percentage" />
+          <div class="calc-scale"><span>1%</span><span>60%</span></div>
+        </div>
+
+        <div class="calc-input">
+          <label class="calc-input-label" for="roiValue">Average customer value</label>
+          <div class="calc-value-readout" id="roiValueOut">$2,500</div>
+          <input type="range" id="roiValue" class="calc-slider" min="250" max="25000" step="250" value="2500" aria-label="Average customer value in dollars" />
+          <div class="calc-scale"><span>$250</span><span>$25,000</span></div>
+        </div>
+
+        <div class="calc-result" aria-live="polite">
+          <div class="calc-headline"><span id="roiMultiple">5.25</span>x</div>
+          <div class="calc-result-label">return on acquisition spend</div>
+          <div class="calc-result-sub"><span id="roiLeads">50</span>&nbsp;leads&nbsp;a&nbsp;month &middot; <span id="roiCustomers">7.5</span>&nbsp;customers&nbsp;a&nbsp;month &middot; <span id="roiCpa">$400</span>&nbsp;cost&nbsp;per&nbsp;customer</div>
+          <div class="calc-result-sub"><span id="roiRevenue">$18,750</span>&nbsp;revenue&nbsp;a&nbsp;month &middot; <span id="roiPerDollar">$6.25</span>&nbsp;revenue&nbsp;per&nbsp;$1&nbsp;spent</div>
+        </div>
+      </div>
+
+      <p class="calc-note">The calculator starts on the worked example above: $3,000 a month, a $60 cost per lead, a 15% close rate and a $2,500 customer. The roughly 3x floor from Step 3 applies to revenue per $1 spent.</p>
 
       <h2>Lead Generation ROI Scenarios by Industry (2026)</h2>
 
@@ -333,7 +376,7 @@
     </div>
   </div>
 </footer>
-<script src="/js/main.js?v=20261016" defer></script>
+<script src="/js/main.js?v=20261016b" defer></script>
   <script src="/js/immersive.js" defer></script>
 </body>
 </html>
