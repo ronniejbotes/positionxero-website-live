@@ -1276,6 +1276,9 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
   .stakes__inner { left: 6vw; top: 26vh; width: 88vw; }
   .service-item { left: 6vw; bottom: 12vh; width: 88vw; }
   .service-item::before { inset: -30px -30px -30px -6vw; }
+  /* 34em of 10px type is 340px, which from a 6vw start ran 2px past a 360px
+     screen. Cap it so the line always ends inside the viewport (T-68). */
+  .service-item__en { max-width: 94vw; }
   .outro__offer { left: 6vw; top: 12vh; width: 88vw; }
   /* Horizontal placement is owned by outro.js: it sizes the X from the whole
      X+E+R+O lockup and slides it to the 6% slot, so a CSS `right` here would

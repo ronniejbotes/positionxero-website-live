@@ -1137,14 +1137,14 @@ body[data-header-hidden="true"] .nav,
   font-variant-numeric: tabular-nums;
 }
 .problem-card h3 { font-size: 1.05rem; margin-bottom: 12px; color: var(--fg); }
-.problem-card p { font-size: 0.9rem; line-height: 1.78; color: var(--muted); }
+.problem-card p { font-size: 1rem; line-height: 1.78; color: var(--muted); }
 
 /* Service cards */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .service-card { padding: 32px 26px; text-decoration: none; display: block; }
 .service-icon { font-size: 1.6rem; line-height: 1; margin-bottom: 18px; display: block; }
 .service-card h3 { font-size: 1.05rem; margin-bottom: 10px; color: var(--fg); }
-.service-card p { font-size: 0.875rem; line-height: 1.75; color: var(--muted); }
+.service-card p { font-size: 1rem; line-height: 1.75; color: var(--muted); }
 .service-link {
   display: inline-flex;
   align-items: center;
@@ -1184,7 +1184,7 @@ body[data-header-hidden="true"] .nav,
   font-variant-numeric: tabular-nums;
 }
 .process-card h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--fg); }
-.process-card p { font-size: 0.9rem; line-height: 1.78; color: var(--muted); }
+.process-card p { font-size: 1rem; line-height: 1.78; color: var(--muted); }
 
 /* Niche cards */
 .niches-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -1203,7 +1203,7 @@ body[data-header-hidden="true"] .nav,
 .value-card { padding: 32px 26px; }
 .value-icon { font-size: 1.6rem; line-height: 1; margin-bottom: 14px; display: block; }
 .value-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--fg); }
-.value-card p { font-size: 0.88rem; line-height: 1.78; color: var(--muted); }
+.value-card p { font-size: 1rem; line-height: 1.78; color: var(--muted); }
 
 /* Benefit cards */
 .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -1220,7 +1220,18 @@ body[data-header-hidden="true"] .nav,
 .benefit-card:hover::before { opacity: 1; }
 .benefit-icon { font-size: 1.8rem; line-height: 1; margin-bottom: 16px; display: block; }
 .benefit-card h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--fg); }
-.benefit-card p { font-size: 0.88rem; line-height: 1.78; color: var(--muted); }
+.benefit-card p { font-size: 1rem; line-height: 1.78; color: var(--muted); }
+
+/* Card body copy is 16px on a phone, the base above (16 October 2026,
+   T-68). From 769px up, where the grids above have their columns, and in
+   print, each card keeps the size it had before. */
+@media (min-width: 769px), print {
+  .problem-card p { font-size: 0.9rem; }
+  .service-card p { font-size: 0.875rem; }
+  .process-card p { font-size: 0.9rem; }
+  .value-card p   { font-size: 0.88rem; }
+  .benefit-card p { font-size: 0.88rem; }
+}
 .benefit-tag {
   display: inline-block;
   margin-top: 20px;
@@ -1846,7 +1857,12 @@ body[data-header-hidden="true"] .nav,
   line-height: 1.4;
   letter-spacing: -0.01em;
 }
-.blog-card p { font-size: 0.85rem; line-height: 1.75; margin-bottom: 14px; color: var(--muted); }
+.blog-card p { font-size: 1rem; line-height: 1.75; margin-bottom: 14px; color: var(--muted); }
+/* 16px on a phone (T-68, 16 October 2026); the size it had before from
+   769px up, where the blog grid has its three columns, and in print. */
+@media (min-width: 769px), print {
+  .blog-card p { font-size: 0.85rem; }
+}
 .blog-meta {
   display: flex;
   align-items: center;
