@@ -134,6 +134,7 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   ExpiresByType image/svg+xml         "access plus 1 year"
   ExpiresByType text/css              "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript       "access plus 1 month"
   ExpiresByType image/x-icon          "access plus 1 year"
   ExpiresByType font/woff2            "access plus 1 year"
   ExpiresByType font/woff             "access plus 1 year"
@@ -143,6 +144,16 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
 # Long-cache web fonts and icon images as immutable (no revalidation).
 <IfModule mod_headers.c>
   <FilesMatch "\.(woff2|png|jpg|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # The files Vite builds into /assets/ carry a hash of their content in the
+  # name (main-CwOIiklZ.js), so a changed file always arrives under a new name
+  # and a browser can keep the old one for a year (16 October 2026, T-56).
+  # FilesMatch sees only the file name, so this matches that hashed pattern,
+  # which only /assets/ files have (checked against dist/ the same day); the
+  # same rule already runs on other sites on this host. /css/style.css and
+  # /js/main.js have no hash and keep their own lifetimes and the ?v= bump.
+  <FilesMatch "-[A-Za-z0-9_-]{8}\.(js|css|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>
