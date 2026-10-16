@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve, join } from 'path';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import { transform } from 'esbuild';
 
 // import.meta.dirname rather than __dirname: this package is "type": "module",
 // so __dirname only resolved because Vite pre-bundled the config through
@@ -193,8 +194,57 @@ function tableLabels() {
   };
 }
 
+// Minify the stylesheet and scripts copied from public/. Vite copies public/
+// verbatim, so /css/style.css, /js/main.js and /js/immersive.js went out with
+// every comment and indent (Lighthouse "Minify CSS" and "Minify JavaScript" on
+// /blog/, 11 October 2026). This minifies the copies in dist/ with esbuild,
+// which comes with Vite, and leaves the sources in public/ readable: always
+// edit those, never the built files. dist/assets/ is Vite's own output, already
+// minified, and is skipped. esbuild is given the build's own browser targets,
+// so the output uses no syntax those browsers cannot read. The ?v= bump on
+// every page is still needed whenever style.css or main.js changes (CLAUDE.md).
+// Added 16 October 2026 (T-52).
+function minifyPublic() {
+  let outDir;
+  let jsTarget;
+  let cssTarget;
+  let logger;
+  const files = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) {
+        return path === join(outDir, 'assets') ? [] : files(path);
+      }
+      return /\.(css|js)$/.test(entry.name) ? [path] : [];
+    });
+  return {
+    name: 'px-minify-public',
+    apply: 'build',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+      jsTarget = config.build.target || 'es2020';
+      cssTarget = config.build.cssTarget || jsTarget;
+      logger = config.logger;
+    },
+    async closeBundle() {
+      if (!existsSync(outDir)) return;
+      for (const file of files(outDir)) {
+        const isCss = file.endsWith('.css');
+        const result = await transform(readFileSync(file, 'utf8'), {
+          loader: isCss ? 'css' : 'js',
+          minify: true,
+          target: isCss ? cssTarget : jsTarget,
+          sourcefile: file
+        });
+        for (const w of result.warnings) logger.warn(`[px-minify-public] ${file}: ${w.text}`);
+        writeFileSync(file, result.code);
+      }
+    }
+  };
+}
+
 export default defineConfig({
-  plugins: [clarity(), googleAnalytics(), footerYear(), tableLabels()],
+  plugins: [clarity(), googleAnalytics(), footerYear(), tableLabels(), minifyPublic()],
   // Absolute base, and this is load-bearing rather than cosmetic. The legacy
   // pages ship as flat files served extensionless via .htaccess, and Apache
   // also answers the trailing-slash variant (/services/) from the same file.
