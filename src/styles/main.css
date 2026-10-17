@@ -1306,7 +1306,7 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
      The 30% is only the no-JS fallback. */
   .outro__mark { left: 50%; right: auto; top: auto; bottom: 6vh; transform: none; width: 30%; }
   .footer__top { flex-direction: column; padding: 0 15px; }
-  .footer__copyright { font-size: 11px; margin-top: 40px; padding: 0 15px; }
+  .footer__copyright { font-size: 12px; margin-top: 40px; padding: 0 15px; }
   .cognexa__content { left: 20px; right: 20px; }
   .outro { height: auto; }
 }
@@ -1402,6 +1402,15 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
   .footer__contact-btn { font-size: 14px; }
   .footer__privacy { gap: 16px; }
   .footer__privacy a { font-size: 13px; }
+  /* Tap height (phone audit, 17 October 2026): the column links were 17px
+     tall and the sub links 15px, with their spacing held in the column gap.
+     The links now carry that spacing as padding, so each is 31-33px tall to
+     a thumb and the list keeps nearly the same rhythm. */
+  .footer__links .footer__col { gap: 0; }
+  .footer__links .footer__col a { padding: 8px 0; }
+  .footer__links .footer__links-title { margin-bottom: 3px; }
+  .footer__contact { gap: 10px; }
+  .footer__privacy a { padding: 8px 0; }
 
   /* --- 5. calculator -------------------------------------------------------
      Clear the fixed header (z-index 99 over the calc's 8, which is what put
