@@ -187,7 +187,14 @@ body[data-light="true"] .header__logo .logo-word { color: var(--bg); }
 .hamburger span:nth-child(3) { display: none; }
 body[data-light="true"] .hamburger span { background: var(--bg); }
 body[data-menu-open="true"] .hamburger span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
-body[data-menu-open="true"] .hamburger span:nth-child(2) { width: 22px; transform: translateY(-3.25px) rotate(-45deg); }
+body[data-menu-open="true"] .hamburger span:nth-child(2) { width: 22px; align-self: center; transform: translateY(-3.25px) rotate(-45deg); }
+/* The open side menu (z-index 999) used to cover the header (99), so on a
+   phone the burger that opened it sat under the panel and tapping it again
+   did nothing (phone audit, 17 October 2026). While the menu is open the
+   header rides above the panel and stays in view, and the burger shows its
+   X in light ink, since the panel behind it is dark on every beat. */
+body[data-menu-open="true"] .header { z-index: 1000; transform: none; }
+body[data-menu-open="true"] .hamburger span { background: var(--fg); }
 
 /* ---------- Side menu ---------- */
 .side-menu { position: fixed; inset: 0; z-index: 999; visibility: hidden; pointer-events: none; }
@@ -1435,6 +1442,9 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
       var(--bg) 66%,
       rgba(5, 7, 10, 0) 100%);
   }
+  /* the header rides above the open menu, so drop the bar there or it paints
+     a solid band across the top of the panel */
+  body[data-menu-open="true"] .header::before { display: none; }
 }
 
 /* Short screens: the hero copy is anchored to the bottom and grows upward,

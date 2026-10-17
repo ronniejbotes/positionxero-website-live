@@ -10,6 +10,7 @@ export function initHeader() {
   const setOpen = (open) => {
     document.body.setAttribute('data-menu-open', String(open));
     burger?.setAttribute('aria-expanded', String(open));
+    burger?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   };
 
   burger?.addEventListener('click', () => {
