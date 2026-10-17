@@ -165,11 +165,16 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   # visitor still gets a deploy straight away. The cost: a deploy can take up to
   # five minutes to show at an edge that already holds the page. Flush the CDN
   # in hPanel (Websites, Performance, CDN) if a change cannot wait.
-  # `Header set` without "always" only touches 2xx responses, so the branded
-  # 404 page is never held at the edge.
   <FilesMatch "\.html$">
     Header set Cache-Control "public, max-age=0, s-maxage=300"
   </FilesMatch>
+  # LiteSpeed applies the rule above to the branded 404 too (checked live the
+  # same day), and a 404 held at the edge would hide a page published inside
+  # those five minutes. no-cache keeps it out of the CDN; this block must stay
+  # below the one above so it wins.
+  <Files "404.html">
+    Header set Cache-Control "no-cache"
+  </Files>
 </IfModule>
 
 # Compress text assets.
