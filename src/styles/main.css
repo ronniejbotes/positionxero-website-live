@@ -1023,6 +1023,19 @@ body[data-page="top"] .footer {
 .ledger__btn--solid { background: var(--heat); border-color: var(--heat); color: var(--bg); }
 .ledger__btn--solid:hover { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 
+/* Phone reading sizes (phone audit, 17 October 2026). On a phone the card
+   copy was 13px, the "Explore" links 11px and the tags, section labels,
+   badges and caption 10px. Card copy goes to 16px, the way T-68 did it for
+   the legacy pages, links to 13px and the small mono type to 12px. The audit
+   card matches the 15px prose around it. From 769px up nothing changes. */
+@media (max-width: 768px) {
+  .ledger-card__text { font-size: 16px; line-height: 1.7; }
+  .ledger-card--audit p { font-size: 15px; }
+  .ledger-card__more, .ledger__btn { font-size: 13px; }
+  .ledger-card__tag, .ledger-card__num, .ledger__label,
+  .ledger__badges li, .ledger__photo figcaption { font-size: 12px; }
+}
+
 /* ---------- Subpages (plain content pages) ---------- */
 .page { position: relative; z-index: 10; padding: calc(105px + 8vh) clamp(20px, 4vw, 56px) 14vh; }
 .page__inner { max-width: 1080px; margin-inline: auto; }
