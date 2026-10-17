@@ -79,6 +79,7 @@ async function boot() {
   new LeadCalculator();
   const hero = document.querySelector('.hero-layer');
   const stakes = document.querySelector('.stakes-layer');
+  const kvIntro = document.querySelector('.kv-intro');
   const trail = new BinaryTrail(document.querySelector('.content-wrap') ?? document.body);
 
   if (import.meta.env.DEV) window.__px = { sm, gl, trail };   // dev-only debug handle
@@ -97,6 +98,9 @@ async function boot() {
     // worksTitle channel, so no new ScrollTrigger and scrolling back rewinds.
     const band = (t, inAt, inLen, outAt, outLen) =>
       Math.min(1, Math.max(0, t - inAt) / inLen) * Math.max(0, 1 - Math.max(0, t - outAt) / outLen);
+    // the landing statement hands over to the hero claim: gone a little before
+    // the claim is fully in, since both sit in the lower-left
+    if (kvIntro) kvIntro.style.opacity = String(Math.max(0, 1 - p.worksTitle / 0.035));
     if (hero) {
       const o = band(p.worksTitle, 0, 0.08, 0.34, 0.10);
       hero.style.opacity = String(o);
@@ -117,6 +121,7 @@ async function boot() {
       serviceIn: p.serviceIn,
       serviceProgress: p.serviceProgress,
       cognexaIn: p.cognexaIn,
+      cognexa: p.cognexa,
       lenisVelocity: sm.velocity,
       pageScroll: sm.scroll / window.innerHeight
     });

@@ -22,7 +22,13 @@ const WORKS = [
   { title: 'COGNEXA', sub: 'AI SYSTEMS + AUTOMATION', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/cognexa.jpg') },
   { title: 'TINY HOMES SA', sub: 'CONFIGURATOR + PAID SEARCH', pal: ['#FF6A1F', '#7A2E0C', '#05070A'], img: asset('img/works/kv-01.jpg') },
   { title: 'OTAKU KULTURE', sub: 'ANIME + CAR CULTURE MERCH', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/otaku-kulture.jpg') },
-  { title: 'CAJEE BOTES', sub: 'BOOKINGS + LOCAL SEARCH', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/cajee-botes.jpg') }
+  { title: 'CAJEE BOTES', sub: 'BOOKINGS + LOCAL SEARCH', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/cajee-botes.jpg') },
+  // Added 18 October 2026, permission recorded in the plan folder. The three
+  // captures were taken from the live sites the same day, framed to leave out
+  // the clients' own prices and figures and any faces.
+  { title: 'VITAL SOCKS', sub: 'CUSTOM SHOPIFY + SEO', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/vital-socks.jpg') },
+  { title: 'AUSTEK ENGINEERING', sub: 'INDUSTRIAL SITE + LOCAL SEO', pal: ['#FF6A1F', '#7A2E0C', '#05070A'], img: asset('img/works/austek-engineering.jpg') },
+  { title: 'PEAK LEADS', sub: '3D SITE + SEO', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/peak-leads.jpg') }
 ];
 
 const SERVICE = [

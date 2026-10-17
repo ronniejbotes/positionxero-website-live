@@ -156,6 +156,20 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   <FilesMatch "-[A-Za-z0-9_-]{8}\.(js|css|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+  # Pages at the CDN edge (18 October 2026). Without a Cache-Control header
+  # Hostinger's CDN marks every page DYNAMIC and fetches it from the server on
+  # each request (x-hcdn-cache-status: DYNAMIC, x-hcdn-upstream-rt 0.16s from
+  # the Johannesburg edge, further from overseas), which an audit scored as a
+  # slow 0.72s server response. "public" plus s-maxage lets the edge hold a page
+  # for five minutes; max-age=0 keeps browsers revalidating, so a returning
+  # visitor still gets a deploy straight away. The cost: a deploy can take up to
+  # five minutes to show at an edge that already holds the page. Flush the CDN
+  # in hPanel (Websites, Performance, CDN) if a change cannot wait.
+  # `Header set` without "always" only touches 2xx responses, so the branded
+  # 404 page is never held at the edge.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, s-maxage=300"
+  </FilesMatch>
 </IfModule>
 
 # Compress text assets.

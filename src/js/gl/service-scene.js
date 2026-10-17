@@ -71,12 +71,15 @@ void main() {
 const panelFrag = /* glsl */ `
 uniform sampler2D uTex;
 uniform float uServiceIn;
+uniform float uCognexaFade;      // 0..1 reel to black under the Cognexa copy
 varying vec2 vUv;
 varying vec2 vLocal;
 void main() {
   vec3 col = texture2D(uTex, vUv).rgb;
 #ifndef IS_COGNEXA
   col *= smoothstep(1.0, 0.3, length(vLocal));
+#else
+  col *= 1.0 - uCognexaFade;
 #endif
   col *= 0.7;
   gl_FragColor = vec4(col, smoothstep(0.5, 1.0, uServiceIn));
@@ -145,6 +148,7 @@ export class ServiceScene {
       uServiceIn: { value: 0 },
       uCognexaIn: { value: 0 },
       uCognexaView: { value: 0 },
+      uCognexaFade: { value: 0 },
       uScale: { value: new THREE.Vector3(14.8, 8.3, 1) }
     };
 
@@ -228,12 +232,14 @@ export class ServiceScene {
    * @param {number} serviceIn   0..1 wall un-curl
    * @param {number} cognexaIn   0..1 cognexa enter
    * @param {number} cognexaView 0..1 fullscreen peel
+   * @param {number} cognexaFade 0..1 peeled reel fading to black
    */
-  update(t, thumbScroll, serviceIn, cognexaIn, cognexaView) {
+  update(t, thumbScroll, serviceIn, cognexaIn, cognexaView, cognexaFade = 0) {
     this.uniformsShared.uThumbnailScroll.value = Math.min(3, thumbScroll);
     this.uniformsShared.uServiceIn.value = serviceIn;
     this.uniformsShared.uCognexaIn.value = cognexaIn;
     this.uniformsShared.uCognexaView.value = cognexaView;
+    this.uniformsShared.uCognexaFade.value = cognexaFade;
     this.titleUniforms.uTime.value = t;
     const reel = Math.max(0, Math.min(2, Math.round(thumbScroll - 1)));
     this.titleUniforms.uVideoTex.value = this.media.serviceTexture(reel);

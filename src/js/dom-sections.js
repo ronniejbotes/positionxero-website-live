@@ -224,8 +224,14 @@ export class CognexaController {
 
   update(progress, section) {
     if (!this.root) return;
-    // hide entirely once the outro/footer takes over
-    const p = section === 'footer' ? 0 : Math.min(1, progress * 1.5);
+    // In from 0.18 to 0.6, once the reel behind has mostly gone to black (it
+    // fades over 0 to 0.25, scene.js), so the copy and the screenshot barely
+    // overlap. Out again over the last 8%, past the 0.9 snap point: the copy
+    // is gone by the time the section flips to the footer, instead of vanishing
+    // in one frame at the flip, and the stage scrolls away dark.
+    const fadeIn = Math.min(1, Math.max(0, (progress - 0.18) / 0.42));
+    const fadeOut = Math.min(1, Math.max(0, (1 - progress) / 0.08));
+    const p = section === 'footer' ? 0 : fadeIn * fadeOut;
     this.root.style.opacity = String(p);
     const visible = p > 0.01;
     this.root.setAttribute('data-visible', String(visible));

@@ -347,7 +347,7 @@ export class PositionXeroGL {
     this._raf = 0;
     this._scroll = {
       worksTitle: 0, worksProgress: 0, worksOutro: 0, missionIn: 0,
-      vision: 0, serviceIn: 0, serviceProgress: 0, cognexaIn: 0, page: 0
+      vision: 0, serviceIn: 0, serviceProgress: 0, cognexaIn: 0, cognexa: 0, page: 0
     };
     this._projA = new THREE.Matrix4();
 
@@ -549,6 +549,10 @@ export class PositionXeroGL {
     // to sum to exactly 1, so feeding the unclamped value drove the peel to 1.5
     // and finished it a full viewport before the cognexa runway starts
     const cognexaView = lp.set('cognexaView', Math.max(0, Math.min(1, Math.min(3, thumbU) - 2.5)), 0.7) + cognexaIn * 0.5;
+    // the peeled reel fades to black over the first quarter of the Cognexa
+    // runway, before the copy arrives, so the copy never sits over the
+    // screenshot and the stage leaves dark (timing in CognexaController)
+    const cognexaFade = Math.min(1, lp.set('cognexaFade', s.cognexa ?? 0, 0.7) / 0.25);
     const scrollVel = lp.set('lenisVel', Math.max(-30, Math.min(30, s.lenisVelocity ?? 0)), 0.5);
     const missionScroll = lp.set('missionScroll', s.pageScroll ?? 0, 0.5);
 
@@ -619,7 +623,7 @@ export class PositionXeroGL {
     this.wordmark2D.material.uniforms.uAlpha.value = this.animator.get('wordmark2D');
     this.missionGrid.setScroll(missionScroll);
     this.thumbs.update(carouselU, carouselVel);
-    this.service.update(t, thumbU, serviceIn, cognexaIn, cognexaView);
+    this.service.update(t, thumbU, serviceIn, cognexaIn, cognexaView, cognexaFade);
 
     /* --- mission wipe smoothing (edge arc from wipe velocity) --- */
     const dv = missionVis - this._missionVisible;

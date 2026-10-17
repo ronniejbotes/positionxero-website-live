@@ -93,7 +93,7 @@ body.no-3d::before {
     repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 26px),
     radial-gradient(120% 90% at 50% 40%, #101820 0%, var(--bg) 78%);
 }
-body:is(.no-3d, :not(.js-enabled)) :is(.news-hud, .rail, .scroll-hint) { display: none; }
+body:is(.no-3d, :not(.js-enabled)) :is(.news-hud, .rail, .scroll-hint, .kv-intro) { display: none; }
 
 .fallback-mark {
   display: none;
@@ -110,9 +110,12 @@ body.no-3d .fallback-mark { display: block; }
   isolation: isolate;
   transition: opacity 0.8s ease, visibility 0.8s;
 }
+/* no script, nothing to lift the overlay: the head script adds .js first */
+html:not(.js) .loading { display: none; }
 /* keep every fixed HUD layer dark until the GL handoff completes */
 body[data-gl-ready="false"] .news-hud,
 body[data-gl-ready="false"] .rail,
+body[data-gl-ready="false"] .scroll-hint,
 body[data-gl-ready="false"] .works-more { opacity: 0 !important; }
 .loading[data-done="true"] { opacity: 0; visibility: hidden; pointer-events: none; }
 .loading__stage {
@@ -288,16 +291,83 @@ body[data-light="true"] .rail__item[data-active="true"] .rail__label { color: va
 .news-hud__item a:hover { opacity: 0.6; }
 @media (max-width: 949px) { .news-hud { display: none; } }
 
-/* ---------- scroll hint (mobile only, like the reference) ---------- */
-.scroll-hint {
-  position: fixed; right: 15px; bottom: 30px; z-index: 100;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
-  color: var(--ink-05);
-  writing-mode: vertical-rl;
-  transition: opacity 0.3s ease-in-out;
+/* ---------- kv intro: what we do, on the first screen ----------
+   Bottom-left, mirroring the news HUD. Opacity is scrubbed per frame in main.js
+   (no transition on .kv-intro itself, it would fight the scrub); the entrance
+   after the loader lives on the inner block instead. */
+.kv-intro {
+  position: fixed; left: 4vw; bottom: 46px; z-index: 21;
+  width: min(30rem, 36vw);
+  pointer-events: none;
 }
-.scroll-hint[data-hidden="true"] { opacity: 0; }
-@media (min-width: 769px) { .scroll-hint { display: none; } }
+/* the LED wall can run bright behind this corner, so the copy carries its own
+   ground, the same treatment as .hero__inner */
+.kv-intro::before {
+  content: ""; position: absolute; inset: -60px -90px -46px -4vw; z-index: -1;
+  background: radial-gradient(110% 100% at 0% 70%, rgba(5, 7, 10, 0.92) 0%, rgba(5, 7, 10, 0.8) 45%, rgba(5, 7, 10, 0) 80%);
+}
+.kv-intro__inner { transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+body[data-gl-ready="false"] .kv-intro__inner { opacity: 0; transform: translateY(14px); }
+.kv-intro__eyebrow {
+  display: inline-block; padding-top: 10px; margin-bottom: 16px;
+  border-top: 1px solid var(--heat);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink-05);
+}
+.kv-intro__line {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(36px, 3.7vw, 60px); line-height: 1; letter-spacing: -0.02em;
+  color: var(--fg);
+  text-shadow: 0 2px 30px rgba(5, 7, 10, 0.75);
+}
+.kv-intro__line span { display: block; }
+.kv-intro__line span:last-child { color: var(--signal); }
+.kv-intro__sub {
+  margin-top: 16px; max-width: 34ch;
+  font-family: var(--text); font-size: 15px; line-height: 1.6; color: var(--ink-05);
+  text-shadow: 0 1px 16px rgba(5, 7, 10, 0.9);
+}
+
+/* ---------- scroll hint: kv only, every width ---------- */
+.scroll-hint {
+  position: fixed; left: 50%; bottom: 22px; z-index: 100;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink-05); white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.6s ease 0.3s;
+}
+.scroll-hint[data-hidden="true"] { opacity: 0; transition-delay: 0s; }
+.scroll-hint__track {
+  position: relative; overflow: hidden;
+  width: 1px; height: 44px; background: var(--ink-40);
+}
+/* a short signal-cyan pulse running down the track, on repeat */
+.scroll-hint__track::after {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 100%; height: 40%;
+  background: var(--signal);
+  transform: translateY(-100%);
+  animation: px-scroll-cue 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes px-scroll-cue {
+  0%   { transform: translateY(-100%); }
+  70%  { transform: translateY(250%); }
+  100% { transform: translateY(250%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint__track::after { animation: none; transform: none; height: 100%; opacity: 0.6; }
+}
+
+@media (max-width: 768px) {
+  /* the X sits mid-screen on a phone; the statement takes the band beneath
+     it, clear of the scroll cue */
+  .kv-intro { left: 6vw; bottom: 100px; width: 88vw; }
+  .kv-intro::before { inset: -50px -6vw -40px -6vw; }
+  .kv-intro__sub { font-size: 14px; }
+  .scroll-hint { bottom: 20px; font-size: 10px; }
+}
 
 /* ---------- scroll runways ---------- */
 .main { position: relative; z-index: 10; pointer-events: none; }
