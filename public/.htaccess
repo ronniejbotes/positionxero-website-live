@@ -161,17 +161,19 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   # each request (x-hcdn-cache-status: DYNAMIC, x-hcdn-upstream-rt 0.16s from
   # the Johannesburg edge, further from overseas), which an audit scored as a
   # slow 0.72s server response. "public" plus s-maxage lets the edge hold a page
-  # for five minutes; max-age=0 keeps browsers revalidating, so a returning
-  # visitor still gets a deploy straight away. The cost: a deploy can take up to
-  # five minutes to show at an edge that already holds the page. Flush the CDN
-  # in hPanel (Websites, Performance, CDN) if a change cannot wait.
+  # for a day, so even a quiet page is still at a far edge when the next visitor
+  # or audit arrives; max-age=0 keeps browsers revalidating. A deploy clears the
+  # edge: checked live on 18 October 2026, the edge copy was replaced within
+  # seconds of a deploy. If a deploy ever does not show, check
+  # `x-hcdn-cache-status` and `age`, then flush the CDN in hPanel (Websites,
+  # Performance, CDN).
   <FilesMatch "\.html$">
-    Header set Cache-Control "public, max-age=0, s-maxage=300"
+    Header set Cache-Control "public, max-age=0, s-maxage=86400"
   </FilesMatch>
   # LiteSpeed applies the rule above to the branded 404 too (checked live the
-  # same day), and a 404 held at the edge would hide a page published inside
-  # those five minutes. no-cache keeps it out of the CDN; this block must stay
-  # below the one above so it wins.
+  # same day), and a 404 held at the edge would hide a newly published page.
+  # no-cache keeps it out of the CDN; this block must stay below the one above
+  # so it wins.
   <Files "404.html">
     Header set Cache-Control "no-cache"
   </Files>

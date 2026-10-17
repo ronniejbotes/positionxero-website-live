@@ -29,7 +29,7 @@ It was called `alche-copy-website` until 2026-09-08, which is why a full day of 
 grep -rl 'v=20260908' public --include='*.html' | xargs sed -i '' 's/v=20260908/v=YYYYMMDD/g'
 ```
 
-**Pages are held at the CDN edge for five minutes (18 October 2026).** `public/.htaccess` sends `Cache-Control: public, max-age=0, s-maxage=300` on every `.html` page, so Hostinger's CDN serves pages from the edge instead of fetching each one from the server (an audit had scored the uncached 0.72s response as slow). Browsers still revalidate on every visit. The cost is that a deploy can take up to five minutes to appear at an edge already holding the page: check `x-hcdn-cache-status` and `age` before deciding a deploy failed, and flush the CDN in hPanel (Websites, Performance, CDN) if a change cannot wait.
+**Pages are held at the CDN edge for a day (18 October 2026).** `public/.htaccess` sends `Cache-Control: public, max-age=0, s-maxage=86400` on every `.html` page except the 404, so Hostinger's CDN serves pages from the edge instead of fetching each one from the server (an audit had scored the uncached 0.72s response as slow; an edge hit answers in about 0.03s). Browsers still revalidate on every visit, and a deploy clears the edge: checked live that day, the cached homepage was replaced within seconds of a push. If a deploy ever does not show, check `x-hcdn-cache-status` and `age`, then flush the CDN in hPanel (Websites, Performance, CDN).
 
 ## Honest copy: who the company is
 
