@@ -1379,13 +1379,22 @@ body[data-header-hidden="true"] .nav,
   border-radius: 0 var(--radius) var(--radius) 0;
   padding: 22px 26px;
   margin: 28px 0;
+  /* the box hugs the 72ch paragraph below (26px padding each side plus the
+     2px and 1px borders) rather than running empty to the container edge */
+  max-width: calc(72ch + 55px);
 }
 .definition-block p {
   color: var(--ink-05);
   font-size: 1rem;
   line-height: 1.8;
   margin: 0;
+  /* about 140 characters a line at 1440 before (desktop audit, 18 October
+     2026). Narrower layouts and phones never reach the cap. */
+  max-width: 72ch;
 }
+/* Under a centred section heading the block centres with the heading. After
+   a left-aligned heading it stays on the left edge, in line with it. */
+.section-header:not(.section-header-left) ~ .definition-block { margin-inline: auto; }
 
 /* ---- Audit card. Amber says "this is the offer". ---- */
 .audit-card {
