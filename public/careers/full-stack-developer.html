@@ -28,7 +28,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" /></noscript>
-  <link rel="stylesheet" href="/css/style.css?v=20261016" />
+  <link rel="stylesheet" href="/css/style.css?v=20261018" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230D0D0D'/><text x='50' y='72' font-size='58' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'>X</text></svg>" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -105,39 +105,8 @@
   }
   </script>
 
-  <style>
-    /* Page-scoped only. style.css gives inline prose links their cyan and
-       underline inside .article-content, .legal-content, .audit-card and
-       .contact-card. This page is long-form prose inside .section bands,
-       so it restates the same treatment for the copy blocks it uses. */
-    .role-prose { max-width: 780px; margin: 0 auto; }
-    .role-prose p { font-size: 1.05rem; line-height: 1.85; color: var(--muted); margin-bottom: 22px; }
-    .role-prose p:last-child { margin-bottom: 0; }
-    .role-list { max-width: 760px; margin: 0 auto; }
-    .role-list .report-list { font-size: 1rem; }
-    .role-list > p { font-size: 0.95rem; margin-top: 20px; }
-    .role-form { max-width: 680px; margin: 0 auto; }
-    .role-prose a,
-    .role-list a,
-    .role-form a,
-    .section-header p a,
-    .cta-banner p a {
-      color: var(--signal);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      text-decoration-color: rgba(46, 230, 255, 0.45);
-      transition: text-decoration-color var(--tr);
-    }
-    .role-prose a:hover,
-    .role-list a:hover,
-    .role-form a:hover,
-    .section-header p a:hover,
-    .cta-banner p a:hover { text-decoration-color: var(--signal); }
-    .role-facts { margin-top: 22px; }
-  </style>
 </head>
-<body class="dark-nav">
+<body class="dark-nav page-full-stack-developer">
 <a href="#main" class="skip-link">Skip to content</a>
 <nav class="nav" id="nav" aria-label="Primary">
   <div class="container">
@@ -199,7 +168,7 @@
     </div>
   </section>
 
-  <section class="section" style="background:var(--bg-2);">
+  <section class="section u-bg-white">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">The Work</span>
@@ -258,7 +227,7 @@
     </div>
   </section>
 
-  <section class="section" style="background:var(--bg-2);">
+  <section class="section u-bg-white">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Nice To Have</span>
@@ -307,7 +276,7 @@
     </div>
   </section>
 
-  <section class="section" id="apply" style="background:var(--bg-2);">
+  <section class="section u-bg-white" id="apply">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Apply</span>
@@ -333,40 +302,40 @@
           <!-- tells us which role the application is for -->
           <input type="hidden" name="role" value="Full Stack Developer" />
           <!-- honeypot: real users never see this; bots that fill it get silently dropped -->
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honeypot" />
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="firstName">First Name *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+              <label class="form-label" for="firstName">First Name *<span class="sr-only"> (required)</span></label>
               <input class="form-input" type="text" id="firstName" name="firstName" placeholder="John" required aria-required="true" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="lastName">Last Name *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+              <label class="form-label" for="lastName">Last Name *<span class="sr-only"> (required)</span></label>
               <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required aria-required="true" />
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="email">Email Address *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="email">Email Address *<span class="sr-only"> (required)</span></label>
             <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required aria-required="true" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="phone">Phone *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="phone">Phone *<span class="sr-only"> (required)</span></label>
             <input class="form-input" type="tel" id="phone" name="phone" placeholder="Include your country code" required aria-required="true" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="location">Where Are You Based? *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="location">Where Are You Based? *<span class="sr-only"> (required)</span></label>
             <input class="form-input" type="text" id="location" name="location" placeholder="City and country" required aria-required="true" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="timezone">Your Time Zone *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="timezone">Your Time Zone *<span class="sr-only"> (required)</span></label>
             <input class="form-input" type="text" id="timezone" name="timezone" placeholder="e.g. UTC+2 (Johannesburg) or UTC-6 (Dallas)" required aria-required="true" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="cvLink">Link to Your Portfolio, GitHub or a Live Site You Built *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="cvLink">Link to Your Portfolio, GitHub or a Live Site You Built *<span class="sr-only"> (required)</span></label>
             <input class="form-input" type="url" id="cvLink" name="cvLink" inputmode="url" placeholder="https://github.com/yourname" required aria-required="true" />
           </div>
           <div class="form-group">
-            <label class="form-label" for="experience">Years of Relevant Experience *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="experience">Years of Relevant Experience *<span class="sr-only"> (required)</span></label>
             <select class="form-select" id="experience" name="experience" required aria-required="true">
               <option value="" disabled selected>Select a range...</option>
               <option>Less than 1 year</option>
@@ -377,7 +346,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="startDate">Earliest Start Date *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="startDate">Earliest Start Date *<span class="sr-only"> (required)</span></label>
             <select class="form-select" id="startDate" name="startDate" required aria-required="true">
               <option value="" disabled selected>Select an option...</option>
               <option>Immediately</option>
@@ -388,7 +357,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="why">Why you? *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+            <label class="form-label" for="why">Why you? *<span class="sr-only"> (required)</span></label>
             <textarea class="form-textarea" id="why" name="why" placeholder="Send us a link to something you built and tell us what was slow, broken or wrong about it, and what you did about it. If you have a Lighthouse or Core Web Vitals number before and after, include it." required aria-required="true"></textarea>
           </div>
           <div class="form-group">
@@ -407,8 +376,8 @@
               <option>Other</option>
             </select>
           </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:16px;">Apply for This Role →</button>
-          <p style="font-size:0.8rem;text-align:center;margin-top:12px;">Your details stay with us. We don't share applications with anyone else. Prefer to attach a CV? Email <a data-em-u="hello" data-em-d="positionxero.com">hello [at] positionxero.com</a> with &ldquo;Full Stack Developer&rdquo; in the subject line.</p>
+          <button type="submit" class="btn-primary form-submit">Apply for This Role →</button>
+          <p class="form-note">Your details stay with us. We don't share applications with anyone else. Prefer to attach a CV? Email <a data-em-u="hello" data-em-d="positionxero.com">hello [at] positionxero.com</a> with &ldquo;Full Stack Developer&rdquo; in the subject line.</p>
         </form>
       </div>
     </div>
@@ -506,7 +475,7 @@
         <ul>
           <li><a data-em-u="hello" data-em-d="positionxero.com">hello [at] positionxero.com</a></li>
           <li><a href="tel:+27662412155">+27 66 241 2155</a></li>
-          <li><a href="/free-audit" class="btn-primary" style="margin-top:12px;font-size:13px;padding:10px 20px;">Book Free Audit →</a></li>
+          <li><a href="/free-audit" class="btn-primary footer-cta">Book Free Audit →</a></li>
         </ul>
       </div>
     </div>

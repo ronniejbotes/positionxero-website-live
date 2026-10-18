@@ -28,7 +28,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" /></noscript>
-  <link rel="stylesheet" href="/css/style.css?v=20261016" />
+  <link rel="stylesheet" href="/css/style.css?v=20261018" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230D0D0D'/><text x='50' y='72' font-size='58' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'>X</text></svg>" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -150,28 +150,28 @@
   </section>
 
   <!-- WHO DOES THE WORK -->
-  <section class="section" style="background:var(--bg-2);">
+  <section class="section u-bg-white">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Founder-Led</span>
         <h2>You Deal With the Person Doing the Work</h2>
         <p>The person who runs your account is the person you talk to, with a founder close to the work and joining calls where they can. No middleman relaying messages between you and whoever is doing the job.</p>
       </div>
-      <div class="values-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:820px;margin:0 auto;">
+      <div class="values-grid founder-cards">
         <div class="value-card fade-in">
           <img class="founder-avatar" src="/img/founder-ronnie.jpg" alt="Ronnie James Botes, Co-Founder of Position Xero" width="400" height="400" loading="lazy" decoding="async" />
           <h3>Ronnie James Botes</h3>
-          <p style="margin-bottom:10px;"><strong>Co-Founder</strong></p>
+          <p class="founder-role"><strong>Co-Founder</strong></p>
           <p>Web development and SEO: the search side of the path from a click to a booked job.</p>
         </div>
         <div class="value-card fade-in delay-1">
           <img class="founder-avatar" src="/img/founder-keegan.jpg" alt="Keegan Shane Haumann, Co-Founder of Position Xero" width="400" height="400" loading="lazy" decoding="async" />
           <h3>Keegan Shane Haumann</h3>
-          <p style="margin-bottom:10px;"><strong>Co-Founder</strong></p>
+          <p class="founder-role"><strong>Co-Founder</strong></p>
           <p>Full-stack developer. Builds the sites, landing pages, and tracking your campaigns run on, alongside the other developers here.</p>
         </div>
       </div>
-      <div style="text-align:center;margin-top:40px;" class="fade-in">
+      <div class="fade-in section-cta">
         <a href="/about" class="btn-outline">More About Us →</a>
       </div>
     </div>
@@ -209,14 +209,14 @@
   </section>
 
   <!-- YOU OWN EVERYTHING -->
-  <section class="section" style="background:var(--bg-2);">
+  <section class="section u-bg-white">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">No Lock-In</span>
         <h2>You Own Everything</h2>
         <p>Some agencies keep the website and the data when you cancel. We think that's wrong, so here is what stays yours in writing.</p>
       </div>
-      <div style="max-width:760px;margin:0 auto;" class="fade-in">
+      <div class="fade-in section-prose">
         <div class="audit-card">
           <p><strong>Ad accounts in your name.</strong> Your Google Ads and Meta ad accounts belong to your business. We work inside them with access you can revoke at any time.</p>
         </div>
@@ -241,7 +241,7 @@
         <h2>The 90-Day Cost-Per-Lead Guarantee</h2>
         <p>A promise with a number on it, because a new agency should carry the risk, not you.</p>
       </div>
-      <div style="max-width:760px;margin:0 auto;" class="fade-in">
+      <div class="fade-in section-prose">
         <div class="audit-card">
           <p><strong>If we don't beat your current cost per lead within 90 days of your campaigns going live, your fourth month's management fee is free.</strong> Starting from zero, with no existing campaigns to beat? Then the guarantee applies to the cost-per-lead target we set together at kickoff. It covers our management fee (your ad spend is always yours) and applies to Google Ads, Meta Ads, and managed lead-generation engagements. The clock starts at launch, not at signing, and pauses if we're waiting on access or approvals from your side.</p>
         </div>
@@ -250,14 +250,14 @@
   </section>
 
   <!-- HOW TO CANCEL -->
-  <section class="section" style="background:var(--bg-2);">
+  <section class="section u-bg-white">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">The Exit</span>
         <h2>How to Cancel</h2>
         <p>An agency that reports honestly doesn't need a contract to keep you. Everything we do is month-to-month, cancel anytime.</p>
       </div>
-      <div style="max-width:760px;margin:0 auto;" class="fade-in">
+      <div class="fade-in section-prose">
         <div class="audit-card">
           <p>To cancel, send us a simple email. It takes effect at the end of the billing month. There's no cancellation fee and no notice-period games, and you keep the ad accounts, the website, the data, and the creative.</p>
         </div>
@@ -325,7 +325,7 @@
         <ul>
           <li><a data-em-u="hello" data-em-d="positionxero.com">hello [at] positionxero.com</a></li>
           <li><a href="tel:+27662412155">+27 66 241 2155</a></li>
-          <li><a href="/free-audit" class="btn-primary" style="margin-top:12px;font-size:13px;padding:10px 20px;">Book Free Audit →</a></li>
+          <li><a href="/free-audit" class="btn-primary footer-cta">Book Free Audit →</a></li>
         </ul>
       </div>
     </div>

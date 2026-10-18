@@ -28,7 +28,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" /></noscript>
-  <link rel="stylesheet" href="/css/style.css?v=20261016" />
+  <link rel="stylesheet" href="/css/style.css?v=20261018" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230D0D0D'/><text x='50' y='72' font-size='58' font-family='Arial' font-weight='900' fill='white' text-anchor='middle'>X</text></svg>" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -114,8 +114,8 @@
       <div class="contact-grid">
         <!-- FORM -->
         <div class="fade-in">
-          <h2 style="margin-bottom:8px;">Book Your Free Audit</h2>
-          <p style="margin-bottom:32px;">Fill in your details and we'll reach out within 24 hours to schedule your free strategy call.</p>
+          <h2 class="u-mb-8">Book Your Free Audit</h2>
+          <p class="u-mb-32">Fill in your details and we'll reach out within 24 hours to schedule your free strategy call.</p>
 
           <!--
             LEAD FORM: submissions are emailed to the team inbox via FormSubmit.co (no backend needed).
@@ -133,24 +133,24 @@
             <input type="hidden" name="_next" value="https://www.positionxero.com/thank-you" />
             <input type="hidden" name="_autoresponse" value="Thanks for requesting your free audit from Position Xero. We've received your details and we will reach out within 24 hours to schedule your call. The Position Xero Team" />
             <!-- honeypot: real users never see this; bots that fill it get silently dropped -->
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honeypot" />
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="firstName">First Name *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+                <label class="form-label" for="firstName">First Name *<span class="sr-only"> (required)</span></label>
                 <input class="form-input" type="text" id="firstName" name="firstName" placeholder="John" required aria-required="true" />
               </div>
               <div class="form-group">
-                <label class="form-label" for="lastName">Last Name *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+                <label class="form-label" for="lastName">Last Name *<span class="sr-only"> (required)</span></label>
                 <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required aria-required="true" />
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="email">Email Address *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+              <label class="form-label" for="email">Email Address *<span class="sr-only"> (required)</span></label>
               <input class="form-input" type="email" id="email" name="email" placeholder="john@company.com" required aria-required="true" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="phone">Phone *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+              <label class="form-label" for="phone">Phone *<span class="sr-only"> (required)</span></label>
               <input class="form-input" type="tel" id="phone" name="phone" placeholder="Include your country code" required aria-required="true" />
             </div>
             <div class="form-group">
@@ -162,7 +162,7 @@
               <input class="form-input" type="url" id="website" name="website" inputmode="url" placeholder="https://yourcompany.com" />
             </div>
             <div class="form-group">
-              <label class="form-label" for="service">Which service are you most interested in? *<span style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;"> (required)</span></label>
+              <label class="form-label" for="service">Which service are you most interested in? *<span class="sr-only"> (required)</span></label>
               <select class="form-select" id="service" name="service" required aria-required="true">
                 <option value="" disabled selected>Select a service...</option>
                 <option>Google Ads Management</option>
@@ -189,17 +189,17 @@
               <label class="form-label" for="message">Anything else we should know?</label>
               <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your business, current challenges, or what you've tried before..."></textarea>
             </div>
-            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:16px;">Book My Free Strategy Call →</button>
-            <p style="font-size:0.8rem;text-align:center;margin-top:12px;">We'll respond within 24 hours. No spam, ever.</p>
+            <button type="submit" class="btn-primary form-submit">Book My Free Strategy Call →</button>
+            <p class="form-note">We'll respond within 24 hours. No spam, ever.</p>
           </form>
         </div>
 
         <!-- CONTACT INFO -->
         <div class="fade-in delay-2">
-          <h3 style="margin-bottom:8px;">What Happens Next?</h3>
-          <p style="margin-bottom:32px;">After you submit your details, here's exactly what to expect.</p>
+          <h3 class="u-mb-8">What Happens Next?</h3>
+          <p class="u-mb-32">After you submit your details, here's exactly what to expect.</p>
 
-          <div class="contact-info" style="margin-bottom:48px;">
+          <div class="contact-info u-mb-48">
             <div class="contact-card">
               <div>
                 <h4>1. We Call You Back</h4>
@@ -220,7 +220,7 @@
             </div>
           </div>
 
-          <h3 style="margin-bottom:24px;">Get In Touch Directly</h3>
+          <h3 class="u-mb-24">Get In Touch Directly</h3>
           <div class="contact-info">
             <div class="contact-card">
               <div>
