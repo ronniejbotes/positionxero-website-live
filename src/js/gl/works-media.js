@@ -32,8 +32,14 @@ const WORKS = [
 ];
 
 const SERVICE = [
-  { title: 'WEB', sub: 'SITES + LANDING PAGES', pal: ['#FF6A1F', '#7A2E0C', '#05070A'] },
-  { title: 'SEARCH', sub: 'AI + TRADITIONAL', pal: ['#2EE6FF', '#0E5C77', '#05070A'] },
+  // Designed key visuals (18 October 2026) in place of the generated art, which
+  // read as placeholders: real client sites in browser frames for WEB, an
+  // illustrative answer stack for SEARCH. Both keep their weight top and right,
+  // because the service copy and its scrim cover the panel's lower left.
+  { title: 'WEB', sub: 'SITES + LANDING PAGES', pal: ['#FF6A1F', '#7A2E0C', '#05070A'],
+    img: asset('img/works/service-web.jpg') },
+  { title: 'SEARCH', sub: 'AI + TRADITIONAL', pal: ['#2EE6FF', '#0E5C77', '#05070A'],
+    img: asset('img/works/service-search.jpg') },
   // The Cognexa reel peels to a fullscreen cover-fit quad, so it carries the
   // real site rather than generated art: this is the one panel a visitor reads
   // as a preview. 2560x1440 because it fills the viewport on a retina display.
@@ -115,7 +121,10 @@ export class WorksMedia {
   constructor() {
     this.count = WORKS.length;
     this._works = WORKS.map((spec, i) => this._make(spec, i, 1024, 576));
-    this._service = SERVICE.map((spec, i) => this._make(spec, 100 + i, 1024, 576));
+    // a service panel fills most of the viewport width, so one carrying a real
+    // image gets a canvas big enough to stay sharp on a retina display
+    this._service = SERVICE.map((spec, i) =>
+      this._make(spec, 100 + i, spec.img ? 1600 : 1024, spec.img ? 900 : 576));
   }
 
   _make(spec, seed, W, H) {

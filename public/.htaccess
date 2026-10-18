@@ -163,8 +163,9 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   # slow 0.72s server response. "public" plus s-maxage lets the edge hold a page
   # for a day, so even a quiet page is still at a far edge when the next visitor
   # or audit arrives; max-age=0 keeps browsers revalidating. A deploy clears the
-  # edge: checked live on 18 October 2026, the edge copy was replaced within
-  # seconds of a deploy. If a deploy ever does not show, check
+  # edge: checked live twice on 18 October 2026, both Johannesburg edge nodes
+  # dropped the old copy within about a minute of the new files landing. If a
+  # deploy ever does not show after a couple of minutes, check
   # `x-hcdn-cache-status` and `age`, then flush the CDN in hPanel (Websites,
   # Performance, CDN).
   <FilesMatch "\.html$">
