@@ -677,7 +677,7 @@ body[data-gl-ready="false"] .kv-intro__inner { opacity: 0; transform: translateY
 .cognexa__arrow { width: clamp(48px, 5vw, 92px); color: var(--signal); }
 .cognexa__lead {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
-  color: var(--signal); margin-bottom: 22px;
+  color: var(--signal); margin-bottom: 22px; text-transform: uppercase;
 }
 .cognexa__text {
   font-family: var(--text); font-weight: 400; letter-spacing: 0.005em;
