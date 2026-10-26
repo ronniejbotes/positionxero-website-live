@@ -11,7 +11,7 @@
 - Full website: From R29,900 one-time
 - Local SEO: From R9,900/month
 - Full SEO: From R16,500/month (on-page, technical, AI SEO, content)
-- Includes: the same as the USD packages below (websites: SEO-optimized HTML, mobile responsive, fast load times; SEO: monthly ranking reports, content optimization, schema markup)
+- Includes: the same as the USD packages below (websites: SEO-optimised HTML, mobile responsive, fast load times; SEO: monthly ranking reports, content optimisation, schema markup)
 
 ## Website / Landing Page Design
 - Landing page: From $750 one-time
