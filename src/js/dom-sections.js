@@ -28,15 +28,42 @@ export class WorksItems {
       gsap.set(el, { opacity: 0 });
       return split;
     });
+    this._visible = false;
+    this._links = this.items.map((el) => el.querySelector('.works-item__title a'));
+    this._syncLinks();
   }
 
   setVisible(v) {
+    this._visible = v;
     this.layer?.setAttribute('data-visible', String(v));
+    this._syncLinks();
+  }
+
+  /**
+   * Only the card on screen takes clicks and Tab focus. All seven cards sit
+   * stacked in the same spot, the hidden ones at opacity 0, so without this a
+   * click on the visible title landed on the top hidden card's link (Peak
+   * Leads) and Tab walked through seven invisible links. data-current="false"
+   * turns pointer events off in main.css; tabindex -1 drops the link out of
+   * the tab order. The cards stay in the accessibility tree, so a screen
+   * reader still reads and opens all seven. The no-3d fallback never builds
+   * this class, so its static list keeps every link.
+   */
+  _syncLinks() {
+    this.items.forEach((el, idx) => {
+      const on = this._visible && idx === this.current;
+      el.setAttribute('data-current', String(on));
+      const a = this._links[idx];
+      if (!a) return;
+      if (on) a.removeAttribute('tabindex');
+      else a.setAttribute('tabindex', '-1');
+    });
   }
 
   show(i) {
     if (i === this.current) return;
     this.current = i;
+    this._syncLinks();
     // hide every other item, not just the outgoing one — see ServiceItems.show
     this.items.forEach((_, idx) => { if (idx !== i) this._hideItem(idx); });
     const el = this.items[i];
