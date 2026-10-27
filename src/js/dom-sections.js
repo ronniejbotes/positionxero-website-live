@@ -19,7 +19,12 @@ export class WorksItems {
     this.current = -1;
     this._splits = this.items.map((el) => {
       const title = el.querySelector('.works-item__title');
-      const split = new SplitText(title, { type: 'chars' });
+      // Split the link's own text when the title is a link. Splitting the h2
+      // made SplitText clone an empty <a> in front of the real one and hide
+      // every letter of the real one, so both links had no accessible name.
+      // Split this way, the aria-label lands on the <a> itself.
+      const target = title.querySelector('a') || title;
+      const split = new SplitText(target, { type: 'chars', smartWrap: true });
       gsap.set(el, { opacity: 0 });
       return split;
     });
