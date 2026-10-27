@@ -24,7 +24,7 @@ export class WorksItems {
       // every letter of the real one, so both links had no accessible name.
       // Split this way, the aria-label lands on the <a> itself.
       const target = title.querySelector('a') || title;
-      const split = new SplitText(target, { type: 'chars' });
+      const split = new SplitText(target, { type: 'chars', smartWrap: true });
       gsap.set(el, { opacity: 0 });
       return split;
     });
