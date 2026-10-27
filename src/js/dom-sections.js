@@ -30,6 +30,7 @@ export class WorksItems {
     });
     this._visible = false;
     this._links = this.items.map((el) => el.querySelector('.works-item__title a'));
+    this._more = this.layer?.querySelector('.works-more a');
     this._syncLinks();
   }
 
@@ -58,6 +59,11 @@ export class WorksItems {
       if (on) a.removeAttribute('tabindex');
       else a.setAttribute('tabindex', '-1');
     });
+    // "SELECTED WORK" is fixed over the page too: out of the tab order while hidden
+    if (this._more) {
+      if (this._visible) this._more.removeAttribute('tabindex');
+      else this._more.setAttribute('tabindex', '-1');
+    }
   }
 
   show(i) {

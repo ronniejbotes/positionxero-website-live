@@ -515,6 +515,9 @@ body[data-gl-ready="false"] .kv-intro__inner { opacity: 0; transform: translateY
 /* the hidden cards sit at opacity 0 on top of the shown one: WorksItems marks
    them data-current="false" so a click on the visible title reaches its own link */
 .works-layer .works-item[data-current="false"] .works-item__title a { pointer-events: none; }
+/* the fixed "SELECTED WORK" link sits over the page below while the works layer is
+   hidden; it only takes clicks while the layer shows (the no-3d list keeps it) */
+body.js-enabled:not(.no-3d) .works-layer[data-visible="false"] .works-more { pointer-events: none; }
 .works-item__desc { font-family: var(--text); font-size: 14px; letter-spacing: 0.005em; line-height: 1.6; margin-bottom: 14px; color: var(--ink-05); }
 .works-item__cats { display: flex; flex-wrap: wrap; gap: 0.5em; }
 .works-item__cats li {
