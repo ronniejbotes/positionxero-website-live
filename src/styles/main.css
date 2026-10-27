@@ -512,6 +512,9 @@ body[data-gl-ready="false"] .kv-intro__inner { opacity: 0; transform: translateY
 }
 .works-item__title a { pointer-events: auto; transition: opacity 0.3s ease; }
 .works-item__title a:hover { opacity: 0.8; }
+/* the hidden cards sit at opacity 0 on top of the shown one: WorksItems marks
+   them data-current="false" so a click on the visible title reaches its own link */
+.works-layer .works-item[data-current="false"] .works-item__title a { pointer-events: none; }
 .works-item__desc { font-family: var(--text); font-size: 14px; letter-spacing: 0.005em; line-height: 1.6; margin-bottom: 14px; color: var(--ink-05); }
 .works-item__cats { display: flex; flex-wrap: wrap; gap: 0.5em; }
 .works-item__cats li {
