@@ -372,8 +372,9 @@ export class PositionXeroGL {
 
   /* ---------- external API ---------- */
 
-  onLoadingComplete() {
-    this.animator.animate('loaded', 1, 3, easeOutCubic);
+  /** Zoom + ripple reveal. 3 s after the intro; shorter when it was skipped. */
+  onLoadingComplete(duration = 3) {
+    this.animator.animate('loaded', 1, duration, easeOutCubic);
   }
 
   setLoaderTexture(tex) {

@@ -9,13 +9,19 @@ import * as THREE from 'three';
  * XERO letters. The finished sheet is also handed to the GL composite
  * as a texture for the reveal crossfade.
  *
- * Timing model:
- *  - guide drawing scrubbed by min(realProgress, elapsed/1s), smoothed 0.1
- *  - logo outline: 1.8 s, cubic-bezier(.53,.25,.3,.99)
- *  - tagline: starts at 400 ms; per-char reveal 300 ms + i*40 ms;
+ * Timing model (cut from about 4.4 s to about 1 s on 28 October 2026, same
+ * drawing, same order; it now plays once per session, see main.js):
+ *  - guide drawing scrubbed by min(realProgress, elapsed/GUIDE_S), smoothed 0.3
+ *  - logo outline: LOGO_MS, cubic-bezier(.53,.25,.3,.99)
+ *  - tagline: starts at 80 ms; per-char reveal 120 ms + i*14 ms;
  *    unrevealed chars re-randomise from "XERO" every 32 ms at 30% opacity
- *  - hide: overlay fades 0.8 s, then the GL intro (uLoaded 0→1, 3 s) runs
+ *  - hide: overlay fades HIDE_MS, then the GL intro (uLoaded 0→1, 3 s) runs
  */
+
+const GUIDE_S = 0.25;   // guide grid draw-in (was 1 s)
+const GUIDE_EASE = 0.3; // per-frame smoothing of the guide draw (was 0.1)
+const LOGO_MS = 400;    // X outline trace (was 1800)
+const HIDE_MS = 300;    // overlay fade; matches .loading's transition (was 800)
 
 const TAGLINE = 'We turn searches into leads.';
 const SCRAMBLE = ['X', 'E', 'R', 'O'];
@@ -66,7 +72,7 @@ export class Loader {
     window.addEventListener('resize', this._resizeBound = () => this._resize());
     this._tick = this._tick.bind(this);
     this._raf = requestAnimationFrame(this._tick);
-    setTimeout(() => this._startText(), 400);
+    setTimeout(() => this._startText(), 80);
   }
 
   setProgress(p) {
@@ -93,7 +99,7 @@ export class Loader {
         span.style.opacity = '0.3';
       }
       this.textEl.appendChild(span);
-      return { ch, span, revealAt: 300 + i * 40, revealed: ch === ' ' };
+      return { ch, span, revealAt: 120 + i * 14, revealed: ch === ' ' };
     });
     this._textStart = performance.now();
     this._scrambleTimer = setInterval(() => {
@@ -316,9 +322,9 @@ export class Loader {
     this._raf = requestAnimationFrame(this._tick);
 
     const elapsed = (now - this._start) / 1000;
-    const timeCap = Math.min(1, elapsed / 1);
+    const timeCap = Math.min(1, elapsed / GUIDE_S);
     this._display = Math.min(this._real, timeCap);
-    this._guides += (this._display * 1 - this._guides) * 0.1;
+    this._guides += (this._display * 1 - this._guides) * GUIDE_EASE;
 
     if (this._logoT < 0 &&
         this._real >= 0.999 && timeCap >= 0.999 && Math.abs(this._display - this._guides) < 0.01) {
@@ -326,7 +332,7 @@ export class Loader {
       this._logoT = 0;
     }
     if (this._logoT >= 0 && this._logoT < 1) {
-      this._logoT = (now - this._logoStart) / 1800;
+      this._logoT = (now - this._logoStart) / LOGO_MS;
       if (this._logoT >= 1) {
         this._logoT = 1;
         this._finish();
@@ -356,7 +362,7 @@ export class Loader {
     this._resolve();
   }
 
-  /** Fade the DOM overlay out (0.8 s) — call after wiring the GL handoff. */
+  /** Fade the DOM overlay out (HIDE_MS). Call after wiring the GL handoff. */
   hide() {
     return new Promise((res) => {
       this.el.setAttribute('data-done', 'true');
@@ -366,7 +372,7 @@ export class Loader {
         clearInterval(this._scrambleTimer);
         window.removeEventListener('resize', this._resizeBound);
         res();
-      }, 800);
+      }, HIDE_MS);
     });
   }
 }

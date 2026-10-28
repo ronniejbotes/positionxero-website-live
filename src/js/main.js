@@ -19,7 +19,7 @@ import {
 import { LeadCalculator } from './calculator.js';
 import { BinaryTrail } from './binary-trail.js';
 import { Outro } from './outro.js';
-import { initHeader } from './ui.js';
+import { initHeader, initHeaderRetract } from './ui.js';
 
 /**
  * Top page boot.
@@ -33,6 +33,15 @@ initHeader();
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const container = document.getElementById('gl-canvas');
 
+/* The intro (28 October 2026). The blueprint loader held every homepage load
+   for about 4.4s on a phone, with the page itself ready at 0.36s. It now plays
+   once per browser session, in about a second (timings in loader.js). The
+   inline script in <head> marks a later load in the same session
+   <html class="intro-seen">: the overlay is then a plain dark cover that lifts
+   as soon as the scene has drawn its first frame. Reduced motion never shows
+   it at all (main.css), and takes the static page below. */
+const introSeen = document.documentElement.classList.contains('intro-seen');
+
 function bootFallback() {
   document.body.classList.add('no-3d');
   document.getElementById('loading')?.setAttribute('data-done', 'true');
@@ -40,7 +49,11 @@ function bootFallback() {
 }
 
 async function boot() {
-  const loader = new Loader();
+  let loader = null;
+  if (!introSeen) {
+    try { sessionStorage.setItem('px-intro-seen', '1'); } catch { /* storage blocked: it plays again next load */ }
+    loader = new Loader();
+  }
 
   let gl = null;
   try {
@@ -49,6 +62,7 @@ async function boot() {
   } catch (err) {
     console.error('[px] scene boot failed, falling back', err);
     try { gl?.destroy(); } catch { /* already broken */ }
+    loader?.hide();
     bootFallback();
     return;
   }
@@ -74,6 +88,7 @@ async function boot() {
   sm.onItem('works', (i, entered) => { if (entered) works.show(i); });
   // service items switch deterministically from reel progress (see frame loop)
 
+  initHeaderRetract();
   const rail = new RailController(sm);
   new Outro();
   new LeadCalculator();
@@ -100,7 +115,12 @@ async function boot() {
       Math.min(1, Math.max(0, t - inAt) / inLen) * Math.max(0, 1 - Math.max(0, t - outAt) / outLen);
     // the landing statement hands over to the hero claim: gone a little before
     // the claim is fully in, since both sit in the lower-left
-    if (kvIntro) kvIntro.style.opacity = String(Math.max(0, 1 - p.worksTitle / 0.035));
+    if (kvIntro) {
+      const o = Math.max(0, 1 - p.worksTitle / 0.035);
+      kvIntro.style.opacity = String(o);
+      // the phone-only audit button lives in here: no taps once it has faded
+      kvIntro.toggleAttribute('inert', o < 0.05);
+    }
     if (hero) {
       const o = band(p.worksTitle, 0, 0.08, 0.34, 0.10);
       hero.style.opacity = String(o);
@@ -160,7 +180,17 @@ async function boot() {
   });
 
   /* ---- loading handoff ---- */
-  // everything is procedural, so "loading" is mostly the 1s minimum ramp
+  if (!loader) {
+    // intro already seen this session: lift the dark cover as soon as the
+    // scene's first frame is drawn, and reveal it from black, a little faster
+    await gl.ready;
+    document.getElementById('loading')?.setAttribute('data-done', 'true');
+    gl.onLoadingComplete(1.2);
+    document.body.setAttribute('data-gl-ready', 'true');
+    return;
+  }
+
+  // everything is procedural, so "loading" is mostly the short minimum ramp
   loader.setProgress(0.5);
   requestAnimationFrame(() => loader.setProgress(1));
 
@@ -168,9 +198,9 @@ async function boot() {
   // first frame drawn behind the overlay
   await Promise.all([loader.finished, gl.ready]);
   gl.setLoaderTexture(loader.texture);
-  await loader.hide();              // overlay fade 0.8s
+  await loader.hide();              // overlay fade 0.3s
   gl.onLoadingComplete();           // uLoaded 0→1 over 3s (zoom + ripple)
-  setTimeout(() => document.body.setAttribute('data-gl-ready', 'true'), 800);
+  setTimeout(() => document.body.setAttribute('data-gl-ready', 'true'), 300);
 }
 
 if (reduced || !container) {

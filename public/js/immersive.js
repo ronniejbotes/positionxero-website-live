@@ -612,6 +612,13 @@
     var lastY = window.pageYOffset || 0;
     var hidden = false;
     var ticking = false;
+    /* Travel summed since the scroll last changed direction. Until 28 October
+       2026 each frame was compared with the one before and the header only came
+       back on a jump of more than 6px between two frames, so a slow drag up on
+       a phone (a few px a frame) never brought it back. Now any 8px of upward
+       travel does, however slowly it is made. */
+    var travel = 0;
+    var TRAVEL = 8;
 
     function menuOpen() { return !!(menu && menu.classList.contains('open')); }
 
@@ -625,14 +632,17 @@
       var sc = y > 40 ? 'true' : 'false';
       if (doc.body.getAttribute('data-scrolled') !== sc) { doc.body.setAttribute('data-scrolled', sc); }
 
+      var dy = y - lastY;
+      if (dy !== 0) { travel = (dy > 0) === (travel >= 0) ? travel + dy : dy; }
+
       var next = hidden;
       if (reduced() || menuOpen()) {
         next = false;
       } else if (y <= h + 40) {
         next = false;
-      } else if (y > lastY + 6) {
+      } else if (travel >= TRAVEL) {
         next = true;
-      } else if (y < lastY - 6) {
+      } else if (travel <= -TRAVEL) {
         next = false;
       }
 

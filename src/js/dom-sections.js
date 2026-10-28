@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
+import { setHeaderRetract } from './ui.js';
 
 gsap.registerPlugin(SplitText);
 
@@ -364,7 +365,8 @@ export class HudVisibility {
     const light = section === 'mission_in' || section === 'mission' || section === 'calc'
       || section === 'vision' || section === 'vision_out';
     document.body.setAttribute('data-light', String(light));
-    const headerHidden = section === 'cognexa' || section === 'footer';
-    document.body.setAttribute('data-header-hidden', String(headerHidden));
+    // the header steps aside here only while the reader scrolls down: any
+    // scroll back up brings it back (setHeaderRetract in ui.js)
+    setHeaderRetract(section === 'cognexa' || section === 'footer');
   }
 }

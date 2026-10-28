@@ -33,8 +33,10 @@
   <link rel="manifest" href="/site.webmanifest" />
   <!-- Marks the document as scripted before first paint, so the loader overlay
        shows only when a script will lift it (html:not(.js) hides it in main.css).
-       Replaces a noscript style block, so the page carries no inline styles. -->
-  <script>document.documentElement.classList.add('js');</script>
+       Replaces a noscript style block, so the page carries no inline styles.
+       A later homepage load in the same browser session is marked .intro-seen,
+       so the intro plays once per session (main.js). -->
+  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('px-intro-seen'))document.documentElement.classList.add('intro-seen')}catch(e){}</script>
 
   <script type="application/ld+json">
   {
@@ -295,6 +297,7 @@
       <p class="kv-intro__eyebrow">Specialists in</p>
       <p class="kv-intro__line"><span>Web design</span> <span>and SEO.</span></p>
       <p class="kv-intro__sub">Websites that bring in enquiries, and search work that gets you found.</p>
+      <a class="kv-intro__cta" href="/contact">Book a free audit</a>
     </div>
   </div>
 

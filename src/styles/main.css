@@ -111,10 +111,21 @@ body.no-3d .fallback-mark { display: block; }
   position: fixed; inset: 0; z-index: 9999;
   background: var(--bg);
   isolation: isolate;
-  transition: opacity 0.8s ease, visibility 0.8s;
+  /* 0.3s since 28 October 2026 (was 0.8s): HIDE_MS in loader.js matches it */
+  transition: opacity 0.3s ease, visibility 0.3s;
 }
 /* no script, nothing to lift the overlay: the head script adds .js first */
 html:not(.js) .loading { display: none; }
+/* the intro plays once per browser session (main.js). On a later load the
+   overlay is only the dark cover the scene lifts once its first frame is
+   drawn: no grid, no mark, no tagline. */
+html.intro-seen .loading__stage,
+html.intro-seen .loading__text { display: none; }
+/* reduced motion boots the static page (main.js bootFallback): no intro and
+   no dark cover, not even for the moment before the script runs */
+@media (prefers-reduced-motion: reduce) {
+  .loading { display: none; }
+}
 /* keep every fixed HUD layer dark until the GL handoff completes */
 body[data-gl-ready="false"] .news-hud,
 body[data-gl-ready="false"] .rail,
@@ -143,10 +154,23 @@ body[data-gl-ready="false"] .works-more { opacity: 0 !important; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 40px 50px;
   pointer-events: none;
-  transition: color 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+  transition: color 0.5s ease, transform 0.5s ease, opacity 0.5s ease,
+              padding 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
 }
 body[data-gl-ready="false"] .header { opacity: 0; }
 body[data-header-hidden="true"] .header { transform: translateY(-100%); }
+/* Past the Cognexa peel the top page is ordinary document copy (the ledger,
+   the outro, the footer) scrolling under a fixed header. The header used to
+   stay hidden for all of it; since 28 October 2026 it comes back on any
+   scroll up (ui.js), so it carries the ground the inner pages' scrolled nav
+   has (.nav.scrolled in public/css/style.css) and a slimmer bar. */
+body[data-page="top"][data-section="footer"] .header {
+  background-color: rgba(5, 7, 10, 0.94);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1px 0 var(--rule);
+  padding-top: 18px; padding-bottom: 18px;
+}
 .header a, .header button { pointer-events: auto; }
 
 .header__logo a { display: flex; align-items: center; gap: 10px; }
@@ -181,9 +205,13 @@ body[data-light="true"] .header__logo .logo-word { color: var(--bg); }
 .btn-contact:hover .btn-contact__inner { transform: translateY(-100%); opacity: 0; }
 .btn-contact:hover .btn-contact__hover { transform: translateY(0); }
 
-/* two offset rules of unequal length: not the reference's ||| glyph */
+/* two offset rules of unequal length: not the reference's ||| glyph.
+   A 44px tap target since 28 October 2026 (it was 30px; the inner pages'
+   burger is 44px). The 7px padding keeps the 30px box the bars are laid out
+   in, and the -7px margin keeps the 30px footprint, so the bars and the
+   header height stay exactly where they were. */
 .hamburger {
-  width: 30px; height: 30px;
+  width: 44px; height: 44px; padding: 7px; margin: -7px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
   z-index: 1001;
 }
@@ -1600,4 +1628,143 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
 @media (max-width: 768px) and (max-height: 600px) {
   .hero__claim { font-size: 26px; }
   .hero__define { display: none; }
+}
+
+/* ---------- phone pass, 28 October 2026 ----------
+   A headless iPhone audit at 360 to 430px found three things below.
+
+   1. No action on the first screen. The orange "Book Free Audit" sits in
+      the header from 769px up and is hidden below it, where the logo and
+      the burger leave it no room, and the hero's own button only arrives
+      after the first scroll step. The landing statement carries a compact
+      button on phones: the hero button's own words and link, shortened.
+   2. Reading sizes. Micro-labels and notes were set at 10 to 12px and some
+      body copy at 13px. On phones labels go to 13 or 14px and that copy to
+      15px, with tracking eased so the lines still fit. Desktop is untouched.
+   3. Tap targets. The calculator sliders were 22px tall, the footer buttons
+      30px, the outro phone link 15px. Each gets a 44px touch area, mostly by
+      padding with a matching negative margin, so the layout does not move. */
+
+.kv-intro__cta { display: none; }
+
+@media (max-width: 768px) {
+  /* --- 1. first-screen action --- */
+  .kv-intro__cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; margin-top: 18px; padding: 0 22px;
+    border-radius: 999px; background: var(--heat); color: var(--bg);
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.06em;
+    pointer-events: auto;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .kv-intro__cta:hover { background: var(--fg); color: var(--bg); }
+  body[data-gl-ready="false"] .kv-intro__cta { pointer-events: none; }
+
+  /* --- 2. reading sizes --- */
+  .kv-intro__eyebrow { font-size: 13px; letter-spacing: 0.18em; }
+  .scroll-hint { font-size: 13px; letter-spacing: 0.18em; }
+  /* tracking eased from 0.22em so the second and third services still share
+     a row at 360px and the block grows by one line, not two */
+  .hero__services { gap: 10px 14px; }
+  .hero__services li { font-size: 13px; letter-spacing: 0.06em; }
+  .hero__define { font-size: 15px; }
+  .hero__cta { font-size: 14px; letter-spacing: 0.08em; }
+  .stakes__kicker { font-size: 13px; letter-spacing: 0.14em; line-height: 1.5; }
+  .works-item__result i { font-size: 13px; letter-spacing: 0.14em; }
+  .works-item__cats li { font-size: 13px; }
+  .works-more a { font-size: 13px; letter-spacing: 0.16em; }
+  .mv__rank { font-size: 13px; }
+  .mv__text { font-size: 15px; }
+  .mv__en { font-size: 14px; }
+  .mv__col i { font-size: 13px; letter-spacing: 0.16em; }
+  .service-item__icon { font-size: 13px; letter-spacing: 0.14em; }
+  .service-item__en { font-size: 13px; letter-spacing: 0.08em; line-height: 1.7em; width: auto; }
+  .cognexa__lead { font-size: 13px; letter-spacing: 0.14em; }
+  .cognexa__en { font-size: 13px; letter-spacing: 0.12em; }
+  .outro__offer .outro__phone { font-size: 14px; letter-spacing: 0.04em; }
+  .outro__offer .outro__reply { font-size: 13px; letter-spacing: 0.14em; line-height: 1.6; }
+  .ledger-card__tag, .ledger-card__num, .ledger__label,
+  .ledger__badges li, .ledger__photo figcaption { font-size: 13px; }
+  .ledger-stat__label { font-size: 14px; }
+  .footer__col a, .footer__links-title { font-size: 14px; }
+  .footer__col .footer__sub { font-size: 14px; }
+  /* at 14px "Instagram" and "Sortlist" no longer fit side by side in their
+     column and broke mid-word: let the pair wrap as whole words instead */
+  .footer__social { flex-wrap: wrap; gap: 0 18px; }
+  .footer__social a { overflow-wrap: normal; }
+  .footer__privacy a { font-size: 14px; }
+  .footer__copyright { font-size: 13px; letter-spacing: 0.14em; line-height: 1.6; }
+
+  /* calculator: bigger type, and the room for it comes from the scale
+     labels, which move up beside the value ($250 · $2,500 · $20,000+) instead
+     of taking a row of their own under each slider */
+  .calc__kicker { font-size: 13px; letter-spacing: 0.2em; }
+  .calc__text { font-size: 13px; line-height: 1.5; }
+  .calc-field {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline;
+  }
+  .calc-field__label { grid-column: 1 / -1; font-size: 14px; }
+  .calc-field__value { grid-column: 2; grid-row: 2; }
+  .calc-field__ends { display: contents; }
+  .calc-field__ends span {
+    grid-row: 2; font-size: 13px; letter-spacing: 0.04em;
+    color: rgba(16, 22, 28, 0.55);
+  }
+  .calc-field__ends span:first-child { grid-column: 1; justify-self: start; }
+  .calc-field__ends span:last-child { grid-column: 3; justify-self: end; }
+  .calc-field__range { grid-column: 1 / -1; grid-row: 3; }
+  .calc__result-label { font-size: 14px; }
+  .calc__result-sub { font-size: 13px; letter-spacing: 0.04em; }
+  /* the note keeps its muted ink, set in the text face: at 13px the mono
+     ran to eight lines and pushed the beat off a 667px screen */
+  .calc__note { font-family: var(--text); font-size: 13px; line-height: 1.45; letter-spacing: 0; }
+  .calc__cta { margin-top: 0; }
+  .calc__cta-link { font-size: 14px; letter-spacing: 0.08em; }
+
+  /* --- 3. tap targets --- */
+  /* 44px of slider to touch, drawn exactly as before: the track and thumb
+     are centred in the input, and the negative margin hands back the
+     extra height so the column does not grow */
+  .calc-field__range { position: relative; z-index: 1; height: 44px; margin: -11px 0; }
+  /* the link's top padding takes it to 35px; the rest of its 44px reaches
+     into the empty space under it, never up into the note's own link */
+  .calc__cta-link { position: relative; padding: 12px 0 4px; }
+  .calc__cta-link::after { content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: -10px; }
+  .works-more a::before { content: ""; position: absolute; inset: -12px -6px -11px; }
+  .outro__offer .outro__phone a { display: inline-block; padding: 14px 0; margin: -14px 0; }
+  .footer__contact-btn { min-height: 44px; }
+  .footer__links .footer__col a { padding: 13px 0; }
+  .footer__privacy a { padding: 13px 0; }
+  .header__logo a { padding: 13px 0; margin: -13px 0; }
+}
+
+/* /works and /cognexa share this header. With no landing statement to carry
+   the offer, the header's own "Book Free Audit" comes back below 769px as a
+   slim second row under the logo and the burger, which leave it no room
+   beside them at 360px. The open menu lists the same link, so the row steps
+   aside while it is open. */
+@media (max-width: 768px) {
+  body:not([data-page="top"]) .header { flex-wrap: wrap; row-gap: 12px; }
+  body:not([data-page="top"]) .header__right { display: contents; }
+  body:not([data-page="top"]) .btn-contact {
+    display: flex; order: 1; flex: 1 0 100%;
+    align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 16px;
+    font-size: 13px; letter-spacing: 0.12em;
+  }
+  body:not([data-page="top"])[data-menu-open="true"] .btn-contact { display: none; }
+}
+
+/* a short phone (667px) has the glass X close above the landing statement:
+   tighten its rhythm so the added button costs as little height as possible */
+@media (max-width: 768px) and (max-height: 700px) {
+  .kv-intro__eyebrow { margin-bottom: 10px; }
+  .kv-intro__sub { margin-top: 10px; }
+  .kv-intro__cta { margin-top: 14px; }
+}
+
+/* short screens draw the slider 18px tall (max-height: 820px above), so the
+   44px touch area hands back 26px instead of 22 */
+@media (max-width: 768px) and (max-height: 820px) {
+  .calc-field__range { margin: -13px 0; }
 }

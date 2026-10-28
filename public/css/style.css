@@ -3374,3 +3374,85 @@ body.pxq-locked .nav { transition: none; }
 .u-fs-095 { font-size: 0.95rem; }
 .u-fs-102 { font-size: 1.02rem; }
 .u-fs-105 { font-size: 1.05rem; }
+
+/* ===================================================================
+   17. PHONE PASS (28 October 2026)
+   A headless iPhone audit at 360 to 430px. Phones and tablets only:
+   from 1025px up nothing here applies, and the tap-target and type
+   rules start at 640px.
+   =================================================================== */
+
+/* ---- The offer in the header below 1025px ----
+   "Book Free Audit →" left the header with the desktop links at 1024px,
+   so a phone reader had no booking button until the page's own CTA much
+   further down. It comes back as a compact pill beside the call icon. On
+   phones the logo, the call icon and the burger already fill a 360px row,
+   so the pill takes a slim second row of the header instead, and the
+   header's padding tightens to the scrolled size so the taller bar still
+   clears every page's first heading (page-header and article-header open
+   with at least 140px). The open menu carries the same button, so the row
+   steps aside while it is open. */
+@media (max-width: 1024px) {
+  .nav .nav-cta {
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 0;
+    min-height: 40px;
+    padding: 0 18px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+}
+@media (max-width: 540px) {
+  .nav { padding: 14px 0; }
+  .nav-inner { flex-wrap: wrap; row-gap: 8px; }
+  .nav .nav-cta {
+    order: 1;
+    flex: 1 0 100%;
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+  .nav:has(.hamburger.active) .nav-cta { display: none; }
+}
+
+/* ---- Reading sizes and tap targets on phones ----
+   Mono labels were 10 to 11px (breadcrumbs, section kickers, form labels,
+   footer headings, tags, button labels). Labels go to 13px with the
+   tracking eased so they keep their width, and the footer links, the legal
+   links and the breadcrumb links get a 44px touch area. The footer list
+   loosens to carry it; the single-row links borrow it back with a negative
+   margin, so nothing around them moves. */
+@media (max-width: 640px) {
+  .breadcrumb ol { font-size: 13px; letter-spacing: 0.06em; }
+  .breadcrumb a { display: inline-block; padding: 12px 0; margin: -12px 0; }
+  .section-label { font-size: 13px; letter-spacing: 0.16em; }
+  .form-label { font-size: 13px; letter-spacing: 0.14em; }
+  .form-note { font-size: 14px; }
+  .blog-tag,
+  .blog-card-tag { font-size: 13px; letter-spacing: 0.14em; }
+  /* 13px with the tracking eased from 0.14em, so a long label such as
+     "Full Web Development Details →" still sets on one line at 360px; a
+     longer one wraps into two even lines, never a lone arrow */
+  .btn-primary,
+  .btn-outline {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    padding-left: 18px;
+    padding-right: 18px;
+    text-wrap: balance;
+  }
+
+  .footer-col h4,
+  .footer-heading { font-size: 13px; letter-spacing: 0.16em; margin-bottom: 6px; }
+  .footer-col ul { gap: 0; }
+  .footer-col a { font-size: 14px; }
+  .footer-col li > a:not(.btn-primary) { display: inline-block; min-height: 44px; padding: 10px 0; }
+  .footer-bottom { font-size: 13px; }
+  .footer-bottom a { display: inline-block; padding: 15px 0; margin: -15px 0; }
+
+  .contact-card a { display: inline-block; padding: 12px 0; margin: -12px 0; }
+  .nav-logo,
+  .footer-brand-logo { padding: 8px 0; margin: -8px 0; }
+}
