@@ -27,7 +27,18 @@ import { initHeader, initHeaderRetract } from './ui.js';
  * fallback, content stays readable.
  */
 
+/* The switch from the no-script layout to the scripted one must not animate.
+   Under the no-script rules every fixed layer sits in the flow at full
+   opacity; once js-enabled lands they drop to opacity 0, and the works layer
+   and the header would spend their 0.5s transitions fading out. The intro
+   used to hide that. A repeat visit lifts its plain cover at about 0.1s, and
+   "SELECTED WORK" showed through at up to 30% (28 October 2026). html.px-boot
+   turns transitions off for this one style change (main.css), and reading
+   offsetHeight applies the change before the class comes off again. */
+document.documentElement.classList.add('px-boot');
 document.body.classList.add('js-enabled');
+void document.body.offsetHeight;
+document.documentElement.classList.remove('px-boot');
 initHeader();
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

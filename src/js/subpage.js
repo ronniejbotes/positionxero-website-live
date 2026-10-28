@@ -4,7 +4,7 @@ import '@fontsource/archivo/700.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '../styles/main.css';
-import { initHeader } from './ui.js';
+import { initHeader, initHeaderRetract } from './ui.js';
 
 /**
  * Subpage boot: shared header + a static dark backdrop.
@@ -14,6 +14,9 @@ import { initHeader } from './ui.js';
 document.body.classList.add('js-enabled');
 document.body.classList.add('no-3d');
 initHeader();
+// phones and tablets: the header (with its "Book Free Audit" row) tucks away
+// on the way down and returns on any scroll back up, as on the other pages
+initHeaderRetract({ belowTop: true, media: window.matchMedia('(max-width: 768px)') });
 
 // Category filter rows (works page): client-side filter over list items.
 const filterRow = document.querySelector('[data-filter-row]');

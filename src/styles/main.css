@@ -116,6 +116,9 @@ body.no-3d .fallback-mark { display: block; }
 }
 /* no script, nothing to lift the overlay: the head script adds .js first */
 html:not(.js) .loading { display: none; }
+/* held by main.js for the one style change from the no-script layout to the
+   scripted one, so no layer fades on the way (see main.js) */
+html.px-boot *, html.px-boot *::before, html.px-boot *::after { transition: none !important; }
 /* the intro plays once per browser session (main.js). On a later load the
    overlay is only the dark cover the scene lifts once its first frame is
    drawn: no grid, no mark, no tagline. */
@@ -159,6 +162,9 @@ body[data-gl-ready="false"] .works-more { opacity: 0 !important; }
 }
 body[data-gl-ready="false"] .header { opacity: 0; }
 body[data-header-hidden="true"] .header { transform: translateY(-100%); }
+/* /works and /cognexa: the header's backdrop runs 18px below it on phones
+   (::before further down), so tuck that away with it */
+body:not([data-page="top"]):not([data-menu-open="true"])[data-header-hidden="true"] .header { transform: translateY(calc(-100% - 20px)); }
 /* Past the Cognexa peel the top page is ordinary document copy (the ledger,
    the outro, the footer) scrolling under a fixed header. The header used to
    stay hidden for all of it; since 28 October 2026 it comes back on any
@@ -1245,8 +1251,9 @@ body[data-page="works"] .page .works-item {
    The guard is `:is(.no-3d, :not(.js-enabled))` rather than `.no-3d` alone.
    `.no-3d` is added BY JavaScript, so on its own it does nothing for a JS-off
    client or a crawler that does not execute scripts, which is the case that
-   matters most here. `.js-enabled` is added by main.js at parse time and the
-   full-screen loader overlay covers the swap, so there is no flash.
+   matters most here. `.js-enabled` is added by main.js at parse time, with
+   transitions held off (html.px-boot), so the swap is instant and nothing
+   from this layout fades through once the cover lifts.
 
    Under the guard the layers stop being a stack of fixed overlays and become
    an ordinary linear document: static flow, full opacity, real height. */

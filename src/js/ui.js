@@ -52,12 +52,13 @@ export function initHeader() {
  */
 const RETRACT_TRAVEL = 8; // px of travel one way before the header reacts
 const retract = { zone: false, down: true, travel: 0, lastY: 0, applied: null };
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function applyRetract() {
   const header = document.querySelector('.header');
   const focused = !!header && header.contains(document.activeElement);
   const menuOpen = document.body.getAttribute('data-menu-open') === 'true';
-  const hidden = retract.zone && retract.down && !focused && !menuOpen;
+  const hidden = retract.zone && retract.down && !focused && !menuOpen && !reducedMotion.matches;
   if (hidden === retract.applied) return;
   retract.applied = hidden;
   document.body.setAttribute('data-header-hidden', String(hidden));
@@ -68,15 +69,30 @@ export function setHeaderRetract(on) {
   applyRetract();
 }
 
-export function initHeaderRetract() {
+/**
+ * `belowTop`: /works and /cognexa (subpage.js). Their header is a solid bar
+ * that never moved, and on phones it now carries the "Book Free Audit" row,
+ * about 131px in all. There the zone is "scrolled past the header" (plus
+ * 40px, as on the inner pages in public/), within `media` only, so it
+ * retracts on the way down and returns on the same 8px of upward travel.
+ * Desktop keeps its fixed bar.
+ */
+export function initHeaderRetract({ belowTop = false, media = null } = {}) {
   retract.lastY = Math.max(0, window.scrollY);
   let ticking = false;
+  const header = document.querySelector('.header');
+  const updateZone = (y) => {
+    if (!belowTop) return;
+    const h = header ? header.offsetHeight : 90;
+    retract.zone = (!media || media.matches) && y > h + 40;
+  };
   const read = () => {
     ticking = false;
     const y = Math.max(0, window.scrollY);
     const dy = y - retract.lastY;
     retract.lastY = y;
-    if (!dy) return;
+    updateZone(y);
+    if (!dy) { applyRetract(); return; }
     retract.travel = (dy > 0) === (retract.travel >= 0) ? retract.travel + dy : dy;
     if (retract.travel >= RETRACT_TRAVEL) retract.down = true;
     else if (retract.travel <= -RETRACT_TRAVEL) retract.down = false;
@@ -88,4 +104,7 @@ export function initHeaderRetract() {
     requestAnimationFrame(read);
   }, { passive: true });
   document.addEventListener('focusin', applyRetract);
+  media?.addEventListener?.('change', () => { updateZone(retract.lastY); applyRetract(); });
+  updateZone(retract.lastY);
+  applyRetract();
 }
