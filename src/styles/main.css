@@ -1198,13 +1198,22 @@ body[data-page="works"] .page .works-item {
   border: 1px solid var(--rule); border-radius: 2px;
   background: var(--ink-70);
 }
+/* A capture opens the same site as its project name (29 October 2026: Clarity
+   showed dead clicks on them). The link takes the capture's place in the grid,
+   and the capture inside it keeps no margin of its own. */
+.works-item__shot-link { display: block; }
+.works-item__shot-link .works-item__shot { margin-top: 0; transition: border-color 0.25s; }
+.works-item__shot-link:hover .works-item__shot,
+.works-item__shot-link:focus-visible .works-item__shot { border-color: var(--signal); }
 @media (max-width: 900px) {
   body[data-page="works"] .page .works-item { grid-template-columns: 130px minmax(0, 1fr); }
-  .works-item__shot { grid-column: 2; margin-top: 16px; }
+  .works-item__shot,
+  .works-item__shot-link { grid-column: 2; margin-top: 16px; }
 }
 @media (max-width: 640px) {
   body[data-page="works"] .page .works-item { grid-template-columns: 1fr; }
-  .works-item__shot { grid-column: auto; margin-top: 14px; }
+  .works-item__shot,
+  .works-item__shot-link { grid-column: auto; margin-top: 14px; }
 }
 .news-list { max-width: 820px; }
 .news-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(255,255,255,0.22); }
@@ -1227,11 +1236,16 @@ body[data-page="works"] .page .works-item {
 .cognexa-hero .wordmark { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 7vw, 96px); letter-spacing: 0.02em; }
 .cognexa-lede { max-width: 640px; font-size: 14px; line-height: 2; color: var(--ink-15); }
 .cognexa-feature { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 7vh; }
+/* borderless (29 October 2026): as pills the tags looked exactly like the
+   filter buttons above them, and Clarity counted dead clicks on /works. The
+   homepage's boxed list item would still frame them there, so /works drops
+   that box too and spaces the labels apart instead. */
 .cat-tag {
   display: inline-block; font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.12em; border: 1px solid var(--ink-40); border-radius: 999px;
-  padding: 5px 12px; color: var(--ink-15);
+  letter-spacing: 0.12em; color: var(--ink-15);
 }
+body[data-page="works"] .works-item__cats { gap: 4px 18px; margin-top: 10px; }
+body[data-page="works"] .works-item__cats li { border: 0; padding: 0; }
 @media (max-width: 640px) {
   .about-block, .news-row, .page .works-item { grid-template-columns: 1fr; }
 }
@@ -1679,6 +1693,9 @@ body[data-light="true"] .header__nav a[aria-current="page"] { color: var(--bg); 
   .stakes__kicker { font-size: 13px; letter-spacing: 0.14em; line-height: 1.5; }
   .works-item__result i { font-size: 13px; letter-spacing: 0.14em; }
   .works-item__cats li { font-size: 13px; }
+  /* /works filters, tags and the /works and /cognexa footer labels (audit 29 Oct) */
+  .filter-row a, .filter-row button { font-size: 13px; min-height: 44px; }
+  .cat-tag, .footer__label, .footer__bottom { font-size: 13px; }
   .works-more a { font-size: 13px; letter-spacing: 0.16em; }
   .mv__rank { font-size: 13px; }
   .mv__text { font-size: 15px; }

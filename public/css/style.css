@@ -3432,6 +3432,29 @@ body.pxq-locked .nav { transition: none; }
   .form-note { font-size: 14px; }
   .blog-tag,
   .blog-card-tag { font-size: 13px; letter-spacing: 0.14em; }
+  /* Labels the 28 Oct pass missed (audit 29 Oct): the post's category pill
+     and "Last updated" line, the date and read time on the blog cards and
+     careers cards, the /ads KPI sentences, the calculator labels and their
+     min/max scale, and "Read the Role →". The 0.22em ones ease to 0.12em. */
+  .article-tag,
+  .article-meta,
+  .blog-meta,
+  .stat-label,
+  .calc-input-label,
+  .calc-scale,
+  .service-link { font-size: 13px; }
+  .article-tag,
+  .stat-label,
+  .calc-input-label,
+  .service-link { letter-spacing: 0.12em; }
+  /* At 13px the meta line wrapped with a lone "·" and "N min read" on its own
+     line (check, 29 Oct): drop the dot on phones and give the wrap some air.
+     Every post's meta is tag, date, dot, read time; the careers cards' is
+     type, dot, place. */
+  .article-meta { row-gap: 8px; }
+  .article-meta > span:nth-child(3) { display: none; }
+  .service-card .blog-meta { column-gap: 14px; }
+  .service-card .blog-meta > span:nth-child(2) { display: none; }
   /* 13px with the tracking eased from 0.14em, so a long label such as
      "Full Web Development Details →" still sets on one line at 360px; a
      longer one wraps into two even lines, never a lone arrow */

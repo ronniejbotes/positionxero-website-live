@@ -44,6 +44,11 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   RewriteRule ^blog/is-it-worth-buying-real-estate-leads(\.html)?/?$ https://www.positionxero.com/blog/real-estate-lead-generation [R=301,L]
   RewriteRule ^blog/buy-exclusive-roofing-leads(\.html)?/?$ https://www.positionxero.com/roofing-marketing [R=301,L]
   RewriteRule ^blog/how-to-vet-purchased-leads(\.html)?/?$ https://www.positionxero.com/blog/is-lead-generation-a-scam [R=301,L]
+  # Common guesses that answered 404 and still drew visits (Clarity, 15 to 28 October 2026):
+  # /contact-us goes to /contact and /privacy-policy to /privacy. One hop, with or without
+  # .html or a trailing slash (29 October 2026).
+  RewriteRule ^contact-us(\.html)?/?$ https://www.positionxero.com/contact [R=301,L]
+  RewriteRule ^privacy-policy(\.html)?/?$ https://www.positionxero.com/privacy [R=301,L]
   # Legacy .html URL requested directly -> 301 to the clean canonical URL.
   # Absolute target: even a URL wrong on host AND scheme AND extension resolves in ONE hop.
   RewriteCond %{REQUEST_URI} !(^|/)(index|404)\.html$ [NC]
