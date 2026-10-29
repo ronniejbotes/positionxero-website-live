@@ -3490,4 +3490,9 @@ body.pxq-locked .nav { transition: none; }
   .contact-card a { display: inline-block; padding: 12px 0; margin: -12px 0; }
   .nav-logo,
   .footer-brand-logo { padding: 8px 0; margin: -8px 0; }
+
+  /* Reading text at 16px on phones (re-check, 29 Oct): FAQ answers were
+     15.2px, legal text 15.7px and the post's closing CTA note 14.4px. It
+     sits in this last block so it beats the .post-cta-text rule above. */
+  .faq-answer p, .legal-content p, .legal-content li, .article-content .post-cta-text { font-size: 1rem; }
 }
