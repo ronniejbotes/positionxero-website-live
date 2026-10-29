@@ -761,6 +761,13 @@ body[data-header-hidden="true"] .nav,
   margin: 0 auto 34px;
   color: var(--ink-15);
 }
+/* A link inside the CTA sentence (the /contact option on /google-ads-south-africa,
+   the 90-day link on /services) reads as a link, as in .audit-card */
+.cta-banner p a {
+  color: var(--signal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 /* The old white inversion is gone. On an all-dark site it would make
    the CTA the only white block anywhere. */
 .cta-banner .btn-primary { background: var(--heat); color: var(--bg); border-color: var(--heat); }
@@ -2207,6 +2214,11 @@ body[data-header-hidden="true"] .nav,
   .legal-content { font-size: 1rem; }
   .article-content p,
   .article-content li { font-size: 1rem; }
+  /* /how-we-work's "You own everything", 90-day review and cancel cards
+     were 15.2px on phones and its monthly-report bullets 14.1px (final
+     check, 29 Oct) */
+  .audit-card p,
+  .report-list { font-size: 1rem; }
 }
 
 /* ---- Comparison tables on phones ----
