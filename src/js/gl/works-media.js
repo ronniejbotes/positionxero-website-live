@@ -33,11 +33,13 @@ const WORKS = [
 
 const SERVICE = [
   // Designed key visuals (18 October 2026) in place of the generated art, which
-  // read as placeholders: real client sites in browser frames for WEB, an
-  // illustrative answer stack for SEARCH. Both keep their weight top and right,
+  // read as placeholders. WEB was redrawn on 30 October 2026 (owner: "it looks
+  // un neat"): one client site, Austek Engineering, captured that day on a
+  // browser and a phone, squared up, with one label; SEARCH is an
+  // illustrative answer stack. Both keep their weight top and right,
   // because the service copy and its scrim cover the panel's lower left.
   { title: 'WEB', sub: 'SITES + LANDING PAGES', pal: ['#FF6A1F', '#7A2E0C', '#05070A'],
-    img: asset('img/works/service-web.jpg') },
+    img: asset('img/works/service-web.jpg?v=20261030') },
   { title: 'SEARCH', sub: 'AI + TRADITIONAL', pal: ['#2EE6FF', '#0E5C77', '#05070A'],
     img: asset('img/works/service-search.jpg') },
   // The Cognexa reel peels to a fullscreen cover-fit quad, so it carries the
@@ -196,6 +198,10 @@ export class WorksMedia {
 
   serviceTexture(i) {
     return this._service[i]?.tex ?? null;
+  }
+
+  serviceBlurTexture(i) {
+    return this._service[i]?.blurTex ?? null;
   }
 
   /** Animate the "video" reels: cheap repaint a few times a second. */

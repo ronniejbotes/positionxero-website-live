@@ -125,7 +125,9 @@ void main() {
   // service section reads as near-black behind the reel.
   float glyph = texture2D(uTitleTex, t).a * mix(0.8, 0.0, uServiceIn);
 
-  // blurred echo of the active reel, widened 1/0.7 and ramped to black rightward
+  // blurred echo of the active reel, widened 1/0.7 and ramped to black rightward.
+  // It samples the reel's 64x36 copy: the full-size texture put a screenshot's
+  // headline across the wall in giant, sharp type (30 Oct 2026, owner: "un neat")
   vec2 texUv = vec2((vUv.x - 0.5) * 0.7 + 0.5, vUv.y);
   vec3 col = texture2D(uVideoTex, texUv).rgb * (1.0 - vUv.x) * 0.4;
   col += glyph;
@@ -186,7 +188,7 @@ export class ServiceScene {
     // ghost SERVICES band + reel projection behind the panels
     this.titleUniforms = {
       uTitleTex: { value: servicesTitleTexture },
-      uVideoTex: { value: media.serviceTexture(0) },
+      uVideoTex: { value: media.serviceBlurTexture(0) },
       uTime: { value: 0 },
       uThumbnailScroll: this.uniformsShared.uThumbnailScroll,
       uServiceIn: this.uniformsShared.uServiceIn,
@@ -242,7 +244,7 @@ export class ServiceScene {
     this.uniformsShared.uCognexaFade.value = cognexaFade;
     this.titleUniforms.uTime.value = t;
     const reel = Math.max(0, Math.min(2, Math.round(thumbScroll - 1)));
-    this.titleUniforms.uVideoTex.value = this.media.serviceTexture(reel);
+    this.titleUniforms.uVideoTex.value = this.media.serviceBlurTexture(reel);
     this.grid.setScroll(t * 0.01 + thumbScroll * 0.3);
   }
 

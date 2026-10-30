@@ -23,7 +23,7 @@ const GUIDE_EASE = 0.3; // per-frame smoothing of the guide draw (was 0.1)
 const LOGO_MS = 400;    // X outline trace (was 1800)
 const HIDE_MS = 300;    // overlay fade; matches .loading's transition (was 800)
 
-const TAGLINE = 'We turn searches into leads.';
+const TAGLINE = 'Web development & SEO for service businesses.';
 const SCRAMBLE = ['X', 'E', 'R', 'O'];
 
 // bezier(.53,.25,.3,.99) approximation via sampled cubic
