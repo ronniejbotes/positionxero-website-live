@@ -20,7 +20,7 @@ const WORKS = [
   // Cognexa leads the wall — our own AI company, and the proof behind the
   // AI-search work.
   { title: 'COGNEXA', sub: 'AI SYSTEMS + AUTOMATION', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/cognexa.jpg') },
-  { title: 'TINY HOMES SA', sub: 'CONFIGURATOR + PAID SEARCH', pal: ['#FF6A1F', '#7A2E0C', '#05070A'], img: asset('img/works/kv-01.jpg') },
+  { title: 'TINY HOMES SA', sub: 'CONFIGURATOR + PAID SEARCH', pal: ['#FF6A1F', '#7A2E0C', '#05070A'], img: asset('img/works/kv-01.jpg?v=20261030') },
   { title: 'OTAKU KULTURE', sub: 'ANIME + CAR CULTURE MERCH', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/otaku-kulture.jpg') },
   { title: 'CAJEE BOTES', sub: 'BOOKINGS + LOCAL SEARCH', pal: ['#2EE6FF', '#0E5C77', '#05070A'], img: asset('img/works/cajee-botes.jpg') },
   // Added 18 October 2026, permission recorded in the plan folder. The three
