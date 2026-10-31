@@ -1,0 +1,10 @@
+/* /seo-south-africa client results: client names are withheld (owner,
+   31 October 2026). The blurred text is a placeholder, never the real
+   name, so nothing can be read back from the page source. */
+.rx-name {
+  display: inline-block;
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+.blog-body .rc-industry { margin-bottom: 16px; }
