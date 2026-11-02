@@ -152,9 +152,15 @@
   </url>
   <url>
     <loc>https://www.positionxero.com/blog/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.positionxero.com/blog/why-competitor-ranks-higher</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.positionxero.com/blog/hand-built-website-vs-wordpress</loc>
