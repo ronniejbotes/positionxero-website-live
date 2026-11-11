@@ -268,7 +268,7 @@ export default defineConfig({
     // Transform the entry graphs up front so the first request after a start
     // is not a cold transform of three.js + gsap.
     warmup: {
-      clientFiles: ['./src/js/main.js', './src/js/subpage.js']
+      clientFiles: ['./src/js/main.js', './src/js/subpage.js', './src/js/home.js']
     }
   },
   optimizeDeps: {
@@ -279,18 +279,23 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      // Only the pages built from src/ are listed here. The 52 legacy pages
+      // Only the pages built from src/ are listed here. The legacy pages
       // live in public/ and are copied verbatim, which keeps Vite away from
       // free-audit.html's 2,140 lines of inline JS.
       //
-      // No 'index.html' entry: dist/index.html comes from public/index.html
-      // (the legacy home page). experience.html carries the immersive build
-      // until Phase 5 merges it onto / — see .migration/MIGRATION-PLAN.md.
+      // 12 November 2026 (owner approved the new front the same day): the
+      // homepage (index.html), /packages (packages.html) and /premium
+      // (premium.html, the pick-and-choose custom tier, added the same day)
+      // are the light package pages, sharing src/js/home.js and
+      // src/styles/home.css. The
+      // immersive WebGL page that used to be the homepage moved, unchanged
+      // apart from its head and a few links, to experience.html, which builds
+      // to dist/experience.html and is served at /experience.
       input: {
-        // The merged immersive home page. It absorbed the legacy home page's
-        // content and both schema nodes, so this entry now produces dist/index.html
-        // and supersedes the copy that used to come from public/index.html.
         main: resolve(root, 'index.html'),
+        packages: resolve(root, 'packages.html'),
+        premium: resolve(root, 'premium.html'),
+        experience: resolve(root, 'experience.html'),
         works: resolve(root, 'works.html'),
         cognexa: resolve(root, 'cognexa.html')
       }
