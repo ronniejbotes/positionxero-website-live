@@ -196,4 +196,8 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # HSTS (T-51, 12 Nov 2026): browsers keep to https for a year. No
+  # includeSubDomains and no preload, so a subdomain without https is never
+  # locked out.
+  Header always set Strict-Transport-Security "max-age=31536000"
 </IfModule>
