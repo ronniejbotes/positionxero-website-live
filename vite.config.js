@@ -284,19 +284,18 @@ export default defineConfig({
       // free-audit.html's 2,140 lines of inline JS.
       //
       // 12 November 2026 (owner approved the new front the same day): the
-      // homepage (index.html), /packages (packages.html) and /premium
-      // (premium.html, the pick-and-choose custom tier, added the same day)
-      // are the light package pages, sharing src/js/home.js and
-      // src/styles/home.css. The
+      // homepage (index.html), /packages (packages.html) and /work
+      // (work.html, every site we built, which replaced /works the same
+      // day) share src/js/home.js and src/styles/home.css. /premium was
+      // dropped that day too (301 to /packages#more in public/.htaccess). The
       // immersive WebGL page that used to be the homepage moved, unchanged
       // apart from its head and a few links, to experience.html, which builds
       // to dist/experience.html and is served at /experience.
       input: {
         main: resolve(root, 'index.html'),
         packages: resolve(root, 'packages.html'),
-        premium: resolve(root, 'premium.html'),
         experience: resolve(root, 'experience.html'),
-        works: resolve(root, 'works.html'),
+        work: resolve(root, 'work.html'),
         cognexa: resolve(root, 'cognexa.html')
       }
     }

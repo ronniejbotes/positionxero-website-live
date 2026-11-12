@@ -49,6 +49,12 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   # .html or a trailing slash (29 October 2026).
   RewriteRule ^contact-us(\.html)?/?$ https://www.positionxero.com/contact [R=301,L]
   RewriteRule ^privacy-policy(\.html)?/?$ https://www.positionxero.com/privacy [R=301,L]
+  # 12 November 2026 (owner): /premium, the pick-and-choose custom tier, was dropped the
+  # day it was built; anything beyond the packages is now a WhatsApp enquiry from the
+  # "Looking for something more?" band under the packages. /works became /work, the
+  # full showcase of every site we built. One hop each, with or without .html or a slash.
+  RewriteRule ^premium(\.html)?/?$ https://www.positionxero.com/packages#more [R=301,L,NE]
+  RewriteRule ^works(\.html)?/?$ https://www.positionxero.com/work [R=301,L]
   # Legacy .html URL requested directly -> 301 to the clean canonical URL.
   # Absolute target: even a URL wrong on host AND scheme AND extension resolves in ONE hop.
   RewriteCond %{REQUEST_URI} !(^|/)(index|404)\.html$ [NC]

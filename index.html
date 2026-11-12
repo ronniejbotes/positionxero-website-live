@@ -6,7 +6,7 @@
   <title>Web Design in South Africa from R490 a Month | Position Xero</title>
   <meta name="description" content="We build, host and look after your business website from R490 a month. No build fee, live in 7 days and no contract. Chat to us on WhatsApp." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="theme-color" content="#05070A" />
+  <meta name="theme-color" content="#0F0E0C" />
   <link rel="canonical" href="https://www.positionxero.com/" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -23,8 +23,8 @@
   <meta name="twitter:description" content="Your business website, built and looked after for you, from R490 a month. No build fee, live in 7 days, no contract." />
   <meta name="twitter:image" content="https://www.positionxero.com/img/og-image.jpg?v=20261007" />
 
+  <link rel="preload" href="/fonts/archivo-xcond-800-v25-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/archivo-v25-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/inter-v20-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -301,7 +301,7 @@
         "name": "What is not included?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Your domain name is not included in any package. We can register your domain for you at cost. Ads management and fully custom designs are not in the packages either: you can add them as a premium package."
+          "text": "Your domain name is not included in any package. We can register your domain for you at cost. Ads management, online stores and fully custom or immersive websites are not in the packages either: tell us what you need and we will price it on your brief."
         }
       }
     ]
@@ -313,24 +313,18 @@
   <header class="site-header">
     <div class="wrap site-header__bar">
       <a class="logo" href="/" aria-label="Position Xero home"><svg class="logo__x" viewBox="0 0 100 88" aria-hidden="true" focusable="false"><polygon points="0,0 30,0 50,30 70,0 100,0 65,44 100,88 70,88 50,58 30,88 0,88 35,44" fill="currentColor" /></svg><span class="logo__word">POSITION&nbsp;XERO</span></a>
-      <nav class="nav" aria-label="Primary">
-        <a href="/packages">Packages</a>
-        <a href="/premium">Premium</a>
-        <a href="/works">Work</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
+      <nav class="nav" aria-label="Primary"><a href="/packages">Packages</a><a href="/work">Work</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
       <div class="site-header__actions">
         <a class="btn btn--wa btn--sm" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener" data-lead-location="header" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp</span></a>
         <details class="menu">
           <summary class="menu__btn" aria-label="Menu"><span></span><span></span><span></span></summary>
           <nav class="menu__panel" aria-label="Menu">
             <a href="/">Home</a>
-          <a href="/packages">Packages</a>
-          <a href="/premium">Premium</a>
-          <a href="/works">Work</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
+            <a href="/packages">Packages</a>
+            <a href="/work">Work</a>
+            <a href="/experience">What we can build</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
           </nav>
         </details>
       </div>
@@ -338,94 +332,124 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <canvas class="hero__gl" data-glass-canvas aria-hidden="true"></canvas>
+    <section class="hero on-ink grain" id="top" aria-labelledby="hero-title">
+      <svg class="hero__x-small" viewBox="0 0 100 88" aria-hidden="true" focusable="false"><polygon points="0,0 30,0 50,30 70,0 100,0 65,44 100,88 70,88 50,58 30,88 0,88 35,44" fill="currentColor" /></svg>
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Web design for SA businesses</p>
-          <h1 class="hero__title" id="hero-title">Your business website, built and looked after for you</h1>
-          <p class="hero__price">From <strong>R490</strong> a month</p>
-          <ul class="hero__facts">
-            <li>No build fee</li>
-            <li>Live in 7 days</li>
-            <li>No contract</li>
-          </ul>
+          <p class="hero__kicker">Websites for South African businesses</p>
+          <h1 class="hero__title" id="hero-title">Your business website, built and <span class="mark-it">looked after<svg class="mark-it__line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16 C 70 7, 160 5, 296 10 M 30 21 C 110 14, 200 13, 270 17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" /></svg></span> for you</h1>
+          <div class="hero__offer">
+            <p class="hero__price">From <strong>R490</strong> a month</p>
+            <ul class="hero__facts">
+              <li>No build fee</li>
+              <li>Live in 7 days</li>
+              <li>No contract</li>
+            </ul>
+          </div>
           <div class="hero__actions">
             <a class="btn btn--wa btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener" data-lead-location="hero" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
             <a class="link" href="#packages">See the packages <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
           </div>
         </div>
-        <div class="mark hero__mark" data-glass-mark aria-hidden="true">
-          <svg class="mark__fallback" viewBox="-4 -4 108 96" focusable="false">
-            <defs>
-              <linearGradient id="mark-edge-hero__mark" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#2EE6FF" />
-                <stop offset="1" stop-color="#FF6A1F" />
-              </linearGradient>
-            </defs>
-            <polygon points="0,0 30,0 50,30 70,0 100,0 65,44 100,88 70,88 50,58 30,88 0,88 35,44" fill="rgba(242,245,247,0.04)" stroke="url(#mark-edge-hero__mark)" stroke-width="0.8" />
-          </svg>
+        <div class="hero__art">
+          <svg class="hero__x" viewBox="0 0 100 88" aria-hidden="true" focusable="false"><polygon points="0,0 30,0 50,30 70,0 100,0 65,44 100,88 70,88 50,58 30,88 0,88 35,44" fill="currentColor" /></svg>
+          <span class="frame frame--desk hero__desk"><img src="/img/work/the-vault-desktop-800.webp" srcset="/img/work/the-vault-desktop-800.webp 800w, /img/work/the-vault-desktop-1600.webp 1600w" sizes="40vw" width="1600" height="900" loading="lazy" decoding="async" alt="The Vault SA website on a desktop screen, built by Position Xero" /></span>
+          <span class="frame frame--phone hero__phone"><img src="/img/work/vital-socks-phone-540.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Vital Socks online store on a phone, built by Position Xero" /></span>
         </div>
       </div>
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
-      <div class="wrap">
-        <p class="eyebrow">Our work</p>
-        <h2 class="h2" id="work-title">Real sites we built for South African businesses</h2>
-        <div class="phones">
-          <figure class="phone-card">
-            <div class="phone">
-              <img src="/img/works/phone-the-vault.webp" width="540" height="1168" loading="lazy" decoding="async" alt="The Vault SA website on a phone, built by Position Xero" />
-            </div>
-            <figcaption><strong>The Vault SA</strong> PPF and detailing in Germiston. Every film colour is one tap from a WhatsApp quote.</figcaption>
-          </figure>
-          <figure class="phone-card">
-            <div class="phone">
-              <img src="/img/works/phone-austek-engineering.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Austek Engineering website on a phone, built by Position Xero" />
-            </div>
-            <figcaption><strong>Austek Engineering</strong> Coded welding and stainless fabrication in Gauteng, with a quote request one click away.</figcaption>
-          </figure>
-          <figure class="phone-card">
-            <div class="phone">
-              <img src="/img/works/phone-vital-socks.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Vital Socks online store on a phone, built by Position Xero" />
-            </div>
-            <figcaption><strong>Vital Socks</strong> An online store for compression socks, with a fit finder.</figcaption>
-          </figure>
-          <figure class="phone-card">
-            <div class="phone">
-              <img src="/img/works/phone-tiny-homes-sa.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Tiny Homes SA website on a phone, built by Position Xero" />
-            </div>
-            <figcaption><strong>Tiny Homes SA</strong> Prefab homes, with a configurator and an online quote request.</figcaption>
-          </figure>
+    <section class="tape" aria-labelledby="tape-title">
+      <h2 class="visually-hidden" id="tape-title">Some of the businesses we built websites for</h2>
+      <div class="tape__band">
+        <div class="tape__track">
+          <ul class="tape__list"><li>The Vault SA</li><li>Vital Socks</li><li>Otaku TCG</li><li>Cognexa</li><li>Tiny Homes SA</li><li>Dynamic Auctioneers</li><li>Austek Engineering</li><li>Cajee Botes</li><li>Peak Leads</li><li>Otaku Kulture</li></ul>
+          <ul class="tape__list" aria-hidden="true"><li>The Vault SA</li><li>Vital Socks</li><li>Otaku TCG</li><li>Cognexa</li><li>Tiny Homes SA</li><li>Dynamic Auctioneers</li><li>Austek Engineering</li><li>Cajee Botes</li><li>Peak Leads</li><li>Otaku Kulture</li></ul>
         </div>
-        <p class="section__more"><a class="link" href="/experience">See what we can build <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
       </div>
     </section>
 
-    <section class="section section--packages" id="packages" aria-labelledby="packages-title">
+    <section class="section on-paper grain" id="work" aria-labelledby="work-title">
       <div class="wrap">
-        <div class="section__head">
+        <div class="head head--split rv">
           <div>
-            <p class="eyebrow">Packages</p>
-            <h2 class="h2" id="packages-title">Four simple monthly packages</h2>
+            <h2 class="h2" id="work-title">Recent work</h2>
+            <p class="lede">Four of the South African sites we built this year. Each one is live, so tap through and try it.</p>
+          </div>
+          <div class="head__side">
+            <div class="switch" role="group" aria-label="Show the sites as" data-view-for="work-shots"><button type="button" data-show="desktop" aria-pressed="true"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="2.5" width="13" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 14h5" stroke="currentColor" stroke-width="1.4"/></svg>Desktop</button><button type="button" data-show="phone" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="4.5" y="1.5" width="7" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 12.2h2" stroke="currentColor" stroke-width="1.4"/></svg>Phone</button></div>
+          </div>
+        </div>
+        <ol class="shots" id="work-shots" data-view-scope>
+          <li class="shot rv">
+            <a class="shot__link" href="https://thevaultppf.co.za/" target="_blank" rel="noopener">
+              <span class="shot__frame"><span class="frame frame--desk"><img src="/img/work/the-vault-desktop-800.webp" srcset="/img/work/the-vault-desktop-800.webp 800w, /img/work/the-vault-desktop-1600.webp 1600w" sizes="(min-width: 768px) 56vw, 100vw" width="1600" height="900" loading="lazy" decoding="async" alt="The Vault SA website on a desktop screen, built by Position Xero" /></span><span class="frame frame--phone"><img src="/img/work/the-vault-phone-540.webp" width="540" height="1168" loading="lazy" decoding="async" alt="The Vault SA website on a phone, built by Position Xero" /></span></span>
+              <span class="shot__cap">
+                <span class="shot__name">The Vault SA</span>
+                <span class="shot__text">PPF and detailing in Germiston. Every film colour is one tap from a WhatsApp quote.</span>
+                <span class="shot__url">thevaultppf.co.za <svg class="i-out" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              </span>
+            </a>
+          </li>
+          <li class="shot rv">
+            <a class="shot__link" href="https://vitalsocks.co.za/" target="_blank" rel="noopener">
+              <span class="shot__frame"><span class="frame frame--desk"><img src="/img/work/vital-socks-desktop-800.webp" srcset="/img/work/vital-socks-desktop-800.webp 800w, /img/work/vital-socks-desktop-1600.webp 1600w" sizes="(min-width: 768px) 56vw, 100vw" width="1600" height="900" loading="lazy" decoding="async" alt="Vital Socks website on a desktop screen, built by Position Xero" /></span><span class="frame frame--phone"><img src="/img/work/vital-socks-phone-540.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Vital Socks website on a phone, built by Position Xero" /></span></span>
+              <span class="shot__cap">
+                <span class="shot__name">Vital Socks</span>
+                <span class="shot__text">A custom Shopify store for compression socks, with a fit finder.</span>
+                <span class="shot__url">vitalsocks.co.za <svg class="i-out" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              </span>
+            </a>
+          </li>
+          <li class="shot rv">
+            <a class="shot__link" href="https://cognexa.co.za/" target="_blank" rel="noopener">
+              <span class="shot__frame"><span class="frame frame--desk"><img src="/img/work/cognexa-desktop-800.webp" srcset="/img/work/cognexa-desktop-800.webp 800w, /img/work/cognexa-desktop-1600.webp 1600w" sizes="(min-width: 768px) 56vw, 100vw" width="1600" height="900" loading="lazy" decoding="async" alt="Cognexa website on a desktop screen, built by Position Xero" /></span><span class="frame frame--phone"><img src="/img/work/cognexa-phone-540.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Cognexa website on a phone, built by Position Xero" /></span></span>
+              <span class="shot__cap">
+                <span class="shot__name">Cognexa</span>
+                <span class="shot__text">AI receptionists and WhatsApp chatbots, with a page for each service.</span>
+                <span class="shot__url">cognexa.co.za <svg class="i-out" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              </span>
+            </a>
+          </li>
+          <li class="shot rv">
+            <a class="shot__link" href="https://tinyhomesa.com/" target="_blank" rel="noopener">
+              <span class="shot__frame"><span class="frame frame--desk"><img src="/img/work/tiny-homes-sa-desktop-800.webp" srcset="/img/work/tiny-homes-sa-desktop-800.webp 800w, /img/work/tiny-homes-sa-desktop-1600.webp 1600w" sizes="(min-width: 768px) 56vw, 100vw" width="1600" height="900" loading="lazy" decoding="async" alt="Tiny Homes SA website on a desktop screen, built by Position Xero" /></span><span class="frame frame--phone"><img src="/img/work/tiny-homes-sa-phone-540.webp" width="540" height="1168" loading="lazy" decoding="async" alt="Tiny Homes SA website on a phone, built by Position Xero" /></span></span>
+              <span class="shot__cap">
+                <span class="shot__name">Tiny Homes SA</span>
+                <span class="shot__text">Prefab homes, with a configurator and an online quote request.</span>
+                <span class="shot__url">tinyhomesa.com <svg class="i-out" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              </span>
+            </a>
+          </li>
+        </ol>
+        <p class="work__more"><a class="link" href="/work">See all our work <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
+      </div>
+    </section>
+
+    <section class="section on-ink" id="packages" aria-labelledby="packages-title">
+      <div class="wrap">
+        <div class="head head--split rv">
+          <div>
+            <h2 class="h2" id="packages-title">Pick a package</h2>
             <p class="lede">No build fee. Each package has everything in the one before it. Your domain is not included: we can register it for you at cost.</p>
           </div>
-          <div class="billing" data-billing-toggle>
-          <span class="billing__label" id="home-billing-label">Pay</span>
-          <div class="billing__switch" role="group" aria-labelledby="home-billing-label">
-            <button type="button" class="billing__opt" data-billing="monthly" aria-pressed="true">Monthly</button>
-            <button type="button" class="billing__opt" data-billing="yearly" aria-pressed="false">Yearly <span class="billing__save">2 months free</span></button>
+          <div class="head__side">
+            <div class="billing" data-billing-toggle>
+              <span class="billing__label" id="home-billing-label">Pay</span>
+              <div class="billing__switch" role="group" aria-labelledby="home-billing-label">
+                <button type="button" class="billing__opt" data-billing="monthly" aria-pressed="true">Monthly</button>
+                <button type="button" class="billing__opt" data-billing="yearly" aria-pressed="false">Yearly <span class="billing__save">2 months free</span></button>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        <div class="plans">
-          <article class="plan" id="packages-minimum" aria-labelledby="packages-minimum-name">
-            <h3 class="plan__name" id="packages-minimum-name">Minimum</h3>
-            <p class="plan__tag">Your website, built and looked after.</p>
-            <p class="plan__price"><span class="plan__amount" data-monthly="R490" data-yearly="R4,900">R490</span> <span class="plan__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
-            <p class="plan__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
-            <ul class="plan__list">
+        <div class="pk">
+          <article class="pk-col" id="packages-minimum" aria-labelledby="packages-minimum-name">
+            <h3 class="pk-col__name" id="packages-minimum-name">Minimum</h3>
+            <p class="pk-col__tag">Your website, built and looked after.</p>
+            <p class="pk-col__price"><span class="pk-col__amount" data-monthly="R490" data-yearly="R4,900">R490</span> <span class="pk-col__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
+            <p class="pk-col__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
+            <ul class="pk-col__list">
               <li>A website of up to 5 pages, built from our designs and tailored to your business</li>
               <li>We write the words</li>
               <li>Hosting, security updates, backups and SSL</li>
@@ -437,14 +461,14 @@
             </ul>
             <a class="btn btn--wa btn--block" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Minimum%20package%20%28R490%20a%20month%29." data-wa-monthly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Minimum%20package%20%28R490%20a%20month%29." data-wa-yearly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Minimum%20package%2C%20paid%20yearly%20%28R4%2C900%20a%20year%29." target="_blank" rel="noopener" data-lead-location="packages" data-lead-package="Minimum"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>Choose Minimum<span class="visually-hidden"> on WhatsApp</span></span></a>
           </article>
-          <article class="plan plan--popular" id="packages-standard" aria-labelledby="packages-standard-name">
-            <p class="plan__badge">Recommended</p>
-            <h3 class="plan__name" id="packages-standard-name">Standard</h3>
-            <p class="plan__tag">Your website, plus the work to help it get found on Google.</p>
-            <p class="plan__price"><span class="plan__amount" data-monthly="R990" data-yearly="R9,900">R990</span> <span class="plan__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
-            <p class="plan__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
-            <p class="plan__intro">Everything in Minimum, plus:</p>
-            <ul class="plan__list">
+          <article class="pk-col pk-col--rec" id="packages-standard" aria-labelledby="packages-standard-name">
+            <p class="stamp">Recommended</p>
+            <h3 class="pk-col__name" id="packages-standard-name">Standard</h3>
+            <p class="pk-col__tag">Your website, plus the work to help it get found on Google.</p>
+            <p class="pk-col__price"><span class="pk-col__amount" data-monthly="R990" data-yearly="R9,900">R990</span> <span class="pk-col__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
+            <p class="pk-col__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
+            <p class="pk-col__intro">Everything in Minimum, plus:</p>
+            <ul class="pk-col__list">
               <li>On-site SEO</li>
               <li>2 blog posts a month</li>
               <li>Google Business Profile managed (a weekly post and review replies)</li>
@@ -453,15 +477,15 @@
               <li>Up to 1 hour of changes a month</li>
               <li>A monthly report in plain English</li>
             </ul>
-            <a class="btn btn--wa btn--block" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%20%28R990%20a%20month%29." data-wa-monthly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%20%28R990%20a%20month%29." data-wa-yearly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%2C%20paid%20yearly%20%28R9%2C900%20a%20year%29." target="_blank" rel="noopener" data-lead-location="packages" data-lead-package="Standard"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>Choose Standard<span class="visually-hidden"> on WhatsApp</span></span></a>
+            <a class="btn btn--ink btn--block" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%20%28R990%20a%20month%29." data-wa-monthly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%20%28R990%20a%20month%29." data-wa-yearly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Standard%20package%2C%20paid%20yearly%20%28R9%2C900%20a%20year%29." target="_blank" rel="noopener" data-lead-location="packages" data-lead-package="Standard"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>Choose Standard<span class="visually-hidden"> on WhatsApp</span></span></a>
           </article>
-          <article class="plan" id="packages-growth" aria-labelledby="packages-growth-name">
-            <h3 class="plan__name" id="packages-growth-name">Growth</h3>
-            <p class="plan__tag">More posts, call tracking and help getting reviews.</p>
-            <p class="plan__price"><span class="plan__amount" data-monthly="R1,490" data-yearly="R14,900">R1,490</span> <span class="plan__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
-            <p class="plan__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
-            <p class="plan__intro">Everything in Standard, plus:</p>
-            <ul class="plan__list">
+          <article class="pk-col" id="packages-growth" aria-labelledby="packages-growth-name">
+            <h3 class="pk-col__name" id="packages-growth-name">Growth</h3>
+            <p class="pk-col__tag">More posts, call tracking and help getting reviews.</p>
+            <p class="pk-col__price"><span class="pk-col__amount" data-monthly="R1,490" data-yearly="R14,900">R1,490</span> <span class="pk-col__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
+            <p class="pk-col__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
+            <p class="pk-col__intro">Everything in Standard, plus:</p>
+            <ul class="pk-col__list">
               <li>4 blog posts a month</li>
               <li>Google Analytics with call, WhatsApp and form tracking</li>
               <li>A review-request kit</li>
@@ -472,13 +496,13 @@
             </ul>
             <a class="btn btn--wa btn--block" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Growth%20package%20%28R1%2C490%20a%20month%29." data-wa-monthly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Growth%20package%20%28R1%2C490%20a%20month%29." data-wa-yearly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Growth%20package%2C%20paid%20yearly%20%28R14%2C900%20a%20year%29." target="_blank" rel="noopener" data-lead-location="packages" data-lead-package="Growth"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>Choose Growth<span class="visually-hidden"> on WhatsApp</span></span></a>
           </article>
-          <article class="plan" id="packages-full-house" aria-labelledby="packages-full-house-name">
-            <h3 class="plan__name" id="packages-full-house-name">Full House</h3>
-            <p class="plan__tag">Everything, with full SEO and same-day changes.</p>
-            <p class="plan__price"><span class="plan__amount" data-monthly="R4,990" data-yearly="R49,900">R4,990</span> <span class="plan__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
-            <p class="plan__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
-            <p class="plan__intro">Everything in Growth, plus:</p>
-            <ul class="plan__list">
+          <article class="pk-col" id="packages-full-house" aria-labelledby="packages-full-house-name">
+            <h3 class="pk-col__name" id="packages-full-house-name">Full House</h3>
+            <p class="pk-col__tag">Everything, with full SEO and same-day changes.</p>
+            <p class="pk-col__price"><span class="pk-col__amount" data-monthly="R4,990" data-yearly="R49,900">R4,990</span> <span class="pk-col__unit" data-monthly="a month" data-yearly="a year">a month</span></p>
+            <p class="pk-col__note" data-monthly="No build fee" data-yearly="Pay for 10 months, get 12">No build fee</p>
+            <p class="pk-col__intro">Everything in Growth, plus:</p>
+            <ul class="pk-col__list">
               <li>Full SEO: technical SEO, local pages, link building and competitor tracking</li>
               <li>8 blog posts a month</li>
               <li>Monthly conversion improvements using heatmaps</li>
@@ -488,35 +512,33 @@
             <a class="btn btn--wa btn--block" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Full%20House%20package%20%28R4%2C990%20a%20month%29." data-wa-monthly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Full%20House%20package%20%28R4%2C990%20a%20month%29." data-wa-yearly="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27m%20interested%20in%20the%20Full%20House%20package%2C%20paid%20yearly%20%28R49%2C900%20a%20year%29." target="_blank" rel="noopener" data-lead-location="packages" data-lead-package="Full House"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>Choose Full House<span class="visually-hidden"> on WhatsApp</span></span></a>
           </article>
         </div>
-        <p class="plans__after"><a class="link" href="/packages">Compare every detail <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
-        <aside class="band" aria-labelledby="packages-band-title">
-          <div class="band__text">
-            <p class="eyebrow">Premium</p>
-            <h3 class="band__title" id="packages-band-title">Looking for something more?</h3>
-            <p>Pick and choose your own package: a fully custom website or an immersive 3D site with scroll animation, plus SEO, ads and more.</p>
-          </div>
-          <a class="btn btn--glass" href="/premium" data-lead-location="packages-band">Build a premium package <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <p class="pk__after"><a class="link" href="/packages#compare">Compare every detail <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></p>
+        <aside class="more rv" id="more" aria-labelledby="more-title">
+          <h3 class="more__title" id="more-title">Looking for something more?</h3>
+          <p class="more__text">Need ads management, an online store, a bigger website or an immersive scroll-animated build like <a href="/experience">our own showcase page</a>? Tell us what you have in mind and we will price it on your brief.</p>
+          <a class="btn btn--wa btn--lg" href="https://wa.me/27662412155?text=Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings." target="_blank" rel="noopener" data-lead-location="looking_for_more_band" data-lead-package="looking_for_more" data-lead-event="looking_for_more_click"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="how-it-works" aria-labelledby="how-title">
-      <div class="wrap">
-        <p class="eyebrow">How it works</p>
-        <h2 class="h2" id="how-title">Three steps to a live website</h2>
+    <section class="section on-paper grain" id="how-it-works" aria-labelledby="how-title">
+      <div class="wrap how">
+        <div class="rv">
+          <h2 class="h2" id="how-title">How it works</h2>
+        </div>
         <ol class="steps">
-          <li class="step">
-            <p class="step__num">Step 1</p>
+          <li class="step rv">
+            <p class="step__num" aria-hidden="true">1</p>
             <h3 class="step__title">Say hello</h3>
             <p>WhatsApp us or <a href="/contact">book a call</a>. Tell us your business name and what you do.</p>
           </li>
-          <li class="step">
-            <p class="step__num">Step 2</p>
+          <li class="step rv">
+            <p class="step__num" aria-hidden="true">2</p>
             <h3 class="step__title">We build it</h3>
             <p>We build your site from a 15-minute call or a voice note. We write the words, so you don’t have to.</p>
           </li>
-          <li class="step">
-            <p class="step__num">Step 3</p>
+          <li class="step rv">
+            <p class="step__num" aria-hidden="true">3</p>
             <h3 class="step__title">You’re live</h3>
             <p>Your site goes live within 7 days of getting your details. Then we look after it every month.</p>
           </li>
@@ -524,24 +546,41 @@
       </div>
     </section>
 
-    <section class="section" id="promises" aria-labelledby="promises-title">
+    <section class="section on-ink" id="promises" aria-labelledby="promises-title">
       <div class="wrap">
-        <p class="eyebrow">Our promises</p>
-        <h2 class="h2" id="promises-title">What we promise you</h2>
-        <p class="lede">These promises are about our own work, so we can keep them. They are written into our <a href="/terms#packages">terms</a>.</p>
+        <div class="head head--split rv">
+          <h2 class="h2" id="promises-title">What we promise you</h2>
+          <p class="lede">These promises are about our own work, so we can keep them. They are written into our <a href="/terms#packages">terms</a>.</p>
+        </div>
         <ul class="promises">
-          <li class="promise"><span class="promise__key">7 days</span><p class="promise__text">Live within 7 days of getting your details, or your first month is free.</p></li>
-          <li class="promise"><span class="promise__key">30 days</span><p class="promise__text">Not happy in the first 30 days? We refund you in full.</p></li>
-          <li class="promise"><span class="promise__key">2 working days</span><p class="promise__text">Changes done within 2 working days, or that month is free.</p></li>
-          <li class="promise"><span class="promise__key">No contract</span><p class="promise__text">Cancel with 30 days’ notice. Your domain, email and words are yours, and they go with you.</p></li>
-          <li class="promise"><span class="promise__key">12 months</span><p class="promise__text">After 12 paid months, the website files are yours too.</p></li>
+          <li class="promise rv"><span class="promise__key">7 days</span><p class="promise__text">Live within 7 days of getting your details, or your first month is free.</p></li>
+          <li class="promise rv"><span class="promise__key">30 days</span><p class="promise__text">Not happy in the first 30 days? We refund you in full.</p></li>
+          <li class="promise rv"><span class="promise__key">2 working days</span><p class="promise__text">Changes done within 2 working days, or that month is free.</p></li>
+          <li class="promise rv"><span class="promise__key">No contract</span><p class="promise__text">Cancel with 30 days’ notice. Your domain, email and words are yours, and they go with you.</p></li>
+          <li class="promise rv"><span class="promise__key">12 months</span><p class="promise__text">After 12 paid months, the website files are yours too.</p></li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="wrap wrap--narrow">
-        <p class="eyebrow">Questions</p>
+    <section class="section on-paper grain" id="founders" aria-labelledby="founders-title">
+      <div class="wrap founders">
+        <figure class="founders__photo rv">
+          <img src="/img/founders-480.webp" srcset="/img/founders-480.webp 480w, /img/founders-768.webp 768w" sizes="(min-width: 900px) 460px, 90vw" width="768" height="960" loading="lazy" decoding="async" alt="Ronnie James Botes and Keegan Shane Haumann, co-founders of Position Xero" />
+          <figcaption>Ronnie (left) and Keegan, the co-founders.</figcaption>
+        </figure>
+        <div class="founders__text rv">
+          <h2 class="h2" id="founders-title">Founder-led, from Centurion</h2>
+          <div class="prose">
+            <p>Position Xero is founder-led. Ronnie and Keegan started the agency and still run it. Day to day you work with the person who actually runs your service, with a founder close to the account.</p>
+            <p>Ronnie’s background is web development and SEO. Keegan is a full-stack developer and builds sites alongside the other developers here.</p>
+          </div>
+          <a class="link" href="/about">More about us <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section on-paper grain" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
         <h2 class="h2" id="faq-title">Questions people ask us</h2>
         <div class="faq">
           <details class="faq__item" id="faq-1">
@@ -570,22 +609,24 @@
           </details>
           <details class="faq__item" id="faq-7">
             <summary class="faq__q">What is not included?</summary>
-            <div class="faq__a"><p>Your domain name is not included in any package. We can register your domain for you at cost. Ads management and fully custom designs are not in the packages either: you can add them as a <a href="/premium">premium package</a>.</p></div>
+            <div class="faq__a"><p>Your domain name is not included in any package. We can register your domain for you at cost. Ads management, online stores and fully custom or immersive websites are not in the packages either: <a href="#more">tell us what you need</a> and we will price it on your brief.</p></div>
           </details>
         </div>
       </div>
     </section>
 
-    <section class="section final" id="start" aria-labelledby="start-title">
+    <section class="final on-orange grain" id="start" aria-labelledby="start-title">
       <div class="wrap">
-        <div class="final__panel">
-          <h2 class="final__title" id="start-title">Let’s get your website live</h2>
+        <h2 class="final__title rv" id="start-title">Let’s get your website live</h2>
+        <div class="final__row">
           <p class="final__text">Send us a WhatsApp with your business name and what you do. We take it from there.</p>
-          <div class="final__actions">
-            <a class="btn btn--wa btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20to%20get%20my%20business%20website%20started." target="_blank" rel="noopener" data-lead-location="final-cta" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
-            <a class="link" href="/contact">Or book a call <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+          <div>
+            <div class="final__actions">
+              <a class="btn btn--ink btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20to%20get%20my%20business%20website%20started." target="_blank" rel="noopener" data-lead-location="final-cta" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
+              <a class="link" href="/contact">Or book a call <svg class="i-arrow" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M2 7h10M8 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+            </div>
+            <p class="final__phone">Prefer to phone? <a href="tel:+27662412155" data-lead-location="final-cta" data-lead-package="none">+27 66 241 2155</a></p>
           </div>
-          <p class="final__phone">Prefer to phone? <a href="tel:+27662412155" data-lead-location="final-cta" data-lead-package="none">+27 66 241 2155</a></p>
         </div>
       </div>
     </section>
@@ -597,15 +638,14 @@
         <div class="site-footer__brand">
           <a class="logo" href="/" aria-label="Position Xero home"><svg class="logo__x" viewBox="0 0 100 88" aria-hidden="true" focusable="false"><polygon points="0,0 30,0 50,30 70,0 100,0 65,44 100,88 70,88 50,58 30,88 0,88 35,44" fill="currentColor" /></svg><span class="logo__word">POSITION&nbsp;XERO</span></a>
           <p>Websites built and looked after for South African businesses.</p>
-          <p class="site-footer__where">Centurion, Gauteng</p>
+          <p>Centurion, Gauteng</p>
         </div>
         <div class="site-footer__cols">
           <div class="site-footer__col">
             <p class="site-footer__head">Website</p>
             <a href="/packages">Packages</a>
-            <a href="/premium">Premium</a>
+            <a href="/work">Our work</a>
             <a href="/experience">What we can build</a>
-            <a href="/works">Work</a>
             <a href="/how-we-work">How we work</a>
             <a href="/faq">FAQ</a>
           </div>
