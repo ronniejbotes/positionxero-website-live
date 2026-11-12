@@ -10,7 +10,7 @@ import '../styles/motion.css';
  *   - the tape: a moving band, faster while you scroll, paused off screen
  *   - Sites we've built: a carousel of the real recordings
  *   - How it works: pinned on big screens, the steps advance as you scroll
- *   - promises: "7 days" and "12 months" count in once
+ *   - promises: "7 days" and "12 months" rise into place once (CSS only)
  *   - packages: drag the package on a phone; the result illustration adds
  *     its parts one after another
  *   - /work: the smaller cards play their recording on hover
@@ -162,39 +162,6 @@ function staggers() {
 }
 
 /* ============================================================
-   COUNTS: a figure inside a block that is still waiting to be revealed
-   counts up from 0 as the block comes in. The real figure is in the
-   HTML, and stays there for anyone the reveal does not run for.
-   ============================================================ */
-function counts() {
-  if (!motionOK() || tallRenderer || !root.classList.contains('rv-on')) return;
-  document.querySelectorAll('[data-count]').forEach((el) => {
-    const to = parseInt(el.dataset.count, 10);
-    const block = el.closest('.rv');
-    if (!(to > 0) || !block || block.classList.contains('is-in')) return;
-    const run = () => {
-      // the box keeps the final figure's width, so nothing beside it moves
-      el.style.width = `${el.getBoundingClientRect().width}px`;
-      el.textContent = '0';
-      const dur = 900 + to * 25;
-      const t0 = performance.now();
-      const step = (now) => {
-        const k = clamp((now - t0) / dur, 0, 1);
-        el.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3))));
-        if (k < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-    const mo = new MutationObserver(() => {
-      if (!block.classList.contains('is-in')) return;
-      mo.disconnect();
-      run();
-    });
-    mo.observe(block, { attributes: true, attributeFilter: ['class'] });
-  });
-}
-
-/* ============================================================
    CAROUSEL: Sites we've built
    ============================================================ */
 function carousel(car) {
@@ -210,6 +177,10 @@ function carousel(car) {
   let inView = false;
   let userPaused = false;
   let hovering = false;
+  // once a visitor swipes, drags, taps an arrow or a dot, or uses the keys,
+  // the carousel stays on the site they chose: its recording just repeats
+  let steered = false;
+  const steer = () => { steered = true; };
 
   car.classList.add('is-ready');
 
@@ -272,14 +243,16 @@ function carousel(car) {
     });
   }, { passive: true });
 
-  prev.addEventListener('click', () => go(index - 1));
-  next.addEventListener('click', () => go(index + 1));
-  dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+  prev.addEventListener('click', () => { steer(); go(index - 1); });
+  next.addEventListener('click', () => { steer(); go(index + 1); });
+  dots.forEach((d, k) => d.addEventListener('click', () => { steer(); go(k); }));
   car.addEventListener('keydown', (e) => {
     if (e.target.closest('a')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); steer(); go(index + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); steer(); go(index - 1); }
   });
+  track.addEventListener('pointerdown', steer);
+  track.addEventListener('wheel', (e) => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) steer(); }, { passive: true });
   // a click on a site stepping back brings it to the front (those sites
   // are inert, so the click lands on the track itself)
   track.addEventListener('click', (e) => {
@@ -300,7 +273,7 @@ function carousel(car) {
     });
     v.addEventListener('ended', () => {
       if (k !== index) return;
-      if (hovering || userPaused || !inView) {
+      if (steered || hovering || userPaused || !inView) {
         v.currentTime = 0;
         sync();
       } else {
@@ -514,7 +487,6 @@ function hoverStages() {
 hero();
 tapes();
 staggers();
-counts();
 document.querySelectorAll('[data-car]').forEach(carousel);
 story();
 shops();
