@@ -62,8 +62,13 @@ function hero() {
     }
   }
 
-  // desktop with a mouse: the code, the site and the result part a few pixels
+  // the hero's light (motion.css) drifts only while the hero is on screen
   const heroEl = document.querySelector('.hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => heroEl.classList.toggle('is-off', !entry.isIntersecting)).observe(heroEl);
+  }
+
+  // desktop with a mouse: the code, the site and the result part a few pixels
   const build = heroEl && heroEl.querySelector('.build');
   if (!build || !motionOK()) return;
   let raf = 0;

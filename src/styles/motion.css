@@ -63,17 +63,20 @@
 .anim .slot { position: relative; }
 .anim .slot::after {
   content: ""; position: absolute; inset: -5px -8px; border-radius: 10px; pointer-events: none;
-  box-shadow: 0 0 0 1.5px var(--accent); opacity: 0;
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--ink) 40%, transparent); opacity: 0;
 }
 .anim.play .slot::after { animation: slot-ring 1s ease var(--r, 0ms) both; }
 @keyframes slot-ring { 0% { opacity: 0; } 22% { opacity: 1; } 100% { opacity: 0; } }
 
 /* the last beat: the same page as a search result (an example) */
+/* --snip-pad is the gap to its top corners, so the "Example" tag in the
+   corner is concentric with the card */
 .snip {
+  --snip-pad: 12px;
   position: relative; z-index: 2; width: 88%; margin: -14px 0 0;
-  padding: 12px 14px 14px; border-radius: var(--radius);
+  padding: var(--snip-pad) 14px 14px; border-radius: var(--r-panel);
   background: var(--surface); color: var(--ink);
-  box-shadow: 0 26px 50px -26px color-mix(in srgb, var(--shadow) 75%, transparent), 0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent), var(--lift-2);
 }
 .snip p { margin: 0; }
 .snip__head {
@@ -83,7 +86,7 @@
 .snip__head svg { flex: none; }
 .snip__example {
   margin-left: auto; font: 600 10px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase;
-  color: var(--muted); padding: 5px 7px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--muted); padding: 5px 7px; border-radius: max(var(--r-min), calc(var(--r-panel) - var(--snip-pad))); box-shadow: inset 0 0 0 1px var(--line);
 }
 .snip__site { display: flex; align-items: center; gap: 9px; }
 .snip__fav { display: inline-grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--brand); color: var(--on-brand); font: 600 11px/1 var(--display); }
@@ -98,19 +101,19 @@
 @media (max-width: 639px) {
   .hero .build { margin-top: 18px; }
   .hero .editor__code { padding-bottom: 24px; }
-  .snip { margin-top: -18px; padding-top: 10px; }
+  .snip { --snip-pad: 10px; margin-top: -18px; }
   .snip__head { margin-bottom: 4px !important; padding-bottom: 7px; }
   .snip__site { display: none; }
 }
 @media (min-width: 640px) {
-  .snip { width: 74%; padding: 14px 18px 16px; }
+  .snip { --snip-pad: 14px; width: 74%; padding: var(--snip-pad) 18px 16px; }
   .snip__title { font-size: 18px; }
   .snip__desc { font-size: 14px; }
 }
 @media (min-width: 1100px) {
   /* the example headline stays on two lines in the wider General Sans */
   .hero .site__h { max-width: 13ch; }
-  .snip { width: 70%; margin-top: -30px; padding: 16px 20px 18px; border-radius: 16px; }
+  .snip { --snip-pad: 16px; width: 70%; margin-top: -30px; padding: var(--snip-pad) 20px 18px; }
   .snip__head { font-size: 12px; }
   .snip__name { font-size: 14px; }
   .snip__url { font-size: 12.5px; }
@@ -125,6 +128,57 @@
   .anim .build > .site { translate: calc(var(--px, 0) * 8px) calc(var(--py, 0) * 6px); }
   .anim .build > .snip { translate: calc(var(--px, 0) * 14px) calc(var(--py, 0) * 10px); }
 }
+
+/* the settle: when the last line of code has run, the example site lifts
+   a hair and sets down (home.js sets --settle from the typing times) */
+.anim.play .hero .site { animation: site-settle .9s cubic-bezier(.2, .7, .2, 1) var(--settle, 2800ms) both; }
+@keyframes site-settle { 0%, 100% { transform: none; } 32% { transform: translateY(-4px) scale(1.012); } }
+
+/* The hero's light, dark mode only (owner's note, 12 Nov 2026: "two colours
+   get it right, the third gets it noticed"). A soft cyan aurora behind the
+   code, the site and the search result: light on the scene, never a shape.
+   Pre-blurred radial gradients (no filter), drifting on transform and
+   opacity only, paused off screen (motion.js) and still for reduced motion.
+   The copy column sits above it, so the glow never tints the text. */
+@supports (color: oklch(from red l c h)) {
+  :root { --aurora-teal: oklch(from var(--action) calc(l - .06) c calc(h - 30)); }
+}
+.hero__copy { position: relative; z-index: 1; }
+.build { isolation: isolate; }
+.build::before, .build::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: -10% -24% -18% -24%;
+}
+@media (min-width: 1100px) { .build::before, .build::after { inset: -22% -16% -24% -26%; } }
+:root:not([data-theme="light"]) .build::before {
+  background:
+    radial-gradient(50% 42% at 56% 46%, color-mix(in srgb, var(--action) 30%, transparent), color-mix(in srgb, var(--action) 14%, transparent) 40%, color-mix(in srgb, var(--action) 5%, transparent) 66%, transparent 84%),
+    radial-gradient(38% 32% at 36% 70%, color-mix(in srgb, var(--aurora-teal, var(--action)) 24%, transparent), color-mix(in srgb, var(--aurora-teal, var(--action)) 9%, transparent) 46%, transparent 80%);
+}
+:root:not([data-theme="light"]) .build::after {
+  background: radial-gradient(34% 30% at 70% 72%, color-mix(in srgb, var(--action) 20%, transparent), color-mix(in srgb, var(--action) 7%, transparent) 48%, transparent 82%);
+}
+.anim .build::before { animation: aurora-a 10s ease-in-out infinite alternate; will-change: transform, opacity; }
+.anim .build::after { animation: aurora-b 12s ease-in-out -6s infinite alternate; will-change: transform, opacity; }
+.hero.is-off .build::before, .hero.is-off .build::after { animation-play-state: paused; }
+@keyframes aurora-a { from { transform: translate3d(-3%, 2%, 0) rotate(-4deg); opacity: .8; } to { transform: translate3d(4%, -3%, 0) rotate(5deg) scale(1.08); opacity: 1; } }
+@keyframes aurora-b { from { transform: translate3d(3%, -2%, 0) scale(1.06); opacity: 1; } to { transform: translate3d(-4%, 3%, 0) scale(.96); opacity: .7; } }
+/* "free website" catches the same light, faintly (the text stays navy on ice white) */
+:root:not([data-theme="light"]) .h1 mark,
+:root:not([data-theme="light"]) .anim .h1 mark::before { box-shadow: inset 0 0 .3em color-mix(in srgb, var(--action) 26%, transparent), 0 0 .5em -.1em color-mix(in srgb, var(--action) 30%, transparent); }
+:root:not([data-theme="light"]) .anim .h1 mark { box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .build::before, .build::after { animation: none !important; } }
+
+/* ============================================================
+   PACKAGES: one shared element. Switching package glides the chosen
+   card from the old place to the new one (a view transition, set up in
+   home.js; browsers without them, and reduced motion, switch at once).
+   Only the named card moves: the rest of the page updates in place.
+   ============================================================ */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+::view-transition-group(pk-pick), ::view-transition-group(pk-rec) { animation-duration: .45s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
+::view-transition-old(pk-pick), ::view-transition-new(pk-pick),
+::view-transition-old(pk-rec), ::view-transition-new(pk-rec) { animation-duration: .3s; }
 
 /* ============================================================
    THE TAPE: a moving band of short promises (Vital's marquee,
@@ -144,7 +198,7 @@
   font: var(--dw) clamp(26px, 4vw, 54px)/1.05 var(--display); letter-spacing: var(--dtrack); white-space: nowrap;
 }
 /* a small diamond between the phrases */
-.mq__item::after { content: ""; width: .24em; height: .24em; flex: none; border-radius: .04em; background: var(--accent); transform: rotate(45deg); }
+.mq__item::after { content: ""; width: .24em; height: .24em; flex: none; border-radius: .04em; background: var(--faint); transform: rotate(45deg); }
 @keyframes mq-loop { to { transform: translateX(-50%); } }
 .mq.is-paused .mq__track, .mq.is-off .mq__track { animation-play-state: paused; }
 .mq__pause {
@@ -250,6 +304,8 @@
 .car__dot:hover::before { background: var(--tint-1); }
 .car__btns { display: flex; align-items: center; gap: 8px; }
 @media (max-width: 400px) { .car .arrow-btn { width: 46px; height: 46px; } .car__pause { width: 40px; height: 40px; } }
+/* 320 wide: the dots and the buttons fit side by side (they pushed the page 22px sideways) */
+@media (max-width: 359px) { .car__dot { width: 26px; } .car.is-ready .car__nav { gap: 10px; } }
 .car__pause {
   width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer; display: grid; place-items: center;
   background: transparent; color: var(--on-brand); box-shadow: inset 0 0 0 1.5px var(--line-blue);

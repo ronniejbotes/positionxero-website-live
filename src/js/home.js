@@ -123,17 +123,37 @@ document.querySelectorAll('.shop').forEach((shop) => {
     if (focus) tabs[index].focus();
   }
 
+  // One shared element: choosing a package glides the chosen card from its
+  // old place to the new one (motion.css names it for a view transition).
+  // A swipe keeps its own drag (motion.js), so it switches as before; so do
+  // browsers without view transitions, and reduced motion.
+  const rec = shop.querySelector('.rail__rec');
+  let vtId = 0;
+  const name = (on) => {
+    tabs.forEach((t) => { t.style.viewTransitionName = ''; });
+    if (rec) rec.style.viewTransitionName = on ? 'pk-rec' : '';
+    if (on) tabs[current].style.viewTransitionName = 'pk-pick';
+  };
+  function go(index, opts) {
+    const next = (index + tabs.length) % tabs.length;
+    if (next === current || reduced.matches || !document.startViewTransition) { show(next, opts); return; }
+    const id = ++vtId;
+    name(true);
+    const vt = document.startViewTransition(() => { show(next, opts); name(true); });
+    vt.finished.finally(() => { if (id === vtId) name(false); });
+  }
+
   tabs.forEach((t, i) => {
-    t.addEventListener('click', () => show(i));
+    t.addEventListener('click', () => go(i));
     t.addEventListener('keydown', (e) => {
       const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
-      if (e.key in keys) { e.preventDefault(); show(current + keys[e.key], { focus: true }); }
-      if (e.key === 'Home') { e.preventDefault(); show(0, { focus: true }); }
-      if (e.key === 'End') { e.preventDefault(); show(tabs.length - 1, { focus: true }); }
+      if (e.key in keys) { e.preventDefault(); go(current + keys[e.key], { focus: true }); }
+      if (e.key === 'Home') { e.preventDefault(); go(0, { focus: true }); }
+      if (e.key === 'End') { e.preventDefault(); go(tabs.length - 1, { focus: true }); }
     });
   });
-  shop.querySelector('.arrow-btn--prev')?.addEventListener('click', () => show(current - 1));
-  shop.querySelector('.arrow-btn--next')?.addEventListener('click', () => show(current + 1));
+  shop.querySelector('.arrow-btn--prev')?.addEventListener('click', () => go(current - 1));
+  shop.querySelector('.arrow-btn--next')?.addEventListener('click', () => go(current + 1));
 
   // swipe on the stage (touch and pen; a mouse drag selects text as usual)
   let sx = 0, sy = 0, tracking = false;
@@ -316,6 +336,9 @@ if (root.classList.contains('anim') && document.querySelector('.editor')) {
   if (slots.length) slots[slots.length - 1].style.setProperty('--r2', last + 'ms');
   const live = document.querySelector('.site__live');
   if (live) live.style.setProperty('--r', (last + 80) + 'ms');
+  // the site settles once its last part is in (motion.css)
+  const site = document.querySelector('.hero .site');
+  if (site) site.style.setProperty('--settle', (last + 140) + 'ms');
   let started = false;
   const start = () => { if (started) return; started = true; requestAnimationFrame(() => root.classList.add('play')); };
   if (document.fonts && document.fonts.load) document.fonts.load('400 12px "Martian Mono"').then(start, start);
@@ -348,6 +371,34 @@ if (bar) {
   fit();
   window.addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+}
+
+/* ---------- one main action per view ----------
+   The header's WhatsApp button stays an outline while another action
+   button (hero, package, closing call) is on screen, and takes the action
+   colour when none is (home.css). A package panel that is not showing
+   does not count; the "Looking for something more?" button is an outline
+   itself, so it does not count either. */
+const headGo = document.querySelector('.site-header .btn--go');
+if (headGo) {
+  const others = [...document.querySelectorAll('main .btn--go')].filter((b) => !b.closest('.more'));
+  if (!others.length || !('IntersectionObserver' in window)) {
+    headGo.classList.add('is-loud');
+  } else {
+    const seen = new Set();
+    const sync = () => {
+      const any = [...seen].some((b) => !b.closest('.pk:not(.is-active)'));
+      headGo.classList.toggle('is-loud', !any);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+      sync();
+    }, { rootMargin: '-80px 0px 0px 0px' });
+    others.forEach((b) => io.observe(b));
+    document.querySelectorAll('.shop__panels').forEach((p) => {
+      new MutationObserver(sync).observe(p, { attributes: true, subtree: true, attributeFilter: ['class'] });
+    });
+  }
 }
 
 /* ---------- phone menu ---------- */
