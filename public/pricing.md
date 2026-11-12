@@ -19,14 +19,15 @@ Domain not included in any package: we can register your domain for you at cost.
 ## Our commitments
 About our own work; no result is promised.
 - Live within 7 days of receiving your details, or your first month is free.
-- No contract: cancel with 30 days' notice, and your domain, email and words are yours and go with you.
+- No contract: cancel with 30 days' notice. Your domain, email and words are yours from day one, and they go with you.
 - After 12 paid months the website files are yours too.
 - Paying yearly: the package runs to the end of the paid year and is simply not renewed if you cancel. If we miss the 7-day launch on a yearly plan, we add one free month to the end of your year.
 
 ## What else to know
-- On every site we build: structured data that matches the page, an llms.txt file and a robots.txt that lets AI search crawlers in.
+- On every new site we build: structured data that matches the page, an llms.txt file and a robots.txt that lets AI search crawlers in.
 - SEO is included in Standard, Growth and Full House. Full House covers full SEO for one local business website; SEO for bigger sites, several locations or national campaigns is priced on the brief.
 - Moving an existing website, domain and email to us costs nothing extra.
+- We reply to every enquiry within 24 hours, on WhatsApp or by email.
 - No package includes a guarantee of rankings, traffic or leads.
 - Details: https://www.positionxero.com/packages
 
