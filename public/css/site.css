@@ -210,10 +210,30 @@ figure { margin: 0; }
 .work-list { display: grid; gap: 12px; margin: 1.2em 0 1.6em; }
 @media (min-width: 760px) { .work-list { grid-template-columns: 1fr 1fr; } }
 .work-list p { margin: 0; padding: 18px 20px; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: 17px !important; }
-.work-list strong { display: block; font: var(--display-weight) 21px/1.15 var(--font-display); margin-bottom: 6px; }
+.work-list strong { font: var(--display-weight) 20px/1.2 var(--font-display); letter-spacing: var(--display-track); }
 .pkg-list { list-style: none; padding: 0 !important; display: grid; gap: 10px; }
 .pkg-list > li { margin: 0 !important; padding: 16px 18px !important; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
 .pkg-list > li strong:first-child { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; }
+
+/* wide screens: the article with a sticky packages card beside it */
+.read-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.side { display: none; }
+@media (min-width: 1100px) {
+  .read-grid { grid-template-columns: minmax(0, var(--read)) minmax(0, 340px); justify-content: space-between; align-items: start; }
+  .side {
+    display: grid; gap: 14px; position: sticky; top: calc(var(--header-h) + 32px);
+    padding: 26px 24px; border-radius: 20px; color: var(--on-brand);
+    background: radial-gradient(90% 60% at 100% 0%, var(--on-brand-12), transparent 60%), var(--brand);
+    box-shadow: 0 30px 60px -34px color-mix(in srgb, var(--brand) 80%, transparent);
+  }
+}
+.side__k { margin: 0; font: 500 12.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: .03em; color: var(--brand-wash); }
+.side__price { margin: 0; font: var(--display-weight) 30px/1.05 var(--font-display); letter-spacing: var(--display-track); }
+.side__price strong { font-size: 1.5em; }
+.side__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-on-brand); }
+.side__list li { padding: 9px 0; border-bottom: 1px solid var(--line-on-brand); color: var(--brand-wash); font-size: 16px; line-height: 1.4; }
+.side .btn--block { width: 100%; }
+.side .link { justify-self: start; color: var(--on-brand); }
 
 /* "read next" links at the end of a page */
 .next { margin-top: 2.6em; padding-top: 1.6em; border-top: 2px solid var(--ink); }
