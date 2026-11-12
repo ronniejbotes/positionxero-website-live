@@ -32,7 +32,7 @@ so WhatsApp us and we will put a price to it: https://wa.me/27662412155?text=Hi%
 - Lead generation campaigns
 
 ## Our work
-- https://www.positionxero.com/work: every client website we built or rebuilt, each with a desktop and a phone view.
+- https://www.positionxero.com/work: client websites we built or rebuilt, each with a desktop and a phone view.
 
 ## Website / Landing Page Design (USD, outside South Africa)
 - Landing page: From $750 one-time

@@ -50,16 +50,38 @@ toggles.forEach((t) => t.addEventListener('click', (event) => {
    Phones open on the phone view, wider screens on the desktop view; the
    CSS does the same before this runs, so nothing jumps. */
 const small = window.matchMedia('(max-width: 767px)');
-document.querySelectorAll('[data-view-scope]').forEach((scope) => {
+const press = (buttons, view) => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.show === view)));
+const setters = [...document.querySelectorAll('[data-view-scope]')].map((scope) => {
   const group = scope.id ? document.querySelector(`[data-view-for="${scope.id}"]`) : null;
   const buttons = group ? [...group.querySelectorAll('[data-show]')] : [];
   const set = (view) => {
     scope.dataset.view = view;
-    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.show === view)));
+    press(buttons, view);
   };
   set(small.matches ? 'phone' : 'desktop');
   buttons.forEach((b) => b.addEventListener('click', () => set(b.dataset.show)));
+  return set;
 });
+/* /work also has one switch for every site at once */
+document.querySelectorAll('[data-view-all]').forEach((group) => {
+  const buttons = [...group.querySelectorAll('[data-show]')];
+  press(buttons, small.matches ? 'phone' : 'desktop');
+  buttons.forEach((b) => b.addEventListener('click', () => {
+    press(buttons, b.dataset.show);
+    setters.forEach((set) => set(b.dataset.show));
+  }));
+});
+
+/* ---------- client-name tape: a pause button for touch and keyboard ---------- */
+const tape = document.querySelector('.tape');
+const pause = tape && tape.querySelector('.tape__pause');
+if (pause) {
+  pause.addEventListener('click', () => {
+    const paused = tape.classList.toggle('is-paused');
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.setAttribute('aria-label', paused ? 'Play the moving names' : 'Pause the moving names');
+  });
+}
 
 /* ---------- phone menu ---------- */
 const menu = document.querySelector('.menu');
@@ -89,6 +111,11 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       io.unobserve(entry.target);
     });
   }, { rootMargin: '0px 0px -6% 0px' });
+  // anything already on screen (a reload half way down, or a landing on
+  // /packages#more) shows at once instead of flashing out and back in
+  document.querySelectorAll('.rv').forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in');
+    else io.observe(el);
+  });
   document.documentElement.classList.add('rv-on');
-  document.querySelectorAll('.rv').forEach((el) => io.observe(el));
 }

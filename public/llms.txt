@@ -33,7 +33,7 @@
 
 - Home: https://www.positionxero.com/
 - Website Packages (four monthly packages, compared): https://www.positionxero.com/packages
-- Our Work (every client website we built or rebuilt, each with a desktop and a phone view): https://www.positionxero.com/work
+- Our Work (client websites we built or rebuilt, each with a desktop and a phone view): https://www.positionxero.com/work
 - What We Can Build (immersive 3D showcase site): https://www.positionxero.com/experience
 - Services Overview: https://www.positionxero.com/services
 - Web Design and Development: https://www.positionxero.com/web-design
