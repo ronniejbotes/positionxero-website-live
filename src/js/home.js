@@ -115,11 +115,11 @@ if (form) {
     const rows = [];
     if (once) rows.push(`From ${rands(once)} once-off`);
     if (monthly) rows.push(`${rows.length ? '+' : 'From'} ${rands(monthly)} a month`);
+    if (!rows.length && brief.length) rows.push('Priced on your brief');
     if (usd.length) {
       if (rows.length) rows[rows.length - 1] += ' + ads';
       else rows.push('Ads: from $' + Math.min(...picked.filter((i) => i.dataset.usd).map((i) => Number(i.dataset.usd))) + ' a month');
     }
-    if (!rows.length && brief.length) rows.push('Priced on your brief');
     if (!rows.length) rows.push('Pick your options');
     stickyTotal.textContent = '';
     rows.forEach((r) => {

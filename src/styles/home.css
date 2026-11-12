@@ -640,3 +640,8 @@ html:not(.js) .billing { display: none; }
 html:not(.js) .sticky-bar { display: none; }
 @media (min-width: 1000px) { .sticky-bar { display: none; } }
 @media (max-width: 999px) { .premium + .site-footer { padding-bottom: 120px; } }
+
+/* stand-alone text links get a 44px tap height without moving the text */
+.final__phone a, .site-footer__bottom p:first-child a, .crumbs a {
+  display: inline-block; padding: 12px 0; margin: -12px 0;
+}
