@@ -1,18 +1,18 @@
 # Position Xero
 
-> Position Xero is a founder-led web development and SEO agency that brings service businesses leads. For South African businesses it builds, hosts and looks after websites on four monthly packages from R490 a month (no build fee, live in 7 days, no contract), and custom or immersive sites are built as premium packages. It builds websites and landing pages that turn visitors into enquiries and does the SEO that gets them found on Google and in AI answers, with lead generation built on both and Google Ads and Meta Ads as supporting services. The agency is based in Centurion, Gauteng, South Africa, serves service businesses worldwide and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account.
+> Position Xero is a founder-led web development and SEO agency that brings service businesses leads. For South African businesses it builds, hosts and looks after websites on four monthly packages from R490 a month (no build fee, live in 7 days, no contract), and anything the packages do not cover is priced on the brief. It builds websites and landing pages that turn visitors into enquiries and does the SEO that gets them found on Google and in AI answers, with lead generation built on both and Google Ads and Meta Ads as supporting services. The agency is based in Centurion, Gauteng, South Africa, serves service businesses worldwide and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account.
 
 > Last updated: 2026-11-12
 
 ## What We Do
 
-- **Website packages (South Africa)**: We build, host and look after your website for a monthly fee with no build fee. Minimum R490/month, Standard R990/month (recommended), Growth R1,490/month, Full House R4,990/month; pay yearly to get 2 months free. Each package includes everything in the one before. Domain not included (registered for you at cost). Commitments: live within 7 days of receiving your details or the first month is free; full refund if not happy in the first 30 days; changes within 2 working days or that month is free; cancel with 30 days' notice; website files are yours after 12 paid months. Full House includes up to 4 hours of changes a month, done the same working day. Paying yearly: full refund in the first 30 days, after that the package runs to the end of the paid year and is not renewed if cancelled; a missed 7-day launch on a yearly plan adds one free month. Full House covers SEO for one local business website; custom SEO from R16,500/month is for bigger sites, several locations or national campaigns. Details: https://www.positionxero.com/packages
-- **Premium packages (South Africa)**: Pick and choose a custom package at https://www.positionxero.com/premium: landing page from R12,500 once-off, full website from R29,900 once-off, immersive 3D website or online store priced on the brief, local SEO from R9,900/month, full SEO from R16,500/month, plus Google Ads and Meta Ads management.
-- **Web Development (websites and landing pages)**: High-converting, SEO-optimised HTML websites and landing pages, designed and built to turn visitors into enquiries. Landing pages from $750, full sites from $1,800.
-- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations, aimed at enquiries from the client's own website. Local SEO from $600/month, full SEO from $1,000/month.
+- **Website packages (South Africa)**: We build, host and look after your website for a monthly fee with no build fee. Minimum R490/month, Standard R990/month (recommended), Growth R1,490/month, Full House R4,990/month; pay yearly: pay for 10 months, get 12. Each package includes everything in the one before. Domain not included (registered for you at cost). Commitments: live within 7 days of receiving your details or the first month is free; full refund if not happy in the first 30 days; changes within 2 working days or that month is free; cancel with 30 days' notice; website files are yours after 12 paid months. Full House includes up to 4 hours of changes a month, done the same working day. Paying yearly: full refund in the first 30 days, after that the package runs to the end of the paid year and is not renewed if cancelled; a missed 7-day launch on a yearly plan adds one free month. SEO is included in Standard, Growth and Full House; Full House covers full SEO for one local business website, and SEO for bigger sites, several locations or national campaigns is priced on the brief. Details: https://www.positionxero.com/packages
+- **Everything else (South Africa)**: The four packages are the only published prices for South Africa. Google Ads and Meta Ads management, immersive 3D or scroll-animated builds (like https://www.positionxero.com/experience), online stores, lead generation campaigns and bigger or multi-location projects are priced on the brief over WhatsApp: https://wa.me/27662412155?text=Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.
+- **Web Development (websites and landing pages)**: High-converting, SEO-optimised HTML websites and landing pages, designed and built to turn visitors into enquiries. Outside South Africa: landing pages from $750, full sites from $1,800.
+- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations, aimed at enquiries from the client's own website. Outside South Africa: local SEO from $600/month, full SEO from $1,000/month.
 - **Lead Generation**: Multi-channel campaigns built on the website and SEO (landing pages, SEO, cold email, and paid ads as an optional accelerator). The monthly lead target is agreed with each client at kickoff, from their budget, market and current cost per lead, and reported against openly. Position Xero does not publish a lead count.
-- **Google Ads Management** (supporting service): Search, Display, Shopping, YouTube campaigns. Minimum ad spend: $500/month. Retainer from $850/month.
-- **Meta Ads Management** (supporting service): Facebook and Instagram advertising. Minimum ad spend: $300/month. Retainer from $750/month.
+- **Google Ads Management** (supporting service): Search, Display, Shopping, YouTube campaigns. Outside South Africa: minimum ad spend $500/month, retainer from $850/month. In South Africa: priced on the brief.
+- **Meta Ads Management** (supporting service): Facebook and Instagram advertising. Outside South Africa: minimum ad spend $300/month, retainer from $750/month. In South Africa: priced on the brief.
 
 ## Who We Serve
 
@@ -33,7 +33,7 @@
 
 - Home: https://www.positionxero.com/
 - Website Packages (four monthly packages, compared): https://www.positionxero.com/packages
-- Premium Packages (build your own custom package): https://www.positionxero.com/premium
+- Our Work (every client website we built or rebuilt, each with a desktop and a phone view): https://www.positionxero.com/work
 - What We Can Build (immersive 3D showcase site): https://www.positionxero.com/experience
 - Services Overview: https://www.positionxero.com/services
 - Web Design and Development: https://www.positionxero.com/web-design
@@ -50,7 +50,7 @@
 
 ## South Africa Market Pages
 
-Position Xero is based in Centurion, Gauteng, and serves the South African market directly, with POPIA-compliant lead capture and prices in rand: website packages from R490 a month (https://www.positionxero.com/packages), and for custom work (https://www.positionxero.com/premium) landing pages from R12,500 and full websites from R29,900 (one-time), local SEO from R9,900 a month and full SEO from R16,500 a month.
+Position Xero is based in Centurion, Gauteng, and serves the South African market directly, with POPIA-compliant lead capture and prices in rand: four monthly website packages from R490 to R4,990 a month (https://www.positionxero.com/packages), with SEO included from the Standard package at R990 a month. Ads management, immersive builds, online stores and bigger projects are priced on the brief over WhatsApp.
 
 - Web Design and Development South Africa: https://www.positionxero.com/web-design-south-africa
 - SEO South Africa: https://www.positionxero.com/seo-south-africa
