@@ -112,6 +112,18 @@
   --screen: #0E1A33;
   --photo: #C9D0DC;
   --shadow: #040A18;
+  /* light mode turns the bands light (owner, 12 Nov 2026: a switch like
+     Otaku TCG's). These four groups are used only by the light rules below. */
+  --band-tone: #E3EBF5;      /* hero, header and impact bands */
+  --band-deep-tone: #D5E0EE; /* panels sitting on a band */
+  --fill: #0E1A33;           /* navy buttons and marks inside white cards */
+  --on-fill: #F2F6FF;
+  --fill-soft: #A9B7D2;
+  --fill-wash: #D3DCEC;
+  --code: #091224;           /* the code panel stays dark in both modes */
+  --on-code: #F2F6FF;
+  --code-soft: #A9B7D2;
+  --code-wash: #D3DCEC;
 }
 
 :root {
@@ -139,6 +151,56 @@
   --mono: var(--font-mono);
   --dw: var(--display-weight);
   --dtrack: var(--display-track);
+}
+
+/* ============================================================
+   Light mode: the bands turn light.
+   Dark mode keeps navy bands with light text. In light mode every band
+   (header, heroes, impact bands, the closing call, the package stage and
+   the packages card beside guides) becomes a light ice tone with navy text:
+   inside those containers the brand-band tokens are re-pointed. White
+   cards inside a band get the navy fills back, and the code panel keeps
+   its dark colours. None of these rules applies in dark mode.
+   ============================================================ */
+:root[data-theme="light"] :is(.site-header, .band--blue, .hero, .page-hero, .final, .side, .shop__stage) {
+  --brand: var(--band-tone);
+  --brand-deep: var(--band-deep-tone);
+  --on-brand: var(--ink);
+  --brand-soft: var(--muted);
+  --brand-wash: var(--muted);
+  --logo: var(--ink);
+  --line-on-brand: color-mix(in srgb, var(--ink) 16%, transparent);
+  --on-brand-08: color-mix(in srgb, var(--ink) 7%, transparent);
+  --on-brand-12: color-mix(in srgb, var(--ink) 10%, transparent);
+  --on-brand-55: color-mix(in srgb, var(--ink) 45%, transparent);
+  /* the names home.css uses */
+  --blue: var(--band-tone);
+  --blue-deep: var(--band-deep-tone);
+  --tint-1: var(--muted);
+  --tint-2: var(--muted);
+  --silver: var(--ink);
+  --line-blue: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+:root[data-theme="light"] .site-header { box-shadow: 0 1px 0 var(--line); }
+:root[data-theme="light"] :is(.site, .snip, .grow__card, .jcard--live, .btn--go, .btn-primary, .rail__btn) {
+  --brand: var(--fill);
+  --on-brand: var(--on-fill);
+  --brand-soft: var(--fill-soft);
+  --brand-wash: var(--fill-wash);
+  --line-on-brand: color-mix(in srgb, var(--on-fill) 22%, transparent);
+  --blue: var(--fill);
+  --tint-1: var(--fill-soft);
+  --tint-2: var(--fill-wash);
+  --line-blue: color-mix(in srgb, var(--on-fill) 22%, transparent);
+}
+:root[data-theme="light"] .editor {
+  --brand-deep: var(--code);
+  --blue-deep: var(--code);
+  --on-brand: var(--on-code);
+  --brand-soft: var(--code-soft);
+  --brand-wash: var(--code-wash);
+  --tint-1: var(--code-soft);
+  --tint-2: var(--code-wash);
 }
 
 /* ============================================================

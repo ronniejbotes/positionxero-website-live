@@ -105,7 +105,7 @@ b { font-weight: inherit; }
   text-decoration: none; white-space: nowrap; cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
 }
-.btn--go { background: var(--lime); color: var(--ink); box-shadow: 0 1px 0 color-mix(in srgb, var(--on-brand) 50%, transparent) inset, 0 10px 24px -12px color-mix(in srgb, var(--ink) 55%, transparent); }
+.btn--go { background: var(--lime); color: var(--on-action); box-shadow: 0 1px 0 color-mix(in srgb, var(--on-brand) 50%, transparent) inset, 0 10px 24px -12px color-mix(in srgb, var(--ink) 55%, transparent); }
 .btn--go:hover { transform: translateY(-1px); box-shadow: 0 1px 0 color-mix(in srgb, var(--on-brand) 50%, transparent) inset, 0 14px 28px -12px color-mix(in srgb, var(--ink) 60%, transparent); }
 .btn--ghost { background: transparent; color: var(--on-brand); box-shadow: inset 0 0 0 2px var(--on-brand); }
 .btn--ghost:hover { background: color-mix(in srgb, var(--on-brand) 10%, transparent); }
@@ -337,10 +337,10 @@ b { font-weight: inherit; }
 @media (min-width: 640px) { .device__bar { height: 34px; } .device__url { display: inline-block; } }
 .device__screen { position: relative; aspect-ratio: 16 / 10; background: var(--screen); }
 .device__screen video, .device__screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-.device--phone { position: absolute; right: 0; bottom: 0; width: 25%; padding: 6px; border-radius: 26px; background: var(--ink); box-shadow: 0 26px 50px -18px color-mix(in srgb, var(--shadow) 75%, transparent); }
+.device--phone { position: absolute; right: 0; bottom: 0; width: 25%; padding: 6px; border-radius: 26px; background: var(--screen); box-shadow: 0 26px 50px -18px color-mix(in srgb, var(--shadow) 75%, transparent); }
 .device--phone .device__screen { aspect-ratio: 390 / 844; border-radius: 20px; overflow: hidden; }
 @media (min-width: 900px) { .device--phone { width: 23%; padding: 8px; border-radius: 34px; } .device--phone .device__screen { border-radius: 26px; } }
-.stage__pause { position: absolute; left: 0; bottom: 0; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--ink); color: var(--on-brand); }
+.stage__pause { position: absolute; left: 0; bottom: 0; z-index: 3; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center; background: var(--ink); color: var(--paper); }
 .band--blue .stage__pause { background: var(--on-brand); color: var(--brand); }
 .stage__pause svg { width: 16px; height: 16px; }
 .stage__pause .i-play { display: none; }

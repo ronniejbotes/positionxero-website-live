@@ -162,8 +162,8 @@ figure { margin: 0; }
 .article h2 { font: var(--display-weight) clamp(28px, 6.6vw, 40px)/1.06 var(--font-display); letter-spacing: var(--display-track); margin: 2.1em 0 .55em; scroll-margin-top: calc(var(--header-h) + 16px); }
 .article h3 { font: var(--display-weight) clamp(22px, 5vw, 26px)/1.15 var(--font-display); margin: 1.7em 0 .5em; }
 .article h4 { font-size: 18px; font-weight: 700; margin: 1.4em 0 .4em; }
-.article a { color: var(--accent); font-weight: 600; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
-.article a:hover { text-decoration-thickness: 3px; }
+.article a:not(.btn) { color: var(--accent); font-weight: 600; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.article a:not(.btn):hover { text-decoration-thickness: 3px; }
 .article ul, .article ol { margin: 0 0 1.2em; padding-left: 1.4em; }
 .article li { margin: 0 0 .5em; padding-left: .2em; }
 .article li::marker { color: var(--accent); font-weight: 700; }
