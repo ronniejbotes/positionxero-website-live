@@ -145,40 +145,33 @@
 }
 .hero__copy { position: relative; z-index: 1; }
 .build { isolation: isolate; }
-.build::before, .build::after {
+:root:not([data-theme="light"]) .build::before,
+:root:not([data-theme="light"]) .build::after {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   inset: -10% -24% -18% -24%;
 }
-@media (min-width: 1100px) { .build::before, .build::after { inset: -22% -16% -24% -26%; } }
+@media (min-width: 1100px) {
+  :root:not([data-theme="light"]) .build::before,
+  :root:not([data-theme="light"]) .build::after { inset: -26% -18% -28% -30%; }
+}
 :root:not([data-theme="light"]) .build::before {
   background:
-    radial-gradient(50% 42% at 56% 46%, color-mix(in srgb, var(--action) 30%, transparent), color-mix(in srgb, var(--action) 14%, transparent) 40%, color-mix(in srgb, var(--action) 5%, transparent) 66%, transparent 84%),
-    radial-gradient(38% 32% at 36% 70%, color-mix(in srgb, var(--aurora-teal, var(--action)) 24%, transparent), color-mix(in srgb, var(--aurora-teal, var(--action)) 9%, transparent) 46%, transparent 80%);
+    radial-gradient(50% 42% at 56% 46%, color-mix(in srgb, var(--action) 36%, transparent), color-mix(in srgb, var(--action) 16%, transparent) 40%, color-mix(in srgb, var(--action) 6%, transparent) 66%, transparent 84%),
+    radial-gradient(38% 32% at 36% 70%, color-mix(in srgb, var(--aurora-teal, var(--action)) 26%, transparent), color-mix(in srgb, var(--aurora-teal, var(--action)) 10%, transparent) 46%, transparent 80%);
 }
 :root:not([data-theme="light"]) .build::after {
-  background: radial-gradient(34% 30% at 70% 72%, color-mix(in srgb, var(--action) 20%, transparent), color-mix(in srgb, var(--action) 7%, transparent) 48%, transparent 82%);
+  background: radial-gradient(34% 30% at 70% 72%, color-mix(in srgb, var(--action) 22%, transparent), color-mix(in srgb, var(--action) 8%, transparent) 48%, transparent 82%);
 }
-.anim .build::before { animation: aurora-a 10s ease-in-out infinite alternate; will-change: transform, opacity; }
-.anim .build::after { animation: aurora-b 12s ease-in-out -6s infinite alternate; will-change: transform, opacity; }
+:root:not([data-theme="light"]) .anim .build::before { animation: aurora-a 10s ease-in-out infinite alternate; will-change: transform, opacity; }
+:root:not([data-theme="light"]) .anim .build::after { animation: aurora-b 12s ease-in-out -6s infinite alternate; will-change: transform, opacity; }
 .hero.is-off .build::before, .hero.is-off .build::after { animation-play-state: paused; }
 @keyframes aurora-a { from { transform: translate3d(-3%, 2%, 0) rotate(-4deg); opacity: .8; } to { transform: translate3d(4%, -3%, 0) rotate(5deg) scale(1.08); opacity: 1; } }
 @keyframes aurora-b { from { transform: translate3d(3%, -2%, 0) scale(1.06); opacity: 1; } to { transform: translate3d(-4%, 3%, 0) scale(.96); opacity: .7; } }
 /* "free website" catches the same light, faintly (the text stays navy on ice white) */
 :root:not([data-theme="light"]) .h1 mark,
-:root:not([data-theme="light"]) .anim .h1 mark::before { box-shadow: inset 0 0 .3em color-mix(in srgb, var(--action) 26%, transparent), 0 0 .5em -.1em color-mix(in srgb, var(--action) 30%, transparent); }
+:root:not([data-theme="light"]) .anim .h1 mark::before { box-shadow: inset 0 0 .28em color-mix(in srgb, var(--action) 18%, transparent), 0 0 .4em -.16em color-mix(in srgb, var(--action) 18%, transparent); }
 :root:not([data-theme="light"]) .anim .h1 mark { box-shadow: none; }
 @media (prefers-reduced-motion: reduce) { .build::before, .build::after { animation: none !important; } }
-
-/* ============================================================
-   PACKAGES: one shared element. Switching package glides the chosen
-   card from the old place to the new one (a view transition, set up in
-   home.js; browsers without them, and reduced motion, switch at once).
-   Only the named card moves: the rest of the page updates in place.
-   ============================================================ */
-::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-::view-transition-group(pk-pick), ::view-transition-group(pk-rec) { animation-duration: .45s; animation-timing-function: cubic-bezier(.2, .7, .2, 1); }
-::view-transition-old(pk-pick), ::view-transition-new(pk-pick),
-::view-transition-old(pk-rec), ::view-transition-new(pk-rec) { animation-duration: .3s; }
 
 /* ============================================================
    THE TAPE: a moving band of short promises (Vital's marquee,

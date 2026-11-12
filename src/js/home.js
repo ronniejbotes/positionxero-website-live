@@ -123,24 +123,30 @@ document.querySelectorAll('.shop').forEach((shop) => {
     if (focus) tabs[index].focus();
   }
 
-  // One shared element: choosing a package glides the chosen card from its
-  // old place to the new one (motion.css names it for a view transition).
-  // A swipe keeps its own drag (motion.js), so it switches as before; so do
-  // browsers without view transitions, and reduced motion.
-  const rec = shop.querySelector('.rail__rec');
-  let vtId = 0;
-  const name = (on) => {
-    tabs.forEach((t) => { t.style.viewTransitionName = ''; });
-    if (rec) rec.style.viewTransitionName = on ? 'pk-rec' : '';
-    if (on) tabs[current].style.viewTransitionName = 'pk-pick';
-  };
+  // One shared element: when the package changes, the chosen card's fill
+  // (its ::before, home.css) glides from the last card to the new one. The
+  // switch itself happens at once, so no tap or key press is ever held up;
+  // a new change mid-glide starts a new glide. Reduced motion, and browsers
+  // that cannot animate a pseudo-element, switch without the glide.
+  const canGlide = typeof KeyframeEffect !== 'undefined' && 'pseudoElement' in KeyframeEffect.prototype;
+  let glide = null;
   function go(index, opts) {
-    const next = (index + tabs.length) % tabs.length;
-    if (next === current || reduced.matches || !document.startViewTransition) { show(next, opts); return; }
-    const id = ++vtId;
-    name(true);
-    const vt = document.startViewTransition(() => { show(next, opts); name(true); });
-    vt.finished.finally(() => { if (id === vtId) name(false); });
+    const from = current;
+    show(index, opts);
+    const to = current;
+    if (to === from || reduced.matches || !canGlide) return;
+    if (glide) glide.cancel();
+    const a = tabs[from].getBoundingClientRect();
+    const b = tabs[to].getBoundingClientRect();
+    const tab = tabs[to];
+    tab.classList.add('is-gliding');
+    glide = tab.animate(
+      [{ transform: `translate(${a.left - b.left}px, ${a.top - b.top}px) scale(${a.width / b.width}, ${a.height / b.height})` }, { transform: 'none' }],
+      { duration: 420, easing: 'cubic-bezier(.2, .7, .2, 1)', pseudoElement: '::before' }
+    );
+    const done = () => tab.classList.remove('is-gliding');
+    glide.onfinish = done;
+    glide.oncancel = done;
   }
 
   tabs.forEach((t, i) => {
@@ -165,7 +171,7 @@ document.querySelectorAll('.shop').forEach((shop) => {
     if (!tracking) return;
     tracking = false;
     const dx = e.clientX - sx, dy = e.clientY - sy;
-    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) show(current + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) go(current + (dx < 0 ? 1 : -1));
   });
   stage.addEventListener('pointercancel', () => { tracking = false; });
 
@@ -378,17 +384,20 @@ if (bar) {
    button (hero, package, closing call) is on screen, and takes the action
    colour when none is (home.css). A package panel that is not showing
    does not count; the "Looking for something more?" button is an outline
-   itself, so it does not count either. */
+   itself, so it does not count either. html.hdr-ready hands the button
+   from the CSS starting state to this script after its first check. */
 const headGo = document.querySelector('.site-header .btn--go');
 if (headGo) {
+  const ready = () => document.documentElement.classList.add('hdr-ready');
   const others = [...document.querySelectorAll('main .btn--go')].filter((b) => !b.closest('.more'));
   if (!others.length || !('IntersectionObserver' in window)) {
-    headGo.classList.add('is-loud');
+    ready();
   } else {
     const seen = new Set();
     const sync = () => {
       const any = [...seen].some((b) => !b.closest('.pk:not(.is-active)'));
-      headGo.classList.toggle('is-loud', !any);
+      headGo.classList.toggle('is-quiet', any);
+      ready();
     };
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });

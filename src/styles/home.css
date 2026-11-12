@@ -186,11 +186,16 @@ b { font-weight: inherit; }
 }
 /* One main action per view: the header's WhatsApp button is an outline
    while another action button is on screen, and takes the action colour
-   when none is (home.js sets .is-loud). Same size either way. */
+   when none is (home.js sets .is-quiet, then html.hdr-ready). Until then,
+   a page that opens on a hero with its own action button starts quiet,
+   so nothing changes colour on load. Same size either way. */
 .site-header .btn--go { transition: transform .18s ease, box-shadow .3s ease, background-color .3s ease, color .3s ease; }
-.js .site-header .btn--go:not(.is-loud) { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 55%, transparent); }
-.js .site-header .btn--go:not(.is-loud):hover { transform: none; box-shadow: inset 0 0 0 1.5px var(--ink); }
-.js .site-header .btn--go:not(.is-loud)::after { display: none; }
+.site-header .btn--go.is-quiet,
+:root:not(.hdr-ready):has(:is(.hero, .page-hero) .btn--go) .site-header .btn--go { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 55%, transparent); }
+.site-header .btn--go.is-quiet:hover,
+:root:not(.hdr-ready):has(:is(.hero, .page-hero) .btn--go) .site-header .btn--go:hover { transform: none; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.site-header .btn--go.is-quiet::after,
+:root:not(.hdr-ready):has(:is(.hero, .page-hero) .btn--go) .site-header .btn--go::after { display: none; }
 .site-header__bar.is-tight .btn--sm span { display: none; }
 .site-header__bar.is-tight .btn--sm { padding: 0; width: 2.5rem; }
 .site-header__bar.is-tighter .logo__word { display: none; }
@@ -451,16 +456,26 @@ b { font-weight: inherit; }
   position: relative; width: 100%; min-height: 80px; cursor: pointer; text-align: left;
   padding: 20px 16px 14px; border: 0; border-radius: var(--r-card);
   background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line);
-  display: grid; gap: 4px; align-content: center;
+  display: grid; gap: 4px; align-content: center; isolation: isolate;
   transition: background .25s var(--ease), color .25s, box-shadow .25s, transform .25s var(--ease);
 }
 .rail__btn:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ink) 45%, transparent), var(--lift-1); }
 .rail__name { font: var(--dw) 20px/1.05 var(--display); letter-spacing: var(--dtrack); }
-.rail__price { font-size: 16px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rail__price { font-size: 16px; color: var(--muted); font-variant-numeric: tabular-nums; transition: color .25s; }
 .rail__rec { position: absolute; top: 0; left: 14px; transform: translateY(-52%); font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); }
 @media (max-width: 899px) { .rail__rec { font-size: 16px; padding: 3px 10px; } }
-.rail__btn[aria-selected="true"] { background: var(--brand); color: var(--on-brand); box-shadow: var(--lift-2); transform: none; }
-.rail__btn[aria-selected="true"] .rail__price { color: var(--tint-2); }
+/* The chosen card's fill is its own layer, so when the package changes it
+   glides from the last card to this one (home.js); the chosen card's text
+   turns light just as the fill arrives. A gliding card sits above the rest. */
+.rail__btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  border-radius: inherit; transform-origin: 0 0; opacity: 0;
+  background: var(--brand); box-shadow: var(--lift-2);
+}
+.rail__btn[aria-selected="true"] { color: var(--on-brand); box-shadow: none; transform: none; transition: color .2s ease .16s, box-shadow .25s, transform .25s var(--ease); }
+.rail__btn[aria-selected="true"]::before { opacity: 1; }
+.rail__btn.is-gliding { z-index: 2; }
+.rail__btn[aria-selected="true"] .rail__price { color: var(--tint-2); transition: color .2s ease .16s; }
 .rail__btn[aria-selected="true"] .rail__rec { background: var(--on-brand); color: var(--brand); }
 
 .shop__stage {
