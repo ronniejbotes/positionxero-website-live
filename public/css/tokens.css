@@ -1,0 +1,87 @@
+/* ============================================================
+   Position Xero: the one design-token block for every page.
+
+   Every colour and font on the site comes from the custom properties
+   below: the front pages (src/styles/home.css imports this file) and
+   every static page in public/ (each links /css/tokens.css before
+   /css/site.css). To restyle the whole site, change this block and the
+   @font-face rules above it, nothing else. Bump ?v= on the static
+   pages' <link> when this file changes (CLAUDE.md cache rule).
+
+   Placeholder palette (12 November 2026, direction C): electric
+   ultramarine brand, signal lime for actions only, ink on paper.
+   The owner is choosing the final palette and fonts from a picker.
+
+   Fonts: Clash Display and Satoshi are Fontshare files served exactly
+   as downloaded (the licence allows no subsetting or conversion);
+   Martian Mono is OFL.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url(/fonts/ClashDisplay-Variable.woff2) format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url(/fonts/Satoshi-Variable.woff2) format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Martian Mono';
+  src: url(/fonts/martian-mono-latin.woff2) format('woff2');
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+:root {
+  /* ---- palette ---- */
+  --brand: #2B3CFF;          /* impact bands, header, links on light grounds */
+  --brand-deep: #1A27D6;     /* deeper panels on brand bands */
+  --brand-soft: #B9C2FF;     /* quiet text and marks on brand */
+  --brand-wash: #E4E8FF;     /* secondary text on brand, pale fills */
+  --on-brand: #FFFFFF;       /* text and lines on brand bands */
+  --action: #C6FF3D;         /* action buttons ONLY: WhatsApp, Choose a package, closing call */
+  --on-action: #0B0F1A;      /* text on action buttons */
+  --ink: #0B0F1A;            /* reading text */
+  --paper: #F6F7FF;          /* reading sections */
+  --surface: #FFFFFF;        /* cards, tables, white sections */
+  --muted: #4A5368;          /* secondary reading text */
+  --logo: #EEF0FA;           /* the flat X on brand */
+  --line: #DDE1F2;           /* rules on light grounds */
+  --highlight: #EEF0FF;      /* the recommended column, quiet callouts */
+  --faint: #A3AEC4;          /* dashes for "not included" */
+  --chrome: #D3D8EA;         /* browser-frame dots */
+  --pill: #F1F3FB;           /* address-bar pills */
+  --skeleton: #ECEFF8;       /* loading placeholders */
+  --screen: #1C2233;         /* device screens before media loads */
+  --photo: #C9CDD6;          /* photo placeholders */
+  --shadow: #040846;         /* tinted shadows */
+
+  /* ---- type ---- */
+  --font-display: 'Clash Display', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'Satoshi', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --display-weight: 600;
+  --display-track: -0.012em;
+
+  /* ---- derived (follow the palette above automatically) ---- */
+  --line-on-brand: color-mix(in srgb, var(--on-brand) 22%, transparent);
+
+  /* ---- names used by src/styles/home.css (kept as aliases) ---- */
+  --blue: var(--brand);
+  --blue-deep: var(--brand-deep);
+  --tint-1: var(--brand-soft);
+  --tint-2: var(--brand-wash);
+  --lime: var(--action);
+  --white: var(--surface);
+  --silver: var(--logo);
+  --line-blue: var(--line-on-brand);
+  --display: var(--font-display);
+  --text: var(--font-body);
+  --mono: var(--font-mono);
+  --dw: var(--display-weight);
+  --dtrack: var(--display-track);
+}
