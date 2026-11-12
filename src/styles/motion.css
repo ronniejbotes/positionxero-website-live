@@ -1,0 +1,421 @@
+/* ============================================================
+   Position Xero: motion for the front pages (/, /work, /packages).
+   12 November 2026, after the owner asked for the site to feel alive
+   the way Vital Socks and Otaku TCG do: a moving tape, a carousel of
+   the real recordings, scroll reveals, a pinned "How it works" story
+   on desktop, figures that count in once, and hover states.
+
+   Rules, the same ones those two themes keep:
+   - Colours and fonts come only from the custom properties in
+     home.css (the palette and fonts are still being chosen).
+   - Nothing is hidden unless html.anim (no reduced motion, set in the
+     head) or html.rv-on (the reveal script is running) is present, so
+     every word reads with JavaScript off.
+   - Only transform, translate, scale and opacity animate.
+   - The action colour stays on action buttons; nothing decorative uses it.
+   ============================================================ */
+
+/* ============================================================
+   HERO: the headline, the highlight, the build and its last beat
+   ============================================================ */
+
+/* Three lines: "Your free website," / "built in real code" /
+   "Google actually sees." The size is set so the longest line fits
+   the column at every width (about 10.2 times the font size with the
+   current display face). If a wider face is chosen, a line wraps
+   rather than overflowing. */
+.h1--3 { font-size: clamp(28px, calc((100vw - var(--gut) * 2) / 10.7), 74px); line-height: 1; }
+.h1--3 .h1__l { white-space: normal; }
+@media (min-width: 1100px) {
+  .hero__in { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .h1--3 { font-size: clamp(44px, calc((min(100vw, calc(var(--wrap) + var(--gut) * 2)) - var(--gut) * 2 - 48px) * .55 / 10.7), 68px); }
+}
+
+/* "free website" is highlighted the way "built free." was. With motion,
+   it starts as plain white text and the highlight wipes in under it. */
+/* The letters change colour exactly where the bar has reached them: the
+   text is painted through a two-colour gradient that moves in step with
+   the bar, so no letter is ever the same colour as what is behind it. */
+.anim .h1 mark {
+  position: relative; z-index: 0; color: transparent;
+  background: linear-gradient(90deg, var(--blue) 0 50%, var(--white) 50% 100%) 100% 0 / 200% 100% no-repeat;
+  -webkit-background-clip: text; background-clip: text;
+}
+.anim .h1 mark::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: .1em;
+  background: var(--white); transform: scaleX(0); transform-origin: 0 50%;
+}
+.anim.play .h1 mark::before { animation: mark-wipe .7s cubic-bezier(.65, 0, .25, 1) .25s forwards; }
+.anim.play .h1 mark { animation: mark-ink .7s cubic-bezier(.65, 0, .25, 1) .25s forwards; }
+@keyframes mark-wipe { to { transform: none; } }
+@keyframes mark-ink { to { background-position: 0 0; } }
+@media (forced-colors: active) { .anim .h1 mark { color: CanvasText; background: none; } .anim .h1 mark::before { display: none; } }
+
+/* the line being typed is lit, and the part of the site it makes is
+   ringed for a moment as it appears: this line made that part */
+.anim .ln { position: relative; }
+.anim .ln::after {
+  content: ""; position: absolute; inset: 0 0 0 0; pointer-events: none;
+  background: color-mix(in srgb, var(--on-brand) 9%, transparent); opacity: 0;
+}
+.anim.play .ln::after { animation: ln-lit calc(var(--n, 30) * var(--cps) + 240ms) ease var(--d, 0ms) both; }
+@keyframes ln-lit { 0% { opacity: 0; } 12% { opacity: 1; } 75% { opacity: 1; } 100% { opacity: 0; } }
+.anim .slot { position: relative; }
+.anim .slot::after {
+  content: ""; position: absolute; inset: -5px -8px; border-radius: 10px; pointer-events: none;
+  box-shadow: 0 0 0 1.5px var(--tint-1); opacity: 0;
+}
+.anim.play .slot::after { animation: slot-ring 1s ease var(--r, 0ms) both; }
+@keyframes slot-ring { 0% { opacity: 0; } 22% { opacity: 1; } 100% { opacity: 0; } }
+
+/* the last beat: the same page as a search result (an example) */
+.snip {
+  position: relative; z-index: 2; width: 88%; margin: -14px 0 0;
+  padding: 12px 14px 14px; border-radius: var(--radius);
+  background: var(--white); color: var(--ink);
+  box-shadow: 0 26px 50px -26px color-mix(in srgb, var(--shadow) 75%, transparent), 0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+.snip p { margin: 0; }
+.snip__head {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 10px !important; padding-bottom: 9px;
+  border-bottom: 1px solid var(--line); font: 500 11px/1 var(--mono); color: var(--muted);
+}
+.snip__head svg { flex: none; }
+.snip__example {
+  margin-left: auto; font: 600 10px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase;
+  color: var(--muted); padding: 5px 7px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line);
+}
+.snip__site { display: flex; align-items: center; gap: 9px; }
+.snip__fav { display: inline-grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--blue); color: var(--white); font: 600 11px/1 var(--display); }
+.snip__name { display: grid; font: 600 13px/1.2 var(--text); }
+.snip__url { font: 400 11.5px/1.3 var(--text); color: var(--muted); }
+.snip__title { margin-top: 7px !important; font: 600 16px/1.25 var(--text); color: var(--blue); }
+.snip__desc { margin-top: 3px !important; font: 400 13px/1.4 var(--text); color: var(--muted); }
+.anim .snip { opacity: 0; transform: translateY(14px) scale(.985); }
+.anim.play .snip { animation: snip-in .7s var(--ease) var(--r3, 3200ms) forwards; }
+@keyframes snip-in { to { opacity: 1; transform: none; } }
+@media (min-width: 640px) {
+  .snip { width: 74%; padding: 14px 18px 16px; }
+  .snip__title { font-size: 18px; }
+  .snip__desc { font-size: 14px; }
+}
+@media (min-width: 1100px) {
+  .snip { width: 70%; margin-top: -30px; padding: 16px 20px 18px; border-radius: 16px; }
+  .snip__head { font-size: 12px; }
+  .snip__name { font-size: 14px; }
+  .snip__url { font-size: 12.5px; }
+  .snip__title { font-size: 20px; }
+  .snip__desc { font-size: 15px; }
+}
+
+/* desktop, mouse only: the three layers part a little as the pointer moves */
+@media (hover: hover) and (pointer: fine) and (min-width: 1100px) {
+  .anim .build > * { transition: translate .9s cubic-bezier(.2, .7, .2, 1); }
+  .anim .build > .editor { translate: calc(var(--px, 0) * -6px) calc(var(--py, 0) * -4px); }
+  .anim .build > .site { translate: calc(var(--px, 0) * 8px) calc(var(--py, 0) * 6px); }
+  .anim .build > .snip { translate: calc(var(--px, 0) * 14px) calc(var(--py, 0) * 10px); }
+}
+
+/* ============================================================
+   THE TAPE: a moving band of short promises (Vital's marquee,
+   Otaku's ticker). CSS runs it; the script nudges its speed with
+   scroll and pauses it off screen. Pause button for everyone.
+   ============================================================ */
+.mq {
+  position: relative; overflow: hidden;
+  background: var(--ink); color: var(--paper);
+  padding-block: clamp(16px, 2.2vw, 26px);
+}
+.mq__track { display: flex; width: max-content; animation: mq-loop var(--mq-dur, 46s) linear infinite; }
+.mq__group { display: flex; flex: none; align-items: center; list-style: none; margin: 0; padding: 0; }
+.mq__item {
+  display: inline-flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); padding-right: clamp(18px, 2.4vw, 36px);
+  font: var(--dw) clamp(26px, 4vw, 54px)/1.05 var(--display); letter-spacing: var(--dtrack); white-space: nowrap;
+}
+/* a small diamond between the phrases */
+.mq__item::after { content: ""; width: .24em; height: .24em; flex: none; border-radius: .04em; background: var(--tint-1); transform: rotate(45deg); }
+@keyframes mq-loop { to { transform: translateX(-50%); } }
+.mq.is-paused .mq__track, .mq.is-off .mq__track { animation-play-state: paused; }
+.mq__pause {
+  position: absolute; right: max(10px, calc(var(--gut) - 6px)); top: 50%; transform: translateY(-50%);
+  display: none; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; cursor: pointer;
+  background: var(--ink); color: var(--paper); box-shadow: 0 0 0 1px color-mix(in srgb, var(--paper) 30%, transparent), -14px 0 18px 6px var(--ink);
+}
+.mq.is-ready .mq__pause { display: grid; }
+.mq__pause svg { width: 14px; height: 14px; }
+.mq__pause .i-play, .mq.is-paused .mq__pause .i-pause { display: none; }
+.mq.is-paused .mq__pause .i-play { display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .mq__track { animation: none; width: auto; justify-content: center; }
+  .mq__group { flex: 1 1 auto; flex-wrap: wrap; justify-content: center; row-gap: 10px; padding-inline: var(--gut); }
+  .mq__group + .mq__group, .mq__group .mq__item:nth-child(n+6) { display: none; }
+  .mq__item { font-size: clamp(20px, 3vw, 36px); }
+  .mq.is-ready .mq__pause { display: none; }
+}
+
+/* ============================================================
+   REVEALS: headings rise inside their block, groups are staggered
+   (home.js adds .is-in; the script here sets --rv-d per column)
+   ============================================================ */
+.rv-on .rv { transition-delay: var(--rv-d, 0ms); }
+.rv-on .rv .h2, .rv-on .rv.final__title { transition: transform 1s var(--ease) calc(var(--rv-d, 0ms) + 60ms); }
+.rv-on .rv:not(.is-in) .h2 { transform: translateY(.32em); }
+.rv-on .rv .lede, .rv-on .rv .prose { transition: opacity .8s var(--ease) calc(var(--rv-d, 0ms) + 160ms), transform .9s var(--ease) calc(var(--rv-d, 0ms) + 160ms); }
+.rv-on .rv:not(.is-in) .lede, .rv-on .rv:not(.is-in) .prose { opacity: 0; transform: translateY(14px); }
+/* /work: each case's recording slides in from its own side */
+.rv-on .case__stage.rv:not(.is-in) { transform: translateX(36px); }
+.rv-on .case--flip .case__stage.rv:not(.is-in) { transform: translateX(-36px); }
+/* How it works on phones: the line between steps draws down as each arrives */
+@media (max-width: 899px) {
+  .rv-on .jstep.rv:not(:last-child)::after { transform: scaleY(0); transform-origin: 50% 0; transition: transform .9s var(--ease) .35s; }
+  .rv-on .jstep.rv.is-in:not(:last-child)::after { transform: none; }
+}
+
+/* ============================================================
+   SITES WE'VE BUILT: a carousel of the real recordings.
+   No script: a row you can swipe or scroll. With it: arrows, dots
+   that fill as the recording plays, drag with a mouse, the next
+   site after each recording ends, and only the site in front plays.
+   ============================================================ */
+.car { position: relative; }
+.car__track {
+  --edge: max(var(--gut), calc((100vw - var(--wrap)) / 2));
+  display: flex; gap: clamp(14px, 2.2vw, 30px);
+  margin-inline: calc(50% - 50vw); padding: 6px var(--edge) 10px;
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge);
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.car__track::-webkit-scrollbar { display: none; }
+.car__slide {
+  flex: 0 0 calc(100vw - var(--gut) * 2 - 34px); min-width: 0; scroll-snap-align: start;
+  display: grid; grid-template-columns: minmax(0, 1fr) 40%; grid-template-rows: auto 1fr; align-items: start;
+}
+.car .device--desk { grid-row: 1; grid-column: 1 / -1; margin-right: 24%; }
+.car .device--phone {
+  position: relative; right: auto; bottom: auto; z-index: 2;
+  grid-row: 1 / span 2; grid-column: 2; width: auto; margin-top: 46px; align-self: start;
+}
+.car__cap { grid-row: 2; grid-column: 1; padding: 16px 14px 4px 0; min-width: 0; }
+.car__name { font: var(--dw) clamp(24px, 5.6vw, 34px)/1.05 var(--display); letter-spacing: var(--dtrack); margin: 0 0 6px; }
+.car__text { margin: 0 0 12px; color: var(--tint-2); max-width: 46ch; }
+@media (min-width: 640px) {
+  .car__slide { flex-basis: min(82%, 980px); grid-template-columns: minmax(0, 1fr) 26%; }
+  .car .device--desk { margin-right: 15%; }
+  .car .device--phone { margin-top: 90px; }
+  .car__cap { padding: 22px 24px 4px 0; }
+}
+@media (min-width: 1100px) {
+  .car__slide { flex-basis: min(76%, 1000px); grid-template-columns: minmax(0, 1fr) 24%; }
+  .car .device--desk { margin-right: 13%; }
+  .car .device--phone { margin-top: 130px; }
+  .car__cap { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 32px; align-items: end; }
+  .car__cap .car__name { grid-column: 1 / -1; }
+  .car__text { margin: 0; }
+}
+/* with the script: the site in front is full strength, the others step back */
+.car.is-ready .car__slide { transition: opacity .6s var(--ease), transform .7s var(--ease); }
+.car.is-ready .car__slide:not(.is-active) { opacity: .45; transform: scale(.965); }
+.car__track.is-drag { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+.car__track.is-drag * { pointer-events: none; }
+@media (hover: hover) and (pointer: fine) {
+  .car__track { cursor: grab; }
+  .car .device { transition: transform .6s var(--ease); }
+  .car__slide.is-active:hover .device--desk { transform: translateY(-4px); }
+  .car__slide.is-active:hover .device--phone { transform: translateY(-10px); }
+}
+.car__nav { display: none; }
+.car.is-ready .car__nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.car__dots { display: flex; gap: 2px; }
+.car__dot { position: relative; width: 38px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+@media (min-width: 640px) { .car__dots { gap: 6px; } .car__dot { width: 48px; } }
+.car__dot::before, .car__dot i {
+  content: ""; position: absolute; left: 4px; right: 4px; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px;
+}
+.car__dot::before { background: var(--line-blue); }
+.car__dot i { background: var(--on-brand); transform-origin: 0 50%; transform: scaleX(0); transition: transform .3s linear; }
+.car__dot[aria-current="true"] i { transform: scaleX(var(--p, 1)); }
+.car__dot:hover::before { background: var(--tint-1); }
+.car__btns { display: flex; align-items: center; gap: 8px; }
+@media (max-width: 400px) { .car .arrow-btn { width: 46px; height: 46px; } .car__pause { width: 40px; height: 40px; } }
+.car__pause {
+  width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+  background: transparent; color: var(--on-brand); box-shadow: inset 0 0 0 1.5px var(--line-blue);
+}
+.car__pause:hover { box-shadow: inset 0 0 0 1.5px var(--on-brand); }
+.car__pause svg { width: 14px; height: 14px; }
+.car__pause .i-play, .car__pause[aria-pressed="true"] .i-pause { display: none; }
+.car__pause[aria-pressed="true"] .i-play { display: block; }
+@media (prefers-reduced-motion: reduce) { .car__pause { display: none !important; } }
+
+/* ============================================================
+   HOW IT WORKS: on a big screen the section holds still while the
+   page scrolls, the three steps light up in turn and the example
+   card grows from a message to a live site. Phones: stacked steps.
+   ============================================================ */
+@media (min-width: 1000px) and (min-height: 700px) {
+  .anim .section--how { padding-block: 0; }
+  .anim .story { height: 290vh; }
+  .anim .story__frame {
+    position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h));
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto auto auto;
+    column-gap: 72px; align-content: center; padding-block: 32px;
+  }
+  .anim .story__frame > .head { grid-column: 1; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 26px; }
+  .anim .story__frame > .journey__note { grid-column: 1; margin-top: 18px; }
+  .anim .story .journey { grid-column: 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; position: static; }
+  /* the li stays unpositioned and untransformed, so each picture is
+     placed against the pinned frame; the rail lives on the text */
+  .anim .story .jstep { position: static; display: block; padding: 0; }
+  .anim .story .jstep.rv { transform: none; }
+  .anim .story .jstep__text { position: relative; padding: 16px 0 16px 30px; }
+  .anim .story .jstep__text::before, .anim .story .jstep__text::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 2px; }
+  .anim .story .jstep__text::before { background: var(--line-blue); }
+  .anim .story .jstep__text::after { background: var(--on-brand); transform-origin: 50% 0; transform: scaleY(var(--f, 0)); }
+  .anim .story .jstep__text > * { opacity: .4; transition: opacity .45s var(--ease); }
+  .anim .story .step__num { margin-bottom: 6px; }
+  .anim .story .step__title { font-size: clamp(26px, 2.4vw, 34px); margin-bottom: 4px; }
+  .anim .story .jstep__text p:last-child { max-width: 40ch; }
+  /* the pictures share one stage in the right-hand column */
+  .anim .story .jstep__art {
+    position: absolute; right: var(--gut); top: 50%; translate: 0 -50%;
+    width: calc((100% - var(--gut) * 2 - 72px) * 7 / 12); height: min(460px, 58vh);
+    padding: 48px clamp(40px, 5vw, 72px); gap: 16px; border-radius: 26px;
+    opacity: 0; transform: translateY(28px) scale(.94); pointer-events: none;
+    transition: opacity .5s var(--ease), transform .7s var(--ease);
+  }
+  .anim .story .jchat { font-size: 21px; max-width: 78%; padding: 14px 20px; border-radius: 22px 22px 6px 22px; }
+  .anim .story .jchat__name { font-size: 15px; }
+  .anim .story .jchat--back { border-radius: 22px 22px 22px 6px; padding: 16px 20px; }
+  .anim .story .jdots i { width: 9px; height: 9px; }
+  .anim .story .jcard { padding: 26px 30px; gap: 12px; border-radius: 20px; }
+  .anim .story .jcard__url { font-size: 16px; }
+  .anim .story .jcard__fav { width: 28px; height: 28px; font-size: 14px; }
+  .anim .story .jcard__title { font-size: clamp(24px, 2.3vw, 32px); }
+  .anim .story .jcard__bars b { height: 14px; border-radius: 7px; }
+  .anim .story .jcard__snip { font-size: 18px; }
+  .anim .story .jcard__live { font-size: 15px; top: -15px; padding: 6px 12px; }
+  /* the active step: step 1 unless the script says otherwise */
+  .anim .story .journey:not([data-step]) > .jstep:nth-child(1) .jstep__text > *,
+  .anim .story .journey[data-step="1"] > .jstep:nth-child(1) .jstep__text > *,
+  .anim .story .journey[data-step="2"] > .jstep:nth-child(2) .jstep__text > *,
+  .anim .story .journey[data-step="3"] > .jstep:nth-child(3) .jstep__text > * { opacity: 1; }
+  .anim .story .journey:not([data-step]) > .jstep:nth-child(1) .jstep__art,
+  .anim .story .journey[data-step="1"] > .jstep:nth-child(1) .jstep__art,
+  .anim .story .journey[data-step="2"] > .jstep:nth-child(2) .jstep__art,
+  .anim .story .journey[data-step="3"] > .jstep:nth-child(3) .jstep__art { opacity: 1; transform: none; }
+  /* the card grows as you read each step */
+  .anim .story .jstep__art > * { scale: calc(.94 + var(--f, 0) * .06); }
+  .anim .story .jart--hello > .jchat--back { scale: 1; }
+}
+
+/* ============================================================
+   PROMISES: "7 days" and "12 months" count in once
+   ============================================================ */
+[data-count] { display: inline-block; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ============================================================
+   PACKAGES: drag the package on a phone; the result illustration
+   adds its new parts one after another
+   ============================================================ */
+.shop__stage { touch-action: pan-y; }
+.shop.is-ready .pk.is-active { transition: opacity .45s var(--ease), transform .55s var(--ease), visibility 0s, translate .45s var(--ease); }
+.shop.is-ready .pk.is-drag { transition: none; }
+.grow__chips li:nth-child(2), .grow__posts li:nth-child(2) { animation-delay: 70ms; }
+.grow__chips li:nth-child(3), .grow__posts li:nth-child(3) { animation-delay: 140ms; }
+.grow__chips li:nth-child(4), .grow__posts li:nth-child(4) { animation-delay: 210ms; }
+.grow__chips li:nth-child(5), .grow__posts li:nth-child(5) { animation-delay: 280ms; }
+.grow__chips li:nth-child(6) { animation-delay: 350ms; }
+
+/* ============================================================
+   /work: the smaller cards play their recording on hover (mouse);
+   on a phone they play while on screen, as before
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  [data-hover-stage] .stage__pause { display: none; }
+  /* a play mark on the recording until the mouse is over the card */
+  .anim [data-hover-stage] .device--desk .device__screen::before,
+  .anim [data-hover-stage] .device--desk .device__screen::after {
+    content: ""; position: absolute; left: 50%; top: 50%; z-index: 2; pointer-events: none;
+    transition: opacity .3s var(--ease), transform .4s var(--ease);
+  }
+  .anim [data-hover-stage] .device--desk .device__screen::before {
+    width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%;
+    background: color-mix(in srgb, var(--ink) 72%, transparent);
+  }
+  .anim [data-hover-stage] .device--desk .device__screen::after {
+    width: 18px; height: 18px; margin: -9px 0 0 -7px; background: var(--paper);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 1l12 7-12 7z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 1l12 7-12 7z'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+  .anim [data-hover-stage].is-playing .device--desk .device__screen::before,
+  .anim [data-hover-stage].is-playing .device--desk .device__screen::after { opacity: 0; transform: scale(.8); }
+  .case .stage .device { transition: transform .6s var(--ease); }
+  .case:hover .stage .device--desk { transform: translateY(-4px); }
+  .case:hover .stage .device--phone { transform: translateY(-10px); }
+}
+
+/* ============================================================
+   HOVER: buttons shine, links redraw their line, cards lift
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  .btn--go { position: relative; overflow: hidden; isolation: isolate; }
+  .btn--go::after {
+    content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 46%; z-index: 1; pointer-events: none;
+    background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--white) 60%, transparent), transparent);
+    transform: skewX(-18deg); opacity: 0;
+  }
+  .btn--go:hover::after { animation: btn-shine .8s var(--ease); }
+  .btn--ghost { position: relative; overflow: hidden; isolation: isolate; }
+  .btn--ghost::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: color-mix(in srgb, var(--on-brand) 14%, transparent); transform: scaleX(0); transform-origin: 0 50%;
+    transition: transform .45s var(--ease);
+  }
+  .btn--ghost:hover { background: transparent; }
+  .btn--ghost:hover::before { transform: none; }
+  .arrow-btn svg { transition: transform .25s var(--ease); }
+  .arrow-btn--next:hover svg { transform: translateX(3px); }
+  .arrow-btn--prev:hover svg { transform: scaleX(-1) translateX(3px); }
+
+  .more, .grow__card { transition: transform .35s var(--ease); }
+  .more:hover { transform: translateY(-3px); }
+  .grow__card:hover { transform: translateY(-2px); }
+  .promise__key { transition: transform .4s var(--ease); }
+  .promise:hover .promise__key { transform: translateX(6px); }
+}
+@keyframes btn-shine { from { opacity: 1; transform: translateX(0) skewX(-18deg); } to { opacity: 1; transform: translateX(380%) skewX(-18deg); } }
+
+/* links: a drawn line under text and arrow, redrawn on hover */
+.link { position: relative; text-decoration: none; }
+.link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px; border-radius: 1px;
+  background: currentColor; transform-origin: 100% 50%;
+}
+.nav a { position: relative; text-decoration: none !important; }
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; border-radius: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: 100% 50%; transition: transform .35s var(--ease);
+}
+.nav a[aria-current="page"]::after { transform: none; }
+@media (hover: hover) {
+  .link:hover::after { animation: line-redraw .65s var(--ease); }
+  .nav a:hover::after { transform: none; transform-origin: 0 50%; }
+}
+@keyframes line-redraw {
+  0% { transform: scaleX(1); transform-origin: 100% 50%; }
+  45% { transform: scaleX(0); transform-origin: 100% 50%; }
+  46% { transform: scaleX(0); transform-origin: 0 50%; }
+  100% { transform: scaleX(1); transform-origin: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv-on .rv .h2, .rv-on .rv .lede, .rv-on .rv .prose { opacity: 1; transform: none; }
+  .rv-on .case__stage.rv { transform: none; }
+}
+
+/* a link sits at its own width, even as a grid or flex item */
+.link { justify-self: start; align-self: start; }
+
+/* /work: the names of the sites on the page, smaller and slower */
+.mq--names { --mq-dur: 64s; }
+.mq--names .mq__item { font-size: clamp(22px, 3vw, 40px); }

@@ -527,7 +527,7 @@
     </section>
 
     <section class="section band--paper" id="pay-monthly" aria-labelledby="pay-monthly-title">
-      <div class="wrap split split--top">
+      <div class="wrap split split--top" data-stagger>
         <div class="rv">
           <h2 class="h2" id="pay-monthly-title">How a pay-monthly website works</h2>
         </div>
@@ -537,7 +537,7 @@
           <p>There’s no contract. Cancel with 30 days’ notice and your domain, email and words go with you. After 12 paid months, the website files are yours too. If you already have a website and email somewhere else, we move them across for you at no extra cost.</p>
         </div>
       </div>
-      <div class="wrap split split--top">
+      <div class="wrap split split--top" data-stagger>
         <div class="rv">
           <h2 class="h2" id="once-off-title">Pay monthly or once-off?</h2>
         </div>
@@ -550,7 +550,7 @@
     </section>
 
     <section class="section band--blue" id="yearly" aria-labelledby="yearly-title">
-      <div class="wrap split">
+      <div class="wrap split" data-stagger>
         <div class="rv">
           <h2 class="h2" id="yearly-title">Pay for 10 months, get 12</h2>
           <p class="lede">Pay for a year at once and you get 2 months free.</p>
@@ -571,9 +571,9 @@
           <p class="lede">These promises are about our own work, so we can keep them. They are written into our <a href="/terms#packages">terms</a>.</p>
         </div>
         <ul class="promises">
-          <li class="promise rv"><span class="promise__key">7 days</span><p class="promise__text">Live within 7 days of getting your details, or your first month is free.</p></li>
+          <li class="promise rv"><span class="promise__key"><span data-count="7">7</span> days</span><p class="promise__text">Live within 7 days of getting your details, or your first month is free.</p></li>
           <li class="promise rv"><span class="promise__key">No contract</span><p class="promise__text">Cancel with 30 days’ notice. Your domain, email and words are yours, and they go with you.</p></li>
-          <li class="promise rv"><span class="promise__key">12 months</span><p class="promise__text">After 12 paid months, the website files are yours too.</p></li>
+          <li class="promise rv"><span class="promise__key"><span data-count="12">12</span> months</span><p class="promise__text">After 12 paid months, the website files are yours too.</p></li>
           </ul>
       </div>
     </section>
@@ -584,7 +584,7 @@
           <h2 class="h2" id="changes-title">What counts as a small change</h2>
           <p class="lede">Each package comes with time for small changes to your website every month. Here is what that covers.</p>
         </div>
-        <div class="two-lists">
+        <div class="two-lists" data-stagger>
           <div class="list-block rv">
             <h3 class="list-block__title">Small changes</h3>
             <ul>
@@ -728,5 +728,6 @@
   </footer>
 
   <script type="module" src="/src/js/home.js"></script>
+  <script type="module" src="/src/js/motion.js"></script>
 </body>
 </html>
