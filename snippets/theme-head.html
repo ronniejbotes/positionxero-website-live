@@ -1,0 +1,16 @@
+<!--
+  Position Xero light/dark mode: HEAD SNIPPET (12 November 2026).
+  Paste into <head> of every page, right after the viewport meta and BEFORE
+  any stylesheet or font preload, replacing the page's old theme-color meta.
+  The script sets <html data-theme> before the first paint, so there is no
+  flash of the wrong mode. Stored choice (localStorage "px-theme") wins;
+  otherwise dark, the owner's pick. The colours live in /css/tokens.css.
+  Also load the switch behaviour once per page, before </body>:
+    <script src="/js/theme.js?v=20261112" defer></script>
+  Font preloads for the first screen (replace any ClashDisplay preload):
+    <link rel="preload" href="/fonts/GeneralSans-Semibold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
+-->
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#091224" data-dark="#091224" data-light="#0E1A33" />
+  <script>(function(){var r=document.documentElement,m='dark';try{var s=localStorage.getItem('px-theme');if(s==='light'||s==='dark')m=s}catch(e){}r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>

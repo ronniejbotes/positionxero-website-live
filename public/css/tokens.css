@@ -4,23 +4,45 @@
    Every colour and font on the site comes from the custom properties
    below: the front pages (src/styles/home.css imports this file) and
    every static page in public/ (each links /css/tokens.css before
-   /css/site.css). To restyle the whole site, change this block and the
-   @font-face rules above it, nothing else. Bump ?v= on the static
-   pages' <link> when this file changes (CLAUDE.md cache rule).
+   /css/site.css). To restyle the whole site, change this file only.
+   Bump ?v= on the static pages' <link> when it changes (CLAUDE.md).
 
-   Placeholder palette (12 November 2026, direction C): electric
-   ultramarine brand, signal lime for actions only, ink on paper.
-   The owner is choosing the final palette and fonts from a picker.
+   Owner's choice, 12 November 2026: Palette 4 "Midnight Cyan" and
+   Font I "General Sans 600", with a light/dark switch like Otaku TCG.
+   Dark is the default. The inline head script (snippets/theme-head.html)
+   sets <html data-theme="dark|light"> before paint; the visitor's
+   stored choice (localStorage "px-theme") wins.
 
-   Fonts: Clash Display and Satoshi are Fontshare files served exactly
-   as downloaded (the licence allows no subsetting or conversion);
-   Martian Mono is OFL.
+   Roles:
+   --brand        impact bands (header, page heroes, closing call): navy in both modes
+   --on-brand     text on bands; --brand-wash and --brand-soft are its quieter steps
+   --action       ACTION BUTTONS ONLY (WhatsApp, Choose a package, form submit,
+                  closing call). Never text, links, marks or decoration.
+   --paper        reading sections; --surface cards, tables, form fields
+   --ink, --muted reading text
+   --accent       links and small marks on paper and surface (not the action colour)
+
+   WCAG 2 contrast, computed 12 November 2026 (normal text needs 4.5):
+   dark:  on-brand on brand 17.3, brand-wash 13.5, brand-soft 9.2;
+          ink on paper 16.0, on surface 14.2, on highlight 12.6;
+          muted on paper 8.6, on surface 7.6, on highlight 6.7;
+          accent on paper 12.1, on surface 10.8, on highlight 9.5;
+          on-accent on accent 12.1; on-action on action 10.4.
+   light: on-brand on brand 16.0, brand-wash 12.5, brand-soft 8.6;
+          ink on paper 16.0, on surface 17.3, on highlight 15.2;
+          muted on paper 6.8, on surface 7.4, on highlight 6.5;
+          accent on paper 5.4, on surface 5.8, on highlight 5.1;
+          on-accent on accent 5.8; on-action on action 10.4.
+
+   Fonts: General Sans and Satoshi are Fontshare files served exactly as
+   downloaded (the licence allows no subsetting or conversion, and the
+   files may not be handed to clients); Martian Mono is OFL.
    ============================================================ */
 
 @font-face {
-  font-family: 'Clash Display';
-  src: url(/fonts/ClashDisplay-Variable.woff2) format('woff2');
-  font-weight: 200 700;
+  font-family: 'General Sans';
+  src: url(/fonts/GeneralSans-Semibold.woff2) format('woff2');
+  font-weight: 600;
   font-display: swap;
 }
 @font-face {
@@ -36,38 +58,71 @@
   font-display: swap;
 }
 
-:root {
-  /* ---- palette ---- */
-  --brand: #2B3CFF;          /* impact bands, header, links on light grounds */
-  --brand-deep: #1A27D6;     /* deeper panels on brand bands */
-  --brand-soft: #B9C2FF;     /* quiet text and marks on brand */
-  --brand-wash: #E4E8FF;     /* secondary text on brand, pale fills */
-  --on-brand: #FFFFFF;       /* text and lines on brand bands */
-  --action: #C6FF3D;         /* action buttons ONLY: WhatsApp, Choose a package, closing call */
-  --on-action: #0B0F1A;      /* text on action buttons */
-  --ink: #0B0F1A;            /* reading text */
-  --paper: #F6F7FF;          /* reading sections */
-  --surface: #FFFFFF;        /* cards, tables, white sections */
-  --muted: #4A5368;          /* secondary reading text */
-  --logo: #EEF0FA;           /* the flat X on brand */
-  --line: #DDE1F2;           /* rules on light grounds */
-  --highlight: #EEF0FF;      /* the recommended column, quiet callouts */
-  --faint: #A3AEC4;          /* dashes for "not included" */
-  --chrome: #D3D8EA;         /* browser-frame dots */
-  --pill: #F1F3FB;           /* address-bar pills */
-  --skeleton: #ECEFF8;       /* loading placeholders */
-  --screen: #1C2233;         /* device screens before media loads */
-  --photo: #C9CDD6;          /* photo placeholders */
-  --shadow: #040846;         /* tinted shadows */
+/* ---- dark (default, and the fallback without JavaScript) ---- */
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
+  --brand: #091224;
+  --brand-deep: #0E1A33;
+  --brand-soft: #A9B7D2;
+  --brand-wash: #D3DCEC;
+  --on-brand: #F2F6FF;
+  --action: #3ADCF0;
+  --on-action: #0E1A33;
+  --ink: #F2F6FF;
+  --paper: #0E1A33;
+  --surface: #142443;
+  --muted: #A9B7D2;
+  --accent: #8BE6F2;
+  --on-accent: #0E1A33;
+  --logo: #F2F6FF;
+  --line: #26365A;
+  --highlight: #1A2D52;
+  --faint: #6F7E9C;
+  --chrome: #3A4A6B;
+  --pill: #1B2B4D;
+  --skeleton: #21325A;
+  --screen: #050B18;
+  --photo: #22324F;
+  --shadow: #01040B;
+}
 
+/* ---- light ---- */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --brand: #0E1A33;
+  --brand-deep: #091224;
+  --brand-soft: #A9B7D2;
+  --brand-wash: #D3DCEC;
+  --on-brand: #F2F6FF;
+  --action: #3ADCF0;
+  --on-action: #0E1A33;
+  --ink: #0E1A33;
+  --paper: #F3F6FA;
+  --surface: #FFFFFF;
+  --muted: #4A566B;
+  --accent: #0A6F80;
+  --on-accent: #FFFFFF;
+  --logo: #F2F6FF;
+  --line: #DCE2EC;
+  --highlight: #E6F3F6;
+  --faint: #9AA6BA;
+  --chrome: #D3D8EA;
+  --pill: #EEF2F8;
+  --skeleton: #E6EBF3;
+  --screen: #0E1A33;
+  --photo: #C9D0DC;
+  --shadow: #040A18;
+}
+
+:root {
   /* ---- type ---- */
-  --font-display: 'Clash Display', 'Arial Narrow', Arial, sans-serif;
+  --font-display: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Satoshi', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --display-weight: 600;
-  --display-track: -0.012em;
+  --display-track: -0.025em;
 
-  /* ---- derived (follow the palette above automatically) ---- */
+  /* ---- derived (follow the mode automatically) ---- */
   --line-on-brand: color-mix(in srgb, var(--on-brand) 22%, transparent);
 
   /* ---- names used by src/styles/home.css (kept as aliases) ---- */
@@ -84,4 +139,41 @@
   --mono: var(--font-mono);
   --dw: var(--display-weight);
   --dtrack: var(--display-track);
+}
+
+/* ============================================================
+   The light/dark switch (markup in snippets/theme-toggle.html, behaviour
+   in /js/theme.js). Shared by every page, so it lives with the tokens.
+   The icon is one shape that morphs: a moon in light mode (press for
+   dark), a sun in dark mode (press for light).
+   ============================================================ */
+.theme-toggle {
+  flex: none; display: inline-grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; padding: 0; border: 0; border-radius: 10px; cursor: pointer;
+  background: transparent; color: var(--on-brand);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--on-brand) 55%, transparent);
+}
+.theme-toggle:hover { box-shadow: inset 0 0 0 1.5px var(--on-brand); }
+.theme-toggle svg { width: 20px; height: 20px; overflow: visible; }
+.theme-toggle--header { display: none; }
+@media (min-width: 1000px) { .theme-toggle--header { display: inline-grid; width: 44px; height: 44px; } }
+.theme-toggle--menu {
+  display: flex; align-items: center; gap: 12px; width: 100%; height: auto; min-height: 52px;
+  padding: 14px 0; border-radius: 0; box-shadow: none; border-top: 1px solid var(--line-on-brand);
+  font: var(--display-weight) 20px/1 var(--font-display); text-align: left;
+}
+.theme-toggle--menu:hover { box-shadow: none; }
+.theme-toggle__state { margin-left: auto; font: 500 16px/1 var(--font-body); color: var(--brand-wash); }
+.sunmoon__core { transform-box: fill-box; transform-origin: center; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.sunmoon__bite { transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.sunmoon__rays { transform-box: view-box; transform-origin: 12px 12px; transform: rotate(-90deg) scale(0); opacity: 0; transition: transform .45s cubic-bezier(.2, .7, .2, 1), opacity .25s ease; }
+:root:not([data-theme="light"]) .sunmoon__core { transform: scale(.55); }
+:root:not([data-theme="light"]) .sunmoon__bite { transform: translate(9px, -9px); }
+:root:not([data-theme="light"]) .sunmoon__rays { transform: none; opacity: 1; transition-delay: .08s; }
+.theme-switching *, .theme-switching *::before, .theme-switching *::after {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sunmoon__core, .sunmoon__bite, .sunmoon__rays { transition: none; }
+  .theme-switching *, .theme-switching *::before, .theme-switching *::after { transition: none !important; }
 }

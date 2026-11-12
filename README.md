@@ -63,3 +63,23 @@ frame-by-frame. `tools/capture/record-screen.ps1` — 60 fps ffmpeg desktop capt
 - Replace the ALCHE name/mark, all Japanese copy, news items, and work titles
 - The sound toggle is visual-only (no audio is shipped)
 - Works/reel artwork is placeholder — swap in real key visuals
+
+## Light and dark mode (12 November 2026)
+
+The owner chose Palette 4 "Midnight Cyan" with General Sans 600 headings, and a light/dark
+switch like Otaku TCG's. Dark is the default. Every colour and font is a custom property in
+`public/css/tokens.css`, with one block per mode (`:root[data-theme="dark"]` and
+`[data-theme="light"]`); the front pages get it through `src/styles/home.css`, the static
+pages link it directly.
+
+- `snippets/theme-head.html`: the head snippet. A tiny inline script sets `<html data-theme>`
+  before the first paint, so there is no flash. The visitor's stored choice
+  (`localStorage` key `px-theme`) wins; otherwise dark. It also sets `color-scheme` and
+  `theme-color` for both modes.
+- `snippets/theme-toggle.html`: the sun/moon button for the header (1000px and up) and the
+  labelled one for the phone menu. `aria-pressed` is true while dark mode is on.
+- `public/js/theme.js`: wires up every `[data-theme-toggle]`, remembers the choice and keeps
+  the buttons and `theme-color` in sync. Load it on every page.
+
+The action colour (`--action`) is for action buttons only; links and small marks use
+`--accent`, which is a darker teal in light mode so it passes AA on white.

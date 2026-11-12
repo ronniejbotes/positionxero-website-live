@@ -1,0 +1,14 @@
+<!--
+  Position Xero light/dark mode: TOGGLE SNIPPETS (12 November 2026).
+  Styles are in /css/tokens.css ("The light/dark switch"), behaviour in
+  /js/theme.js. aria-pressed is true while dark mode is on; theme.js keeps
+  it in sync. Each copy needs its own mask id.
+
+  1. HEADER (desktop, 1000px and up): inside .site-header__actions, before
+     the WhatsApp button.
+-->
+<button type="button" class="theme-toggle theme-toggle--header" data-theme-toggle aria-pressed="true" aria-label="Dark mode" title="Dark mode"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><mask id="px-bite-h"><rect x="-4" y="-4" width="32" height="32" fill="white"/><circle class="sunmoon__bite" cx="17.5" cy="6.5" r="7" fill="black"/></mask><circle class="sunmoon__core" cx="12" cy="12" r="8.5" fill="currentColor" mask="url(#px-bite-h)"/><g class="sunmoon__rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M1.8 12h2.4M19.8 12h2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg></button>
+<!--
+  2. PHONE MENU: the last item inside <nav class="menu__panel">.
+-->
+<button type="button" class="theme-toggle theme-toggle--menu" data-theme-toggle aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><mask id="px-bite-m"><rect x="-4" y="-4" width="32" height="32" fill="white"/><circle class="sunmoon__bite" cx="17.5" cy="6.5" r="7" fill="black"/></mask><circle class="sunmoon__core" cx="12" cy="12" r="8.5" fill="currentColor" mask="url(#px-bite-m)"/><g class="sunmoon__rays" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.8v2.4M12 19.8v2.4M1.8 12h2.4M19.8 12h2.4M4.8 4.8l1.7 1.7M17.5 17.5l1.7 1.7M4.8 19.2l1.7-1.7M17.5 6.5l1.7-1.7"/></g></svg><span>Dark mode</span><span class="theme-toggle__state" aria-hidden="true" data-theme-toggle-state data-on="On" data-off="Off">On</span></button>
