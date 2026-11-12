@@ -7,14 +7,16 @@
 > equivalent in ZAR at the prevailing exchange rate at the time of quoting.
 
 ## South Africa: monthly website packages (ZAR)
-We build, host and look after the website. Prices per month, no build fee, no contract.
+We build, host and look after the website. Package prices are monthly, in rand. No build fee, no contract.
 Each package includes everything in the one before it. Pay yearly: pay for 10 months, get 12.
 Domain not included in any package: we can register your domain for you at cost.
 - Minimum: R490/month (R4,900/year). A website of up to 5 pages, built from our designs and tailored to your business; we write the words; hosting, security updates, backups and SSL; up to 30 minutes of small changes a month; 1 email mailbox plus free email aliases (e.g. info@ and sales@ into the same inbox); WhatsApp button and contact form; Google Business Profile set up; live within 7 days.
-- Standard (most popular): R990/month (R9,900/year). Everything in Minimum plus on-site SEO; 2 blog posts a month; Google Business Profile managed (a weekly post and review replies); Google Search Console and Bing set up; 2 mailboxes; up to 1 hour of changes a month; a monthly report in plain English.
+- Standard (recommended): R990/month (R9,900/year). Everything in Minimum plus on-site SEO; 2 blog posts a month; Google Business Profile managed (a weekly post and review replies); Google Search Console and Bing set up; 2 mailboxes; up to 1 hour of changes a month; a monthly report in plain English.
 - Growth: R1,490/month (R14,900/year). Everything in Standard plus 4 blog posts a month; Google Analytics with call, WhatsApp and form tracking; a review-request kit; 10 directory listings; 3 mailboxes; up to 2 hours of changes a month; a quarterly call.
-- Full House: R4,990/month (R49,900/year). Everything in Growth plus full SEO (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; priority same-day changes.
+- Full House: R4,990/month (R49,900/year). Everything in Growth plus full SEO (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
 - Our commitments (about our own work; no result is promised): live within 7 days of receiving your details, or your first month is free; not happy in the first 30 days, we refund you in full; changes done within 2 working days, or that month is free; no contract, cancel with 30 days' notice, and your domain, email and words are yours and go with you; after 12 paid months the website files are yours too.
+- Paying yearly: the 30-day full refund applies to yearly payments too. After 30 days a yearly payment is not refunded, but the package runs to the end of the paid year and is simply not renewed if you cancel. If we miss the 7-day launch on a yearly plan, we add one free month to the end of your year.
+- Full House covers SEO for one local business website. Custom SEO (from R16,500/month) is for bigger sites, several locations or national campaigns, built at https://www.positionxero.com/premium
 - No package includes a guarantee of rankings, traffic or leads.
 - Details: https://www.positionxero.com/packages
 
