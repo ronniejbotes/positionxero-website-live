@@ -2,6 +2,8 @@
 
 # Serve the branded 404 page with a real 404 status (avoids soft-404s).
 ErrorDocument 404 /404.html
+# Gone pages (12 November 2026) answer 410 with the same branded page.
+ErrorDocument 410 /404.html
 
 # ---------------------------------------------------------------------------
 # NEVER serve internal/source files. pricing.md is the ONE public .md
@@ -33,17 +35,34 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
 # ---------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # /seo-audit was replaced by /free-audit before ever shipping (2026-07-13) — catch strays in one hop.
-  RewriteRule ^seo-audit(\.html)?$ https://www.positionxero.com/free-audit [R=301,L]
-  # Blog posts retired on 2026-10-07 when the site moved to web development and SEO first.
-  # Lead-buying guides for markets the site does not serve go to the general post on buying
-  # leads; the real estate one goes to the real estate guide; the exclusive roofing leads post
-  # goes to the roofing page, which already drew more of its searches; the vetting post was
-  # merged into the legit-or-scam post. One hop, with or without .html or a trailing slash.
-  RewriteRule ^blog/(buy-aged-final-expense-leads|buy-mortgage-broker-leads|is-buying-insurance-leads-worth-it)(\.html)?/?$ https://www.positionxero.com/blog/is-buying-leads-worth-it [R=301,L]
-  RewriteRule ^blog/is-it-worth-buying-real-estate-leads(\.html)?/?$ https://www.positionxero.com/blog/real-estate-lead-generation [R=301,L]
-  RewriteRule ^blog/buy-exclusive-roofing-leads(\.html)?/?$ https://www.positionxero.com/roofing-marketing [R=301,L]
-  RewriteRule ^blog/how-to-vet-purchased-leads(\.html)?/?$ https://www.positionxero.com/blog/is-lead-generation-a-scam [R=301,L]
+  # 12 November 2026 (owner): Position Xero sells its four monthly website
+  # packages only. The free audit is retired, so /free-audit (and the older
+  # /seo-audit, which used to point at it) go to the packages. The services
+  # overview goes to the packages, which are now everything we sell. The
+  # international web design page goes to the South African one (same service).
+  # Ads and lead generation have no service pages: they are offered on the brief
+  # from the "Looking for something more?" band under the packages. One hop each,
+  # with or without .html or a slash.
+  RewriteRule ^free-audit(\.html)?/?$ https://www.positionxero.com/packages [R=301,L]
+  RewriteRule ^seo-audit(\.html)?/?$ https://www.positionxero.com/packages [R=301,L]
+  RewriteRule ^services(\.html)?/?$ https://www.positionxero.com/packages [R=301,L]
+  RewriteRule ^web-design(\.html)?/?$ https://www.positionxero.com/web-design-south-africa [R=301,L]
+  RewriteRule ^(ads|google-ads-south-africa|meta-ads-south-africa|lead-gen|lead-generation-south-africa)(\.html)?/?$ https://www.positionxero.com/packages#more [R=301,L,NE]
+  # Two posts are due to be rewritten under clearer addresses
+  # (/blog/hand-built-website-vs-wordpress to /blog/coded-website-vs-wordpress,
+  # /blog/conversion-tracking-for-lead-generation to /blog/track-website-enquiries).
+  # Their 301s go in only when the rewritten posts are live, so neither rule is
+  # here yet: both old addresses still serve their posts.
+  #
+  # Gone (410), 12 November 2026: the US-market pages (the US offer has ended) and
+  # the lead-generation and ads posts, which brought no South African buyers in 180
+  # days of Search Console data. The [G] flag answers 410 Gone and stops here.
+  RewriteRule ^(lead-generation-dallas|hvac-marketing|roofing-marketing)(\.html)?/?$ - [G]
+  RewriteRule ^blog/(are-lead-generation-companies-worth-it|cost-per-lead-benchmarks|exclusive-vs-shared-leads|fake-leads-bot-leads|google-ads-cost-south-africa|google-ads-vs-meta-ads|how-much-are-leads-worth|how-much-do-google-ads-cost|how-much-do-solar-leads-cost|how-much-does-lead-generation-cost|how-to-get-clients-without-buying-leads|how-to-get-hvac-leads-small-company)(\.html)?/?$ - [G]
+  RewriteRule ^blog/(is-buying-leads-worth-it|is-lead-generation-a-scam|is-lead-generation-worth-the-investment|law-firm-lead-generation|lead-generation-agency-vs-sales-executive|lead-generation-for-recruitment-agencies|lead-generation-for-small-business|lead-generation-outsourcing-guide|local-services-ads-vs-google-ads|pay-per-lead-vs-retainer|real-estate-lead-generation|roofing-seo-vs-ppc)(\.html)?/?$ - [G]
+  # Posts retired on 2026-10-07 used to 301 to posts that are now gone. They are
+  # gone too, so they answer 410 directly instead of chaining into one.
+  RewriteRule ^blog/(buy-aged-final-expense-leads|buy-mortgage-broker-leads|is-buying-insurance-leads-worth-it|is-it-worth-buying-real-estate-leads|buy-exclusive-roofing-leads|how-to-vet-purchased-leads)(\.html)?/?$ - [G]
   # Common guesses that answered 404 and still drew visits (Clarity, 15 to 28 October 2026):
   # /contact-us goes to /contact and /privacy-policy to /privacy. One hop, with or without
   # .html or a trailing slash (29 October 2026).
@@ -162,8 +181,9 @@ RedirectMatch 404 ^/(?!pricing\.md$)[^/]*\.md$
   # and a browser can keep the old one for a year (16 October 2026, T-56).
   # FilesMatch sees only the file name, so this matches that hashed pattern,
   # which only /assets/ files have (checked against dist/ the same day); the
-  # same rule already runs on other sites on this host. /css/style.css and
-  # /js/main.js have no hash and keep their own lifetimes and the ?v= bump.
+  # same rule already runs on other sites on this host. /css/tokens.css,
+  # /css/site.css and /js/site.js have no hash and keep their own lifetimes
+  # and the ?v= bump.
   <FilesMatch "-[A-Za-z0-9_-]{8}\.(js|css|woff2?)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>

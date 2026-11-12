@@ -1,122 +1,76 @@
 # Position Xero
 
-> Position Xero is a founder-led web development and SEO agency that brings service businesses leads. For South African businesses it builds, hosts and looks after websites on four monthly packages from R490 a month (no build fee, live in 7 days, no contract), and anything the packages do not cover is priced on the brief. It builds websites and landing pages that turn visitors into enquiries and does the SEO that gets them found on Google and in AI answers, with lead generation built on both and Google Ads and Meta Ads as supporting services. The agency is based in Centurion, Gauteng, South Africa, serves service businesses worldwide and delivers all work remotely. Clients work with the person who actually runs their service, with a founder close to the account.
+> Position Xero builds websites for South African businesses. The website is built free, in code, and goes live within 7 days; the business then pays a monthly package for hosting and care: Minimum R490, Standard R990 (includes SEO, blog posts and Google Business Profile management), Growth R1,490 or Full House R4,990 a month. No contract. Based in Centurion, Gauteng.
 
 > Last updated: 2026-11-12
 
-## What We Do
+## Built free, then one monthly price
 
-- **Website packages (South Africa)**: We build, host and look after your website for a monthly fee with no build fee. Minimum R490/month, Standard R990/month (recommended), Growth R1,490/month, Full House R4,990/month; pay yearly: pay for 10 months, get 12. Each package includes everything in the one before. Domain not included (registered for you at cost). Commitments: live within 7 days of receiving your details or the first month is free; full refund if not happy in the first 30 days; changes within 2 working days or that month is free; cancel with 30 days' notice; website files are yours after 12 paid months. Full House includes up to 4 hours of changes a month, done the same working day. Paying yearly: full refund in the first 30 days, after that the package runs to the end of the paid year and is not renewed if cancelled; a missed 7-day launch on a yearly plan adds one free month. SEO is included in Standard, Growth and Full House; Full House covers full SEO for one local business website, and SEO for bigger sites, several locations or national campaigns is priced on the brief. Details: https://www.positionxero.com/packages
-- **Everything else (South Africa)**: The four packages are the only published prices for South Africa. Google Ads and Meta Ads management, immersive 3D or scroll-animated builds (like https://www.positionxero.com/experience), online stores, lead generation campaigns and bigger or multi-location projects are priced on the brief over WhatsApp: https://wa.me/27662412155?text=Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.
-- **Web Development (websites and landing pages)**: High-converting, SEO-optimised HTML websites and landing pages, designed and built to turn visitors into enquiries. Outside South Africa: landing pages from $750, full sites from $1,800.
-- **SEO Services**: Traditional on-page/technical SEO, AI SEO for Google AI Overviews, and LLM SEO for ChatGPT/Perplexity/Gemini citations, aimed at enquiries from the client's own website. Outside South Africa: local SEO from $600/month, full SEO from $1,000/month.
-- **Lead Generation**: Multi-channel campaigns built on the website and SEO (landing pages, SEO, cold email, and paid ads as an optional accelerator). The monthly lead target is agreed with each client at kickoff, from their budget, market and current cost per lead, and reported against openly. Position Xero does not publish a lead count.
-- **Google Ads Management** (supporting service): Search, Display, Shopping, YouTube campaigns. Outside South Africa: minimum ad spend $500/month, retainer from $850/month. In South Africa: priced on the brief.
-- **Meta Ads Management** (supporting service): Facebook and Instagram advertising. Outside South Africa: minimum ad spend $300/month, retainer from $750/month. In South Africa: priced on the brief.
+- **What "built free" means**: there is no build fee. We code your website from scratch and you pay the monthly package from the first month. The domain is not included in any package; we register it for you at cost. Your domain, email and words are yours from day one, and the website files are yours after 12 paid months. Cancel with 30 days' notice and they go with you.
+- **Minimum, R490 a month (R4,900 a year)**: a website of up to 5 pages, built from our designs and tailored to your business; we write the words; hosting, security updates, backups and SSL; up to 30 minutes of small changes a month; 1 email mailbox plus free email aliases; WhatsApp button and contact form; Google Business Profile set up; live within 7 days.
+- **Standard, R990 a month (R9,900 a year), recommended**: everything in Minimum plus on-site SEO; 2 blog posts a month; Google Business Profile managed (a weekly post and review replies); Google Search Console and Bing set up; 2 mailboxes; up to 1 hour of changes a month; a monthly report in plain English.
+- **Growth, R1,490 a month (R14,900 a year)**: everything in Standard plus 4 blog posts a month; Google Analytics with call, WhatsApp and form tracking; a review-request kit; 10 directory listings; 3 mailboxes; up to 2 hours of changes a month; a quarterly call.
+- **Full House, R4,990 a month (R49,900 a year)**: everything in Growth plus full SEO for one local business website (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
+- **Pay yearly**: pay for 10 months, get 12. The package runs to the end of the paid year and is not renewed if cancelled. A missed 7-day launch on a yearly plan adds one free month to the end of the year.
+- **Our three commitments** (about our own work; no result is promised): live within 7 days of receiving your details, or the first month is free; no contract, cancel with 30 days' notice, and your domain, email and words go with you; after 12 paid months the website files are yours too.
+- **On every site we build**: structured data that matches the page, an llms.txt file and a robots.txt that lets AI search crawlers in.
+- **No guarantees of results**: no package includes a guarantee of rankings, traffic, leads or AI mentions.
+- **Everything else is priced on the brief**: Google Ads and Meta Ads management, immersive 3D or scroll-animated builds (like https://www.positionxero.com/experience), online stores, and bigger or multi-location projects, including SEO for several locations or national campaigns. WhatsApp: https://wa.me/27662412155?text=Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.
 
-## Who We Serve
+## How we work
 
-- Attorneys and law firms (personal injury, family law, criminal defense)
-- Real estate agents and property investment agencies
-- Recruitment and staffing agencies
-- Service-based businesses: roofing, plumbing, pool companies, cleaning, HVAC, contractors
+- Position Xero is founder-led by Ronnie James Botes (web development and SEO) and Keegan Shane Haumann (full-stack development). Clients work with the person who actually runs their service, with a founder close to the account.
+- We are based in Centurion, Gauteng, and work with businesses across South Africa online, over WhatsApp, phone and video calls. There is no office to visit.
+- How to start: WhatsApp +27 66 241 2155 with your business name and what you do. Tell us about the business on a 15-minute call or in a voice note, and send your logo and some photos if you have them. We write the words, you check the site on your phone, and it goes live within 7 days of us getting your details.
+- We reply to every enquiry within 24 hours.
 
-## Differentiators
+## Key pages
 
-- Month-to-month contracts only, with no lock-in
-- Direct access to the people running your campaigns, with no middleman relaying messages
-- Open-book reporting on CPL, ROAS and revenue, not impressions
-- 24-hour response guarantee
-- Free audit delivered as a personalised Loom video within 48 hours
-
-## Key Pages
-
-- Home: https://www.positionxero.com/
-- Website Packages (four monthly packages, compared): https://www.positionxero.com/packages
-- Our Work (client websites we built or rebuilt, each with a desktop and a phone view): https://www.positionxero.com/work
-- What We Can Build (immersive 3D showcase site): https://www.positionxero.com/experience
-- Services Overview: https://www.positionxero.com/services
-- Web Design and Development: https://www.positionxero.com/web-design
-- SEO Services (AI SEO, LLM SEO, Traditional): https://www.positionxero.com/seo
-- Lead Generation: https://www.positionxero.com/lead-gen
-- Google Ads & Meta Ads: https://www.positionxero.com/ads
-- Free SEO Audit (lead funnel with graded on-page audit): https://www.positionxero.com/free-audit
+- Website packages (the four packages compared): https://www.positionxero.com/packages
+- Our work (sites we built, each with a desktop and a phone view): https://www.positionxero.com/work
+- Web developers in South Africa: https://www.positionxero.com/web-design-south-africa
+- Web design in Pretoria and Centurion: https://www.positionxero.com/web-design-pretoria
+- Web design in Johannesburg, Sandton and the East Rand: https://www.positionxero.com/web-design-johannesburg
+- What a website costs in South Africa (once-off quotes vs monthly packages): https://www.positionxero.com/web-design-prices-south-africa
+- Free website builder vs a free coded site at R490 a month: https://www.positionxero.com/free-website-vs-website-builder
+- SEO company in South Africa (SEO in the packages from R990 a month): https://www.positionxero.com/seo-south-africa
+- SEO packages (what R990 to R4,990 a month buys): https://www.positionxero.com/seo
+- AI SEO in South Africa (ChatGPT, Google AI Overviews, Perplexity): https://www.positionxero.com/ai-seo-south-africa
+- How we build your website in 7 days: https://www.positionxero.com/how-we-work
+- FAQ (package questions): https://www.positionxero.com/faq
 - About: https://www.positionxero.com/about
-- Contact / Book a Free Audit: https://www.positionxero.com/contact
-- FAQ: https://www.positionxero.com/faq
-- How We Work (onboarding process, reporting cadence and cancellation): https://www.positionxero.com/how-we-work
+- Contact: https://www.positionxero.com/contact
 - Blog: https://www.positionxero.com/blog/
+- Immersive website example: https://www.positionxero.com/experience
 - Pricing (machine-readable): https://www.positionxero.com/pricing.md
 
-## South Africa Market Pages
+## Guides
 
-Position Xero is based in Centurion, Gauteng, and serves the South African market directly, with POPIA-compliant lead capture and prices in rand: four monthly website packages from R490 to R4,990 a month (https://www.positionxero.com/packages), with SEO included from the Standard package at R990 a month. Ads management, immersive builds, online stores and bigger projects are priced on the brief over WhatsApp.
-
-- Web Design and Development South Africa: https://www.positionxero.com/web-design-south-africa
-- SEO South Africa: https://www.positionxero.com/seo-south-africa
-- Lead Generation South Africa: https://www.positionxero.com/lead-generation-south-africa
-- Google Ads Management South Africa: https://www.positionxero.com/google-ads-south-africa
-- Meta / Facebook Ads South Africa (incl. click-to-WhatsApp): https://www.positionxero.com/meta-ads-south-africa
-- Web Design and SEO in Pretoria and Centurion: https://www.positionxero.com/web-design-pretoria
-
-## US Market & Industry Pages
-
-- Lead Generation for Dallas-Fort Worth: https://www.positionxero.com/lead-generation-dallas
-- HVAC Marketing: https://www.positionxero.com/hvac-marketing
-- Roofing Marketing: https://www.positionxero.com/roofing-marketing
+- What Is AI SEO? A Plain Guide for South African Businesses: https://www.positionxero.com/blog/what-is-ai-seo
+- Visitors but No Enquiries? Where to Look: https://www.positionxero.com/blog/website-visitors-no-enquiries
+- Custom Website vs WordPress: Which Fits You?: https://www.positionxero.com/blog/hand-built-website-vs-wordpress
+- What Is a Landing Page?: https://www.positionxero.com/blog/what-is-a-landing-page
+- Conversion Tracking for Lead Generation: https://www.positionxero.com/blog/conversion-tracking-for-lead-generation
+- What Is SEO and Will It Help My Business?: https://www.positionxero.com/blog/what-is-seo
+- How Long Does SEO Take to Work?: https://www.positionxero.com/blog/how-long-does-seo-take
+- Local SEO for Service Businesses: https://www.positionxero.com/blog/local-seo-for-service-businesses
+- How to Get Your Business on Google: https://www.positionxero.com/blog/how-to-get-your-business-on-google
+- Why a Competitor Ranks Above You on Google: https://www.positionxero.com/blog/why-competitor-ranks-higher
+- How to Rank in Google AI Overviews: https://www.positionxero.com/blog/how-to-rank-in-google-ai-overviews
+- Track ChatGPT Traffic in Google Analytics 4: https://www.positionxero.com/blog/track-ai-traffic-google-analytics
+- What Is Position Zero on Google?: https://www.positionxero.com/blog/what-is-position-zero
 
 ## Careers
 
 Position Xero hires for fully remote roles and takes applications directly through the site.
 
-- Careers Overview: https://www.positionxero.com/careers/
-- Google & Meta Ads Manager (Remote): https://www.positionxero.com/careers/ads-manager
-- Remote Sales Closer (Commission-Based): https://www.positionxero.com/careers/sales-closer
-- Full Stack Developer (Remote): https://www.positionxero.com/careers/full-stack-developer
-
-## Blog Articles
-
-- Visitors but No Enquiries? Where to Look: https://www.positionxero.com/blog/website-visitors-no-enquiries
-- What Is Position Zero on Google?: https://www.positionxero.com/blog/what-is-position-zero
-- Why a Competitor Ranks Above You on Google: https://www.positionxero.com/blog/why-competitor-ranks-higher
-- Custom Website vs WordPress: Which Fits You?: https://www.positionxero.com/blog/hand-built-website-vs-wordpress
-- What Is SEO and Will It Help My Business?: https://www.positionxero.com/blog/what-is-seo
-- How to Get Your Business on Google: https://www.positionxero.com/blog/how-to-get-your-business-on-google
-- Roofing SEO vs PPC for Storm and Retail Work: https://www.positionxero.com/blog/roofing-seo-vs-ppc
-- Conversion Tracking for Lead Generation: https://www.positionxero.com/blog/conversion-tracking-for-lead-generation
-- How to Rank in Google AI Overviews: https://www.positionxero.com/blog/how-to-rank-in-google-ai-overviews
-- What Do Google Ads Cost in South Africa?: https://www.positionxero.com/blog/google-ads-cost-south-africa
-- Local Services Ads vs Google Search Ads: What Contractors Should Buy: https://www.positionxero.com/blog/local-services-ads-vs-google-ads
-- How Long Does SEO Take to Work?: https://www.positionxero.com/blog/how-long-does-seo-take
-- Track ChatGPT Traffic in Google Analytics 4: https://www.positionxero.com/blog/track-ai-traffic-google-analytics
-- Lead Generation for Recruitment Agencies: https://www.positionxero.com/blog/lead-generation-for-recruitment-agencies
-- Lead Generation Fraud: Fake and Bot Leads: https://www.positionxero.com/blog/fake-leads-bot-leads
-- How Much Is a Lead Worth? Lead Value and Max CPL: https://www.positionxero.com/blog/how-much-are-leads-worth
-- What Is AI SEO? The Complete Guide for 2026: https://www.positionxero.com/blog/what-is-ai-seo
-- Google Ads vs Meta Ads: Which Platform in 2026?: https://www.positionxero.com/blog/google-ads-vs-meta-ads
-- Lead Generation for Small Business: 7 Strategies Ranked by Speed and Cost: https://www.positionxero.com/blog/lead-generation-for-small-business
-- How Much Do Google Ads Cost in 2026?: https://www.positionxero.com/blog/how-much-do-google-ads-cost
-- Cost Per Lead Benchmarks by Industry: https://www.positionxero.com/blog/cost-per-lead-benchmarks
-- Lead Generation for Law Firms: https://www.positionxero.com/blog/law-firm-lead-generation
-- Local SEO for Service Businesses: https://www.positionxero.com/blog/local-seo-for-service-businesses
-- What Is a Landing Page? (And Why You Need One): https://www.positionxero.com/blog/what-is-a-landing-page
-- Real Estate Lead Generation That Works: https://www.positionxero.com/blog/real-estate-lead-generation
-- Is Buying Leads Worth It? An Honest 2026 Breakdown: https://www.positionxero.com/blog/is-buying-leads-worth-it
-- Is Lead Generation Legit or a Scam? How to Spot Fake Leads: https://www.positionxero.com/blog/is-lead-generation-a-scam
-- Pay Per Lead vs Retainer for Contractors: https://www.positionxero.com/blog/pay-per-lead-vs-retainer
-- Exclusive vs Shared Leads: Which Should You Buy?: https://www.positionxero.com/blog/exclusive-vs-shared-leads
-- Are Lead Generation Companies Worth It?: https://www.positionxero.com/blog/are-lead-generation-companies-worth-it
-- How to Get Clients Without Buying Leads: https://www.positionxero.com/blog/how-to-get-clients-without-buying-leads
-- How Much Does Lead Generation Cost in 2026?: https://www.positionxero.com/blog/how-much-does-lead-generation-cost
-- Lead Generation Outsourcing: Build vs Buy Guide: https://www.positionxero.com/blog/lead-generation-outsourcing-guide
-- Solar Leads Pricing vs Building Your Own: https://www.positionxero.com/blog/how-much-do-solar-leads-cost
-- How to Get HVAC Leads for a Small Company: https://www.positionxero.com/blog/how-to-get-hvac-leads-small-company
-- Should I Hire a Lead Generation Agency or a Sales Executive?: https://www.positionxero.com/blog/lead-generation-agency-vs-sales-executive
-- Is Lead Generation Worth the Investment?: https://www.positionxero.com/blog/is-lead-generation-worth-the-investment
+- Careers overview: https://www.positionxero.com/careers/
+- Google & Meta Ads Manager (remote): https://www.positionxero.com/careers/ads-manager
+- Remote Sales Closer (commission-based): https://www.positionxero.com/careers/sales-closer
+- Full Stack Developer (remote): https://www.positionxero.com/careers/full-stack-developer
 
 ## Contact
 
-Phone: +27 66 241 2155
-Email: hello@positionxero.com
-Book a free audit: https://www.positionxero.com/contact
-Website: https://www.positionxero.com
+- WhatsApp or phone: +27 66 241 2155
+- Email: hello@positionxero.com
+- Website: https://www.positionxero.com
