@@ -11,9 +11,9 @@
  * because the visitor moved a slider, otherwise the result stops being theirs.
  */
 
-const money = new Intl.NumberFormat('en-US', {
-  style: 'currency', currency: 'USD', maximumFractionDigits: 0
-});
+// Rand, written the way South African price lists write it (R2,500), not
+// en-ZA's 'R 2 500,00'. The page sells to South African businesses (12 Nov 2026).
+const money = { format: (v) => 'R' + Math.round(v).toLocaleString('en-US') };
 
 /** 4.5 reads better than 5 here — it is a rate, not a headcount */
 function customersLabel(n) {

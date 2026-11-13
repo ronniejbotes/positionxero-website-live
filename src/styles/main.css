@@ -746,6 +746,15 @@ body.js-enabled:not(.no-3d) .works-layer[data-visible="false"] .works-more { poi
 }
 .calc[data-visible="true"] { pointer-events: auto; }
 
+/* Desktop: the header (fixed, z-index 99) is about 120px tall, and on a
+   768-900px-tall laptop the centred column rose under it, printing the nav over
+   "FREE TOOL" (final review, 13 Nov 2026). Reserve the header's height, and
+   tighten the rhythm on short screens so the answer still fits. The phone rules
+   in the max-width: 768px block below set their own padding. */
+@media (min-width: 769px) {
+  .calc { padding-top: 128px; }
+}
+
 /* one centred column: the three questions and the answer read as a single
    vertical argument, which is what makes this a section rather than an aside */
 .calc__inner {
@@ -879,6 +888,22 @@ body.js-enabled:not(.no-3d) .works-layer[data-visible="false"] .works-more { poi
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 .calc__cta-link:hover { color: #10161C; }
+
+/* Short desktop screens: tighter rhythm so the column fits under the header
+   (see the .calc padding-top rule above; final review, 13 Nov 2026). */
+@media (min-width: 769px) and (max-height: 980px) {
+  .calc__kicker { margin-bottom: 10px; }
+  .calc__title { font-size: 26px; margin-bottom: 10px; }
+  .calc__fields { margin-top: 14px; }
+  .calc-field + .calc-field { margin-top: 12px; }
+  .calc-field__value { margin: 3px 0 6px; font-size: 22px; }
+  .calc__total-num { font-size: 48px; }
+  .calc__result-label { margin-top: 6px; }
+}
+@media (min-width: 769px) and (max-height: 760px) {
+  .calc { padding-bottom: 24px; }
+  .calc__text { display: none; }
+}
 
 @media (max-width: 768px) {
   .calc__inner { width: 88vw; }
