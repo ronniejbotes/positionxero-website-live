@@ -685,7 +685,7 @@ b { font-weight: inherit; }
 .site-footer { background: var(--paper); color: var(--ink); padding: 56px 0 34px; border-top: 1px solid var(--line); }
 .site-footer__top { display: grid; gap: 36px; }
 @media (min-width: 1000px) { .site-footer__top { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 56px; } }
-.site-footer .logo { color: var(--ink); }
+.site-footer .logo { color: var(--ink); margin-block: -10px; }
 .site-footer .logo__x { color: var(--ink); }
 .site-footer__brand p { margin: 14px 0 0; max-width: 32ch; color: var(--muted); }
 .site-footer__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 20px; }
