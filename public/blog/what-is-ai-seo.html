@@ -17,13 +17,13 @@
   <meta property="og:title" content="What Is AI SEO? A Plain Guide for South African Businesses" />
   <meta property="og:description" content="AI SEO in plain English: what it is, what Google, OpenAI and Perplexity say they need, how to measure it, and what a South African business can do now." />
   <meta property="og:url" content="https://www.positionxero.com/blog/what-is-ai-seo" />
-  <meta property="og:image" content="https://www.positionxero.com/img/og-image.jpg?v=20261007" />
+  <meta property="og:image" content="https://www.positionxero.com/img/blog/what-ai-search-tools-need-og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="What Is AI SEO? A Plain Guide for South African Businesses" />
   <meta name="twitter:description" content="AI SEO in plain English: what it is, what Google, OpenAI and Perplexity say they need, how to measure it, and what a South African business can do now." />
-  <meta name="twitter:image" content="https://www.positionxero.com/img/og-image.jpg?v=20261007" />
+  <meta name="twitter:image" content="https://www.positionxero.com/img/blog/what-ai-search-tools-need-og.jpg" />
 
   <link rel="preload" href="/fonts/GeneralSans-Semibold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
@@ -43,6 +43,7 @@
       "headline": "What is AI SEO, and what can a South African business do about it?",
       "description": "AI SEO in plain English: what it is, what Google, OpenAI and Perplexity say they need, how to measure it, and what a South African business can do now.",
       "url": "https://www.positionxero.com/blog/what-is-ai-seo",
+      "image": "https://www.positionxero.com/img/blog/what-ai-search-tools-need-og.jpg",
       "datePublished": "2026-06-01",
       "dateModified": "2026-11-12",
       "inLanguage": "en-ZA",
@@ -176,18 +177,28 @@
 <p>You'll see the same work sold as AI SEO, GEO (generative engine optimisation), AEO (answer engine optimisation) or LLM SEO. Whatever the label, the job is the same: be findable, be readable, say true things plainly. If a supplier tells you their acronym is a different discipline from the others, ask what they'd actually do differently on your site.</p>
 <h2>Where AI answers come from</h2>
 <p>Each tool finds pages its own way, so it helps to know what each company says.</p>
+<figure class="article-featured-img">
+  <picture>
+    <source media="(max-width: 640px)" srcset="/img/blog/what-ai-search-tools-need-phone-720.webp 720w, /img/blog/what-ai-search-tools-need-phone-1080.webp 1080w" sizes="calc(100vw - 32px)" width="1080" height="1031" />
+    <img src="/img/blog/what-ai-search-tools-need-1600.webp" srcset="/img/blog/what-ai-search-tools-need-800.webp 800w, /img/blog/what-ai-search-tools-need-1600.webp 1600w" sizes="(min-width: 1100px) 720px, calc(100vw - 32px)" width="1600" height="840" alt="Table of what each AI tool needs from a site: Google AI Overviews and AI Mode need the page indexed and eligible for a snippet, ChatGPT search needs OAI-SearchBot allowed, Perplexity needs PerplexityBot allowed, Copilot and Bing need the page indexed in Bing" loading="eager" decoding="async" />
+  </picture>
+</figure>
 <p><strong>Google AI Overviews and AI Mode.</strong> Google says a page has to be <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">indexed and eligible to show in Search with a snippet</a>, and that there are no additional requirements or special optimisations beyond that. It also says you don't need special schema or new AI text files.</p>
 <p><strong>ChatGPT search.</strong> OpenAI's crawler for search is OAI-SearchBot, and <a href="https://developers.openai.com/api/docs/bots" target="_blank" rel="noopener">OpenAI recommends allowing it</a> in your robots.txt if you want to appear in ChatGPT's search results. Its other crawler, GPTBot, collects content that may be used to train its models. They're separate, so you can decide on each one.</p>
 <p><strong>Perplexity.</strong> PerplexityBot is the crawler that <a href="https://docs.perplexity.ai/guides/bots" target="_blank" rel="noopener">surfaces and links websites in Perplexity's results</a>. Perplexity asks you to allow it.</p>
 <p><strong>Microsoft Copilot and Bing.</strong> Bing Webmaster Tools has an <a href="https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/" target="_blank" rel="noopener">AI Performance report</a> that shows how often your pages are cited in Copilot, in Bing's AI-generated summaries and in some partner tools.</p>
 <p>So the first two jobs are plain: get indexed in Google and Bing, and make sure the AI search crawlers aren't blocked.</p>
+<figure class="article-figure">
+  <img src="/img/blog/positionxero-robots-txt-ai-crawlers-1600.webp" srcset="/img/blog/positionxero-robots-txt-ai-crawlers-800.webp 800w, /img/blog/positionxero-robots-txt-ai-crawlers-1600.webp 1600w" sizes="(min-width: 1100px) 720px, calc(100vw - 32px)" width="1600" height="1508" alt="Part of the Position Xero robots.txt file, with the ChatGPT-User, OAI-SearchBot and PerplexityBot groups set to Allow" loading="lazy" decoding="async" />
+  <figcaption>Part of our own robots.txt, at positionxero.com/robots.txt.</figcaption>
+</figure>
 <h2>Six things to do, in order</h2>
 <ol><li><strong>Check you're indexed.</strong> Set up Google Search Console and Bing Webmaster Tools, submit your sitemap, and look for pages that aren't indexed. A page no search engine has can't be in an AI answer.</li><li><strong>Let the AI search crawlers in.</strong> Open yoursite.co.za/robots.txt and look for any rule that blocks OAI-SearchBot or PerplexityBot. Check your host's or CDN's bot-blocking settings too, since those can block crawlers without touching robots.txt.</li><li><strong>Say your facts in words.</strong> What you do, where you do it, what it costs and how to reach you, in sentences on the page. A price in rand in the text is readable. A price inside an image isn't.</li><li><strong>Make each section answer its own heading.</strong> Put the answer in the first sentence under the heading, and write the section so it still makes sense if someone reads only that part. Whatever gets quoted then still makes sense on its own.</li><li><strong>Add structured data that matches the page.</strong> Google asks that structured data match the visible text. It describes your business; it doesn't replace what's written on the page.</li><li><strong>Keep your details the same everywhere.</strong> Your business name, number and website should read the same on your site, your Google Business Profile and every directory you're listed in, so nobody, person or machine, has to guess which version is right.</li></ol>
 <h2>Does llms.txt do anything?</h2>
 <p>llms.txt is a <a href="https://llmstxt.org/" target="_blank" rel="noopener">proposal from September 2024</a> for a plain-text file at the root of your site that summarises your business for AI tools, the way robots.txt and a sitemap help crawlers. Google says its AI features <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">don't need new AI text files</a>.</p>
 <p>We publish <a href="/llms.txt">one on our own site</a> and add one to the sites we build, for a narrow reason: it takes minutes, it's an accurate summary anyone can read, and it costs nothing. We don't sell it as a service, and you shouldn't pay anyone to maintain one.</p>
 <h2>How to measure it</h2>
-<p>There's no ranking report for AI answers, but there's more than there was.</p>
+<p>There's no ranking report for AI answers, but there are more ways to measure it than there used to be.</p>
 <ul><li><strong>Search Console's generative AI report.</strong> Since 31 August 2026, every site has had a <a href="https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports" target="_blank" rel="noopener">report of impressions in Google's generative AI features</a>, by page, country, device and date. It shows impressions, not clicks.</li><li><strong>Bing's AI Performance report.</strong> Citations in Copilot and Bing's AI summaries, which pages were cited and a sample of the searches behind them.</li><li><strong>Visits from AI assistants in Google Analytics.</strong> Treat it as a minimum. Our guide to <a href="/blog/track-ai-traffic-google-analytics">tracking ChatGPT traffic in Google Analytics 4</a> shows how, and what it misses.</li><li><strong>Your own spot checks.</strong> Write down a dozen questions your customers would ask, put them to ChatGPT, Perplexity and Google once a month, and note whether you're mentioned. It's a small sample, so use it to spot changes and never set a target on it.</li></ul>
 <p>If someone sells you a "citation rate", ask how they measured it.</p>
 <h2>Mistakes to avoid</h2>

@@ -17,13 +17,13 @@
   <meta property="og:title" content="Track ChatGPT Traffic in Google Analytics 4 | Position Xero" />
   <meta property="og:description" content="How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up." />
   <meta property="og:url" content="https://www.positionxero.com/blog/track-ai-traffic-google-analytics" />
-  <meta property="og:image" content="https://www.positionxero.com/img/og-image.jpg?v=20261007" />
+  <meta property="og:image" content="https://www.positionxero.com/img/blog/ga4-where-ai-visits-land-og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Track ChatGPT Traffic in Google Analytics 4 | Position Xero" />
   <meta name="twitter:description" content="How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up." />
-  <meta name="twitter:image" content="https://www.positionxero.com/img/og-image.jpg?v=20261007" />
+  <meta name="twitter:image" content="https://www.positionxero.com/img/blog/ga4-where-ai-visits-land-og.jpg" />
 
   <link rel="preload" href="/fonts/GeneralSans-Semibold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
@@ -39,7 +39,7 @@
     "@type": "BlogPosting",
     "headline": "How to track ChatGPT and other AI assistant traffic in Google Analytics 4",
     "description": "How to track ChatGPT traffic in Google Analytics 4: the AI Assistant channel, a regex filter for every assistant, and where missed AI visits end up.",
-    "image": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=630&fit=crop&q=80",
+    "image": "https://www.positionxero.com/img/blog/ga4-where-ai-visits-land-og.jpg",
     "author": { "@type": "Organization", "@id": "https://www.positionxero.com/#organization", "name": "Position Xero", "url": "https://www.positionxero.com" },
     "publisher": { "@id": "https://www.positionxero.com/#organization" },
     "datePublished": "2026-10-07",
@@ -107,7 +107,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li aria-current="page">How to track ChatGPT and other AI assistant traffic in Google Analytics 4</li></ol></nav>
         <p class="post-meta"><span class="post-meta__tag">AI SEO</span><span>Last updated: October 2026</span><span>7 min read</span></p>
         <h1 class="page-hero__title" id="page-title">How to track ChatGPT and other AI assistant traffic in Google Analytics 4</h1>
-        <p class="page-hero__lede">GA4 now has an AI Assistant channel. Where to find it, the places AI visits slip past it, and a filter and channel group that catch the rest.</p>
+        <p class="page-hero__lede">GA4 now has an AI Assistant channel. This guide shows where to find it, where AI visits slip past it, and the filter and channel group that catch the rest.</p>
       </div>
     </section>
 
@@ -117,11 +117,14 @@
 
 
       <figure class="article-featured-img">
-        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=630&fit=crop&q=80&auto=format" alt="A laptop on a dark sofa showing an analytics dashboard with charts and a world map" width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
+        <picture>
+          <source media="(max-width: 640px)" srcset="/img/blog/ga4-where-ai-visits-land-phone-720.webp 720w, /img/blog/ga4-where-ai-visits-land-phone-1080.webp 1080w" sizes="calc(100vw - 32px)" width="1080" height="1200" />
+          <img src="/img/blog/ga4-where-ai-visits-land-1600.webp" srcset="/img/blog/ga4-where-ai-visits-land-800.webp 800w, /img/blog/ga4-where-ai-visits-land-1600.webp 1600w" sizes="(min-width: 1100px) 720px, calc(100vw - 32px)" width="1600" height="840" alt="The five GA4 channels an AI assistant visit can land in: AI Assistant, Referral, Unassigned, Direct and Organic Search, with the reason for each" loading="eager" fetchpriority="high" decoding="async" />
+        </picture>
       </figure>
 
       <div class="definition-block">
-        <p>To track ChatGPT traffic in Google Analytics 4, go to Reports, then Acquisition, then Traffic acquisition, and find the AI Assistant row in the channel table. GA4 now files visits referred by assistants such as ChatGPT, Gemini and Claude there by itself. Switch the table to Session source / medium to see each assistant by name. Visits that reach you without a referrer still land in Direct, so read the figure as a floor.</p>
+        <p>To track ChatGPT traffic in Google Analytics 4, go to Reports, then Acquisition, then Traffic acquisition, and find the AI Assistant row in the channel table. GA4 now files visits referred by assistants such as ChatGPT, Gemini and Claude there by itself. Switch the table to Session source / medium to see each assistant by name. Visits that reach you without a referrer still land in Direct, so read the figure as a minimum, the least you got.</p>
       </div>
 
       <p>Everything below happens in the standard GA4 reports and the Admin area, and none of it needs a developer. The only setup is one report filter and, if you want older data as well, one channel group of your own.</p>
@@ -201,12 +204,23 @@
       </ol>
 
       <p>The <code>.*</code> at each end matters. GA4 regex matches the whole value by default, so without them the pattern would only catch a source that is exactly chatgpt, or exactly one of the other names. Order matters as well. GA4 puts each visit in the first channel it matches, working down the list, which is why Google's own example places the AI channel above Referral.</p>
+      <figure class="article-figure">
+        <img src="/img/blog/ga4-ai-assistant-regex-1600.webp" srcset="/img/blog/ga4-ai-assistant-regex-800.webp 800w, /img/blog/ga4-ai-assistant-regex-1600.webp 1600w" sizes="(min-width: 1100px) 720px, calc(100vw - 32px)" width="1600" height="1416" alt="The two regex patterns from this guide: the report filter without .* and the custom channel condition with .* at each end" loading="lazy" decoding="async" />
+      </figure>
 
       <p>To use the group, open Traffic acquisition and choose it from the dimension drop-down. Custom groups also appear in explorations and in the audience builder.</p>
 
       <h2>Which pages do AI visitors land on, and do they get in touch?</h2>
 
-      <p>The Landing page report answers both. Select Reports, then Engagement, then Landing page. Click + Add filter, choose Session default channel group, set the Match Type to Exactly matches, select AI Assistant and click Apply. If you built your own group, add it as a secondary dimension instead and read the AI assistants rows.</p>
+      <p>The Landing page report answers both.</p>
+      <ol>
+        <li>Select Reports, then Engagement, then Landing page.</li>
+        <li>Click + Add filter.</li>
+        <li>Choose Session default channel group.</li>
+        <li>Set the Match Type to Exactly matches.</li>
+        <li>Select AI Assistant and click Apply.</li>
+      </ol>
+      <p>If you built your own group, add it as a secondary dimension instead and read the AI assistants rows.</p>
 
       <p>You now have the pages the assistants send people to, with Key events beside each one. Read those pages the way a stranger would. Check that each one answers the question that probably brought the visitor, and that the way to contact you is obvious on a phone.</p>
 
