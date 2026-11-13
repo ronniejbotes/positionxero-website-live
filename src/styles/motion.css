@@ -196,7 +196,7 @@
 .mq.is-paused .mq__track, .mq.is-off .mq__track { animation-play-state: paused; }
 .mq__pause {
   position: absolute; right: max(10px, calc(var(--gut) - 6px)); top: 50%; transform: translateY(-50%);
-  display: none; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; cursor: pointer;
+  display: none; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer;
   background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent), -14px 0 18px 6px var(--surface);
 }
 .mq.is-ready .mq__pause { display: grid; }
@@ -453,7 +453,7 @@
 /* links: a drawn line under text and arrow, redrawn on hover */
 .link { position: relative; text-decoration: none; }
 .link::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px; border-radius: 1px;
+  content: ""; position: absolute; left: 0; right: 0; bottom: 5px; height: 2px; border-radius: 1px; /* 5px under the text: .link has 10px of tap padding (home.css) */
   background: currentColor; transform-origin: 100% 50%;
 }
 .nav a { position: relative; text-decoration: none !important; }
