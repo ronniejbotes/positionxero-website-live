@@ -43,7 +43,7 @@
     "author": { "@type": "Organization", "@id": "https://www.positionxero.com/#organization", "name": "Position Xero", "url": "https://www.positionxero.com" },
     "publisher": { "@id": "https://www.positionxero.com/#organization" },
     "datePublished": "2026-10-07",
-    "dateModified": "2026-10-07",
+    "dateModified": "2026-11-14",
     "articleSection": "Google Ads",
     "keywords": ["conversion tracking", "google ads conversion tracking", "lead tracking", "call tracking", "offline conversion import", "enhanced conversions for leads", "cost per qualified lead"],
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.positionxero.com/blog/conversion-tracking-for-lead-generation" }
@@ -90,7 +90,7 @@
     <section class="page-hero page-hero--post" aria-labelledby="page-title">
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/blog/">Blog</a></li><li aria-current="page">Conversion tracking for lead generation: how do you count jobs instead of form fills?</li></ol></nav>
-        <p class="post-meta"><span class="post-meta__tag">Google Ads</span><span>Last updated: October 2026</span><span>7 min read</span></p>
+        <p class="post-meta"><span class="post-meta__tag">Google Ads</span><span>Last updated: November 2026</span><span>8 min read</span></p>
         <h1 class="page-hero__title" id="page-title">Conversion tracking for lead generation: how do you count jobs instead of form fills?</h1>
         <p class="page-hero__lede">Count booked jobs, not form fills. Here is how to set that up in Google Ads, send outcomes back, and check the numbers against your books.</p>
       </div>
@@ -132,7 +132,7 @@
 
       <p>Booked jobs. A lead moves through stages: click, enquiry, contacted, qualified, quoted, booked, paid. Google Ads sees the first two. Your money is at booked and paid.</p>
 
-      <p>If a small repair and a full replacement both report a bare "1", the bidding has no reason to prefer the bigger job. Conversion values fix that; the arithmetic is in how much a lead is worth.</p>
+      <p>If a small repair and a full replacement both report a bare "1", the bidding has no reason to prefer the bigger job. <a href="https://support.google.com/google-ads/answer/3419241?hl=en" rel="nofollow">Conversion values</a> fix that. Give each kind of enquiry a value, based on what the job it usually turns into is worth to you, so the bigger job counts for more.</p>
 
       <h2>Why do Google Ads and Analytics show different numbers?</h2>
 
@@ -152,7 +152,7 @@
 
       <p>The first half of closing the loop is a hidden field: read the GCLID from the landing page address, write it into a hidden input on every form, and store it with the lead in your CRM. The browser is a poor place to keep it. WebKit capped cookies set through <code>document.cookie</code> to seven days in <a href="https://webkit.org/blog/8613/intelligent-tracking-prevention-2-1/" rel="nofollow">February 2019</a>, so a long conversion window means less in Safari than it looks.</p>
 
-      <p>The second half is sending the result back once the job is booked, through <a href="https://support.google.com/google-ads/answer/2998031?hl=en" rel="nofollow">offline conversion import</a>. Read the notice at the top of that page first: "Starting June 15, 2026, offline conversions import and enhanced conversions for leads uploads will be migrated to the Data Manager API and blocked in the Google Ads API." The page also recommends starting with enhanced conversions for leads if you have not adopted offline import.</p>
+      <p>The second half is sending the result back once the job is booked, through <a href="https://support.google.com/google-ads/answer/2998031?hl=en" rel="nofollow">offline conversion import</a>. Read the notice at the top of that page first. It says that from 15 June 2026, offline conversion imports and enhanced conversions for leads uploads move to the Data Manager API and are blocked in the Google Ads API. That date has passed, so if a developer or a connected tool sends your conversions through the Google Ads API, check it now uses the Data Manager API. The page also recommends starting with enhanced conversions for leads if you have not adopted offline import.</p>
 
       <p><a href="https://support.google.com/google-ads/answer/9888656?hl=en" rel="nofollow">Enhanced conversions</a> use "a secure one-way hashing algorithm called SHA256" on first-party data such as email addresses before sending it to Google. Watch the timing too: Google will not import an offline conversion uploaded more than 90 days after its last click, and it says to wait four to six hours after creating a conversion action before uploading to it.</p>
 
@@ -182,11 +182,11 @@
 
       <p>Only the $538 can sit next to your job value. Say the average job is $2,400 and 40% of it is gross profit, which is $960 a job. $538 still works, with far less room than $69 suggested. Push that $69 down and Google will find you cheaper phone taps.</p>
 
-      <p>The routine: match the month's conversions to CRM records by date and GCLID, remove duplicates and unqualified leads, and divide spend by booked jobs, on the same day each month. If a lot of what you remove looks invented rather than just unsuitable, our guide to spotting fake and bot leads shows how to trace it back to a campaign.</p>
+      <p>The routine: match the month's conversions to CRM records by date and GCLID, remove duplicates and unqualified leads, and divide spend by booked jobs, on the same day each month. If a lot of what you remove looks invented rather than just unsuitable, use the GCLID stored with each of those leads to find the campaign they came from, and deal with that campaign first. A developer can look a GCLID up in the Google Ads API's <a href="https://developers.google.com/google-ads/api/fields/latest/click_view" rel="nofollow">click view report</a>, which only goes back 90 days, so do it every month.</p>
 
       <h2>How does Position Xero set up conversion tracking?</h2>
 
-      <p>Conversion tracking setup and a landing page review are part of how we launch the Google Ads and Meta Ads campaigns we manage. For South African accounts, the rest is on our Google Ads South Africa page: conversions are the things a client gets paid for, calls are tied back to keywords through Google forwarding numbers, and offline conversion import tells bidding which leads became signed contracts.</p>
+      <p>Conversion tracking setup and a landing page review are part of how we launch the Google Ads and Meta Ads campaigns we manage. On those accounts, conversions are the things a client gets paid for, calls are tied back to keywords through Google forwarding numbers, and offline conversion import tells bidding which leads became signed contracts. Ads management sits outside our <a href="/packages">website packages</a> and is priced on your brief.</p>
 
       <h2>In what order should you set it up?</h2>
 
