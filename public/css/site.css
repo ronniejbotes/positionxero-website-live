@@ -235,6 +235,26 @@ figure { margin: 0; }
 .side .btn--block { width: 100%; }
 .side .link { justify-self: start; color: var(--on-brand); }
 
+/* phones and tablets (15 November 2026): the same packages card follows the article as a
+   compact summary on a surface card, so phone readers see the commitments too ("website files
+   yours after 12 paid months"). Its WhatsApp button and packages link show on wide screens
+   only: the closing call to action, with both, follows on every page (reader review W33). */
+@media (max-width: 1099.98px) {
+  .side {
+    display: grid; gap: 10px; max-width: var(--read);
+    padding: 20px 18px 8px; border-radius: 18px; color: var(--ink);
+    background: var(--surface); box-shadow: inset 0 0 0 1px var(--line), inset 0 3px 0 var(--accent);
+  }
+  .side__k { font: 700 16px/1.3 var(--font-body); text-transform: none; letter-spacing: 0; color: var(--accent); }
+  .side__price { font-size: 24px; line-height: 1.15; }
+  .side__price strong { font-size: 1.25em; }
+  .side__list { margin-top: 4px; border-top-color: var(--line); }
+  .side__list li { position: relative; padding: 10px 0 10px 24px; border-bottom-color: var(--line); color: var(--muted); text-wrap: pretty; }
+  .side__list li:last-child { border-bottom: 0; }
+  .side__list li::before { content: ""; position: absolute; left: 1px; top: 16px; width: 12px; height: 6px; border: solid var(--accent); border-width: 0 0 2px 2px; transform: rotate(-45deg); }
+  .side .btn--block, .side .link { display: none; }
+}
+
 /* "read next" links at the end of a page */
 .next { margin-top: 2.6em; padding-top: 1.6em; border-top: 2px solid var(--ink); }
 .next__title { font: var(--display-weight) 22px/1.1 var(--font-display); margin: 0 0 12px; }
