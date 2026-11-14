@@ -127,7 +127,7 @@
         <p>To track ChatGPT traffic in Google Analytics 4, go to Reports, then Acquisition, then Traffic acquisition, and find the AI Assistant row in the channel table. GA4 now files visits referred by assistants such as ChatGPT, Gemini and Claude there by itself. Switch the table to Session source / medium to see each assistant by name. Visits that reach you without a referrer still land in Direct, so read the figure as a minimum, the least you got.</p>
       </div>
 
-      <p>Everything below happens in the standard GA4 reports and the Admin area, and none of it needs a developer. The only setup is one report filter and, if you want older data as well, one channel group of your own.</p>
+      <p>The tracking steps below happen in the standard GA4 reports and the Admin area, and none of them needs a developer. The only setup is one report filter and, if you want older data as well, one channel group of your own. If you'd rather have ChatGPT answer questions about your Analytics, skip to <a href="#connect-ga4-to-chatgpt">Can you connect GA4 to ChatGPT?</a> near the end.</p>
 
       <p>This is the Analytics half of measuring AI search. Our guide to <a href="/blog/what-is-ai-seo">what AI SEO is and how to measure it</a> covers the rest, such as AI crawler visits in your server logs and checking what the assistants say about you. If you pay someone for <a href="/seo">AI SEO</a>, this is the part of the reporting you can check yourself.</p>
 
@@ -225,6 +225,14 @@
       <p>You now have the pages the assistants send people to, with Key events beside each one. Read those pages the way a stranger would. Check that each one answers the question that probably brought the visitor, and that the way to contact you is obvious on a phone.</p>
 
       <p>The Key events column only counts what you've told GA4 to count. It fills from events you mark as key events, so if the events that record enquiries, such as form submissions or taps on your phone number, aren't marked, the column won't count them, however many enquiries arrive. Once it's right, judge AI traffic like any other source: by the enquiries it brings and what each one is worth to you. A rough way to work that out: take what an average job is worth to you and multiply it by the share of enquiries that become jobs.</p>
+
+      <h2 id="connect-ga4-to-chatgpt">Can you connect GA4 to ChatGPT?</h2>
+
+      <p>Connecting GA4 to ChatGPT means letting an AI assistant read your Analytics reports, so you can ask questions about them in plain words. That's the other direction from everything above, which is about seeing in GA4 the visits that ChatGPT sends you.</p>
+
+      <p>No assistant can read your Analytics until you connect the two. Google publishes its own tool for this, the <a href="https://developers.google.com/analytics/devguides/MCP" rel="nofollow">Google Analytics MCP server</a>, which only reads data and cannot change your settings. Its guide shows it working with assistants such as Gemini and Claude, and the setup takes some technical work, including a Google Cloud project. Other companies offer connectors that do the same job for ChatGPT.</p>
+
+      <p>Whichever route you take, give it read-only access, and check any number it gives you against the same report in GA4 before you act on it.</p>
 
       <h2>How does Position Xero handle Analytics on client sites?</h2>
 
