@@ -2,7 +2,7 @@
 
 > Position Xero builds websites for South African businesses. The website is built free, in code, and goes live within 7 days; the business then pays a monthly package for hosting and care: Minimum R490, Standard R990 (includes SEO, blog posts and Google Business Profile management), Growth R1,490 or Full House R4,990 a month. No contract. Based in Centurion, Gauteng.
 
-> Last updated: 2026-11-14
+> Last updated: 2026-11-15
 
 ## Built free, then one monthly price
 
@@ -33,6 +33,7 @@
 - Web design in Johannesburg, Sandton and the East Rand: https://www.positionxero.com/web-design-johannesburg
 - What a website costs in South Africa (once-off quotes vs monthly packages): https://www.positionxero.com/web-design-prices-south-africa
 - Free website builder vs a free coded site at R490 a month, with what Wix, Squarespace, 1-grid and Google Sites cost in rand, and what happened to the free websites Google Business Profile (Google My Business) used to make: https://www.positionxero.com/free-website-vs-website-builder
+- Website cost calculator for South African small businesses (adds up the first year and each year after in rand for a website builder, a once-off build by a freelancer or agency, and our monthly packages, counting email, the domain and your own time; every vendor price linked and dated, checked 15 November 2026): https://www.positionxero.com/website-cost-calculator-south-africa
 - South African small business website statistics (sourced figures on internet and phone use, search habits, how many small businesses use a website, website prices): https://www.positionxero.com/south-africa-small-business-website-statistics
 - SEO company in South Africa (SEO in the packages from R990 a month): https://www.positionxero.com/seo-south-africa
 - SEO packages (what R990 to R4,990 a month buys): https://www.positionxero.com/seo
