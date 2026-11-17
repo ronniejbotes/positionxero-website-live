@@ -26,10 +26,10 @@
   };
   var WIX = { light: Math.round(204 * USD), core: Math.round(348 * USD) }; // US$17 and US$29 a month, yearly, before tax
   var PACKAGES = [                      // exactly as on /packages
-    { name: 'Minimum', month: 490, year: 4900, mail: 1, hours: 0.5, changes: 'up to 30 minutes of changes', posts: 'no blog posts' },
-    { name: 'Standard', month: 990, year: 9900, mail: 2, hours: 1, changes: 'up to 1 hour of changes', posts: 'on-site SEO and 2 blog posts' },
-    { name: 'Growth', month: 1490, year: 14900, mail: 3, hours: 2, changes: 'up to 2 hours of changes', posts: '4 blog posts' },
-    { name: 'Full House', month: 4990, year: 49900, mail: 5, hours: 4, changes: 'up to 4 hours of changes, done the same working day', posts: 'full SEO and 8 blog posts' }
+    { name: 'Minimum', month: 499, year: 4990, mail: 1, hours: 0.5, changes: 'up to 30 minutes of changes', posts: 'no blog posts' },
+    { name: 'Standard', month: 999, year: 9990, mail: 2, hours: 1, changes: 'up to 1 hour of changes', posts: 'on-site SEO and 2 blog posts' },
+    { name: 'Growth', month: 1499, year: 14990, mail: 3, hours: 2, changes: 'up to 2 hours of changes', posts: '4 blog posts' },
+    { name: 'Full House', month: 4999, year: 49990, mail: 5, hours: 4, changes: 'up to 4 hours of changes, done the same working day', posts: 'full SEO and 8 blog posts' }
   ];
   var WA = 'https://wa.me/27662412155?text=';
   var WA_MORE = WA + 'Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.';
