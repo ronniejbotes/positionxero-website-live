@@ -58,72 +58,63 @@
   font-display: swap;
 }
 
-/* ---- dark (default, and the fallback without JavaScript) ---- */
-:root, :root[data-theme="dark"] {
-  color-scheme: dark;
-  --brand: #091224;
-  --brand-deep: #0E1A33;
-  --brand-soft: #A9B7D2;
-  --brand-wash: #D3DCEC;
-  --on-brand: #F2F6FF;
-  --action: #3ADCF0;
-  --on-action: #0E1A33;
-  --ink: #F2F6FF;
-  --paper: #0E1A33;
-  --surface: #142443;
-  --muted: #A9B7D2;
-  --accent: #8BE6F2;
-  --on-accent: #0E1A33;
-  --logo: #F2F6FF;
-  --line: #26365A;
-  --highlight: #1A2D52;
-  --faint: #6F7E9C;
-  --chrome: #3A4A6B;
-  --pill: #1B2B4D;
-  --skeleton: #21325A;
-  --screen: #050B18;
-  --photo: #22324F;
-  --shadow: #01040B;
-}
-
-/* ---- light ---- */
-:root[data-theme="light"] {
+/* ---- one scheme for the whole site (17 November 2026) ----
+   Owner, after approving the new homepage: "make sure the color scheme
+   matches throughout the entire website ... even the blog posts". From
+   Charles Liu's palette reel: "the 2 blues are primary and secondary then
+   the yellow is the tertiary applied to where the attention needs to be,
+   then small white accents here and there".
+     Glacier Blue #62A7EA  primary: page background, header, page heroes
+     Navy         #0C1B48  secondary: text on glacier; bands, side cards, footer
+     Lemon        #F2EA1E  tertiary: ACTION BUTTONS ONLY (--action)
+     White                 small accents
+   The light/dark switch is retired: every data-theme value gets this one
+   scheme and the switch is hidden (the homepage never had it).
+   WCAG 2 contrast: navy on glacier 6.5, on surface 10.0, on highlight 12.1;
+   muted on glacier 5.5, on surface 8.6; on-brand on navy 13.7, glacier on
+   navy 6.5, frost on navy 11.7; navy on lemon 13.1. */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
   color-scheme: light;
-  --brand: #0E1A33;
-  --brand-deep: #091224;
-  --brand-soft: #A9B7D2;
-  --brand-wash: #D3DCEC;
-  --on-brand: #F2F6FF;
-  --action: #3ADCF0;
-  --on-action: #0E1A33;
-  --ink: #0E1A33;
-  --paper: #F3F6FA;
-  --surface: #FFFFFF;
-  --muted: #4A566B;
-  --accent: #0A6F80;
+  --glacier: #62A7EA;
+  --navy: #0C1B48;
+  --lemon: #F2EA1E;
+  --frost: #BFDCF7;
+  /* bands (navy unless a scope below turns them glacier) */
+  --brand: #0C1B48;
+  --brand-deep: #13265E;
+  --brand-soft: #62A7EA;
+  --brand-wash: #BFDCF7;
+  --on-brand: #DCEBFB;
+  --action: #F2EA1E;
+  --on-action: #0C1B48;
+  /* reading */
+  --ink: #0C1B48;
+  --paper: #62A7EA;
+  --surface: #A9CDF3;
+  --muted: #14275F;
+  --accent: #0C1B48;
   --on-accent: #FFFFFF;
-  --logo: #F2F6FF;
-  --line: #DCE2EC;
-  --highlight: #E6F3F6;
-  --faint: #9AA6BA;
-  --chrome: #D3D8EA;
-  --pill: #EEF2F8;
-  --skeleton: #E6EBF3;
-  --screen: #0E1A33;
-  --photo: #C9D0DC;
-  --shadow: #040A18;
-  /* light mode turns the bands light (owner, 12 Nov 2026: a switch like
-     Otaku TCG's). These four groups are used only by the light rules below. */
-  --band-tone: #E3EBF5;      /* hero, header and impact bands */
-  --band-deep-tone: #D5E0EE; /* panels sitting on a band */
-  --fill: #0E1A33;           /* navy buttons and marks inside white cards */
-  --on-fill: #F2F6FF;
-  --fill-soft: #A9B7D2;
-  --fill-wash: #D3DCEC;
-  --code: #091224;           /* the code panel stays dark in both modes */
-  --on-code: #F2F6FF;
-  --code-soft: #A9B7D2;
-  --code-wash: #D3DCEC;
+  --logo: #0C1B48;
+  --line: #4C83C0;
+  --highlight: #C8DFF7;
+  --faint: #2D5A99;
+  --chrome: #0C1B48;
+  --pill: #C8DFF7;
+  --skeleton: #8EC0F0;
+  --screen: #0C1B48;
+  --photo: #8EC0F0;
+  --shadow: #0C1B48;
+  /* kept so older rules still resolve */
+  --band-tone: #62A7EA;
+  --band-deep-tone: #4F97DE;
+  --fill: #0C1B48;
+  --on-fill: #DCEBFB;
+  --fill-soft: #62A7EA;
+  --fill-wash: #BFDCF7;
+  --code: #0C1B48;
+  --on-code: #DCEBFB;
+  --code-soft: #62A7EA;
+  --code-wash: #BFDCF7;
 }
 
 :root {
@@ -154,54 +145,52 @@
 }
 
 /* ============================================================
-   Light mode: the bands turn light.
-   Dark mode keeps navy bands with light text. In light mode every band
-   (header, heroes, impact bands, the closing call, the package stage and
-   the packages card beside guides) becomes a light ice tone with navy text:
-   inside those containers the brand-band tokens are re-pointed. White
-   cards inside a band get the navy fills back, and the code panel keeps
-   its dark colours. None of these rules applies in dark mode.
+   Where each blue goes (17 November 2026), matching the homepage.
+   Header and page heroes sit on glacier like the homepage hero, with navy
+   words. Impact bands, the closing call, the side card beside guides and
+   the package stage stay navy (the root --brand). The footer is navy.
+   Custom properties that point at other ones are resolved where they are
+   declared, so every alias is declared again inside each scope.
    ============================================================ */
-:root[data-theme="light"] :is(.site-header, .band--blue, .hero, .page-hero, .final, .side, .shop__stage) {
-  --brand: var(--band-tone);
-  --brand-deep: var(--band-deep-tone);
-  --on-brand: var(--ink);
-  --brand-soft: var(--muted);
-  --brand-wash: var(--muted);
-  --logo: var(--ink);
-  --line-on-brand: color-mix(in srgb, var(--ink) 16%, transparent);
-  --on-brand-08: color-mix(in srgb, var(--ink) 7%, transparent);
-  --on-brand-12: color-mix(in srgb, var(--ink) 10%, transparent);
-  --on-brand-55: color-mix(in srgb, var(--ink) 45%, transparent);
-  /* the names home.css uses */
-  --blue: var(--band-tone);
-  --blue-deep: var(--band-deep-tone);
-  --tint-1: var(--muted);
-  --tint-2: var(--muted);
-  --silver: var(--ink);
-  --line-blue: color-mix(in srgb, var(--ink) 16%, transparent);
+:is(.site-header, .page-hero, .hero, .calc-band) {
+  --brand: var(--glacier);
+  --brand-deep: #4F97DE;
+  --on-brand: var(--navy);
+  --brand-soft: #14275F;
+  --brand-wash: #14275F;
+  --logo: var(--navy);
+  --line-on-brand: color-mix(in srgb, #0C1B48 22%, transparent);
+  --on-brand-08: color-mix(in srgb, #0C1B48 7%, transparent);
+  --on-brand-12: color-mix(in srgb, #0C1B48 10%, transparent);
+  --on-brand-55: color-mix(in srgb, #0C1B48 45%, transparent);
+  --blue: var(--glacier);
+  --blue-deep: #4F97DE;
+  --tint-1: #14275F;
+  --tint-2: #14275F;
+  --silver: var(--navy);
+  --line-blue: color-mix(in srgb, #0C1B48 22%, transparent);
 }
-:root[data-theme="light"] .site-header { box-shadow: 0 1px 0 var(--line); }
-:root[data-theme="light"] :is(.site, .snip, .grow__card, .jcard--live, .btn--go, .btn-primary, .rail__btn) {
-  --brand: var(--fill);
-  --on-brand: var(--on-fill);
-  --brand-soft: var(--fill-soft);
-  --brand-wash: var(--fill-wash);
-  --line-on-brand: color-mix(in srgb, var(--on-fill) 22%, transparent);
-  --blue: var(--fill);
-  --tint-1: var(--fill-soft);
-  --tint-2: var(--fill-wash);
-  --line-blue: color-mix(in srgb, var(--on-fill) 22%, transparent);
+/* the header's WhatsApp button is navy with white words, as on the homepage,
+   so the only lemon on screen is the page's own main button */
+.site-header .btn--go, .site-header .btn--go:hover { background: var(--navy); color: #FFFFFF; box-shadow: none; }
+/* home.css keeps the header button quiet while another action button shows */
+.site-header .btn--go.is-quiet { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+/* a white hairline under the sticky header, as on the homepage */
+.site-header { box-shadow: 0 1px 0 rgba(255, 255, 255, .55); }
+/* the footer: navy, light words, white links */
+.site-footer {
+  --paper: var(--navy);
+  --ink: #FFFFFF;
+  --muted: var(--frost);
+  --accent: #FFFFFF;
+  --line: color-mix(in srgb, #62A7EA 35%, transparent);
+  --logo: #FFFFFF;
+  --on-brand: #FFFFFF;
+  border-top: 0 !important;
 }
-:root[data-theme="light"] .editor {
-  --brand-deep: var(--code);
-  --blue-deep: var(--code);
-  --on-brand: var(--on-code);
-  --brand-soft: var(--code-soft);
-  --brand-wash: var(--code-wash);
-  --tint-1: var(--code-soft);
-  --tint-2: var(--code-wash);
-}
+/* links in reading text: navy with a white underline, the homepage's touch of white */
+.article a:not(.btn), .link { text-decoration-color: #FFFFFF; }
+.site-footer .link, .side .link, .band--blue .link, .final .link { text-decoration-color: var(--glacier); }
 
 /* ============================================================
    The light/dark switch (markup in snippets/theme-toggle.html, behaviour
@@ -218,7 +207,8 @@
 .theme-toggle:hover { box-shadow: inset 0 0 0 1.5px var(--on-brand); }
 .theme-toggle svg { width: 20px; height: 20px; overflow: visible; }
 .theme-toggle--header { display: none; }
-@media (min-width: 1000px) { .theme-toggle--header { display: inline-grid; width: 44px; height: 44px; } }
+/* retired 17 Nov 2026: one scheme only */
+.theme-toggle, .theme-toggle--header, .theme-toggle--menu { display: none !important; }
 .theme-toggle--menu {
   display: flex; align-items: center; gap: 12px; width: 100%; height: auto; min-height: 52px;
   padding: 14px 0; border-radius: 0; box-shadow: none; border-top: 1px solid var(--line-on-brand);

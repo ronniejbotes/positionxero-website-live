@@ -115,6 +115,14 @@ grep -rnE "(is|are) not [^.;<]{3,60}[.,;] *(It|it|They|they) (is|are)" public --
 - **Phones first:** no text under 16px at 390px wide on these three pages, the hero's promise, price and WhatsApp button inside the first phone screen, and no sideways scroll.
 - **The FAQ JSON-LD must match the visible answers word for word** (links stripped). Change both together.
 
+## One colour scheme on every page (17 November 2026)
+
+Owner, after the new homepage went live: "make sure the color scheme matches throughout the entire website, not the immersive website, just the main website, the about page, all that stuff ... even the blog posts". `public/css/tokens.css` now holds one scheme for every `data-theme` value, and the light/dark switch is hidden (`.theme-toggle { display: none !important }`); every page's head script sets `light`, `color-scheme` is `light` and `theme-color` is `#62A7EA` (template: `snippets/theme-head.html`).
+
+- **Where each colour goes:** glacier `#62A7EA` is the page (`--paper`), the header and the page heroes (the scope `:is(.site-header, .page-hero, .hero, .calc-band)` re-points the band tokens to glacier with navy words); navy `#0C1B48` is the text, the impact bands (`.band--blue`), the closing call (`.final`), the side card beside guides (`.side`), the package stage and the footer; lemon `#F2EA1E` is `--action` only, so only action buttons; the header's WhatsApp button is navy with white words, as on the homepage, so one lemon button shows at a time. Cards and tables are `--surface` `#A9CDF3`, short answers and callouts `--highlight` `#C8DFF7`, links navy with a white underline.
+- **Not changed:** `/experience` and `/cognexa` keep the immersive design (`src/styles/main.css`), as the owner asked.
+- The "Design (owner's review, 12 November 2026)" and Midnight Cyan notes above describe the old look; where they disagree with this section, this section wins.
+
 ## The homepage, less is more (17 November 2026)
 
 **Why:** the owner and his wife looked at the old homepage on a phone: "there's just too much happening as soon as you open up the page ... too much text". He asked for "less is more", "a lighter shade of blue", "get to the point" and "this is how it works, this is how they sign up, and then it's done". Reviewed on a local preview, then "much better put it live".
