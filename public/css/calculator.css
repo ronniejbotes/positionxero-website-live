@@ -135,6 +135,16 @@
 .pk__item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; padding: 14px 0; border-top: 1px solid var(--line); }
 .pk__name { font: var(--display-weight) 19px/1.2 var(--font-display); }
 .pk__price { font: 600 16px/1.35 var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+/* The special (owner, 18 November 2026): a lemon label, the higher price
+   struck through (aria-hidden: the line under it says it in words) and the
+   date it starts, never a bare "was" price. /js/special.js turns the label
+   to "Christmas special" on 1 December and "Janu-worry special" on
+   1 January, SA time. T-91 removes it all on 1 February 2027. */
+.pk__special { grid-column: 1 / -1; }
+.special { display: inline-block; background: var(--lemon); color: var(--navy); font: 600 14px/1 var(--font-display); letter-spacing: .02em; padding: 6px 11px; border-radius: 999px; }
+@media (max-width: 899px) { .special { font-size: 16px; padding: 5px 11px; } }
+.pk__price .was { font-weight: 500; color: var(--muted); text-decoration-thickness: 2px; white-space: nowrap; }
+.pk__from { grid-column: 1 / -1; margin: 0; font-size: 16px; font-weight: 500; line-height: 1.45; }
 .pk__inc { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
 .pk__fit { grid-column: 1 / -1; margin: 2px 0 0; font-size: 16px; font-weight: 700; line-height: 1.4; }
 .pk__fit:empty { display: none; }

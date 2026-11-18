@@ -486,7 +486,8 @@ b { font-weight: inherit; }
 }
 @media (min-width: 1000px) { .shop__stage { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
 .shop__panels { position: relative; display: grid; min-width: 0; }
-.pk { grid-area: 1 / 1; padding: 26px 20px 28px; display: grid; gap: 22px; align-content: start; }
+.pk { padding: 26px 20px 28px; display: grid; gap: 22px; align-content: start; }
+.js .pk { grid-area: 1 / 1; }   /* without JavaScript the four stack, one under the other */
 @media (min-width: 640px) { .pk { padding: 36px 36px 38px; } }
 @media (min-width: 1000px) { .pk { padding: 44px 44px 48px; } }
 .shop.is-ready .pk { transition: opacity .45s var(--ease), transform .55s var(--ease), visibility 0s; }
@@ -500,6 +501,23 @@ b { font-weight: inherit; }
 .pk__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 20px; }
 .pk__amount { font: var(--dw) clamp(56px, 15vw, 96px)/.9 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 .pk__unit { font-size: 18px; font-weight: 500; color: var(--tint-2); }
+/* The special (owner, 18 November 2026): a lemon label, the higher price
+   struck through, and the date it starts (never a bare "was" price: it was
+   never charged). On the cards the struck price is aria-hidden because the
+   line under it says the same in words; on the rail it carries hidden words
+   and a short visible date. /js/special.js turns the label to "Christmas
+   special" on 1 December and "Janu-worry special" on 1 January, SA time.
+   T-91 removes all of it on 1 February 2027. */
+.special { display: inline-block; background: var(--lemon); color: var(--navy); font: 600 14px/1 var(--display); letter-spacing: .02em; padding: 6px 11px; border-radius: 999px; }
+@media (max-width: 899px) { .special { font-size: 16px; padding: 5px 11px; } }
+.pk__special { margin: 0 0 12px; }
+.was { font: 500 22px/1.2 var(--text); color: var(--tint-2); text-decoration-line: line-through; text-decoration-thickness: 2px; white-space: nowrap; }
+.pk__price:has(+ .pk__from) { margin-bottom: 8px; }
+.pk__from { font-size: 17px; line-height: 1.45; max-width: 34ch; margin: 0 0 22px; }
+.rail__was { font-size: 16px; line-height: 1.3; color: var(--muted); font-variant-numeric: tabular-nums; transition: color .25s; }
+.rail__was s { text-decoration-thickness: 1.5px; white-space: nowrap; }
+.rail__when { white-space: nowrap; }
+.rail__btn[aria-selected="true"] .rail__was { color: var(--tint-2); transition: color .2s ease .16s; }
 .pk__specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0 0 24px; border-block: 1px solid var(--line-blue); }
 .spec { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 14px 10px 14px 0; margin: 0; }
 .spec + .spec { padding-left: 12px; border-left: 1px solid var(--line-blue); }

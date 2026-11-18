@@ -115,6 +115,15 @@ grep -rnE "(is|are) not [^.;<]{3,60}[.,;] *(It|it|They|they) (is|are)" public --
 - **Phones first:** no text under 16px at 390px wide on these three pages, the hero's promise, price and WhatsApp button inside the first phone screen, and no sideways scroll.
 - **The FAQ JSON-LD must match the visible answers word for word** (links stripped). Change both together.
 
+## The special, until 31 January 2027 (owner, 18 November 2026)
+
+The four prices (R499, R999, R1,499, R4,999 a month) are shown as a special. From **1 February 2027** new sign-ups pay **R599, R1,299, R1,999 and R6,999** a month (yearly stays 10 times monthly); clients who signed up earlier keep their price (`/terms` 7A, "Special prices").
+
+- **Where:** a lemon label (`[data-special-label]`, class `special`) in the homepage hero and on every package in the homepage `#packages` rows, the `/packages` cards and the cost calculator's package list; on those cards and the `/packages` rail buttons the higher price is struck through (`.was`, `.rail__was`) **with its date beside it** ("R1,299 a month from 1 February. Sign up now and keep R999."). Never a bare struck or "was" price: it was never charged (Consumer Protection Act, ASA code). In yearly mode the `/packages` struck price and line switch to R5,990, R12,990, R19,990, R69,990 a year. Other pages keep "from R499 a month", which is true until 1 February.
+- **The label by date, South African time:** "Black Friday special" (the HTML text) to 30 November, "Christmas special" 1 to 31 December, "Janu-worry special" 1 to 31 January (owner's wording). `public/js/special.js` (`?v=20261118`, loaded by `index.html`, `packages.html` and the calculator page) sets it in the browser with `Date.UTC`, so the visitor's time zone does not matter.
+- Offer JSON-LD on `/` and `/packages` keeps the special price with `"priceValidUntil": "2027-01-31"`. `llms.txt` and `pricing.md` carry one sentence on it.
+- **On 1 February 2027 (task T-91 in the plan folder):** change every price sitewide to the new ones (titles, descriptions, JSON-LD, WhatsApp texts, `calculator.js`, `llms.txt`, `pricing.md`, yearly totals at 10 months), then delete `special.js` and its three `<script>` tags, every `[data-special-label]`, `.was`, `.rail__was`, `.plan__from`/`.pk__from` line and their CSS (`simple.css`, `home.css`, `calculator.css`), and `priceValidUntil`. `grep -rn "special\|from 1 February\|priceValidUntil" index.html packages.html public src` finds them all.
+
 ## One colour scheme on every page (17 November 2026)
 
 Owner, after the new homepage went live: "make sure the color scheme matches throughout the entire website, not the immersive website, just the main website, the about page, all that stuff ... even the blog posts". `public/css/tokens.css` now holds one scheme for every `data-theme` value, and the light/dark switch is hidden (`.theme-toggle { display: none !important }`); every page's head script sets `light`, `color-scheme` is `light` and `theme-color` is `#62A7EA` (template: `snippets/theme-head.html`).

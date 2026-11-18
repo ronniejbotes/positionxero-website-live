@@ -10,7 +10,8 @@
    Primary   Glacier Blue #62A7EA  backgrounds of most sections
    Secondary Navy        #0C1B48  text on glacier, the alternating bands
    Tertiary  Lemon       #F2EA1E  ONLY where the eye must go: the "for
-                                   free" mark, WhatsApp buttons, Recommended
+                                   free" mark, WhatsApp buttons, Recommended,
+                                   the special label (18 Nov 2026, T-91)
    Accent    White                small touches: prices and step titles on
                                    navy, dividers, link underlines, sparkles
    Contrast (WCAG 2): navy on glacier 6.5, glacier on navy 6.5, frost on
@@ -117,6 +118,8 @@ p { margin: 0; }
 .hero h1 { font-size: clamp(38px, 10.5vw, 68px); line-height: 1.04; }
 .hero h1 .hl { background: linear-gradient(transparent 12%, var(--lemon) 12%, var(--lemon) 92%, transparent 92%); padding: 0 .08em; margin: 0 -.02em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .hero__sub { margin-top: 16px; font-size: 19px; line-height: 1.45; max-width: 30ch; }
+.hero__special { margin-top: 18px; }
+.hero__special + .hero__sub { margin-top: 10px; }
 .hero__sub strong { font-weight: 700; }
 .hero__cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .hero__call { margin-top: 16px; font-size: 16px; }
@@ -180,25 +183,37 @@ p { margin: 0; }
 
 /* packages (glacier, navy cards) */
 .plans { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
-.plan { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 18px 20px; background: var(--navy); border-radius: var(--r); color: var(--frost); text-decoration: none; box-shadow: var(--shadow-navy); transition: transform .15s; }
+.plan { position: relative; display: grid; grid-template-columns: 1fr; align-content: start; gap: 4px; padding: 20px; background: var(--navy); border-radius: var(--r); color: var(--frost); text-decoration: none; box-shadow: var(--shadow-navy); transition: transform .15s; }
+.plan--pick { padding-top: 26px; }
 .plan:hover { transform: translateY(-2px); }
-.plan__name { font: 600 20px/1.2 var(--display); color: var(--glacier); }
-.plan__price { font: 600 21px/1.2 var(--display); text-align: right; white-space: nowrap; color: var(--white); }
+.plan__name { margin-top: 8px; font: 600 20px/1.2 var(--display); color: var(--glacier); }
+.plan__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; font: 600 21px/1.2 var(--display); color: var(--white); }
+.plan__now { white-space: nowrap; }
 .plan__price small { font: 500 16px/1 var(--text); color: var(--frost); }
-.plan__what { grid-column: 1 / -1; font-size: 16px; }
-.plan__go { grid-column: 1 / -1; margin-top: 6px; color: var(--white); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 6px; }
+.plan__from { font-size: 16px; color: var(--white); }
+.plan__what { margin-top: 6px; font-size: 16px; }
+.plan__go { margin-top: 6px; color: var(--white); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 6px; }
 .plan__go svg { width: 16px; height: 16px; }
 .plan--pick { box-shadow: inset 0 0 0 2px var(--lemon), var(--shadow-navy); }
 .plan__badge { position: absolute; top: -12px; left: 18px; background: var(--lemon); color: var(--navy); font: 600 14px/1 var(--display); letter-spacing: .02em; padding: 6px 11px; border-radius: 999px; }
+/* The special (owner, 18 November 2026). Today's price, the higher price
+   struck through beside it, and one line with the date that price starts,
+   never a bare "was" price: it was never charged. /js/special.js turns the
+   label to "Christmas special" on 1 December and "Janu-worry special" on
+   1 January, SA time. T-91 removes all of it on 1 February 2027. */
+.special { justify-self: start; display: inline-block; background: var(--lemon); color: var(--navy); font: 600 14px/1 var(--display); letter-spacing: .02em; padding: 6px 11px; border-radius: 999px; }
+@media (max-width: 899px) { .special { font-size: 16px; padding: 5px 11px; } }
+.was { font: 500 18px/1.2 var(--text); color: var(--frost); text-decoration-line: line-through; text-decoration-thickness: 2px; white-space: nowrap; }
 .price__note { margin-top: 18px; font-size: 16px; }
 .price__links { margin-top: 14px; display: grid; gap: 10px; justify-items: start; }
 .price__more { font-size: 16px; }
 .price__more a { font-weight: 600; text-decoration-color: var(--white); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 @media (min-width: 900px) {
   .plans { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .plan { grid-template-columns: 1fr; align-content: start; padding: 24px; }
-  .plan__price { text-align: left; font-size: 27px; }
-  .plan__what, .plan__go { grid-column: auto; }
+  .plan { padding: 24px; }
+  .plan--pick { padding-top: 28px; }
+  .plan__price { font-size: 27px; }
+  .plan .was { flex-basis: 100%; }   /* one line of its own in every column, so the four cards match */
 }
 
 /* work (navy) */
