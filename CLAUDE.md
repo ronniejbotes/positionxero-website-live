@@ -145,6 +145,16 @@ Owner, after the new homepage went live: "make sure the color scheme matches thr
 - **Phones first, as before:** no reading text under 16 px, no sideways scroll at 320 to 430 px (the header's WhatsApp button drops its label under 390 px), the hero's promise, price and WhatsApp button in the first phone screen.
 - The FAQPage JSON-LD is generated from the five visible answers, word for word. GA4 `generate_lead` events and every WhatsApp message are unchanged.
 
+## The onboarding form, `/get-started` (18 November 2026)
+
+Owner, 18 Nov 2026: "something we send new clients where they can send us information back, based off each package". Step 2 of the sign-up flow (T-90 in the plan folder); the Paystack payment links come later. We send the link to new clients ourselves, so it is **noindex, follow, not in `sitemap.xml` or `llms.txt`, and not linked from any nav or footer.** Keep it that way.
+
+- **Files:** `public/get-started.html`, `public/get-started-thanks.html` (the `_next`, also noindex), `public/css/get-started.css` and `public/js/get-started.js` (both `?v=20261118`; bump on change). Built on `/contact`'s head, header and footer.
+- **Links:** `/get-started?package=minimum|standard|growth|full-house` preselects the package. Sections: all packages see 1 to 12; `data-min-level="2"` (SEO) shows for Standard and up, `3` (calls, reviews, listings) for Growth and up, `4` (full SEO) for Full House. Small follow-ups use `data-when` / `data-when-not="Field name=value|value"`. Hidden blocks are disabled, so they never block sending or land in the email; empty optional fields are disabled at send time too. Without JS every section shows with its "Standard and up" style tag. The mailbox line follows the package (1, 2, 3, 5).
+- **Required fields only:** package, business name, your name, cell/WhatsApp, email, what the business does, the terms tick (and the photo-permission tick, only once a file is attached). Everything else is optional and the page says so; do not add required fields.
+- **FormSubmit:** `enctype="multipart/form-data"`, plain POST (files cannot go by AJAX). Its documentation (checked 18 Nov 2026): uploads are native, several file inputs are allowed, and **all files together must stay under 10 MB**. So: one logo input plus three photo inputs, a running total and a block over 10 MB in `get-started.js`, a link field and the WhatsApp number for bigger sets. FormSubmit also says `_autoresponse` does not send when `_captcha` is false (true of `/contact` too), so the thank-you page carries the same message.
+- **Never on this page:** prices (they change by date through `special.js`), the word "free", guarantees of any result, and any field for passwords, ID numbers or bank details. The page tells clients we invite them or do access on a call.
+
 ## The free audit intake overlay
 
 Clicking any link to `/free-audit` opens a full-screen eight-step intake, built in `public/css/style.css` (section 15) and appended to `public/js/main.js` as one IIFE. The CTAs stay real anchors: the click is only intercepted on an unmodified primary click, so modified clicks, crawlers and no-JS visitors still reach the `/free-audit` page.

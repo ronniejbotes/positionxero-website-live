@@ -1,0 +1,170 @@
+/* ============================================================
+   Position Xero: /get-started, the onboarding form (18 November 2026).
+   Loaded after tokens.css and site.css on public/get-started.html and
+   public/get-started-thanks.html only. Same rules as site.css: colours
+   and fonts come only from tokens.css (no hex, no font names here), and
+   the action colour (lemon) is for the submit button alone.
+
+   Phones first: no reading text under 16px at 390px wide, tap targets at
+   least 48px tall, no sideways scroll.
+
+   Behaviour is in /js/get-started.js. Without it every section shows,
+   each package section labelled with the packages it is for. With it,
+   the head script adds .gs-js to <html> so the conditional blocks start
+   hidden (no flash), and get-started.js shows the ones that apply.
+   Bump ?v= on both pages when this file changes.
+   ============================================================ */
+
+[hidden] { display: none !important; }
+
+/* ---------- hero ---------- */
+.gs-hero .page-hero__title { max-width: 16ch; }
+.gs-safe {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start;
+  max-width: 60ch; margin: 22px 0 0; padding: 16px 18px; border-radius: 16px;
+  background: var(--on-brand-08); box-shadow: inset 0 0 0 1.5px var(--line-on-brand);
+  color: var(--on-brand); font-size: 17px; line-height: 1.5;
+}
+.gs-safe svg { width: 22px; height: 22px; margin-top: 2px; }
+.gs-safe p { margin: 0; }
+
+/* ---------- layout: the form, and a side card on wide screens ---------- */
+.gs-layout { display: grid; gap: 32px; }
+@media (min-width: 1100px) {
+  .gs-layout { grid-template-columns: minmax(0, 780px) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .gs-side { position: sticky; top: calc(var(--header-h) + 24px); }
+}
+.gs-form { display: grid; gap: 20px; counter-reset: gs-step; }
+@media (min-width: 640px) { .gs-form { gap: 24px; } }
+
+/* ---------- a step: one fieldset, one card ---------- */
+.gs-step {
+  min-width: 0; margin: 0; padding: 22px 18px 6px; border: 0; border-radius: 20px;
+  background: var(--surface); box-shadow: inset 0 0 0 1px var(--line);
+  counter-increment: gs-step;
+}
+@media (min-width: 640px) { .gs-step { padding: 30px 30px 12px; } }
+.gs-legend { float: left; width: 100%; padding: 0; margin: 0 0 16px; }
+.gs-legend + * { clear: both; }
+.gs-h {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
+  font: var(--display-weight) clamp(24px, 6vw, 30px)/1.1 var(--font-display); letter-spacing: var(--display-track);
+}
+.gs-h::before { content: counter(gs-step, decimal-leading-zero); font: 600 15px/1 var(--font-mono); letter-spacing: 0; color: var(--faint); }
+.gs-tag {
+  display: inline-block; padding: 5px 10px; border-radius: 999px;
+  background: var(--navy); color: var(--on-accent);
+  font: 700 16px/1.2 var(--font-body); letter-spacing: 0;
+}
+@media (min-width: 640px) { .gs-tag { font: 500 12.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: .03em; padding: 6px 10px; } }
+.gs-intro { margin: 0 0 18px; color: var(--muted); font-size: 17px; }
+.gs-intro strong { color: var(--ink); }
+
+/* ---------- fields ---------- */
+.gs-field { display: grid; gap: 7px; margin: 0 0 20px; min-width: 0; }
+.gs-row { display: grid; gap: 0 16px; }
+@media (min-width: 640px) { .gs-row { grid-template-columns: 1fr 1fr; } .gs-row--3 { grid-template-columns: 1fr 1fr 1fr; } }
+.gs-label { font-weight: 700; font-size: 17px; line-height: 1.35; }
+.gs-req {
+  display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 6px; vertical-align: 1px;
+  background: var(--navy); color: var(--on-accent); font: 700 16px/1.4 var(--font-body);
+}
+@media (min-width: 640px) { .gs-req { font: 500 12.5px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: .03em; padding: 4px 8px; vertical-align: 2px; } }
+.gs-nowrap { white-space: nowrap; }
+.gs-help { margin: -2px 0 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
+.gs-input, .gs-textarea {
+  width: 100%; min-height: 52px; padding: 12px 14px; border: 0; border-radius: 12px;
+  background: var(--highlight); color: var(--ink); font-size: 16px;
+  box-shadow: inset 0 0 0 1.5px var(--line); transition: box-shadow .2s;
+}
+.gs-textarea { min-height: 96px; resize: vertical; line-height: 1.5; }
+.gs-input::placeholder, .gs-textarea::placeholder { color: var(--faint); opacity: 1; }
+.gs-input:focus, .gs-textarea:focus { outline: none; box-shadow: inset 0 0 0 2.5px var(--ink); }
+.gs-input:user-invalid, .gs-textarea:user-invalid { box-shadow: inset 0 0 0 2.5px var(--ink); }
+.gs-file { padding: 10px 12px; min-height: 56px; cursor: pointer; }
+.gs-file::file-selector-button {
+  margin-right: 12px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--navy); color: var(--on-accent); font: 700 15px/1 var(--font-body);
+}
+.gs-date { max-width: 260px; }
+
+/* colour: a text box with a picker beside it */
+.gs-colour { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.gs-swatch {
+  width: 52px; height: 52px; padding: 4px; border: 0; border-radius: 12px; cursor: pointer;
+  background: var(--highlight); box-shadow: inset 0 0 0 1.5px var(--line);
+}
+
+/* ---------- choices: radios and ticks as big tiles ---------- */
+.gs-group { min-width: 0; margin: 0 0 20px; padding: 0; border: 0; }
+.gs-group > legend { padding: 0; margin: 0 0 8px; }
+.gs-choices { display: grid; gap: 10px; }
+.gs-choices--yn { grid-template-columns: 1fr 1fr; }
+@media (min-width: 640px) { .gs-choices--2 { grid-template-columns: 1fr 1fr; } .gs-choices--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.gs-choice {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: center;
+  min-height: 56px; padding: 12px 14px; border-radius: 14px; cursor: pointer;
+  background: var(--highlight); box-shadow: inset 0 0 0 1.5px var(--line);
+  font-size: 17px; line-height: 1.35; transition: box-shadow .15s, background-color .15s;
+}
+.gs-choice input { width: 22px; height: 22px; margin: 0; accent-color: var(--navy); cursor: pointer; }
+.gs-choice:hover { box-shadow: inset 0 0 0 2px var(--ink); }
+.gs-choice:has(input:checked) { background: var(--on-accent); box-shadow: inset 0 0 0 2.5px var(--ink); }
+.gs-choice:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
+.gs-choice__name { font-weight: 700; }
+.gs-choice__sub { grid-column: 2; color: var(--muted); font-size: 16px; }
+.gs-choice--tick { align-items: start; }
+.gs-choice--tick input { margin-top: 1px; }
+
+/* the package tiles */
+.gs-packages { display: grid; gap: 10px; }
+@media (min-width: 560px) { .gs-packages { grid-template-columns: 1fr 1fr; } }
+.gs-packages .gs-choice { min-height: 84px; align-items: start; padding: 16px; }
+.gs-packages .gs-choice input { margin-top: 3px; }
+.gs-packages .gs-choice__name { font: var(--display-weight) 22px/1.15 var(--font-display); }
+.gs-compare { margin: 12px 0 20px; font-size: 16px; }
+.gs-compare a, .gs-link { color: var(--accent); font-weight: 700; text-decoration-color: var(--on-accent); text-underline-offset: 4px; }
+
+/* notes inside a step */
+.gs-note {
+  margin: 0 0 20px; padding: 14px 16px; border-radius: 14px;
+  background: var(--highlight); box-shadow: inset 4px 0 0 var(--navy);
+  color: var(--ink); font-size: 16px; line-height: 1.5;
+}
+.gs-note p { margin: 0; }
+.gs-note p + p { margin-top: 8px; }
+.gs-files-status { font-weight: 700; }
+
+/* ---------- "the rest is optional" ---------- */
+.gs-optional {
+  padding: 22px 20px; border-radius: 20px;
+  background: var(--navy); color: var(--on-accent);
+}
+@media (min-width: 640px) { .gs-optional { padding: 28px 30px; } }
+.gs-optional h2 { font: var(--display-weight) clamp(24px, 6vw, 30px)/1.1 var(--font-display); letter-spacing: var(--display-track); margin: 0 0 10px; }
+.gs-optional p { margin: 0 0 10px; color: var(--frost); font-size: 17px; }
+.gs-optional p:last-child { margin: 0; }
+.gs-optional strong { color: var(--on-accent); }
+.gs-optional a { display: inline-block; padding-block: 10px; margin-block: -10px; color: var(--on-accent); font-weight: 700; text-decoration-color: var(--glacier); text-underline-offset: 4px; }
+.gs-optional :focus-visible { outline-color: var(--on-accent); }
+
+/* ---------- finish ---------- */
+.gs-finish .gs-h::before { content: none; }
+.gs-finish .btn--go { width: 100%; margin: 4px 0 0; }
+@media (min-width: 640px) { .gs-finish .btn--go { width: auto; } }
+.gs-finish .gs-help { margin: 14px 0 18px; }
+.gs-sending { margin: 12px 0 0; font-weight: 700; }
+
+/* WhatsApp for photos: an outline button, so lemon stays on the submit */
+.gs-wa { margin: 0 0 20px; }
+.gs-wa .btn { white-space: normal; text-align: left; line-height: 1.3; min-height: 52px; padding-block: 12px; }
+
+/* ---------- side card ---------- */
+.gs-side h2 { font: var(--display-weight) 24px/1.15 var(--font-display); margin: 0 0 12px; }
+.gs-side .aside-card { margin-top: 20px; background: var(--surface); }
+.gs-side .steps { border-top-color: var(--ink); }
+
+/* ---------- conditional blocks start hidden when JS runs ---------- */
+.gs-js [data-min-level]:not(.is-on),
+.gs-js [data-when]:not(.is-on),
+.gs-js [data-when-not]:not(.is-on) { display: none; }
