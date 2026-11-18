@@ -26,10 +26,10 @@
   };
   var WIX = { light: Math.round(204 * USD), core: Math.round(348 * USD) }; // US$17 and US$29 a month, yearly, before tax
   var PACKAGES = [                      // exactly as on /packages
-    { name: 'Minimum', month: 499, year: 4990, mail: 1, hours: 0.5, changes: 'up to 30 minutes of changes', posts: 'no blog posts' },
-    { name: 'Standard', month: 999, year: 9990, mail: 2, hours: 1, changes: 'up to 1 hour of changes', posts: 'on-site SEO and 2 blog posts' },
-    { name: 'Growth', month: 1499, year: 14990, mail: 3, hours: 2, changes: 'up to 2 hours of changes', posts: '4 blog posts' },
-    { name: 'Full House', month: 4999, year: 49990, mail: 5, hours: 4, changes: 'up to 4 hours of changes, done the same working day', posts: 'full SEO and 8 blog posts' }
+    { name: 'Minimum', month: 499, year: 5489, mail: 1, hours: 0.5, changes: 'up to 30 minutes of changes', posts: 'no blog posts' },
+    { name: 'Standard', month: 999, year: 10989, mail: 2, hours: 1, changes: 'up to 1 hour of changes', posts: 'on-site SEO and 2 blog posts' },
+    { name: 'Growth', month: 1499, year: 16489, mail: 3, hours: 2, changes: 'up to 2 hours of changes', posts: '4 blog posts' },
+    { name: 'Full House', month: 4999, year: 54989, mail: 5, hours: 4, changes: 'up to 4 hours of changes, done the same working day', posts: 'full SEO and 8 blog posts' }
   ];
   var WA = 'https://wa.me/27662412155?text=';
   var WA_MORE = WA + 'Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.';
@@ -199,7 +199,7 @@
     var p = r.best;
     h += '<ul class="slip__lines">';
     h += line('Building the website', 'R0', 'No build fee: we build it in code, up to 5 pages, and write the words');
-    h += line(p.name + ' package, 12 months', money(p.year) + ' to ' + money(p.month * 12), money(p.year) + ' paid yearly (pay for 10 months, get 12) or ' + money(p.month) + ' a month');
+    h += line(p.name + ' package, 12 months', money(p.year) + ' to ' + money(p.month * 12), money(p.year) + ' paid yearly (pay for 11 months, get 12) or ' + money(p.month) + ' a month');
     h += line('Hosting, security updates, backups, SSL', 'included', '');
     h += line('Email on your domain', 'included', p.mail + ' ' + plural(p.mail, 'mailbox', 'mailboxes') + ' in ' + p.name + (s.mail ? ', you picked ' + s.mail : ''));
     h += line('Changes after launch', 'included', p.changes + ' a month in ' + p.name);

@@ -9,12 +9,12 @@
 ## Monthly website packages (ZAR)
 Built free: there is no build fee. You pay the monthly package from the first month.
 We build the website free, coded from scratch, then host it and look after it. Package prices are monthly, in rand. No contract.
-Each package includes everything in the one before it. Pay yearly: pay for 10 months, get 12.
+Each package includes everything in the one before it. Pay yearly: pay for 11 months, get 12.
 Domain not included in any package: we can register your domain for you at cost.
-- Minimum: R499/month (R4,990 a year). A website of up to 5 pages, built from our designs and tailored to your business; we write the words; hosting, security updates, backups and SSL; up to 30 minutes of small changes a month; 1 email mailbox plus free email aliases (e.g. info@ and sales@ into the same inbox); WhatsApp button and contact form; Google Business Profile set up; live within 7 days.
-- Standard (recommended): R999/month (R9,990 a year). Everything in Minimum plus on-site SEO; 2 blog posts a month; Google Business Profile managed (a weekly post and review replies); Google Search Console and Bing set up; 2 mailboxes; up to 1 hour of changes a month; a monthly report in plain English.
-- Growth: R1,499/month (R14,990 a year). Everything in Standard plus 4 blog posts a month; Google Analytics with call, WhatsApp and form tracking; a review-request kit; 10 directory listings; 3 mailboxes; up to 2 hours of changes a month; a quarterly call.
-- Full House: R4,999/month (R49,990 a year). Everything in Growth plus full SEO (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
+- Minimum: R499/month (R5,489 a year). A website of up to 5 pages, built from our designs and tailored to your business; we write the words; hosting, security updates, backups and SSL; up to 30 minutes of small changes a month; 1 email mailbox plus free email aliases (e.g. info@ and sales@ into the same inbox); WhatsApp button and contact form; Google Business Profile set up; live within 7 days.
+- Standard (recommended): R999/month (R10,989 a year). Everything in Minimum plus on-site SEO; 2 blog posts a month; Google Business Profile managed (a weekly post and review replies); Google Search Console and Bing set up; 2 mailboxes; up to 1 hour of changes a month; a monthly report in plain English.
+- Growth: R1,499/month (R16,489 a year). Everything in Standard plus 4 blog posts a month; Google Analytics with call, WhatsApp and form tracking; a review-request kit; 10 directory listings; 3 mailboxes; up to 2 hours of changes a month; a quarterly call.
+- Full House: R4,999/month (R54,989 a year). Everything in Growth plus full SEO (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
 
 Special prices: the prices above are a limited-time special; when the specials end, new sign-ups pay R599 (Minimum), R1,299 (Standard), R1,999 (Growth) or R6,999 (Full House) a month, and clients who signed up during a special keep special pricing, also if they move up to a bigger package.
 
