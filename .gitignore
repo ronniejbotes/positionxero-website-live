@@ -3,3 +3,7 @@ dist/
 .DS_Store
 reference/
 .migration/
+
+# Website Plan portal: local config and client data (never commit)
+px-portal-config.php
+px-portal-data/
