@@ -29,7 +29,7 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
-  <link rel="stylesheet" href="/css/get-started.css?v=20261118" />
+  <link rel="stylesheet" href="/css/get-started.css?v=20261119" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -66,6 +66,27 @@
       <div class="wrap">
         <h1 class="page-hero__title" id="page-title">Got it. Your 7 days start now.</h1>
         <p class="page-hero__lede">Thanks for sending your details. We'll WhatsApp you within one working day about anything we still need, and your website goes live within 7 days of us getting your details.</p>
+      </div>
+    </section>
+
+    <!-- Paystack TEST pages (positionxero-*-test). Swap all eight for the live pages before this branch is merged: see CLAUDE.md, "Paying through Paystack". -->
+    <section class="page-body band--paper gs-pay" id="pay" aria-labelledby="pay-title" data-pay>
+      <div class="wrap">
+        <div class="article">
+          <h2 id="pay-title">Last step: set up your payment</h2>
+          <p>You pay on Paystack's secure page, so we never see your card details.</p>
+          <p class="gs-pay__chosen" data-pay-chosen hidden></p>
+          <p class="gs-pay__one" data-pay-one hidden><a class="btn btn--go btn--lg" href="#pay-list" data-pay-button>Set up my payment</a></p>
+          <p data-pay-pick>Choose the package and the way to pay that you picked on the form:</p>
+          <ul class="gs-pay__list" id="pay-list" data-pay-list>
+            <li><span class="gs-pay__name">Minimum</span><span class="gs-pay__links"><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-minimum-monthly-test" data-pay-package="minimum" data-pay-billing="monthly">Pay monthly</a><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-minimum-yearly-test" data-pay-package="minimum" data-pay-billing="yearly">Pay yearly</a></span></li>
+            <li><span class="gs-pay__name">Standard</span><span class="gs-pay__links"><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-standard-monthly-test" data-pay-package="standard" data-pay-billing="monthly">Pay monthly</a><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-standard-yearly-test" data-pay-package="standard" data-pay-billing="yearly">Pay yearly</a></span></li>
+            <li><span class="gs-pay__name">Growth</span><span class="gs-pay__links"><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-growth-monthly-test" data-pay-package="growth" data-pay-billing="monthly">Pay monthly</a><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-growth-yearly-test" data-pay-package="growth" data-pay-billing="yearly">Pay yearly</a></span></li>
+            <li><span class="gs-pay__name">Full House</span><span class="gs-pay__links"><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-full-house-monthly-test" data-pay-package="full-house" data-pay-billing="monthly">Pay monthly</a><a class="btn btn--line btn--sm" href="https://paystack.shop/pay/positionxero-full-house-yearly-test" data-pay-package="full-house" data-pay-billing="yearly">Pay yearly</a></span></li>
+          </ul>
+          <p class="gs-pay__other" data-pay-other hidden><button type="button" class="gs-pay__switch" data-pay-show-all>Picked a different package?</button></p>
+          <p>To change your package or cancel, WhatsApp us on <a href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%20have%20a%20question%20about%20my%20payment." target="_blank" rel="noopener" data-lead-location="get-started-thanks-pay" data-lead-package="none">+27 66 241 2155</a>.</p>
+        </div>
       </div>
     </section>
 
@@ -143,5 +164,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/get-started-thanks.js?v=20261119" defer></script>
 </body>
 </html>

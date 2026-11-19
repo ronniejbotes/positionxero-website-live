@@ -11,6 +11,8 @@
    - FormSubmit takes 10 MB of files per submission, all inputs together:
      the total is shown and checked before sending
    - the email subject carries the business name and package
+   - FormSubmit's _next carries ?package=&billing= so the thank-you page can
+     show the matching Paystack link (get-started-thanks.js)
    Bump ?v= on public/get-started.html when this file changes. */
 (function () {
   var form = document.getElementById('gsForm');
@@ -154,6 +156,14 @@
     var biz = business ? business.value.trim() : '';
     var p = pkg();
     if (subject && biz) subject.value = 'New client details: ' + biz + (p ? ' (' + p + ')' : '');
+
+    /* step 3: the thank-you page shows the Paystack link for this package and billing */
+    var next = form.querySelector('input[name="_next"]');
+    var bill = (checked('Billing')[0] || 'Monthly').toLowerCase();
+    if (next && p) {
+      next.value = 'https://www.positionxero.com/get-started-thanks?package=' +
+        encodeURIComponent(p.toLowerCase().replace(/\s+/g, '-')) + '&billing=' + encodeURIComponent(bill);
+    }
 
     /* leave empty optional fields out of the email */
     var controls = form.querySelectorAll('input, textarea, select');
