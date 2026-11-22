@@ -90,6 +90,15 @@ figure { margin: 0; }
 .btn--sm { min-height: 40px; padding: 0 14px; font-size: 15px; border-radius: 10px; gap: 7px; }
 .btn--lg { min-height: 58px; padding: 0 28px; font-size: 18px; border-radius: 14px; }
 .btn:active { transform: none; }
+/* A button is never wider than its column (22 Nov 2026: "Choose Standard on
+   WhatsApp" pushed /seo 7px sideways at 360px). Under 380px the big buttons
+   lose a little padding, which keeps that label on one line, and any longer
+   label wraps instead of scrolling the page. */
+.btn { max-width: 100%; }
+@media (max-width: 379px) {
+  .btn { white-space: normal; text-align: center; line-height: 1.2; }
+  .btn--lg { padding: 0 20px; }
+}
 .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 26px 0 0; }
 
 /* ============================================================
