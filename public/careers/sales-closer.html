@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#62A7EA" data-dark="#62A7EA" data-light="#62A7EA" />
   <script>(function(){var r=document.documentElement,m='light';r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>
   <link rel="canonical" href="https://www.positionxero.com/careers/sales-closer" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -29,6 +30,8 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
+  <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+  <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -153,7 +156,7 @@
         <h2>Commission only. You build your own pipeline.</h2>
       </div>
       <div class="fade-in story-prose">
-        <p>Position Xero is a founder-led web development and SEO agency, founded and still led by <a href="/about">Ronnie James Botes and Keegan Shane Haumann</a>. We build conversion-focused websites and run SEO, lead generation, Google Ads and Meta Ads. The agency is run from South Africa and every engagement is delivered remotely to service businesses worldwide. There is already a closing team here, and this role adds to it, selling our website packages: the website built free, then from R499 a month.</p>
+        <p>Position Xero is a founder-led web development and SEO agency, founded and still led by <a href="/about">Ronnie James Botes and Keegan Shane Haumann</a>. We build conversion-focused websites and run SEO, lead generation, Google Ads and Meta Ads. The agency is run from South Africa and every engagement is delivered remotely to service businesses worldwide. There is already a closing team here, and this role adds to it, selling our website packages: the website built free, then from <span data-price>R499</span> a month.</p>
         <p><strong>Start with the part most job ads bury.</strong> This role is commission-based with uncapped earnings and no base. That suits a closer who fills their own diary. Anyone who needs a guaranteed number every month should stop reading here, and we would rather you decide that now than three calls in. The structure is walked through openly on the first call.</p>
         <p><strong>Now the part that decides whether you should apply at all.</strong> This is a cold outreach and closing role. You build your own pipeline: cold calling, and cold outreach over LinkedIn and DM. Nobody hands you a booked diary. If that sentence just cost us your application, it did its job.</p>
         <p>Warm leads exist here, and they are earned. Enquiries from this site come from people who have already looked at the packages, so they are the best conversations we have. They get allocated to closers who have already proved they can close. Prove it on the pipeline you built yourself and the allocation follows. Plan on it as upside.</p>
@@ -180,7 +183,7 @@
         </div>
         <div class="value-card fade-in delay-2">
           <h3>Match the Prospect to the Right Package</h3>
-          <p>Minimum, Standard, Growth or Full House: the website built free, then from R499 a month, with <a href="/seo">SEO</a> from the Standard package up. Anything the <a href="/packages">packages</a> don't cover is priced on the brief. Our pricing is published at <a href="/pricing.md">pricing.md</a>, so you sell against a number the prospect can already see.</p>
+          <p>Minimum, Standard, Growth or Full House: the website built free, then from <span data-price>R499</span> a month, with <a href="/seo">SEO</a> from the Standard package up. Anything the <a href="/packages">packages</a> don't cover is priced on the brief. Our pricing is published at <a href="/pricing.md">pricing.md</a>, so you sell against a number the prospect can already see.</p>
         </div>
         <div class="value-card fade-in">
           <h3>Close Monthly Packages</h3>
@@ -460,5 +463,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/currency.js?v=20261122"></script>
 </body>
 </html>

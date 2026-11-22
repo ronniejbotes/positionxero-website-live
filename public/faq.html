@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#62A7EA" data-dark="#62A7EA" data-light="#62A7EA" />
   <script>(function(){var r=document.documentElement,m='light';r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>
   <link rel="canonical" href="https://www.positionxero.com/faq" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -29,6 +30,8 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
+  <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+  <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -272,7 +275,7 @@
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">FAQ</li></ol></nav>
         <h1 class="page-hero__title" id="page-title">Questions about our website packages</h1>
-        <p class="page-hero__lede">Your website is built free, then from R499 a month. Here is what that means, what the monthly price pays for and what stays yours.</p>
+        <p class="page-hero__lede">Your website is built free, then from <span data-price>R499</span> a month. Here is what that means, what the monthly price pays for and what stays yours.</p>
         <div class="cta-row">
           <a class="btn btn--go btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener" data-lead-location="faq-hero" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
           <a class="btn btn--ghost btn--lg" href="/packages">See the packages</a>
@@ -284,26 +287,27 @@
       <div class="wrap">
         <div class="article">
           <h2 class="faq__group">Built free, and the monthly price</h2>
+          <div class="cur cur--prose" data-cur-toggle><span class="cur__label" id="cur-label-faq">Prices in</span><div class="cur__switch" role="group" aria-labelledby="cur-label-faq"><button type="button" class="cur__opt" data-cur="zar" aria-pressed="true">ZAR<span class="cur-vh"> (South African rand)</span></button><button type="button" class="cur__opt" data-cur="usd" aria-pressed="false">USD<span class="cur-vh"> (US dollars)</span></button></div></div>
           <div class="faq">
           <details class="faq__item">
             <summary class="faq__q">Is your website really free?</summary>
-            <div class="faq__a"><p>The build is free: there's no build fee. You pay the monthly package from the first month, from R499 a month on Minimum, or R5,489 if you pay for the year. The domain isn't included in any package; we register it for you at cost.</p></div>
+            <div class="faq__a"><p>The build is free: there's no build fee. You pay the monthly package from the first month, from <span data-price>R499</span> a month on Minimum, or <span data-price>R5,489</span> if you pay for the year. The domain isn't included in any package; we register it for you at cost.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">Why is there no build fee?</summary>
-            <div class="faq__a"><p>We build the website free and earn our money from the monthly package, from R499 a month. There's no contract: you can cancel with 30 days' notice, your domain, email and words go with you, and after 12 paid months the website files are yours too.</p></div>
+            <div class="faq__a"><p>We build the website free and earn our money from the monthly package, from <span data-price>R499</span> a month. There's no contract: you can cancel with 30 days' notice, your domain, email and words go with you, and after 12 paid months the website files are yours too.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">Why pay monthly instead of once-off?</summary>
-            <div class="faq__a"><p>A monthly package covers everything after launch: hosting, security updates, backups, small changes every month and, from Standard up, the SEO. The build is free and the packages start at R499 a month, so you’re not paying a lump sum before the site exists. There’s no contract, and after 12 paid months the website files are yours.</p></div>
+            <div class="faq__a"><p>A monthly package covers everything after launch: hosting, security updates, backups, small changes every month and, from Standard up, the SEO. The build is free and the packages start at <span data-price>R499</span> a month, so you’re not paying a lump sum before the site exists. There’s no contract, and after 12 paid months the website files are yours.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">How much does a website cost per month in South Africa?</summary>
-            <div class="faq__a"><p>That depends on what you need after launch: hosting, email, changes and, if you want to be found on Google, SEO. Our packages cost R499 a month for the website, hosting, a mailbox and small changes, and R999 a month once SEO is included. Pay yearly and you pay for 11 months and get 12.</p></div>
+            <div class="faq__a"><p>That depends on what you need after launch: hosting, email, changes and, if you want to be found on Google, SEO. Our packages cost <span data-price>R499</span> a month for the website, hosting, a mailbox and small changes, and <span data-price>R999</span> a month once SEO is included. Pay yearly and you pay for 11 months and get 12.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">How does paying yearly work?</summary>
-            <div class="faq__a"><p>Pay for 11 months and you get 12 months of your package. That is 1 month free. Minimum is R5,489 a year, Standard R10,989, Growth R16,489 and Full House R54,989. Your package runs to the end of the year you paid for. If you cancel, we simply do not renew it. If we miss the 7-day launch on a yearly plan, we add one free month to the end of your year.</p></div>
+            <div class="faq__a"><p>Pay for 11 months and you get 12 months of your package. That is 1 month free. Minimum is <span data-price>R5,489</span> a year, Standard <span data-price>R10,989</span>, Growth <span data-price>R16,489</span> and Full House <span data-price>R54,989</span>. Your package runs to the end of the year you paid for. If you cancel, we simply do not renew it. If we miss the 7-day launch on a yearly plan, we add one free month to the end of your year.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">What is not included?</summary>
@@ -341,7 +345,7 @@
           </details>
           <details class="faq__item">
             <summary class="faq__q">Can I move my site from a free builder to you?</summary>
-            <div class="faq__a"><p>Yes. We build your new site free on whichever package you choose, from R499 a month, and moving your domain and email across costs nothing extra.</p></div>
+            <div class="faq__a"><p>Yes. We build your new site free on whichever package you choose, from <span data-price>R499</span> a month, and moving your domain and email across costs nothing extra.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">Do you only work with businesses in Gauteng?</summary>
@@ -364,7 +368,7 @@
           </details>
           <details class="faq__item">
             <summary class="faq__q">Is there an SEO package without a website?</summary>
-            <div class="faq__a"><p>Our SEO packages include the website, because we build, host and look after it as part of the same price. If you already have a site, we rebuild it free on a package, from R999 a month with SEO, and move your domain and email across at no extra cost.</p></div>
+            <div class="faq__a"><p>Our SEO packages include the website, because we build, host and look after it as part of the same price. If you already have a site, we rebuild it free on a package, from <span data-price>R999</span> a month with SEO, and move your domain and email across at no extra cost.</p></div>
           </details>
           <details class="faq__item">
             <summary class="faq__q">What if I need more SEO than Full House?</summary>
@@ -372,7 +376,7 @@
           </details>
           <details class="faq__item">
             <summary class="faq__q">Is AI SEO in the Minimum package?</summary>
-            <div class="faq__a"><p>Every new site we build gets structured data, an llms.txt file and a robots.txt that lets AI search crawlers in. The SEO work itself, including Search Console, Bing and the blog posts, starts on Standard at R999 a month.</p></div>
+            <div class="faq__a"><p>Every new site we build gets structured data, an llms.txt file and a robots.txt that lets AI search crawlers in. The SEO work itself, including Search Console, Bing and the blog posts, starts on Standard at <span data-price>R999</span> a month.</p></div>
           </details>
           </div>
         </div>
@@ -383,7 +387,7 @@
       <div class="wrap">
         <h2 class="final__title" id="start-title">Let’s get your website live</h2>
         <div class="final__row">
-          <p class="final__text">Send us a WhatsApp with your business name and what you do. Your website is built free, then from <strong>R499 a month</strong>.</p>
+          <p class="final__text">Send us a WhatsApp with your business name and what you do. Your website is built free, then from <strong><span data-price>R499</span> a month</strong>.</p>
           <div>
             <div class="final__actions">
               <a class="btn btn--go btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20to%20get%20my%20business%20website%20started." target="_blank" rel="noopener" data-lead-location="faq-final" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp us</span></a>
@@ -454,5 +458,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/currency.js?v=20261122"></script>
 </body>
 </html>

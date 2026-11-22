@@ -2,7 +2,7 @@
 
 > Position Xero builds websites for South African businesses. The website is built free, in code, and goes live within 7 days; the business then pays a monthly package for hosting and care: Minimum R499, Standard R999 (includes SEO, blog posts and Google Business Profile management), Growth R1,499 or Full House R4,999 a month. No contract. Based in Centurion, Gauteng.
 
-> Last updated: 2026-11-18
+> Last updated: 2026-11-22
 
 ## Built free, then one monthly price
 
@@ -12,6 +12,7 @@
 - **Growth, R1,499 a month (R16,489 a year)**: everything in Standard plus 4 blog posts a month; Google Analytics with call, WhatsApp and form tracking; a review-request kit; 10 directory listings; 3 mailboxes; up to 2 hours of changes a month; a quarterly call.
 - **Full House, R4,999 a month (R54,989 a year)**: everything in Growth plus full SEO for one local business website (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
 - **Special prices**: the prices above are a limited-time special; when the specials end, new sign-ups pay R599 (Minimum), R1,299 (Standard), R1,999 (Growth) or R6,999 (Full House) a month, and clients who signed up during a special keep special pricing, also if they move up to a bigger package.
+- **Prices in US dollars**: each package price in US dollars is the rand price divided by 10: Minimum US$49.90, Standard US$99.90, Growth US$149.90 and Full House US$499.90 a month (US$548.90, US$1,098.90, US$1,648.90 and US$5,498.90 a year); after the specials, US$59.90, US$129.90, US$199.90 and US$699.90 a month. The site shows the prices in rand or US dollars, with a ZAR | USD switch.
 - **Pay yearly**: pay for 11 months, get 12. The package runs to the end of the paid year and is not renewed if cancelled. A missed 7-day launch on a yearly plan adds one free month to the end of the year.
 - **Our three commitments** (about our own work; no result is promised): live within 7 days of receiving your details, or the first month is free; no contract, cancel with 30 days' notice, and your domain, email and words go with you; after 12 paid months the website files are yours too.
 - **On every new site we build**: structured data that matches the page, an llms.txt file and a robots.txt that lets AI search crawlers in.

@@ -1,0 +1,48 @@
+/* ZAR | USD price switch (owner, 22 November 2026). Behaviour: /js/currency.js.
+   Built like the Monthly | Yearly switch on /packages: a pill track with
+   two 44px options, the chosen one filled navy. It uses the page's own
+   tokens where they exist (tokens.css flips --ink and --paper on navy
+   bands), with the glacier/navy values as fallbacks for the homepage.
+   No lemon here: lemon is only where the eye must go.
+
+   The switch is in the HTML but shows only once the head script has run
+   (html.px-cur), so no-JS visitors and crawlers see rand and no switch,
+   and nothing moves when the script arrives. The chosen option is drawn
+   from the html class, so it is right from the first paint. */
+.cur { display: none; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+.px-cur .cur { display: inline-flex; }
+.cur__label { font-weight: 700; font-size: 16px; }
+.cur__switch { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--surface, #A9CDF3); box-shadow: inset 0 0 0 1px var(--line, #4C83C0); }
+.cur__opt {
+  position: relative; min-height: 44px; min-width: 66px; padding: 0 16px; margin: 0;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--muted, #14275F);
+  font: inherit; font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .03em;
+  display: inline-flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s ease, color .2s ease;
+}
+.cur__opt:hover { color: var(--ink, #0C1B48); }
+.cur__opt:focus-visible { outline: 3px solid var(--ink, #0C1B48); outline-offset: 2px; }
+.px-zar .cur__opt[data-cur="zar"], .px-usd .cur__opt[data-cur="usd"] { background: var(--ink, #0C1B48); color: var(--paper, #62A7EA); }
+.cur .cur-vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .cur__opt { transition: none; } }
+
+/* where the switch sits */
+.cur--sec { margin-top: 18px; }                  /* homepage: under "One monthly price" */
+.cur--prose { margin: 4px 0 18px; }  /* guides: above a package list */
+.px-cur .cur--prose { display: flex; }
+.cur--table { margin: 0 0 14px; }                /* /packages: above the comparison table */
+.head__side { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+@media (min-width: 900px) { .head__side { justify-content: flex-end; } }
+@media (max-width: 400px) { .cur__opt { padding: 0 14px; } }
+
+/* Before currency.js has put the dollar prices in, a visitor shown USD
+   sees no price rather than a flash of rand. If the script never arrives,
+   the rand prices show after 2.5 s. */
+.px-usd:not(.px-cur-on) [data-price] { visibility: hidden; animation: px-cur-show 0s linear 2.5s forwards; }
+@keyframes px-cur-show { to { visibility: visible; } }
+
+/* A line shown only with dollar prices, beside a comparison kept in rand */
+.cur-note { display: none; }
+.px-usd .cur-note { display: block; }

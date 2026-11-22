@@ -51,14 +51,19 @@ function roll(el, text) {
   };
 }
 
-/* ---------- billing switch ---------- */
+/* ---------- billing switch ----------
+   The data-monthly / data-yearly copies are in rand. With dollars on screen
+   (/js/currency.js, 22 Nov 2026) the new text is converted before it goes
+   in, so a price rolls once, straight to the dollar figure. */
 const toggles = document.querySelectorAll('[data-billing-toggle]');
+const inCurrency = (text) => (window.pxCurrency ? window.pxCurrency.text(text) : text);
+const waInCurrency = (href) => (window.pxCurrency ? window.pxCurrency.wa(href) : href);
 function setBilling(mode) {
   toggles.forEach((t) => t.querySelectorAll('[data-billing]').forEach((b) => {
     b.setAttribute('aria-pressed', String(b.dataset.billing === mode));
   }));
   document.querySelectorAll('.shop [data-monthly]').forEach((el) => {
-    const text = el.dataset[mode];
+    const text = el.hasAttribute('data-price') ? inCurrency(el.dataset[mode]) : el.dataset[mode];
     if (el.classList.contains('pk__amount')) {
       el.dataset.dir = mode === 'yearly' ? 'up' : 'down';
       roll(el, text);
@@ -67,7 +72,7 @@ function setBilling(mode) {
     }
   });
   document.querySelectorAll('.shop a[data-wa-monthly]').forEach((a) => {
-    a.href = mode === 'yearly' ? a.dataset.waYearly : a.dataset.waMonthly;
+    a.href = waInCurrency(mode === 'yearly' ? a.dataset.waYearly : a.dataset.waMonthly);
   });
 }
 toggles.forEach((t) => t.addEventListener('click', (event) => {

@@ -1,8 +1,8 @@
 # Position Xero, Service Pricing
 
-> Last updated: 2026-11-18.
+> Last updated: 2026-11-22.
 > Position Xero builds websites for South African businesses. The four monthly website packages
-> below are our published prices, in rand (ZAR). Anything else (Google Ads or Meta Ads management,
+> below are our published prices, in rand (ZAR), and in US dollars at the rand price divided by 10. Anything else (Google Ads or Meta Ads management,
 > immersive 3D or scroll-animated builds, online stores, bigger or multi-location projects) is
 > priced on the brief over WhatsApp: https://wa.me/27662412155?text=Hi%20there%2C%20I%20would%20like%20to%20enquire%20about%20getting%20some%20of%20your%20offerings.
 
@@ -17,6 +17,8 @@ Domain not included in any package: we can register your domain for you at cost.
 - Full House: R4,999/month (R54,989 a year). Everything in Growth plus full SEO (technical SEO, local pages, link building, competitor tracking); 8 blog posts a month; monthly conversion improvements using heatmaps; 5 mailboxes; up to 4 hours of changes a month, done the same working day.
 
 Special prices: the prices above are a limited-time special; when the specials end, new sign-ups pay R599 (Minimum), R1,299 (Standard), R1,999 (Growth) or R6,999 (Full House) a month, and clients who signed up during a special keep special pricing, also if they move up to a bigger package.
+
+Prices in US dollars: each package price is the rand price divided by 10. Minimum US$49.90, Standard US$99.90, Growth US$149.90 and Full House US$499.90 a month (US$548.90, US$1,098.90, US$1,648.90 and US$5,498.90 a year); after the specials, US$59.90, US$129.90, US$199.90 and US$699.90 a month.
 
 ## Our commitments
 About our own work; no result is promised.

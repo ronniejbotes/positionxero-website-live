@@ -1,0 +1,29 @@
+<!--
+  Position Xero ZAR | USD prices: HEAD SNIPPET (owner, 22 November 2026).
+  Goes in the <head> of every page that shows a package price, right after
+  the theme script (or the theme-color meta), together with:
+    <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+    <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
+  and as the last line before </body>, WITHOUT defer:
+    <script src="/js/currency.js?v=20261122"></script>
+  Not deferred on purpose: a deferred script ran after the first paint, and
+  on /packages at 390px "from $49.90 a month" takes one more line in the h1
+  than "from R499 a month", so the page jumped (layout shift 0.215, USD
+  only). Run at the end of the body, with the preload, it measured 0.000,
+  also on a throttled phone connection (22 Nov 2026).
+  It sets html.px-cur plus html.px-usd or html.px-zar before the first
+  paint, so the right currency and the right switch option show at once.
+  How the default is chosen, in order:
+    1. the visitor's own choice, kept in localStorage "px-currency";
+    2. crawlers (user agent with bot, crawl, spider ...) get rand, the
+       server-rendered default, which is also what the JSON-LD says;
+    3. the device time zone: Africa/Johannesburg, and the Common Monetary
+       Area zones where the rand is legal tender (Maseru, Mbabane,
+       Windhoek), get rand; every other zone, America/* included, gets USD;
+    4. no usable time zone (missing, UTC, Etc/*): a browser language ending
+       in -ZA (en-ZA, af-ZA ...) gets rand, anything else USD.
+  No cookie, no external service, nothing sent anywhere.
+  Change this logic here and in every page at once:
+    grep -rl "px-currency" index.html packages.html experience.html public
+-->
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>

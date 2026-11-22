@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#62A7EA" data-dark="#62A7EA" data-light="#62A7EA" />
   <script>(function(){var r=document.documentElement,m='light';r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>
   <link rel="canonical" href="https://www.positionxero.com/careers/" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -29,6 +30,8 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
+  <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+  <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -198,7 +201,7 @@
         <a class="service-card fade-in delay-1" href="/careers/sales-closer">
           <span class="blog-tag">Sales</span>
           <h3>Sales Closer</h3>
-          <p>Build your own pipeline through cold calling and cold outreach, then close our website packages: the website built free, then from R499 a month. Warm enquiries from the site come on top of what you build. Diagnosis comes first, because an oversold client cancels inside thirty days.</p>
+          <p>Build your own pipeline through cold calling and cold outreach, then close our website packages: the website built free, then from <span data-price>R499</span> a month. Warm enquiries from the site come on top of what you build. Diagnosis comes first, because an oversold client cancels inside thirty days.</p>
           <div class="blog-meta"><span>Commission-based</span><span>&middot;</span><span>Remote worldwide</span></div>
           <span class="service-link">Read the Role →</span>
         </a>
@@ -325,5 +328,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/currency.js?v=20261122"></script>
 </body>
 </html>

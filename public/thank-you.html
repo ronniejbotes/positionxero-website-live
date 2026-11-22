@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#62A7EA" data-dark="#62A7EA" data-light="#62A7EA" />
   <script>(function(){var r=document.documentElement,m='light';r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>
   <link rel="canonical" href="https://www.positionxero.com/thank-you" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -29,6 +30,8 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
+  <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+  <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -75,7 +78,7 @@
           <ol class="steps">
             <li><p><strong>We reply.</strong> Within 24 hours, on WhatsApp or by email.</p></li>
             <li><p><strong>We get to know your business.</strong> A 15-minute call or a voice note is enough. Send your logo and some photos if you have them, and we write the words.</p></li>
-            <li><p><strong>Your website goes live.</strong> Within 7 days of us getting your details, or your first month is free. The build is free, then it's from R499 a month for hosting, care and changes. No contract.</p></li>
+            <li><p><strong>Your website goes live.</strong> Within 7 days of us getting your details, or your first month is free. The build is free, then it's from <span data-price>R499</span> a month for hosting, care and changes. No contract.</p></li>
           </ol>
           <p>While you wait, have a look at <a href="/work">sites we've built</a>.</p>
           <p>Need us sooner? <a href="https://wa.me/27662412155" target="_blank" rel="noopener" data-lead-location="thank-you" data-lead-package="none">WhatsApp +27 66 241 2155</a> or call <a href="tel:+27662412155" data-lead-location="thank-you" data-lead-package="none">+27 66 241 2155</a>.</p>
@@ -142,5 +145,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/currency.js?v=20261122"></script>
 </body>
 </html>

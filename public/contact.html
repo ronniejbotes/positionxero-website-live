@@ -9,6 +9,7 @@
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#62A7EA" data-dark="#62A7EA" data-light="#62A7EA" />
   <script>(function(){var r=document.documentElement,m='light';r.setAttribute('data-theme',m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.setAttribute('content',t.getAttribute('data-'+m))})()</script>
+  <script>(function(){var d=document.documentElement,n=navigator,c,z='';try{c=localStorage.getItem('px-currency')}catch(e){}if(c!=='usd'&&c!=='zar'){if(/bot|crawl|spider|slurp|mediapartners|inspectiontool|googleother|bingpreview/i.test(n.userAgent||''))c='zar';else{try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}if(/^(Etc\/|UTC$|GMT$|UCT$|Universal$|Zulu$)/.test(z))z='';c=z?(/^Africa\/(Johannesburg|Maseru|Mbabane|Windhoek)$/.test(z)?'zar':'usd'):(/-ZA$/i.test(n.language||'')?'zar':'usd')}}d.classList.add('px-cur','px-'+c)})()</script>
   <link rel="canonical" href="https://www.positionxero.com/contact" />
 
   <meta property="og:site_name" content="Position Xero" />
@@ -29,6 +30,8 @@
   <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/tokens.css?v=20261117" />
   <link rel="stylesheet" href="/css/site.css?v=20261115a" />
+  <link rel="stylesheet" href="/css/currency.css?v=20261122" />
+  <link rel="preload" href="/js/currency.js?v=20261122" as="script" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png" />
@@ -105,7 +108,7 @@
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Contact</li></ol></nav>
         <h1 class="page-hero__title" id="page-title">Talk to us about your website</h1>
-        <p class="page-hero__lede">WhatsApp is the quickest way to reach us. Send your business name and what you do, and we'll tell you which package fits. Your website is built free, then from R499 a month, and it goes live within 7 days of us getting your details.</p>
+        <p class="page-hero__lede">WhatsApp is the quickest way to reach us. Send your business name and what you do, and we'll tell you which package fits. Your website is built free, then from <span data-price>R499</span> a month, and it goes live within 7 days of us getting your details.</p>
         <div class="cta-row">
           <a class="btn btn--go btn--lg" href="https://wa.me/27662412155?text=Hi%20Position%20Xero%2C%20I%27d%20like%20my%20website%20built%20free%2C%20from%20R499%20a%20month.%20Can%20you%20help%3F" target="_blank" rel="noopener" data-lead-location="contact-hero" data-lead-package="none"><svg class="i-wa" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06 0 1.22.88 2.39 1 2.56.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.29Z"/></svg><span>WhatsApp +27 66 241 2155</span></a>
           <a class="btn btn--ghost btn--lg" href="tel:+27662412155" data-lead-location="contact-hero" data-lead-package="none">Call +27 66 241 2155</a>
@@ -151,7 +154,7 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="package">Which package are you interested in?<span class="sr-only"> (required)</span></label>
-              <select class="form-select" id="package" name="package" required aria-required="true">
+              <select data-price class="form-select" id="package" name="package" required aria-required="true">
                 <option value="" disabled selected>Choose one</option>
                 <option>Minimum (R499 a month)</option><option>Standard (R999 a month)</option><option>Growth (R1,499 a month)</option><option>Full House (R4,999 a month)</option><option>Not sure yet, help me choose</option><option>Something else: ads, an online store or a bigger build</option>
               </select>
@@ -169,7 +172,7 @@
           <ol class="steps">
             <li><p><strong>We reply within 24 hours,</strong> on WhatsApp or by email.</p></li>
             <li><p><strong>You tell us about your business</strong> on a 15-minute call or in a voice note, and send your logo and some photos if you have them. We write the words.</p></li>
-            <li><p><strong>Your website goes live within 7 days</strong> of us getting your details, or your first month is free. Then it's from R499 a month for hosting, care and changes, with no contract.</p></li>
+            <li><p><strong>Your website goes live within 7 days</strong> of us getting your details, or your first month is free. Then it's from <span data-price>R499</span> a month for hosting, care and changes, with no contract.</p></li>
           </ol>
           <div class="aside-card">
             <h3>Where we are</h3>
@@ -242,5 +245,6 @@
 
   <script src="/js/theme.js?v=20261112" defer></script>
   <script src="/js/site.js?v=20261112" defer></script>
+  <script src="/js/currency.js?v=20261122"></script>
 </body>
 </html>
